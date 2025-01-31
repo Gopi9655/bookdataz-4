@@ -95,7 +95,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center p-6">
         {/* Logo */}
         <motion.div className="flex-shrink-0">
-          <Image src="/bokdataz-logo-1.png" alt="logo" width={200} height={150} />
+          <Image src="/logo-b.jpg" alt="logo" width={200} height={150} />
         </motion.div>
 
         {/* Desktop Navigation Links */}
