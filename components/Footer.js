@@ -87,15 +87,7 @@ const Footer = () => {
           </div>
 
           {/* Services column */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Services</h3>
-            <ul className="space-y-2 text-sm">
-              <li className="hover:text-white"><a href="#">Lead Generation</a></li>
-              <li className="hover:text-white"><a href="#">Database Solutions</a></li>
-              <li className="hover:text-white"><a href="#">Email Marketing</a></li>
-              <li className="hover:text-white"><a href="#">Telemarketing</a></li>
-            </ul>
-          </div>
+          
 
           {/* Company column */}
           <div>

@@ -1,5 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 // Dynamically import motion to prevent SSR errors
 const MotionDiv = dynamic(() => import("framer-motion").then((mod) => mod.motion.div), { ssr: false });
@@ -135,11 +136,13 @@ const AboutPage = () => {
           key={index}
           className="relative bg-white rounded-lg shadow-md overflow-hidden"
         >
-          <img
-            src={industry.img}
-            alt={industry.name}
-            className="w-full h-48 object-cover"
-          />
+       <Image
+  src={industry.img} // e.g., "/images/automotive.jpg" or an imported image variable
+  alt={industry.name}
+  width={600} // Replace with the actual image width
+  height={300} // Replace with the actual image height. This will be overridden by h-48
+  className="w-full h-48 object-cover" // Height will be fixed to 192px (h-48)
+/>
           <div className="absolute inset-0 flex items-center justify-center bg-customBlue bg-opacity-50">
             <h3 className="text-2xl font-semibold text-white">
               {industry.name}

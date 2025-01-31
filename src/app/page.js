@@ -130,19 +130,19 @@ const slides = [
     title: "Intelligent Data to Drive Business Performance with BookDataz",
     description:
       "Leverage the world's most comprehensive business data and insights to find new opportunities, navigate evolving risk, and know who to trust to reach your organizational goals.",
-    image: "/banner1 (1).webp",
+    image: "/DALL·E 2025-01-31 10.31.39 - A simple and modern business concept illustration representing growth and targeted data solutions. The image features a minimalistic design with a sol.webp",
   },
   {
     title: "Empower Business Growth with Targeted Data Solutions",
     description:
       "At BookDataz, we specialize in providing businesses with high-quality, targeted datasets designed to drive growth and optimize decision-making.",
-    image: "/banner1 (2).png",
+    image: "/DALL·E 2025-01-31 10.32.37 - A simple and modern business concept illustration representing growth and targeted data solutions. The image features a minimalistic design with a sol.webp",
   },
   {
     title: "Global Data Solutions Tailored for Every Country",
     description:
       "At BookDataz, we specialize in delivering comprehensive and accurate data solutions that transcend borders. Our global reach ensures access to critical insights and datasets across all countries.",
-    image: "/banner1 (3).webp",
+    image: "/DALL·E 2025-01-31 10.36.43 - A simple and modern business concept illustration with a red-400 (tailwind) and navy blue color theme. The image represents database selling, email ma.webp",
   },
 ];
 
@@ -336,7 +336,7 @@ export default function Home() {
                       height={200}
                       alt="Banner"
                       priority
-                      className="object-contain"
+                      className="object-contain rounded-2xl"
                     />
                   </motion.div>
                 </div>
@@ -402,7 +402,7 @@ export default function Home() {
                 <p className="text-gray-600 mb-4">{item.description}</p>
                 <a
                   href={item.link}
-                  className="text-customBlue font-medium hover:underline flex items-center"
+                  className="text-red-400 font-medium hover:underline flex items-center"
                 >
                   Learn more <span className="ml-1">→</span>
                 </a>
@@ -481,8 +481,8 @@ export default function Home() {
                       }}
                       transition={{ duration: 0.5, ease: "easeInOut" }}
                     ></motion.div>
-                    <span className="relative z-10">
-                      Read More <span className="ml-1">→</span>
+                    <span className="relative z-10 text-red-400">
+                      Read More <span className="ml-1 text-red-400">→</span>
                     </span>
                   </motion.a>
                 </div>

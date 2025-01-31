@@ -36,7 +36,7 @@ const PageHeader = () => {
       <div className="absolute inset-0 bg-opacity-60"></div>
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-12">
         <h1 className="text-4xl font-bold capitalize">{title}</h1>
-        <p className="text-lg text-gray-300 mt-2">
+        <p className="text-lg text-red-400 mt-2">
           {pathname.split("/").filter((path) => path).map((path, index, arr) => (
             <span key={index} className={index === arr.length - 1 ? "text-white" : "text-gray-300"}>
               {index === arr.length - 1 ? path.replace(/-/g, " ") : `${path.replace(/-/g, " ")} > `}
