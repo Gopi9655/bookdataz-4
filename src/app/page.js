@@ -300,7 +300,7 @@ export default function Home() {
                       {slide.title}
                     </motion.h1>
                     <motion.p
-                      className="text-xl hidden md:flex text-gray-300 tracking-wide max-w-2xl mb-8 leading-[1.5]"
+                      className="md:text-xl text-md  md:flex text-gray-300 tracking-wide max-w-2xl mb-8 leading-[1.5]"
                       variants={fadeUpVariants}
                       initial="hidden"
                       animate={activeSlide === index ? "visible" : "hidden"}
@@ -315,7 +315,7 @@ export default function Home() {
                       transition={{ delay: 0.4 }}
                     >
                       <button
-                        className="px-6 py-3 text-lg font-bold text-white bg-customBlue rounded-md hover:bg-blue-600"
+                        className="px-6 hidden md:flex py-3 text-lg font-bold text-white bg-customBlue rounded-md hover:bg-blue-600"
                         onClick={() => console.log("Clicked")}
                       >
                         Free Data Sample
