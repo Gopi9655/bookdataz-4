@@ -549,8 +549,93 @@ export default function Home() {
       {/* ======================================
           TESTIMONIAL SECTION
       =======================================*/}
-      
-
+      <div className="bg-slate-800 p-6 md:p-10 lg:p-20">
+  <h1 className="text-2xl md:text-4xl lg:text-5xl text-center font-bold text-slate-100 mb-6 md:mb-10 lg:mb-20">
+    What Our Clients Say
+  </h1>
+  <div className="max-w-screen-lg mx-auto">
+    <Swiper
+      modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+      effect="coverflow"
+      grabCursor={true}
+      centeredSlides={true}
+      slidesPerView="auto"
+      spaceBetween={30}
+      loop={true}
+      loopFillGroupWithBlank={true}
+      loopAdditionalSlides={testimonials.length > 3 ? 3 : testimonials.length}
+      speed={1000}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
+      coverflowEffect={{
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 2.5,
+        slideShadows: false,
+      }}
+      className="mySwiper !overflow-visible"
+      breakpoints={{
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      }}
+    >
+      {testimonials.map((testimonial, index) => (
+        <SwiperSlide
+          key={`${testimonial.id}-${index}`}
+          className="max-w-[80vw] sm:max-w-[350px] md:max-w-[400px] !h-auto flex items-center transition-transform duration-500" 
+        >
+          <div className="relative mx-2 sm:mx-4 py-8 md:py-10 mb-6 md:mb-10 bg-white rounded-xl shadow-2xl text-black w-full flex flex-col transform transition-all duration-500 hover:scale-105">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3">
+              <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                <Image
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            </div>
+            <div className="pt-16 md:pt-20 px-4 md:px-6 pb-4 md:pb-6 text-center">
+              <div className="flex justify-center mb-2 md:mb-3">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <FaStar
+                    key={i}
+                    className={`text-base md:text-xl ${
+                      i < Math.floor(testimonial.rating)
+                        ? "text-blue-400"
+                        : "text-gray-300"
+                    } mx-0.5`}
+                  />
+                ))}
+              </div>
+              <p className="text-xs md:text-sm italic text-gray-700 mb-4 md:mb-6 leading-relaxed">
+                "{testimonial.testimonial}"
+              </p>
+              <h3 className="text-base md:text-lg font-bold text-gray-900">
+                {testimonial.name}
+              </h3>
+              <span className="text-gray-600 text-xs md:text-sm block mt-1">
+                {testimonial.position}
+              </span>
+            </div>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+    <p className="mt-6 md:mt-10 text-center text-slate-100 text-sm md:text-base lg:text-lg leading-relaxed">
+      At BookDataz, we pride ourselves on delivering accurate, targeted, and
+      high-quality data solutions that empower businesses to achieve their
+      marketing goals. These testimonials are a testament to the trust and
+      satisfaction of our clients. Join our growing community of successful
+      businesses and take your campaigns to the next level with our reliable
+      services.
+    </p>
+  </div>
+</div>
       {/* ======================================
           TRUSTED BY SECTION
       =======================================*/}
