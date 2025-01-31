@@ -2,7 +2,7 @@ import "./globals.css";
 import Navbar from "../../components/Navbar";
 import Chatbot from "../../components/Chatbot";
 import Footer from "../../components/Footer";
-// import PageHeader from "../../components/PageHeader"; // Keep commented out if not using
+ import PageHeader from "../../components/PageHeader"; // Keep commented out if not using
 
 export const metadata = {
   title: "Affordable, Reliable Databases for Your Business Growth | Bookdataz.com",
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body className="antialiased text-black relative">
         <div className="flex flex-col min-h-screen">
           <Navbar />
-          {/* <PageHeader /> */}
+          <PageHeader /> 
 
           <main className="flex-grow">{children}</main>
 
