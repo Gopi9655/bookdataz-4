@@ -45,6 +45,7 @@ import { EffectCoverflow } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import Button from "../../components/Button";
+import HeroSection from "../../components/HeroSection";
 
 /* -----------------------------
    TESTIMONIALS & SLIDES
@@ -287,11 +288,11 @@ export default function Home() {
           >
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
-                <div className="relative flex flex-col md:flex-row text-white px-8 md:px-36 py-10 md:py-16 gap-8 md:gap-20">
+                <div className="relative flex flex-col md:flex-row text-white px-5 md:px-36 py-10 md:py-16 gap-8 md:gap-20">
                   {/* Left Section */}
                   <div className="flex flex-col w-full md:w-1/2 items-start gap-8">
                     <motion.h1
-                      className="text-5xl font-bold mb-4 leading-normal"
+                      className="md:text-5xl text-3xl font-bold mb-4 md:leading-normal"
                       variants={fadeUpVariants}
                       initial="hidden"
                       animate={activeSlide === index ? "visible" : "hidden"}
@@ -299,7 +300,7 @@ export default function Home() {
                       {slide.title}
                     </motion.h1>
                     <motion.p
-                      className="text-xl text-gray-300 tracking-wide max-w-2xl mb-8 leading-[1.5]"
+                      className="text-xl hidden md:flex text-gray-300 tracking-wide max-w-2xl mb-8 leading-[1.5]"
                       variants={fadeUpVariants}
                       initial="hidden"
                       animate={activeSlide === index ? "visible" : "hidden"}
@@ -324,7 +325,7 @@ export default function Home() {
 
                   {/* Right Section (Image) */}
                   <motion.div
-                    className="flex justify-center items-center p-0 w-full md:w-1/2"
+                    className="flex hidden md:flex justify-center items-center p-0 w-full md:w-1/2"
                     variants={fadeUpVariants}
                     initial="hidden"
                     animate={activeSlide === index ? "visible" : "hidden"}
@@ -348,11 +349,11 @@ export default function Home() {
 
       {/* Transfotm section*/}
      
-
+          <HeroSection />
       {/* ======================================
           A DATA SOLUTION FOR EVERY TEAM
       =======================================*/}
-      <div className="container mx-auto px-4 md:px-8 py-16 md:py-24">
+      <div className="container mx-auto px-4 md:px-8 md:py-16 md:py-24">
   <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
     {/* Left Section */}
     <motion.div
@@ -362,7 +363,7 @@ export default function Home() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <h2 className="text-3xl md:text-4xl font-bold mb-6 text-customBlue leading-tight">
+      <h2 className="md:text-3xl text-lg md:text-4xl font-bold mb-6 text-customBlue leading-tight">
         A data solution for every team, all in one platform
       </h2>
       <Image
@@ -548,86 +549,7 @@ export default function Home() {
       {/* ======================================
           TESTIMONIAL SECTION
       =======================================*/}
-      <div className="bg-slate-800 p-4 sm:p-8 md:p-20">
-  <h1 className="text-2xl sm:text-3xl md:text-5xl text-center font-bold text-white mb-4 md:mb-20">
-    What Our Client Says
-  </h1>
-  <div className="max-w-screen-lg mx-auto">
-    <Swiper
-      modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-      effect="coverflow"
-      grabCursor={true}
-      centeredSlides={true}
-      slidesPerView="auto"
-      spaceBetween={20}
-      loop={true}
-      loopFillGroupWithBlank={true}
-      loopAdditionalSlides={testimonials.length > 3 ? 3 : testimonials.length}
-      speed={1000}
-      autoplay={{
-        delay: 3000,
-        disableOnInteraction: false,
-      }}
-      coverflowEffect={{
-        rotate: 0,
-        stretch: 0,
-        depth: 100,
-        modifier: 2.5,
-        slideShadows: false,
-      }}
-      className="mySwiper"
-      breakpoints={{
-        640: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-      }}
-    >
-      {testimonials.map((testimonial, index) => (
-        <SwiperSlide key={`${testimonial.id}-${index}`}>
-          <div className="relative mx-4 py-10 mb-10 bg-white rounded-xl shadow-2xl text-black flex flex-col transform transition-all duration-500 hover:scale-105">
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/3">
-              <div className="w-24 h-24 relative rounded-full overflow-hidden border-4 border-white shadow-lg">
-                <Image
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-            </div>
-            <div className="pt-20 px-6 pb-6 text-center">
-              <div className="flex justify-center mb-3">
-                {Array.from({ length: 5 }, (_, i) => (
-                  <FaStar
-                    key={i}
-                    className={`text-xl ${
-                      i < Math.floor(testimonial.rating)
-                        ? "text-blue-400"
-                        : "text-gray-300"
-                    } mx-0.5`}
-                  />
-                ))}
-              </div>
-              <p className="text-sm italic text-gray-700 mb-6 leading-relaxed">
-                "{testimonial.testimonial}"
-              </p>
-              <h3 className="text-lg font-bold text-gray-900">
-                {testimonial.name}
-              </h3>
-              <span className="text-gray-600 text-sm block mt-1">
-                {testimonial.position}
-              </span>
-            </div>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-    <p className="mt-10 text-center text-white text-base md:text-lg leading-relaxed">
-      At BookDataz, we pride ourselves on delivering accurate, targeted, and high-quality data solutions...
-    </p>
-  </div>
-</div>
-
+      
 
       {/* ======================================
           TRUSTED BY SECTION
