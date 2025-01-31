@@ -1,0 +1,504 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { FiSearch, FiChevronRight } from "react-icons/fi";
+import { useRef } from "react";
+
+
+
+const INDUSTRIES = Array.from({ length: 10 }, (_, i) => ({
+  title: `Industry ${i + 1}`,
+  dataCount: 5000 + (i * 50), // Example dataCount values, adjust as needed
+  subCategories: Array.from(
+    { length: 10 },
+    (_, j) => `Sub-Industry ${i + 1}.${j + 1}`
+  ),
+}));
+
+const CATEGORIES = [
+  {
+    title: "Healthcare",
+    dataCount: 15000,
+    subCategories: [
+      "Hospitals",
+      "Clinics",
+      "Pharmacies",
+      "Medical Equipment Suppliers",
+      "Health Insurance",
+      "Physicians",
+      "Nurses",
+      "Therapists",
+      "Diagnostics Labs",
+      "Public Health Agencies",
+    ],
+  },
+  {
+    title: "Technology",
+    dataCount: 20000,
+    subCategories: [
+      "IT Services",
+      "Software Development",
+      "Hardware Suppliers",
+      "Cloud Computing",
+      "Cybersecurity",
+      "Data Analytics",
+      "Mobile App Development",
+      "IoT Solutions",
+      "Network Infrastructure",
+      "SaaS Providers",
+    ],
+  },
+  {
+    title: "Finance",
+    dataCount: 18000,
+    subCategories: [
+      "Banks",
+      "Investment Firms",
+      "Credit Unions",
+      "Insurance Companies",
+      "Accounting Services",
+      "Tax Consultants",
+      "Wealth Management",
+      "Mortgage Providers",
+      "Payment Gateways",
+      "Cryptocurrency Platforms",
+    ],
+  },
+  {
+    title: "Education",
+    dataCount: 12000,
+    subCategories: [
+      "Schools (K-12)",
+      "Colleges",
+      "Universities",
+      "Online Learning Platforms",
+      "Libraries",
+      "Educational Consultants",
+      "Tutoring Centers",
+      "Training Institutes",
+      "Student Organizations",
+      "Research Centers",
+    ],
+  },
+  {
+    title: "Retail",
+    dataCount: 25000,
+    subCategories: [
+      "E-commerce Platforms",
+      "Grocery Stores",
+      "Fashion Retailers",
+      "Electronics Stores",
+      "Furniture Stores",
+      "Automotive Retailers",
+      "Department Stores",
+      "Specialty Shops",
+      "Wholesale Suppliers",
+      "Shopping Malls",
+    ],
+  },
+  {
+    title: "Manufacturing",
+    dataCount: 16000,
+    subCategories: [
+      "Automotive Manufacturing",
+      "Electronics Manufacturing",
+      "Pharmaceutical Manufacturing",
+      "Consumer Goods Manufacturing",
+      "Heavy Machinery",
+      "Textiles and Apparel",
+      "Chemical Manufacturing",
+      "Construction Materials",
+      "Food and Beverage",
+      "Packaging Industries",
+    ],
+  },
+  {
+    title: "Energy",
+    dataCount: 14000,
+    subCategories: [
+      "Oil and Gas",
+      "Renewable Energy",
+      "Power Plants",
+      "Energy Consultants",
+      "Utility Providers",
+      "Energy Equipment Suppliers",
+      "Green Energy Solutions",
+      "Nuclear Energy",
+      "Wind Energy",
+      "Solar Energy",
+    ],
+  },
+  {
+    title: "Hospitality",
+    dataCount: 13000,
+    subCategories: [
+      "Hotels",
+      "Restaurants",
+      "Event Planners",
+      "Travel Agencies",
+      "Airlines",
+      "Cruises",
+      "Car Rentals",
+      "Tour Operators",
+      "Resorts",
+      "Catering Services",
+    ],
+  },
+  {
+    title: "Real Estate",
+    dataCount: 11000,
+    subCategories: [
+      "Commercial Real Estate",
+      "Residential Real Estate",
+      "Real Estate Agents",
+      "Property Management",
+      "Real Estate Developers",
+      "Mortgage Brokers",
+      "Landlords",
+      "Construction Companies",
+      "Real Estate Investment Trusts (REITs)",
+      "Appraisal Services",
+    ],
+  },
+  {
+    title: "Government",
+    dataCount: 9000,
+    subCategories: [
+      "Local Governments",
+      "State Governments",
+      "Federal Agencies",
+      "Public Works",
+      "Defense Departments",
+      "Public Health Departments",
+      "Environmental Agencies",
+      "Transportation Departments",
+      "Regulatory Bodies",
+      "Law Enforcement",
+    ],
+  },
+  {
+    title: "Automotive",
+    dataCount: 13000,
+    subCategories: [
+      "Car Manufacturers",
+      "Car Dealerships",
+      "Auto Repair Services",
+      "Tire Suppliers",
+      "Spare Parts Suppliers",
+      "Electric Vehicle Companies",
+      "Fleet Management",
+      "Automotive Research",
+      "Auto Insurance Companies",
+      "Logistics and Transport",
+    ],
+  },
+  {
+    title: "Telecommunications",
+    dataCount: 15000,
+    subCategories: [
+      "Mobile Network Providers",
+      "Internet Service Providers",
+      "Cable TV Operators",
+      "Satellite Companies",
+      "5G Solutions Providers",
+      "Telecom Hardware Suppliers",
+      "Call Centers",
+      "VoIP Providers",
+      "Broadband Providers",
+      "Fiber Optics Companies",
+    ],
+  },
+  {
+    title: "Logistics",
+    dataCount: 14000,
+    subCategories: [
+      "Shipping Companies",
+      "Freight Forwarders",
+      "Courier Services",
+      "Logistics Software Providers",
+      "Warehousing Companies",
+      "Supply Chain Management",
+      "Port Authorities",
+      "Customs Brokers",
+      "3PL Companies",
+      "Transportation Services",
+    ],
+  },
+  {
+    title: "Legal Services",
+    dataCount: 11000,
+    subCategories: [
+      "Law Firms",
+      "Corporate Lawyers",
+      "Family Lawyers",
+      "Intellectual Property Lawyers",
+      "Legal Tech Companies",
+      "Notaries",
+      "Compliance Officers",
+      "Legal Consultancies",
+      "Court Reporting Services",
+      "Legal Translation Services",
+    ],
+  },
+  {
+    title: "Media and Entertainment",
+    dataCount: 14000,
+    subCategories: [
+      "Television Networks",
+      "Radio Stations",
+      "Streaming Platforms",
+      "Film Production Companies",
+      "Event Organizers",
+      "Advertising Agencies",
+      "Public Relations Agencies",
+      "Graphic Designers",
+      "Content Creators",
+      "Media Distribution Companies",
+    ],
+  },
+  {
+    title: "Non-Profit",
+    dataCount: 8000,
+    subCategories: [
+      "Charities",
+      "Foundations",
+      "Community Organizations",
+      "Environmental NGOs",
+      "Religious Organizations",
+      "Health-related NGOs",
+      "Educational NGOs",
+      "Human Rights Organizations",
+      "Animal Welfare Groups",
+      "International Aid Organizations",
+    ],
+  },
+  {
+    title: "Construction",
+    dataCount: 17000,
+    subCategories: [
+      "General Contractors",
+      "Subcontractors",
+      "Architectural Firms",
+      "Civil Engineers",
+      "Building Materials Suppliers",
+      "Real Estate Developers",
+      "Construction Equipment Suppliers",
+      "Renovation Specialists",
+      "Project Managers",
+      "Interior Designers",
+    ],
+  },
+  {
+    title: "Food and Beverage",
+    dataCount: 19000,
+    subCategories: [
+      "Restaurants",
+      "Fast Food Chains",
+      "Cafes",
+      "Food Distributors",
+      "Beverage Companies",
+      "Food Manufacturing",
+      "Catering Services",
+      "Vineyards and Breweries",
+      "Food Delivery Services",
+      "Specialty Food Stores",
+    ],
+  },
+  // Add more categories up to 50...
+];
+
+
+
+export default function BrowseDatacardPage() {
+ 
+
+
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+  const [selectedIndustry, setSelectedIndustry] = useState(null);
+  const [selectedSubIndustry, setSelectedSubIndustry] = useState(null);
+  const [query, setQuery] = useState("");
+  const [filteredCategories, setFilteredCategories] = useState(CATEGORIES);
+  const [filteredIndustries, setFilteredIndustries] = useState(INDUSTRIES);
+  const [dataCount, setDataCount] = useState(1200000);
+  const categoriesRef = useRef(null);
+  const [categoriesSectionTop, setCategoriesSectionTop] = useState(0);
+
+  useEffect(() => {
+    if (selectedCategory) {
+      setDataCount(selectedCategory.subCategories.length * 1000);
+    } else if (selectedIndustry) {
+      setDataCount(selectedIndustry.subCategories.length * 500);
+    }
+  }, [selectedCategory, selectedIndustry]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (categoriesRef.current) {
+        setCategoriesSectionTop(categoriesRef.current.offsetTop);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value.toLowerCase();
+    setQuery(value);
+    setFilteredCategories(
+      CATEGORIES.filter(
+        (category) =>
+          category.title.toLowerCase().includes(value) ||
+          category.subCategories.some((sub) =>
+            sub.toLowerCase().includes(value)
+          )
+      )
+    );
+    setFilteredIndustries(
+      INDUSTRIES.filter(
+        (industry) =>
+          industry.title.toLowerCase().includes(value) ||
+          industry.subCategories.some((sub) =>
+            sub.toLowerCase().includes(value)
+          )
+      )
+    );
+  };
+
+  return (
+    <main className="min-h-screen bg-gray-50 px-8 md:px-16 lg:px-32 py-10">
+      {/* WRAPPER for Left & Right sections */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-10">
+        {/* LEFT SECTION: Browse Our Data Cards */}
+        <div className="flex flex-col bg-gray-50 h-full p-4">
+          <h1 className="text-5xl font-bold text-gray-800 mb-12">
+            Browse Our Data Cards
+          </h1>
+          <p className="text-gray-600 text-lg leading-relaxed tracking-wide mb-0 flex-grow leading-[1.8] ">
+          BookDataz is one of the prominent B2B marketing solution providers that specializes in offering data-driven marketing and account profiling services. We provide B2B Database of key decision-makers, professionals & executives which can be customized as per your requirement. With over 50M data repository of business records, our company has successfully served many clients globally since inception.
+
+          </p>
+          <p className="text-gray-600 text-lg leading-relaxed mb-6 flex-grow tracking-wide leading-[1.8]" >Our commitment to delivering high-quality, verified data ensures that businesses can target the right audience with precision, enhancing their marketing strategies and sales efforts. By leveraging our vast database and advanced data analytics, we empower organizations to streamline their outreach, improve lead generation, and drive significant business growth.
+</p>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <li className="text-red-500 font-semibold text-lg">
+              100% Data Ownership Guarantee
+            </li>
+            <li className="text-red-500 font-semibold text-lg">
+              Privacy Compliant: CAN-SPAM & GDPR
+            </li>
+            <li className="text-red-500 font-semibold text-lg">
+              1-to-1 Campaign Assistance: Phone, Email
+            </li>
+            <li className="text-red-500 font-semibold text-lg">
+              Custom Build List Delivery: 24-72 Hours
+            </li>
+          </ul>
+        </div>
+
+        {/* RIGHT SECTION */}
+        <div className="grid grid-rows-2 gap-4">
+          {/* Top Right Box */}
+          <div className="bg-customBlue border border-gray-300 rounded-lg shadow-lg p-6 h-full flex flex-col justify-between">
+            <div>
+              <h2 className="text-5xl font-bold text-white p-5 rounded-xl mb-4 text-center">
+                50+ Million Email Contacts
+              </h2>
+              <motion.p
+                className="text-4xl font-extrabold text-red-500 text-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                {dataCount.toLocaleString()}
+              </motion.p>
+              <p className="mt-4 text-lg text-gray-300 text-center">
+                Available for targeted campaigns and lead generation.
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom Right Box */}
+          <div className="bg-white border border-gray-300 rounded-lg shadow-lg p-6 h-full flex flex-col justify-center">
+            <div className="flex justify-between px-4 mb-4 gap-4">
+              <div className="flex flex-col items-center">
+                <img
+                  src="/datacards/gdpr.png"
+                  alt="GDPR Ready"
+                  className="h-12 w-12"
+                />
+                <p className="text-gray-600 mt-2 font-medium">GDPR Ready</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/datacards/ccpa.jpg"
+                  alt="CCPA Ready"
+                  className="h-12 w-12"
+                />
+                <p className="text-gray-800 font-medium mt-2">CCPA Ready</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/datacards/vector-shield-icon.jpg"
+                  alt="Privacy Shield Certified"
+                  className="h-12 w-12"
+                />
+                <p className="text-gray-600 font-medium mt-2">Privacy Shield</p>
+              </div>
+            </div>
+            <p className="mt-4 text-gray-500 px-4 tracking-wide leading-[1.8]">BookDataz is committed to data privacy and security, ensuring compliance with global regulations such as GDPR and CCPA. Our databases are GDPR Ready, guaranteeing that all data is collected, processed, and stored following strict European privacy laws. We are also CCPA Ready, offering transparency and control over personal data for California residents. Additionally, our Privacy Shield Certification ensures secure data transfers, aligning with international standards to protect customer information with the highest level of integrity.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* SEARCH SECTION */}
+      <section className="mb-10">
+        <div className="relative max-w-4xl mx-auto">
+          <FiSearch className="absolute top-3 left-3 text-gray-500 text-xl" />
+          <input
+            type="text"
+            placeholder="Search categories..."
+            className="w-full pl-12 pr-4 py-4 border rounded-lg text-lg focus:ring-2 focus:ring-customBlue"
+            value={query}
+            onChange={handleSearchChange}
+          />
+        </div>
+      </section>
+
+      {/* CATEGORY CARDS */}
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredCategories.map((category, index) => (
+          <div
+            key={index}
+            className="border border-slate-400 shadow rounded-lg p-6 hover:shadow-lg cursor-pointer"
+            onClick={() => setSelectedCategory(category)}
+          >
+            <h2 className="text-2xl font-bold mb-4 text-customBlue">
+              {category.title}
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Total Records: {category.dataCount.toLocaleString()}
+            </p>
+            <ul className="max-h-40 overflow-y-auto space-y-3">
+              {category.subCategories.map((subCategory, subIndex) => (
+                <li
+                  key={subIndex}
+                  className="flex items-center gap-3 text-lg text-gray-700 cursor-pointer hover:text-red-500"
+                  onClick={() => setSelectedSubCategory(subCategory)}
+                >
+                  <FiChevronRight className="text-red-400" /> {subCategory}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
+     
+        {/* RIGHT SECTION: Sticky Info Box */}
+        
+      {/* SECOND SECTION: Categories Grid */}
+     
+    </main>
+  );
+}
