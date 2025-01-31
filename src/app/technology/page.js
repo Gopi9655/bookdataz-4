@@ -84,7 +84,7 @@ export default function TechnologyListPage() {
           <h1 className="text-3xl font-bold">Our Segmented Technology List Includes:</h1>
         </div>
         
-        <p className="t mt-10 text-lg text-gray-400 px-32 pb-6 ">
+        <p className="t mt-10 md:text-lg text-gray-400 max-sm:sm md:px-32 md:pb-6 max-sm:px-4 ">
           Our primary intent is to deliver the most authentic Technology List that is valid and well-researched. The data sources include trade exhibitions, B2B directories, yellow pages, business magazines, surveys, government records, annual reports, conferences, events, to name a few. The gathered records are then verified and validated by our data experts to eliminate inaccuracies.
         </p>
       </header>

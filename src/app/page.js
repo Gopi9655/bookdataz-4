@@ -352,85 +352,87 @@ export default function Home() {
       {/* ======================================
           A DATA SOLUTION FOR EVERY TEAM
       =======================================*/}
-      <div className="container mx-auto px-8 flex flex-col md:flex-row gap-8 items-center bg-white">
-        {/* Left Section */}
+      <div className="container mx-auto px-4 md:px-8 py-16 md:py-24">
+  <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+    {/* Left Section */}
+    <motion.div
+      className="w-full md:w-[34%] bg-gray-50 rounded-lg p-6 md:p-8 shadow hover:shadow-lg transition mt-8 md:mt-14"
+      variants={fadeUpVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <h2 className="text-3xl md:text-4xl font-bold mb-6 text-customBlue leading-tight">
+        A data solution for every team, all in one platform
+      </h2>
+      <Image
+        src="/Database-Solution-2.webp"
+        alt="Person with laptop"
+        width={500}
+        height={500}
+        className="object-contain"
+      />
+    </motion.div>
+
+    {/* Right Section (Items Grid) */}
+    <motion.div
+      className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 w-full md:w-[65%]"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      {items.map((item, index) => (
         <motion.div
-          className="w-full md:w-[34%] bg-gray-50 rounded-lg p-6 shadow hover:shadow-lg transition mt-14"
+          key={index}
+          className="relative bg-gray-50 rounded-lg p-8 md:p-10 shadow hover:shadow-lg transition group overflow-hidden"
+          whileHover={{ scale: 1.05 }}
           variants={fadeUpVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="text-4xl font-bold mb-7 text-customBlue leading-[1.3]">
-            A data solution for every team, all in one platform
-          </h2>
-          <Image
-            src="/Database-Solution-2.webp"
-            alt="Person with laptop"
-            width={500}
-            height={500}
-            className="object-contain"
-          />
-        </motion.div>
+          <div className="absolute inset-0 bg-customBlue/10 scale-0 group-hover:scale-100 transition-transform duration-500 ease-in-out rounded-lg"></div>
 
-        {/* Right Section (Items Grid) */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full md:w-[65%]"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {items.map((item, index) => (
-            <motion.div
-              key={index}
-              className="relative bg-gray-50 rounded-lg p-10 shadow hover:shadow-lg transition group overflow-hidden"
-              whileHover={{ scale: 1.05 }}
-              variants={fadeUpVariants}
+          <div className="relative z-10">
+            <Image
+              src={item.icon}
+              alt={`${item.title} icon`}
+              width={50}
+              height={50}
+              className="mb-4"
+            />
+            <h3 className="text-lg md:text-xl font-semibold mb-2">{item.title}</h3>
+            <p className="text-gray-600 mb-4 text-sm md:text-base">{item.description}</p>
+            <a
+              href={item.link}
+              className="text-red-400 font-medium hover:underline flex items-center text-sm md:text-base"
             >
-              <div className="absolute inset-0 bg-customBlue/10 scale-0 group-hover:scale-100 transition-transform duration-500 ease-in-out rounded-lg"></div>
-
-              <div className="relative z-10">
-                <Image
-                  src={item.icon}
-                  alt={`${item.title} icon`}
-                  width={60}
-                  height={60}
-                  className="mb-4"
-                />
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600 mb-4">{item.description}</p>
-                <a
-                  href={item.link}
-                  className="text-red-400 font-medium hover:underline flex items-center"
-                >
-                  Learn more <span className="ml-1">→</span>
-                </a>
-              </div>
-            </motion.div>
-          ))}
+              Learn more <span className="ml-1">→</span>
+            </a>
+          </div>
         </motion.div>
-      </div>
+      ))}
+    </motion.div>
+  </div>
+</div>
 
       {/* ======================================
           WHAT WE OFFER SECTION
       =======================================*/}
       <motion.div
-        className="bg-[url('/h3_services_bg.jpg')] text-white py-20"
+        className="bg-[url('/h3_services_bg.jpg')] text-white py-16 md:py-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <div className="container mx-auto px-8">
+        <div className="container mx-auto px-4 md:px-8">
           <motion.h2
-            className="text-1xl font-bold text-center mb-4 uppercase text-customBlue"
+            className="text-lg md:text-xl font-bold text-center mb-4 uppercase text-customBlue"
             variants={fadeUpVariants}
           >
             What We Offer
           </motion.h2>
           <motion.h3
-            className="text-4xl font-bold text-center mb-16"
+            className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16"
             variants={fadeUpVariants}
             transition={{ delay: 0.2 }}
           >
@@ -438,16 +440,16 @@ export default function Home() {
           </motion.h3>
 
           <motion.div
-            className="flex flex-row gap-5"
+            className="flex flex-col md:flex-row gap-4 md:gap-5"
             variants={containerVariants}
           >
             {whatweoffer.map((item) => (
               <motion.div
                 key={item.id}
-                className="bg-white rounded-xl p-8 flex flex-col gap-4"
+                className="bg-white rounded-xl p-6 md:p-8 flex flex-col gap-4"
                 variants={fadeUpVariants}
               >
-                <div className="flex flex-row gap-5 ">
+                <div className="flex flex-row gap-4 md:gap-5">
                   <div className="flex justify-center">
                     <Image
                       src={item.icon}
@@ -457,18 +459,18 @@ export default function Home() {
                     />
                   </div>
                   <div className="flex justify-center items-center">
-                    <h4 className="text-xl text-black font-bold text-center border-l-2 border-gray-300 p-1">
+                    <h4 className="text-lg md:text-xl text-black font-bold text-center border-l-2 border-gray-300 px-4">
                       {item.title}
                     </h4>
                   </div>
                 </div>
-                <p className="text-slate-500 mb-6 font-medium flex-grow">
+                <p className="text-slate-500 mb-6 font-medium text-sm md:text-base flex-grow">
                   {item.content}
                 </p>
                 <div className="mt-auto overflow-hidden rounded-xl">
                   <motion.a
                     href="#"
-                    className="relative text-black font-medium hover:text-white bg-[#fef6e6] px-6 py-2 inline-flex items-center rounded-xl"
+                    className="relative text-black font-medium hover:text-white bg-[#fef6e6] px-4 md:px-6 py-2 md:py-3 inline-flex items-center rounded-xl text-sm md:text-base"
                     whileHover="hover"
                     initial="rest"
                     animate="rest"
@@ -497,31 +499,32 @@ export default function Home() {
       =======================================*/}
       <div
         ref={elevateRef}
-        className="flex flex-row bg-white justify-between gap-16 items-center w-full px-36 py-20"
+        className="flex flex-col md:flex-row bg-white justify-between gap-12 md:gap-16 items-center w-full px-4 md:px-36 py-16 md:py-20"
       >
         {/* Left */}
         <motion.div
-          className="w-1/2"
+          className="w-full md:w-1/2"
           variants={fadeUpVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h1 className="text-4xl leading-[1.3] mb-5 font-semibold tracking-tight">
+          <h1 className="text-3xl md:text-4xl leading-tight mb-5 font-semibold tracking-tight">
             Elevate Your Marketing Strategy with Precision-Targeted Email Lists
             and Services
           </h1>
-          <p className="mb-4 text-l text-slate-700 leading-[1.5] border-b-2 tracking-wide pb-4">
+          <p className="mb-4 text-base md:text-lg text-slate-700 leading-relaxed border-b-2 tracking-wide pb-4">
             Unlock the potential of data-driven marketing with our premium
             contact lists and insights...
           </p>
-          <p className="text-l text-slate-700 tracking-wide leading-[1.5] border-b-2 pb-4">
+          <p className="text-base md:text-lg text-slate-700 tracking-wide leading-relaxed border-b-2 pb-4">
             The file serves as a versatile resource...
           </p>
         </motion.div>
 
         {/* Right: Floating Image */}
         <motion.div
+          className="w-full md:w-1/2 flex justify-center"
           initial={{ y: 0 }}
           animate={{
             y: [0, 10, 0, -10, 0],
@@ -534,8 +537,8 @@ export default function Home() {
         >
           <Image
             src="/main_pageIMG.jpg"
-            width={600}
-            height={600}
+            width={500}
+            height={500}
             alt="main page image"
             className="rounded-xl"
           />
@@ -545,8 +548,8 @@ export default function Home() {
       {/* ======================================
           TESTIMONIAL SECTION
       =======================================*/}
-      <div className="bg-slate-800 p-10 md:p-20">
-  <h1 className="text-5xl text-center font-bold text-slate-100 mb-10 md:mb-20">
+      <div className="bg-slate-800 p-4 sm:p-8 md:p-20">
+  <h1 className="text-2xl sm:text-3xl md:text-5xl text-center font-bold text-white mb-4 md:mb-20">
     What Our Client Says
   </h1>
   <div className="max-w-screen-lg mx-auto">
@@ -556,7 +559,7 @@ export default function Home() {
       grabCursor={true}
       centeredSlides={true}
       slidesPerView="auto"
-      spaceBetween={30}
+      spaceBetween={20}
       loop={true}
       loopFillGroupWithBlank={true}
       loopAdditionalSlides={testimonials.length > 3 ? 3 : testimonials.length}
@@ -572,7 +575,7 @@ export default function Home() {
         modifier: 2.5,
         slideShadows: false,
       }}
-      className="mySwiper !overflow-visible"
+      className="mySwiper"
       breakpoints={{
         640: { slidesPerView: 1 },
         768: { slidesPerView: 2 },
@@ -580,13 +583,10 @@ export default function Home() {
       }}
     >
       {testimonials.map((testimonial, index) => (
-        <SwiperSlide
-          key={`${testimonial.id}-${index}`}
-          className="max-w-[300px] md:max-w-[400px] !h-auto flex items-center transition-transform duration-500"
-        >
-          <div className="relative mx-4 py-10 mb-10 bg-white rounded-xl shadow-2xl text-black w-full flex flex-col transform transition-all duration-500 hover:scale-105">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3">
-              <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
+        <SwiperSlide key={`${testimonial.id}-${index}`}>
+          <div className="relative mx-4 py-10 mb-10 bg-white rounded-xl shadow-2xl text-black flex flex-col transform transition-all duration-500 hover:scale-105">
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/3">
+              <div className="w-24 h-24 relative rounded-full overflow-hidden border-4 border-white shadow-lg">
                 <Image
                   src={testimonial.image}
                   alt={testimonial.name}
@@ -622,9 +622,9 @@ export default function Home() {
         </SwiperSlide>
       ))}
     </Swiper>
-    <p className="mt-10 text-center text-slate-100 text-lg leading-relaxed">
-  At BookDataz, we pride ourselves on delivering accurate, targeted, and high-quality data solutions that empower businesses to achieve their marketing goals. These testimonials are a testament to the trust and satisfaction of our clients. Join our growing community of successful businesses and take your campaigns to the next level with our reliable services.
-</p>
+    <p className="mt-10 text-center text-white text-base md:text-lg leading-relaxed">
+      At BookDataz, we pride ourselves on delivering accurate, targeted, and high-quality data solutions...
+    </p>
   </div>
 </div>
 
