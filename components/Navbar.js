@@ -91,7 +91,7 @@ const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <motion.nav className="sticky top-0 z-50 bg-gradient-to-r px-32 from-white to-gray-100 py-0">
+    <motion.nav className="sticky top-0 z-50 bg-gradient-to-r md:px-32 from-white to-gray-100 py-0">
       <div className="container mx-auto flex justify-between items-center p-6">
         {/* Logo */}
         <motion.div className="flex-shrink-0">
