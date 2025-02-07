@@ -68,7 +68,7 @@ const Contactpage = () => {
   };
 
   return (
-    <main className="w-full min-h-screen md:p-32 bg-gradient-to-br from-gray-50 to-blue-50 flex flex-col items-center py-12">
+    <main className="w-full min-h-screen md:px-32 bg-gradient-to-br from-gray-50 to-blue-50 flex flex-col items-center py-12">
       {/* Main container with 2 columns: Contact Info + Form */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
