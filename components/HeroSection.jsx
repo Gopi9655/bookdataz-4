@@ -81,21 +81,21 @@ const HeroSection = () => {
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight">
             Transform Your Future with Book Dataza's Futuristic Solutions
           </h1>
-          <p className="text-xs sm:text-sm md:text-base text-gray-300 mb-2 md:mb-4">
+          <p className="text-md sm:text-md md:text-base text-gray-300 mb-2 md:mb-4">
             At Book Dataza, we take pride in being the trusted choice for over
             7,000 top-ranking companies around the globe.
           </p>
-          <p className="text-xs sm:text-sm md:text-base text-gray-300 mb-2 md:mb-4">
+          <p className="text-md sm:text-md md:text-base text-gray-300 mb-2 md:mb-4">
             Renowned as a reliable partner, Book Dataza supports 7,000+
             industry leaders, particularly excelling in the Healthcare and
             Technology sectors.
           </p>
-          <p className="text-xs sm:text-sm md:text-base text-gray-300 mb-2 md:mb-4">
+          <p className="text-md sm:text-md md:text-base text-gray-300 mb-2 md:mb-4">
             As pioneers in AI-powered DaaS and SaaS solutions, we deliver
             expertise in Contextual Intelligence, Ad hoc Sales, Marketing, and
             Growth Strategies.
           </p>
-          <p className="text-xs sm:text-sm md:text-base text-gray-300 mb-6 md:mb-8">
+          <p className="text-md sm:text-md md:text-base text-gray-300 mb-6 md:mb-8">
             Fueled by our passion for innovation and dedication to excellence,
             we continue to scale rapidly, welcoming 1,800+ new clients annually.
           </p>

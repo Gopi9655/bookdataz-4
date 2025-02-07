@@ -559,14 +559,14 @@ export default function Home() {
       effect="coverflow"
       grabCursor={true}
       centeredSlides={true}
-      slidesPerView="auto"
+      slidesPerView="3"
       spaceBetween={16}
       loop={true}
       loopFillGroupWithBlank={true}
       loopAdditionalSlides={testimonials.length > 3 ? 3 : testimonials.length}
       speed={1000}
       autoplay={{
-        delay: 3000,
+        delay: 1500,
         disableOnInteraction: false,
       }}
       coverflowEffect={{
