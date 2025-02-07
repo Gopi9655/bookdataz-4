@@ -550,92 +550,106 @@ export default function Home() {
           TESTIMONIAL SECTION
       =======================================*/}
       <div className="bg-slate-800 px-4 sm:px-6 md:px-10 lg:px-20 py-6 md:py-10 lg:py-20">
-  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold text-slate-100 mb-6 md:mb-10 lg:mb-20">
-    What Our Clients Say
-  </h1>
-  <div className="max-w-screen-lg mx-auto">
-    <Swiper
-      modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-      effect="coverflow"
-      grabCursor={true}
-      centeredSlides={true}
-      slidesPerView="3"
-      spaceBetween={16}
-      loop={true}
-      loopFillGroupWithBlank={true}
-      loopAdditionalSlides={testimonials.length > 3 ? 3 : testimonials.length}
-      speed={1000}
-      autoplay={{
-        delay: 1500,
-        disableOnInteraction: false,
-      }}
-      coverflowEffect={{
-        rotate: 0,
-        stretch: 0,
-        depth: 100,
-        modifier: 2.5,
-        slideShadows: false,
-      }}
-      breakpoints={{
-        640: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-      }}
-      className="mySwiper"
-    >
-      {testimonials.map((testimonial, index) => (
-        <SwiperSlide
-          key={`${testimonial.id}-${index}`}
-          className="!h-auto flex items-center transition-transform duration-500"
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold text-slate-100 mb-6 md:mb-10 lg:mb-20">
+        What Our Clients Say
+      </h1>
+      <div className="max-w-screen-lg mx-auto">
+        <Swiper
+          modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+          effect="coverflow"
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView="auto"
+          spaceBetween={16}
+          loop={true}
+          loopFillGroupWithBlank={true}
+          speed={1000}
+          autoplay={{
+            delay: 1500,
+            disableOnInteraction: false,
+          }}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2.5,
+            slideShadows: false,
+          }}
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+          }}
+          className="mySwiper"
         >
-          <div className="relative p-6 sm:p-8 md:p-10 bg-white rounded-xl shadow-2xl text-black w-full flex flex-col transform transition-all duration-500 hover:scale-105">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3">
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
-                <Image
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  layout="fill"
-                  objectFit="cover"
-                />
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide
+              key={`${testimonial.id}-${index}`}
+              className="!h-auto flex items-center justify-center"
+            >
+              <div className="relative p-4 sm:p-8 md:p-10 bg-white rounded-xl shadow-2xl text-black w-full flex flex-col transform transition-all duration-500 hover:scale-105">
+                {/* Image Container - Removed absolute positioning and centering */}
+                <div className="mb-4 sm:mb-6 md:mb-8">
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
+                </div>
+
+                <div className="px-2 sm:px-4 text-center">
+                  <div className="flex justify-center mb-3">
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <FaStar
+                        key={i}
+                        className={`text-sm sm:text-base md:text-xl ${
+                          i < Math.floor(testimonial.rating)
+                            ? "text-blue-400"
+                            : "text-gray-300"
+                        } mx-0.5`}
+                      />
+                    ))}
+                  </div>
+                  <p className="text-xs sm:text-sm md:text-base italic text-gray-700 mb-4 leading-relaxed">
+                    "{testimonial.testimonial}"
+                  </p>
+                  <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900">
+                    {testimonial.name}
+                  </h3>
+                  <span className="text-gray-600 text-xs sm:text-sm block mt-1">
+                    {testimonial.position}
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="pt-16 sm:pt-20 px-4 text-center">
-              <div className="flex justify-center mb-3">
-                {Array.from({ length: 5 }, (_, i) => (
-                  <FaStar
-                    key={i}
-                    className={`text-sm sm:text-base md:text-xl ${
-                      i < Math.floor(testimonial.rating)
-                        ? "text-blue-400"
-                        : "text-gray-300"
-                    } mx-0.5`}
-                  />
-                ))}
-              </div>
-              <p className="text-xs sm:text-sm md:text-base italic text-gray-700 mb-4 leading-relaxed">
-                "{testimonial.testimonial}"
-              </p>
-              <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900">
-                {testimonial.name}
-              </h3>
-              <span className="text-gray-600 text-xs sm:text-sm block mt-1">
-                {testimonial.position}
-              </span>
-            </div>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-    <p className="mt-6 sm:mt-8 md:mt-10 text-center text-slate-100 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
-      At BookDataz, we pride ourselves on delivering accurate, targeted, and
-      high-quality data solutions that empower businesses to achieve their
-      marketing goals. These testimonials are a testament to the trust and
-      satisfaction of our clients. Join our growing community of successful
-      businesses and take your campaigns to the next level with our reliable
-      services.
-    </p>
-  </div>
-</div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <p className="mt-6 sm:mt-8 md:mt-10 text-center text-slate-100 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+          At BookDataz, we pride ourselves on delivering accurate, targeted, and
+          high-quality data solutions that empower businesses to achieve their
+          marketing goals. These testimonials are a testament to the trust and
+          satisfaction of our clients. Join our growing community of successful
+          businesses and take your campaigns to the next level with our reliable
+          services.
+        </p>
+      </div>
+    </div>
       {/* ======================================
           TRUSTED BY SECTION
       =======================================*/}
