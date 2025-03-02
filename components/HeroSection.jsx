@@ -8,34 +8,34 @@ const HeroSection = () => {
     contacts: 0,
     firms: 0,
   });
-  const [isInView, setIsInView] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef(null);
 
+  // IntersectionObserver to trigger animation when in view
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.3 }
     );
-
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, []);
+  }, [hasAnimated]);
 
+  // Animate counters once the section comes into view
   useEffect(() => {
-    if (!isInView) return;
+    if (!hasAnimated) return;
 
-    const duration = 2000; // Animation duration in ms
+    const duration = 2000;
     const increments = {
       datasets: 450,
       companies: 11000000,
@@ -44,118 +44,105 @@ const HeroSection = () => {
       firms: 7000,
     };
 
-    const startAnimation = () => {
-      const startTime = Date.now();
+    const startTime = Date.now();
 
-      const animate = () => {
-        const currentTime = Date.now();
-        const progress = Math.min((currentTime - startTime) / duration, 1);
+    const animate = () => {
+      const currentTime = Date.now();
+      const progress = Math.min((currentTime - startTime) / duration, 1);
 
-        setCounts({
-          datasets: Math.floor(progress * increments.datasets),
-          companies: Math.floor(progress * increments.companies),
-          countries: Math.floor(progress * increments.countries),
-          contacts: Math.floor(progress * increments.contacts),
-          firms: Math.floor(progress * increments.firms),
-        });
+      setCounts({
+        datasets: Math.floor(progress * increments.datasets),
+        companies: Math.floor(progress * increments.companies),
+        countries: Math.floor(progress * increments.countries),
+        contacts: Math.floor(progress * increments.contacts),
+        firms: Math.floor(progress * increments.firms),
+      });
 
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        }
-      };
-
-      animate();
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
     };
 
-    startAnimation();
-  }, [isInView]);
+    animate();
+  }, [hasAnimated]);
 
   return (
     <section
       ref={sectionRef}
-      className="bg-gradient-to-r from-indigo-900 to-purple-900 text-white py-10 sm:py-16 md:py-24 px-4 sm:px-8"
+      className="bg-gradient-to-br from-purple-800 to-indigo-900 text-white py-16 px-4"
     >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
-        {/* Left Content */}
-        <div className="w-full md:w-1/2">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight">
-            Transform Your Future with Book Dataza's Futuristic Solutions
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
+        {/* Left Column - Hero Content */}
+        <div className="w-full md:w-1/2 space-y-6">
+          <h1 className="text-4xl md:text-5xl font-extrabold">
+            Transform Your Future with Book Data&apos;z Futuristic Solutions
           </h1>
-          <p className="text-md sm:text-md md:text-base text-gray-300 mb-2 md:mb-4">
+          <p className="text-lg text-gray-300">
             At Book Dataza, we take pride in being the trusted choice for over
             7,000 top-ranking companies around the globe.
           </p>
-          <p className="text-md sm:text-md md:text-base text-gray-300 mb-2 md:mb-4">
-            Renowned as a reliable partner, Book Dataza supports 7,000+
-            industry leaders, particularly excelling in the Healthcare and
-            Technology sectors.
+          <p className="text-lg text-gray-300">
+            Renowned as a reliable partner, we support industry leaders in the
+            Healthcare and Technology sectors.
           </p>
-          <p className="text-md sm:text-md md:text-base text-gray-300 mb-2 md:mb-4">
+          <p className="text-lg text-gray-300">
             As pioneers in AI-powered DaaS and SaaS solutions, we deliver
             expertise in Contextual Intelligence, Ad hoc Sales, Marketing, and
             Growth Strategies.
           </p>
-          <p className="text-md sm:text-md md:text-base text-gray-300 mb-6 md:mb-8">
-            Fueled by our passion for innovation and dedication to excellence,
-            we continue to scale rapidly, welcoming 1,800+ new clients annually.
+          <p className="text-lg text-gray-300">
+            Fueled by innovation and dedication, we continue to scale rapidly,
+            welcoming 1,800+ new clients annually.
           </p>
-          <button className="bg-customBlue text-white font-bold py-2 px-4 sm:px-6 rounded-md transition duration-300 text-sm sm:text-base">
+          <button className="bg-blue-600 hover:bg-blue-700 transition duration-300 py-3 px-6 rounded-md text-lg font-semibold">
             GET TO KNOW US
           </button>
         </div>
 
-        {/* Right Data Points */}
-        <div className="w-full md:w-1/2">
-          <div className="space-y-8 sm:space-y-10">
-            {/* Row 1 */}
-            <div className="flex items-center justify-between border-b border-gray-600 pb-2 sm:pb-4">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-100">
-                {counts.datasets}+
-              </h2>
-              <p className="text-xs sm:text-sm md:text-base text-gray-300 uppercase">
-                Million Datasets
-              </p>
+        {/* Right Column - Stats and Additional Content */}
+        <div className="w-full md:w-1/2 space-y-6">
+          {/* Grid for Animated Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* First Row: Million Datasets spans two columns */}
+            <div className="md:col-span-2 bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
+              <h2 className="text-3xl font-bold">{counts.datasets}+</h2>
+              <p className="uppercase text-xs mt-2">Million Datasets</p>
             </div>
-
-            {/* Row 2 */}
-            <div className="flex items-center justify-between border-b border-gray-600 pb-2 sm:pb-4">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-100">
+            <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
+              <h2 className="text-3xl font-bold">
                 {Math.floor(counts.companies / 1000000)}M+
               </h2>
-              <p className="text-xs sm:text-sm md:text-base text-gray-300 uppercase">
-                Active Companies
-              </p>
+              <p className="uppercase text-xs mt-2">Active Companies</p>
             </div>
 
-            {/* Row 3 */}
-            <div className="flex items-center justify-between border-b border-gray-600 pb-2 sm:pb-4">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-100">
-                {counts.countries}+
-              </h2>
-              <p className="text-xs sm:text-sm md:text-base text-gray-300 uppercase">
-                Countries Covered
-              </p>
+            {/* Second Row */}
+            <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
+              <h2 className="text-3xl font-bold">{counts.countries}+</h2>
+              <p className="uppercase text-xs mt-2">Countries Covered</p>
             </div>
-
-            {/* Row 4 */}
-            <div className="flex items-center justify-between border-b border-gray-600 pb-2 sm:pb-4">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-100">
+            <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
+              <h2 className="text-3xl font-bold">
                 {Math.floor(counts.contacts / 1000)}K+
               </h2>
-              <p className="text-xs sm:text-sm md:text-base text-gray-300 uppercase">
+              <p className="uppercase text-xs mt-2">
                 Global Healthcare Contacts
               </p>
             </div>
-
-            {/* Row 5 */}
-            <div className="flex items-center justify-between">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-100">
-                {counts.firms}+
-              </h2>
-              <p className="text-xs sm:text-sm md:text-base text-gray-300 uppercase">
-                Top Ranking Firms as Customers
-              </p>
+            <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
+              <h2 className="text-3xl font-bold">{counts.firms}+</h2>
+              <p className="uppercase text-xs mt-2">Top Ranking Firms</p>
             </div>
+          </div>
+
+          {/* Additional Content Block to Fill the Empty Space */}
+          <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-6 rounded-lg">
+            <h3 className="text-2xl font-semibold">Why Choose Book Dataza?</h3>
+            <p className="mt-2 text-gray-300">
+            Book Dataza stands at the forefront of data innovation, offering an unrivaled blend of cutting-edge AI-powered solutions and deep industry expertise that transforms raw data into strategic insights. Our comprehensive suite of services is designed to streamline operations, drive sustainable growth, and empower businesses across diverse sectors—from healthcare to technology—to navigate the complexities of the modern digital landscape.
+            </p>
+            <button className="mt-4 bg-blue-600 hover:bg-blue-700 transition duration-300 py-2 px-4 rounded-md text-lg font-semibold">
+              Discover More
+            </button>
           </div>
         </div>
       </div>

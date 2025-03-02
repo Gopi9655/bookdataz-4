@@ -63,7 +63,7 @@ const Chatbot = () => {
     <div className="relative z-50">
       {/* Chat Button */}
       <motion.button
-        className="bg-customBlue text-white p-3 md:p-4 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition-all"
+        className="bg-red-500 text-white p-3 md:p-4 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition-all"
         onClick={() => setIsOpen(!isOpen)}
         whileTap={{ scale: 0.9 }}
       >

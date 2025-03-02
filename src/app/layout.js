@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         </div>
 
         {/* Sticky Contact Us Mail Icon */}
-        <div className="fixed bottom-20 right-4 md:bottom-24 md:right-8 z-40 p-2 md:p-3 rounded-full shadow-lg hover:scale-110 transition bg-customBlue">
+        <div className="fixed bottom-20 right-4 md:bottom-24 md:right-8 z-40 p-2 md:p-3 rounded-full shadow-lg hover:scale-110 transition bg-red-500">
           <a
             href="mailto:contact@bookdataz.com"
             className="flex items-center justify-center"

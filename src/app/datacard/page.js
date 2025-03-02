@@ -373,7 +373,7 @@ export default function BrowseDatacardPage() {
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-8 md:mb-10">
         {/* LEFT SECTION: Browse Our Data Cards */}
         <div className="flex flex-col bg-gray-50 h-full p-4 md:p-6">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6 md:mb-12">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-red-500 mb-6 md:mb-12">
             Browse Our Data Cards
           </h1>
           <p className="text-gray-600 text-base md:text-lg leading-relaxed tracking-wide mb-4 md:mb-0 md:flex-grow leading-[1.8]">
@@ -414,16 +414,10 @@ export default function BrowseDatacardPage() {
           {/* Top Right Box */}
           <div className="bg-customBlue border border-gray-300 rounded-lg shadow-lg p-4 md:p-6 md:h-full flex flex-col md:justify-between">
             <div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white p-5 rounded-xl mb-4 text-center">
-                50+ Million Email Contacts
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white p-10 rounded-xl  text-center">
+                53+ Million Email Contacts
               </h2>
-              <motion.p
-                className="text-3xl md:text-4xl font-extrabold text-red-500 text-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
-                {dataCount.toLocaleString()}
-              </motion.p>
+             
               <p className="mt-4 text-base md:text-lg text-gray-300 text-center">
                 Available for targeted campaigns and lead generation.
               </p>
@@ -464,7 +458,7 @@ export default function BrowseDatacardPage() {
                 </p>
               </div>
             </div>
-            <p className="mt-4 text-gray-500 px-4 tracking-wide leading-[1.8] text-sm md:text-base">
+            <p className="mt-4 text-red-500 px-4 tracking-wide leading-[1.8] text-sm md:text-base">
               BookDataz is committed to data privacy and security, ensuring
               compliance with global regulations such as GDPR and CCPA. Our
               databases are GDPR Ready, guaranteeing that all data is collected,

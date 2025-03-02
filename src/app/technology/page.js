@@ -37,44 +37,7 @@ export default function TechnologyListPage() {
       </section>
 
       {/* 3. TECH CATEGORIES GRID */}
-      <section className="bg-white py-10">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-2xl font-bold text-gray-800 mb-6"
-          >
-            Key Technology Categories
-          </motion.h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {[
-              { name: "Artificial Intelligence", icon: <FaRobot /> },
-              { name: "Cloud Computing", icon: <FaCloud /> },
-              { name: "Database Solutions", icon: <FaDatabase /> },
-              { name: "Security & Compliance", icon: <FaShieldAlt /> },
-              { name: "Hardware & IoT", icon: <FaMicrochip /> },
-              { name: "Automation Tools", icon: <FaRobot /> },
-            ].map((tech, i) => (
-              <motion.div
-                key={tech.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                viewport={{ once: true }}
-                className="bg-gray-100 rounded-lg p-4 flex flex-col items-center gap-2 hover:shadow-md transition-shadow"
-              >
-                <div className="text-customBlue text-3xl">{tech.icon}</div>
-                <h3 className="text-sm md:text-base font-semibold text-gray-700 text-center">
-                  {tech.name}
-                </h3>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      
     {/* technology lists */}
 
     <section className="bg-gray-100 min-h-screen">
