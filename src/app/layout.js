@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "BookDataz",
-    "url": "https://bookdataz-fh398cv76-gopi9655s-projects.vercel.app/",
+    "url": "https://bookdataz.vercel.app",
     "logo": "https://bookdataz-fh398cv76-gopi9655s-projects.vercel.app/logo-b.jpg",
     "description": "BookDataz provides comprehensive databases across diverse sectors worldwide. Access high-quality, reliable data solutions to empower your business growth and target key markets in the United States, Canada, Singapore, Western Europe and more.",
     "address": {
