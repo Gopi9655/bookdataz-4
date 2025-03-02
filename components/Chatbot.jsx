@@ -4,7 +4,158 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMessageSquare, FiX, FiSend } from "react-icons/fi";
 
-// ... (Predefined Responses and suggestedQuestions remain the same) ...
+// Expanded FAQ list based on the sectors provided by BookDataz
+const faqs = [
+  {
+    question: "What sectors does BookDataz provide database services for?",
+    answer:
+      "BookDataz provides comprehensive database services across a wide range of sectors including Healthcare, Technology, Finance, Education, Retail, Manufacturing, Energy, Hospitality, Real Estate, Government, Automotive, Telecommunications, Logistics, Legal Services, Media and Entertainment, Non-Profit, Construction, and Food and Beverage.",
+  },
+  {
+    question: "What kind of healthcare data does BookDataz offer?",
+    answer:
+      "For Healthcare, BookDataz offers data on hospitals, clinics, pharmacies, medical equipment suppliers, health insurance, physicians, nurses, therapists, diagnostics labs, and public health agencies—totaling approximately 15,000 records.",
+  },
+  {
+    question: "What subcategories are covered in the Healthcare sector?",
+    answer:
+      "The Healthcare sector includes subcategories such as Hospitals, Clinics, Pharmacies, Medical Equipment Suppliers, Health Insurance, Physicians, Nurses, Therapists, Diagnostics Labs, and Public Health Agencies.",
+  },
+  {
+    question: "How comprehensive is the Technology database?",
+    answer:
+      "The Technology database comprises around 20,000 records, covering a broad range of subcategories from IT services to SaaS providers, ensuring you have access to detailed and up-to-date tech data.",
+  },
+  {
+    question: "What Technology subcategories are available?",
+    answer:
+      "In Technology, available subcategories include IT Services, Software Development, Hardware Suppliers, Cloud Computing, Cybersecurity, Data Analytics, Mobile App Development, IoT Solutions, Network Infrastructure, and SaaS Providers.",
+  },
+  {
+    question: "What finance-related data can I expect?",
+    answer:
+      "BookDataz offers an extensive Finance database with approximately 18,000 records, including data on banks, investment firms, credit unions, insurance companies, accounting services, tax consultants, wealth management, mortgage providers, payment gateways, and cryptocurrency platforms.",
+  },
+  {
+    question: "What subcategories does the Finance sector include?",
+    answer:
+      "The Finance sector includes Banks, Investment Firms, Credit Unions, Insurance Companies, Accounting Services, Tax Consultants, Wealth Management, Mortgage Providers, Payment Gateways, and Cryptocurrency Platforms.",
+  },
+  {
+    question: "How does BookDataz support the Education sector?",
+    answer:
+      "The Education sector features around 12,000 records covering various educational institutions and organizations, ensuring access to data on schools, colleges, universities, and more.",
+  },
+  {
+    question: "What Education subcategories are available?",
+    answer:
+      "In Education, subcategories include Schools (K-12), Colleges, Universities, Online Learning Platforms, Libraries, Educational Consultants, Tutoring Centers, Training Institutes, Student Organizations, and Research Centers.",
+  },
+  {
+    question: "What retail data is provided by BookDataz?",
+    answer:
+      "The Retail database contains approximately 25,000 records and includes data from e-commerce platforms, grocery stores, fashion retailers, electronics stores, furniture stores, automotive retailers, department stores, specialty shops, wholesale suppliers, and shopping malls.",
+  },
+  {
+    question: "What are the subcategories in the Retail sector?",
+    answer:
+      "Retail subcategories include E-commerce Platforms, Grocery Stores, Fashion Retailers, Electronics Stores, Furniture Stores, Automotive Retailers, Department Stores, Specialty Shops, Wholesale Suppliers, and Shopping Malls.",
+  },
+  {
+    question: "How extensive is the Manufacturing database?",
+    answer:
+      "The Manufacturing sector features roughly 16,000 records, covering various aspects of production across industries, ensuring you have access to detailed manufacturing data.",
+  },
+  {
+    question: "What subcategories are covered in Manufacturing?",
+    answer:
+      "Manufacturing subcategories include Automotive Manufacturing, Electronics Manufacturing, Pharmaceutical Manufacturing, Consumer Goods Manufacturing, Heavy Machinery, Textiles and Apparel, Chemical Manufacturing, Construction Materials, Food and Beverage, and Packaging Industries.",
+  },
+  {
+    question: "What data is available in the Energy sector?",
+    answer:
+      "The Energy database offers about 14,000 records, providing information on oil and gas, renewable energy, power plants, energy consultants, utility providers, energy equipment suppliers, green energy solutions, nuclear energy, wind energy, and solar energy.",
+  },
+  {
+    question: "Can you tell me about the Hospitality database?",
+    answer:
+      "The Hospitality sector has approximately 13,000 records, covering a range of businesses from hotels and restaurants to event planners, travel agencies, airlines, cruises, car rentals, tour operators, resorts, and catering services.",
+  },
+  {
+    question: "What information is available in the Real Estate sector?",
+    answer:
+      "The Real Estate sector includes about 11,000 records with data on commercial and residential real estate, real estate agents, property management, developers, mortgage brokers, landlords, construction companies, REITs, and appraisal services.",
+  },
+  {
+    question: "How does BookDataz cater to government agencies?",
+    answer:
+      "The Government database features around 9,000 records, including data on local, state, and federal agencies, public works, defense, public health, environmental and transportation departments, regulatory bodies, and law enforcement.",
+  },
+  {
+    question: "What automotive data does BookDataz offer?",
+    answer:
+      "The Automotive sector contains approximately 13,000 records, covering car manufacturers, dealerships, repair services, tire and spare parts suppliers, electric vehicle companies, fleet management, automotive research, auto insurance, and related logistics.",
+  },
+  {
+    question: "What does the Telecommunications database include?",
+    answer:
+      "With around 15,000 records, the Telecommunications database offers information on mobile network providers, internet service providers, cable TV operators, satellite companies, 5G solutions, telecom hardware suppliers, call centers, VoIP providers, broadband, and fiber optics companies.",
+  },
+  {
+    question: "How does BookDataz support the Logistics industry?",
+    answer:
+      "The Logistics sector comprises roughly 14,000 records, offering data on shipping companies, freight forwarders, courier services, logistics software providers, warehousing companies, supply chain management, port authorities, customs brokers, 3PL companies, and transportation services.",
+  },
+  {
+    question: "What legal services data is available?",
+    answer:
+      "The Legal Services database includes about 11,000 records covering law firms, corporate, family, and intellectual property lawyers, legal tech companies, notaries, compliance officers, legal consultancies, court reporting services, and translation services.",
+  },
+  {
+    question: "What Media and Entertainment data can I access?",
+    answer:
+      "The Media and Entertainment sector offers around 14,000 records, providing data on television networks, radio stations, streaming platforms, film production companies, event organizers, advertising agencies, public relations agencies, graphic designers, content creators, and media distribution companies.",
+  },
+  {
+    question: "How does BookDataz support Non-Profit organizations?",
+    answer:
+      "The Non-Profit sector features approximately 8,000 records, offering comprehensive data on charities, foundations, community organizations, environmental and health-related NGOs, religious organizations, educational NGOs, human rights groups, animal welfare organizations, and international aid agencies.",
+  },
+  {
+    question: "What data is available in the Construction sector?",
+    answer:
+      "The Construction database comprises roughly 17,000 records, covering general contractors, subcontractors, architectural firms, civil engineers, building materials suppliers, developers, equipment suppliers, renovation specialists, project managers, and interior designers.",
+  },
+  {
+    question: "What information is available in the Food and Beverage sector?",
+    answer:
+      "The Food and Beverage sector offers about 19,000 records, providing data on restaurants, fast food chains, cafes, food distributors, beverage companies, food manufacturing, catering services, vineyards, breweries, food delivery services, and specialty food stores.",
+  },
+  {
+    question: "How is the data quality maintained?",
+    answer:
+      "BookDataz ensures high data quality through rigorous data collection methods, regular updates, and thorough validation processes, leveraging advanced AI-powered techniques and expert oversight.",
+  },
+  {
+    question: "How frequently is the data updated?",
+    answer:
+      "Our databases are updated regularly to ensure accuracy and relevance, with continuous verification and refresh cycles that adhere to industry best practices.",
+  },
+];
+
+// Function to match the user's message with FAQ keywords and return an appropriate response
+const getMatchingResponse = (message) => {
+  const lowerMessage = message.toLowerCase();
+  // Check if any FAQ question (or its keyword version) is found in the user's message
+  for (let faq of faqs) {
+    const keyword = faq.question.replace("?", "").toLowerCase();
+    if (lowerMessage.includes(keyword)) {
+      return { response: faq.answer, suggestions: [] };
+    }
+  }
+  // If no match, return a list of all FAQ questions as suggestions
+  return { response: null, suggestions: faqs.map((faq) => faq.question) };
+};
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +168,7 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const chatRef = useRef(null);
 
-  // Auto-open chatbot after 3 seconds (Optional)
+  // Auto-open chatbot after 3 seconds (optional)
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpen(true);
@@ -25,31 +176,27 @@ const Chatbot = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Auto-scroll to latest message
+  // Auto-scroll to the latest message
   useEffect(() => {
     if (chatRef.current) {
       chatRef.current.scrollTop = chatRef.current.scrollHeight;
     }
   }, [messages]);
 
-  // Handle user input & get best-matching response
+  // Handle sending a message and processing the response
   const handleSend = (messageText) => {
     if (!messageText.trim()) return;
-
     const userMessage = messageText.toLowerCase();
-    setMessages([...messages, { text: messageText, sender: "user" }]);
+    setMessages((prev) => [...prev, { text: messageText, sender: "user" }]);
     setInput("");
 
     const { response, suggestions } = getMatchingResponse(userMessage);
 
     if (response) {
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { text: response, sender: "bot" },
-      ]);
+      setMessages((prev) => [...prev, { text: response, sender: "bot" }]);
     } else {
-      setMessages((prevMessages) => [
-        ...prevMessages,
+      setMessages((prev) => [
+        ...prev,
         {
           text: "I didn't understand. Please select a question:",
           sender: "bot",
@@ -111,7 +258,7 @@ const Chatbot = () => {
                   }`}
                 >
                   {msg.text}
-                  {/* Show Suggested Questions as Clickable Buttons */}
+                  {/* Render suggested questions as clickable buttons */}
                   {msg.suggestions && (
                     <div className="mt-2">
                       {msg.suggestions.map((question, qIndex) => (

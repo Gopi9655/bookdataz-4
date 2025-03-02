@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaLinkedin,  } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
+
 import { FiLoader } from "react-icons/fi";
 
 const Contactpage = () => {
@@ -241,23 +243,21 @@ const Contactpage = () => {
           Connect With Us
         </h2>
         <div className="flex flex-wrap justify-center gap-6">
-          {[
-            { icon: <FaLinkedin />, url: "https://www.linkedin.com/company/bookdataz-global/posts/?feedView=all" },
-            { icon: <FaFacebook />, url: "https://www.facebook.com/" },
-            { icon: <FaInstagram />, url: "https://www.instagram.com/" },
-            { icon: <FaTwitter />, url: "https://twitter.com/" },
-          ].map((social, index) => (
-            <a
-              key={index}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-customBlue text-white p-4 rounded-full hover:bg-customBlue/90 transition-all"
-            >
-              {social.icon}
-            </a>
-          ))}
-        </div>
+  {[
+    { icon: <FaLinkedin />, url: "https://www.linkedin.com/company/bookdataz-global/posts/?feedView=all" },
+    { icon: <SiGmail />, url: "mailto:sales@bookdataz.com" }
+  ].map((social, index) => (
+    <a
+      key={index}
+      href={social.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-customBlue text-white p-4 rounded-full hover:bg-customBlue/90 transition-all"
+    >
+      {social.icon}
+    </a>
+  ))}
+</div>
       </motion.section>
     </main>
   );
