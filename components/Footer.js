@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="flex items-center space-x-2 mb-4">
             <Image src="/logo-b.jpg" width={150} height={200} alt="Bookdataz Logo" className="rounded-lg" />
           </div>
-          <p className="text-sm text-gray-400 mb-2">LEAD MANAGEMENT SOLUTIONS</p>
+          <p className="text-sm text-gray-400 mb-2">B2B DATABASE PROVIDERS</p>
 
           {/* Contact info */}
           <p className="text-sm">
@@ -100,14 +100,7 @@ const Footer = () => {
           </div>
 
           {/* Resources column */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Resources</h3>
-            <ul className="space-y-2 text-sm">
-              <li className="hover:text-white"><a href="#">Blog</a></li>
-              <li className="hover:text-white"><a href="#">Case Studies</a></li>
-              <li className="hover:text-white"><a href="#">FAQs</a></li>
-            </ul>
-          </div>
+         
 
           {/* Get in Touch column */}
           <div>
