@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMessageSquare, FiX, FiSend } from "react-icons/fi";
 
-// Expanded FAQ list based on the sectors provided by BookDataz
+// 1) Expanded FAQ list based on the sectors provided by BookDataz
 const faqs = [
   {
     question: "What sectors does BookDataz provide database services for?",
@@ -143,21 +143,40 @@ const faqs = [
   },
 ];
 
-// Function to match the user's message with FAQ keywords and return an appropriate response
-const getMatchingResponse = (message) => {
+// 2) Function to match user's message to FAQ
+function getMatchingResponse(message) {
   const lowerMessage = message.toLowerCase();
-  // Check if any FAQ question (or its keyword version) is found in the user's message
+
   for (let faq of faqs) {
+    // Simple keyword check: remove "?" from question and compare
     const keyword = faq.question.replace("?", "").toLowerCase();
     if (lowerMessage.includes(keyword)) {
+      // Found a match!
       return { response: faq.answer, suggestions: [] };
     }
   }
-  // If no match, return a list of all FAQ questions as suggestions
-  return { response: null, suggestions: faqs.map((faq) => faq.question) };
-};
 
-const Chatbot = () => {
+  // If no match found, show the user all questions as suggestions
+  return { response: null, suggestions: faqs.map((faq) => faq.question) };
+}
+
+// 3) SVG for the Mail Icon
+function MailIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="w-6 h-6 md:w-7 md:h-7 text-white
+      "
+    >
+      <path d="M2 5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5zm3-1a1 1 0 0 0-1 1v1.5l8 5 8-5V5a1 1 0 0 0-1-1H5zm16 3.236-7.6 4.75a2 2 0 0 1-2.8 0L3 7.236V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7.236z" />
+    </svg>
+  );
+}
+
+// 4) Main Chatbot Component
+export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -168,13 +187,11 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const chatRef = useRef(null);
 
-  // Auto-open chatbot after 3 seconds (optional)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
+  // Optional: auto-open after 3 seconds
+  // useEffect(() => {
+  //   const timer = setTimeout(() => setIsOpen(true), 3000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   // Auto-scroll to the latest message
   useEffect(() => {
@@ -183,14 +200,14 @@ const Chatbot = () => {
     }
   }, [messages]);
 
-  // Handle sending a message and processing the response
+  // Handle user sending a message
   const handleSend = (messageText) => {
     if (!messageText.trim()) return;
-    const userMessage = messageText.toLowerCase();
     setMessages((prev) => [...prev, { text: messageText, sender: "user" }]);
     setInput("");
 
-    const { response, suggestions } = getMatchingResponse(userMessage);
+    // Check FAQ logic
+    const { response, suggestions } = getMatchingResponse(messageText);
 
     if (response) {
       setMessages((prev) => [...prev, { text: response, sender: "bot" }]);
@@ -207,12 +224,23 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="relative z-50">
-      {/* Chat Button */}
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end space-y-3">
+      {/* --- Mail Icon Button (opens email client) --- */}
+      <motion.a
+        href="mailto:sales@bookdataz.com"
+        className="bg-customBlue p-3 md:p-3.5 rounded-full shadow-md  flex items-center justify-center hover:shadow-lg transition-all"
+        whileTap={{ scale: 0.9 }}
+        title="Email Us"
+      >
+        <MailIcon />
+      </motion.a>
+
+      {/* --- Chatbot Toggle Button --- */}
       <motion.button
-        className="bg-red-500 text-white p-3 md:p-4 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition-all"
+        className="bg-customBlue text-white p-3 md:p-4 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition-all"
         onClick={() => setIsOpen(!isOpen)}
         whileTap={{ scale: 0.9 }}
+        title="Open Chatbot"
       >
         {isOpen ? (
           <FiX className="text-xl md:text-2xl" />
@@ -221,33 +249,25 @@ const Chatbot = () => {
         )}
       </motion.button>
 
-      {/* Chat Box */}
+      {/* --- Chat Window --- */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="absolute bottom-16 right-0 w-[90vw] max-w-sm md:max-w-md bg-white shadow-xl rounded-lg overflow-hidden border border-gray-200"
+            className="absolute bottom-20 right-0 w-[90vw] max-w-sm md:max-w-md bg-white shadow-xl rounded-lg overflow-hidden border border-gray-200"
           >
-            {/* Chat Header */}
+            {/* Header */}
             <div className="bg-customBlue text-white p-3 flex justify-between items-center">
-              <h3 className="text-lg md:text-xl font-semibold">
-                BookDataz Chat
-              </h3>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-white hover:opacity-80"
-              >
+              <h3 className="text-lg md:text-xl font-semibold">BookDataz Chat</h3>
+              <button onClick={() => setIsOpen(false)} className="text-white hover:opacity-80">
                 <FiX className="text-lg md:text-xl" />
               </button>
             </div>
 
-            {/* Chat Messages */}
-            <div
-              ref={chatRef}
-              className="h-64 md:h-72 overflow-y-auto p-3 space-y-2"
-            >
+            {/* Messages */}
+            <div ref={chatRef} className="h-64 md:h-72 overflow-y-auto p-3 space-y-2">
               {messages.map((msg, index) => (
                 <div
                   key={index}
@@ -276,7 +296,7 @@ const Chatbot = () => {
               ))}
             </div>
 
-            {/* Chat Input */}
+            {/* Input Field */}
             <div className="flex items-center border-t p-2 md:p-3">
               <input
                 type="text"
@@ -284,7 +304,7 @@ const Chatbot = () => {
                 className="flex-1 p-2 md:p-3 border rounded-l-lg focus:outline-none text-sm md:text-base"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyPress={(e) => e.key === "Enter" && handleSend(input)}
+                onKeyDown={(e) => e.key === "Enter" && handleSend(input)}
               />
               <button
                 onClick={() => handleSend(input)}
@@ -298,6 +318,4 @@ const Chatbot = () => {
       </AnimatePresence>
     </div>
   );
-};
-
-export default Chatbot;
+}

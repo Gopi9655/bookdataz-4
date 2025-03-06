@@ -128,20 +128,21 @@ const testimonials = [
 
 const slides = [
   {
-    title: "Intelligent Data to Drive Business Performance with BookDataz",
+    title: "Use Smart Data from BookDataz to Improve Your Business",
     description:
-      "Leverage the world's most comprehensive business data and insights to find new opportunities, navigate evolving risk, and know who to trust to reach your organizational goals.",
+      "Access comprehensive B2B data across all sectors and countries. Drive performance with insights to find opportunities and mitigate risks.",
     image: "/banner1 (1).webp",
   },
   {
-    title: "Empower Business Growth with Targeted Data Solutions",
+    title: "Grow Your Business with Targeted Data Solutions",
     description:
-      "At BookDataz, we specialize in providing businesses with high-quality, targeted datasets designed to drive growth and optimize decision-making.",
-    image: "/banner1 (2).png"},
+      "BookDataz delivers high-quality B2B data tailored to your needs, spanning every sector and global market, for informed decision-making.",
+    image: "/banner1 (2).png",
+  },
   {
-    title: "Global Data Solutions Tailored for Every Country",
+    title: "Global B2B Data Solutions for All Sectors",
     description:
-      "At BookDataz, we specialize in delivering comprehensive and accurate data solutions that transcend borders. Our global reach ensures access to critical insights and datasets across all countries.",
+      "Get complete and accurate B2B data from every country and sector. BookDataz empowers your business with worldwide market insights.",
     image: "/banner1 (3).webp",
   },
 ];

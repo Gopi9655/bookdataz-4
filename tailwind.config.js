@@ -17,7 +17,7 @@ module.exports = {
       xl: '1280px',
     },
       colors: {
-        customBlue: 'rgb(4, 31, 87)',
+        customBlue: 'rgb(5, 45, 82);',
       },
       margin: {
         'setMargin-x': '8rem', // Custom margin value

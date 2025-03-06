@@ -48,11 +48,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* ---  Schema Markup Added Here  --- */}
+        {/* --- Schema Markup --- */}
         <script type="application/ld+json">
           {JSON.stringify(websiteSchema)}
         </script>
-        {/* ---  Existing Metadata  --- */}
+        {/* --- Existing Metadata --- */}
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
@@ -64,7 +64,10 @@ export default function RootLayout({ children }) {
           <Footer />
         </div>
 
-        {/* ... (rest of your body content - Chatbot, Mail Icon) ... */}
+        {/* --- Floating Chatbot & Mail Icon --- */}
+        <Chatbot />        
+        {/* Floating Email Icon */}
+        
       </body>
     </html>
   );
