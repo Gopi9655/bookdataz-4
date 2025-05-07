@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar";
 import Chatbot from "../../components/Chatbot";
 import Footer from "../../components/Footer";
 import PageHeader from "../../components/PageHeader";
-
+import CookieConsent from "../../components/CookieConsent";
 export const metadata = {
   title: "Affordable, Reliable Databases for Your Business Growth | Bookdataz.com",
   description:
@@ -11,14 +11,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  // Define your schema JSON-LD here
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "BookDataz",
     "url": "https://bookdataz.vercel.app",
     "logo": "https://bookdataz-fh398cv76-gopi9655s-projects.vercel.app/logo-b.jpg",
-    "description": "BookDataz provides comprehensive databases across diverse sectors worldwide. Access high-quality, reliable data solutions to empower your business growth and target key markets in the United States, Canada, Singapore, Western Europe and more.",
+    "description":
+      "BookDataz provides comprehensive databases across diverse sectors worldwide. Access high-quality, reliable data solutions to empower your business growth and target key markets in the United States, Canada, Singapore, Western Europe and more.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "6150, Poplar Ave, Suite 200",
@@ -37,12 +37,7 @@ export default function RootLayout({ children }) {
       "https://www.linkedin.com/company/bookdataz"
     ],
     "foundingDate": "2013",
-    "areaServed": [
-      "US",
-      "CA",
-      "SG",
-      "Western Europe"
-    ]
+    "areaServed": ["US", "CA", "SG", "Western Europe"]
   };
 
   return (
@@ -52,6 +47,14 @@ export default function RootLayout({ children }) {
         <script type="application/ld+json">
           {JSON.stringify(websiteSchema)}
         </script>
+
+        {/* --- Cookie Consent CSS & JS --- */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+
         {/* --- Existing Metadata --- */}
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
@@ -65,9 +68,33 @@ export default function RootLayout({ children }) {
         </div>
 
         {/* --- Floating Chatbot & Mail Icon --- */}
-        <Chatbot />        
-        {/* Floating Email Icon */}
-        
+        <Chatbot />
+        <CookieConsent />
+
+
+        {/* --- Cookie Consent Banner Initialization --- */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.addEventListener("load", function(){
+                window.cookieconsent.initialise({
+                  palette: {
+                    popup: { background: "#000" },
+                    button: { background: "#f1d600" }
+                  },
+                  theme: "classic",
+                  position: "bottom-right",
+                  content: {
+                    message: "We use cookies to ensure you get the best experience on our website.",
+                    dismiss: "Got it!",
+                    link: "Learn more",
+                    href: "/privacy-policy"
+                  }
+                });
+              });
+            `
+          }}
+        ></script>
       </body>
     </html>
   );
