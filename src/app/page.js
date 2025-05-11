@@ -2,6 +2,7 @@
 "use client";
 
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FiArrowRight } from "react-icons/fi";
 import {
   FaLinkedinIn,
   FaInstagram,
@@ -11,16 +12,306 @@ import {
 
 import { datacollections, whatweoffer } from "@/resource/data";
 
+const CATEGORIES = [
+  {
+    title: "Healthcare",
+    dataCount: "50,26,500",
+    subCategories: [
+      "Hospitals",
+      "Clinics",
+      "Pharmacies",
+      "Medical Equipment Suppliers",
+      "Health Insurance",
+      "Physicians",
+      "Nurses",
+      "Therapists",
+      "Diagnostics Labs",
+      "Public Health Agencies",
+    ],
+  },
+  {
+    title: "Technology",
+    dataCount:"25,66,372",
+    subCategories: [
+      "IT Services",
+      "Software Development",
+      "Hardware Suppliers",
+      "Cloud Computing",
+      "Cybersecurity",
+      "Data Analytics",
+      "Mobile App Development",
+      "IoT Solutions",
+      "Network Infrastructure",
+      "SaaS Providers",
+    ],
+  },
+  {
+    title: "Finance",
+    dataCount: "45,39,826",
+    subCategories: [
+      "Banks",
+      "Investment Firms",
+      "Credit Unions",
+      "Insurance Companies",
+      "Accounting Services",
+      "Tax Consultants",
+      "Wealth Management",
+      "Mortgage Providers",
+      "Payment Gateways",
+      "Cryptocurrency Platforms",
+    ],
+  },
+  {
+    title: "Education",
+    dataCount:"70,67,704" ,
+    subCategories: [
+      "Schools (K-12)",
+      "Colleges",
+      "Universities",
+      "Online Learning Platforms",
+      "Libraries",
+      "Educational Consultants",
+      "Tutoring Centers",
+      "Training Institutes",
+      "Student Organizations",
+      "Research Centers",
+    ],
+  },
+  {
+    title: "Retail",
+    dataCount: "18,50,923",
+    subCategories: [
+      "E-commerce Platforms",
+      "Grocery Stores",
+      "Fashion Retailers",
+      "Electronics Stores",
+      "Furniture Stores",
+      "Automotive Retailers",
+      "Department Stores",
+      "Specialty Shops",
+      "Wholesale Suppliers",
+      "Shopping Malls",
+    ],
+  },
+  {
+    title: "Manufacturing",
+    dataCount: "90,88,010",
+    subCategories: [
+      "Automotive Manufacturing",
+      "Electronics Manufacturing",
+      "Pharmaceutical Manufacturing",
+      "Consumer Goods Manufacturing",
+      "Heavy Machinery",
+      "Textiles and Apparel",
+      "Chemical Manufacturing",
+      "Construction Materials",
+      "Food and Beverage",
+      "Packaging Industries",
+    ],
+  },
+  {
+    title: "Energy",
+    dataCount: "50,62,600",
+    subCategories: [
+      "Oil and Gas",
+      "Renewable Energy",
+      "Power Plants",
+      "Energy Consultants",
+      "Utility Providers",
+      "Energy Equipment Suppliers",
+      "Green Energy Solutions",
+      "Nuclear Energy",
+      "Wind Energy",
+      "Solar Energy",
+    ],
+  },
+  {
+    title: "Hospitality",
+    dataCount: "100,50,900",
+    subCategories: [
+      "Hotels",
+      "Restaurants",
+      "Event Planners",
+      "Travel Agencies",
+      "Airlines",
+      "Cruises",
+      "Car Rentals",
+      "Tour Operators",
+      "Resorts",
+      "Catering Services",
+    ],
+  },
+  {
+    title: "Real Estate",
+    dataCount: "22,62,600",
+    subCategories: [
+      "Commercial Real Estate",
+      "Residential Real Estate",
+      "Real Estate Agents",
+      "Property Management",
+      "Real Estate Developers",
+      "Mortgage Brokers",
+      "Landlords",
+      "Construction Companies",
+      "Real Estate Investment Trusts (REITs)",
+      "Appraisal Services",
+    ],
+  },
+  {
+    title: "Government",
+    dataCount: "14,80,900",
+    subCategories: [
+      "Local Governments",
+      "State Governments",
+      "Federal Agencies",
+      "Public Works",
+      "Defense Departments",
+      "Public Health Departments",
+      "Environmental Agencies",
+      "Transportation Departments",
+      "Regulatory Bodies",
+      "Law Enforcement",
+    ],
+  },
+  {
+    title: "Automotive",
+    dataCount: "15,62,600",
+    subCategories: [
+      "Car Manufacturers",
+      "Car Dealerships",
+      "Auto Repair Services",
+      "Tire Suppliers",
+      "Spare Parts Suppliers",
+      "Electric Vehicle Companies",
+      "Fleet Management",
+      "Automotive Research",
+      "Auto Insurance Companies",
+      "Logistics and Transport",
+    ],
+  },
+  {
+    title: "Telecommunications",
+    dataCount: "20,10,550",
+    subCategories: [
+      "Mobile Network Providers",
+      "Internet Service Providers",
+      "Cable TV Operators",
+      "Satellite Companies",
+      "5G Solutions Providers",
+      "Telecom Hardware Suppliers",
+      "Call Centers",
+      "VoIP Providers",
+      "Broadband Providers",
+      "Fiber Optics Companies",
+    ],
+  },
+  {
+    title: "Logistics",
+    dataCount: "13,10,087",
+    subCategories: [
+      "Shipping Companies",
+      "Freight Forwarders",
+      "Courier Services",
+      "Logistics Software Providers",
+      "Warehousing Companies",
+      "Supply Chain Management",
+      "Port Authorities",
+      "Customs Brokers",
+      "3PL Companies",
+      "Transportation Services",
+    ],
+  },
+  {
+    title: "Legal Services",
+    dataCount: "16,90,180",
+    subCategories: [
+      "Law Firms",
+      "Corporate Lawyers",
+      "Family Lawyers",
+      "Intellectual Property Lawyers",
+      "Legal Tech Companies",
+      "Notaries",
+      "Compliance Officers",
+      "Legal Consultancies",
+      "Court Reporting Services",
+      "Legal Translation Services",
+    ],
+  },
+  {
+    title: "Media and Entertainment",
+    dataCount: "10,25,350",
+    subCategories: [
+      "Television Networks",
+      "Radio Stations",
+      "Streaming Platforms",
+      "Film Production Companies",
+      "Event Organizers",
+      "Advertising Agencies",
+      "Public Relations Agencies",
+      "Graphic Designers",
+      "Content Creators",
+      "Media Distribution Companies",
+    ],
+  },
+  {
+    title: "Non-Profit",
+    dataCount: "10,25,350",
+    subCategories: [
+      "Charities",
+      "Foundations",
+      "Community Organizations",
+      "Environmental NGOs",
+      "Religious Organizations",
+      "Health-related NGOs",
+      "Educational NGOs",
+      "Human Rights Organizations",
+      "Animal Welfare Groups",
+      "International Aid Organizations",
+    ],
+  },
+  {
+    title: "Construction",
+    dataCount: "20,95,180",
+    subCategories: [
+      "General Contractors",
+      "Subcontractors",
+      "Architectural Firms",
+      "Civil Engineers",
+      "Building Materials Suppliers",
+      "Real Estate Developers",
+      "Construction Equipment Suppliers",
+      "Renovation Specialists",
+      "Project Managers",
+      "Interior Designers",
+    ],
+  },
+  {
+    title: "Food and Beverage",
+    dataCount: "20,45,670",
+    subCategories: [
+      "Restaurants",
+      "Fast Food Chains",
+      "Cafes",
+      "Food Distributors",
+      "Beverage Companies",
+      "Food Manufacturing",
+      "Catering Services",
+      "Vineyards and Breweries",
+      "Food Delivery Services",
+      "Specialty Food Stores",
+    ],
+  },]
+
 const trustedby = [
   { id: 1, logo: "/images/bookdataz-logo-1.jpg" },
   { id: 2, logo: "/images/bookdataz-logo-2.jpg" },
   { id: 3, logo: "/images/bookdataz-logo-3.jpg" },
-  { id: 4, logo: "/images/bookdataz-logo-4.jpg" },
+  // { id: 4, logo: "/images/bookdataz-logo-4.jpg" },
   { id: 5, logo: "/images/bookdataz-logo-5.jpg" },
   { id: 6, logo: "/images/bookdataz-logo-6.jpg" },
-  { id: 7, logo: "/images/bookdataz-logo-7.jpg" },
+  // { id: 7, logo: "/images/bookdataz-logo-7.jpg" },
   { id: 8, logo: "/images/bookdataz-logo-8.jpg" },
-  { id: 9, logo: "/images/bookdataz-logo-9.jpg" },
+  // { id: 9, logo: "/images/bookdataz-logo-9.jpg" },
   { id: 10, logo: "/images/bookdataz-logo-10.jpg" },
   { id: 11, logo: "/images/bookdataz-logo-11.jpg" },
   { id: 12, logo: "/images/bookdataz-logo-12.jpg" },
@@ -46,81 +337,95 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import Button from "../../components/Button";
 import HeroSection from "../../components/HeroSection";
+import WhatWeOfferSection from "../../components/WhatWeOffer";
+
+
+// data count
+
+const industryData = [
+  { id: 1, industry: "Healthcare", segments: 12, count: 2450000, coverage: 92 },
+  { id: 2, industry: "Technology", segments: 18, count: 3180000, coverage: 88 },
+  { id: 3, industry: "Finance", segments: 15, count: 1870000, coverage: 85 },
+  { id: 4, industry: "Education", segments: 9, count: 1420000, coverage: 78 },
+  { id: 5, industry: "Manufacturing", segments: 14, count: 2650000, coverage: 95 },
+];
+
+const totalRecords = industryData.reduce((sum, item) => sum + item.count, 0);
 
 /* -----------------------------
    TESTIMONIALS & SLIDES
 ------------------------------ */
 const testimonials = [
   // Keeping your original repeated IDs & text exactly as posted
-  {
+    {
     id: 1,
-    name: "John Doe",
-    position: "CEO, Company ABC",
+    name: "Rachel Summers",
+    position: "VP of Sales Enablement, LeadHive UK",
     testimonial:
-      "BookDataz has been instrumental in our marketing success. Their email lists are accurate and highly targeted, resulting in a significant increase in our ROI. Highly recommend!",
+      "BookDataz provided us with highly segmented B2B email lists that dramatically boosted our lead conversion. Their precision is unmatched in the data industry.",
     image: "/testimonials/testimonial3 (1).jpg",
     rating: 5,
   },
   {
-    id: 1,
-    name: "John Doe",
-    position: "CEO, Company ABC",
+    id: 2,
+    name: "Jonathan Lee",
+    position: "Chief Revenue Officer, NordicReach AB",
     testimonial:
-      "BookDataz has been instrumental in our marketing success. Their email lists are accurate and highly targeted, resulting in a significant increase in our ROI. Highly recommend!",
+      "The data quality from BookDataz helped streamline our outbound efforts across multiple EU markets. We noticed an immediate uplift in campaign engagement.",
     image: "/testimonials/testimonial3 (1).png",
     rating: 5,
   },
   {
-    id: 1,
-    name: "John Doe",
-    position: "CEO, Company ABC",
+    id: 3,
+    name: "Eric Donovan",
+    position: "Head of Demand Generation, PipelineX Canada",
     testimonial:
-      "BookDataz has been instrumental in our marketing success. Their email lists are accurate and highly targeted, resulting in a significant increase in our ROI. Highly recommend!",
+      "Our SDR team loves BookDataz. Their accurate targeting and verified contacts helped us reduce bounce rates and close more enterprise deals.",
     image: "/testimonials/testimonial3 (1).webp",
     rating: 5,
   },
   {
-    id: 1,
-    name: "John Doe",
-    position: "CEO, Company ABC",
+    id: 4,
+    name: "Laura Cheng",
+    position: "Director of Business Intelligence, ZenithData Australia",
     testimonial:
-      "BookDataz has been instrumental in our marketing success. Their email lists are accurate and highly targeted, resulting in a significant increase in our ROI. Highly recommend!",
+      "BookDataz is a game-changer. Their B2B datasets helped us unlock new sectors we hadn't tapped into before. Support team is top-notch too!",
     image: "/testimonials/testimonial3 (2).jpg",
     rating: 5,
   },
   {
-    id: 1,
-    name: "John Doe",
-    position: "CEO, Company ABC",
+    id: 5,
+    name: "Darren Mitchell",
+    position: "Email List Strategist, Datastream Berlin",
     testimonial:
-      "BookDataz has been instrumental in our marketing success. Their email lists are accurate and highly targeted, resulting in a significant increase in our ROI. Highly recommend!",
+      "We've worked with multiple data providers in the DACH region—BookDataz outperformed them all. Their lists are clean, compliant, and deliver real ROI.",
     image: "/testimonials/testimonial3 (2).webp",
     rating: 5,
   },
   {
-    id: 1,
-    name: "John Doe",
-    position: "CEO, Company ABC",
+    id: 6,
+    name: "Isabelle Fournier",
+    position: "CMO, BlueMetric France",
     testimonial:
-      "BookDataz has been instrumental in our marketing success. Their email lists are accurate and highly targeted, resulting in a significant increase in our ROI. Highly recommend!",
+      "What impressed us most was the speed and relevance of the data. BookDataz helped us hit aggressive Q2 targets with tailored industry contact lists.",
     image: "/testimonials/testimonial3 (7).jpg",
     rating: 5,
   },
   {
-    id: 2,
-    name: "Jane Smith",
-    position: "Marketing Manager, XYZ Corp",
+    id: 7,
+    name: "Lars Petersen",
+    position: "Marketing Manager, NovaLink Denmark",
     testimonial:
-      "We've tried several data providers, but Bookdataz stands out. The quality of their data and their customer service is exceptional. They truly understand our needs.",
+      "Our marketing funnels were stagnating until we integrated BookDataz leads. The engagement rates are consistently above average.",
     image: "/testimonials/testimonial3 (6).jpg",
     rating: 4.5,
   },
   {
-    id: 3,
-    name: "Peter Jones",
-    position: "Sales Director, Example Inc.",
+    id: 8,
+    name: "Anastasia Volkov",
+    position: "VP of Strategy, OptiReach Moscow",
     testimonial:
-      "The physician email list we purchased from Bookdataz was a game-changer for our outreach. We were able to connect with key decision-makers quickly and efficiently.",
+      "We expanded our outreach into Western markets thanks to BookDataz. Their GDPR-compliant data allowed us to scale safely and quickly.",
     image: "/testimonials/testimonial3 (3).webp",
     rating: 5,
   },
@@ -251,249 +556,176 @@ export default function Home() {
       {/* ======================================
           HERO (VIDEO BACKGROUND + SWIPER)
       =======================================*/}
-      <div className="relative md:w-full md:min-h-screen">
-        {/* Video background */}
-        <div className="absolute inset-0 -z-10">
-          <video
-            className="w-full h-full object-cover opacity-100 blur-none"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
+      <section className="relative w-full min-h-screen bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 flex items-center px-6 md:px-32">
+        {/* Left Content */}
+        <div className="max-w-2xl text-white space-y-14">
+          <motion.h1
+            className="text-4xl md:text-6xl font-extrabold leading-tight"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <source src="/final bgv.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          {/* Dark overlay */}
-          <div
-            className="absolute inset-0 bg-black/80"
-            style={{ mixBlendMode: "overlay" }}
-          ></div>
+            Unlock Global Reach with <span className="text-red-500">Premium Email Databases</span>
+          </motion.h1>
+
+          <motion.p
+            className="text-lg md:text-xl text-gray-300 max-w-xl"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            Access verified, up-to-date email lists from over 50 countries. Boost your marketing campaigns with accurate data tailored to your target audience.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
+            <button
+              className="bg-red-500 hover:bg-indigo-600 transition-colors px-8 py-4 rounded-lg font-semibold text-white shadow-lg"
+              onClick={() => alert("Request your free data sample now!")}
+            >
+              Get Free Data Sample
+            </button>
+          </motion.div>
         </div>
 
-        {/* Swiper Carousel */}
-        <div className="relative h-screen">
-          <Swiper
-            spaceBetween={30}
-            centeredSlides
-            autoplay={{
-              delay: 3500,
-              disableOnInteraction: false,
-            }}
-            navigation
-            modules={[Autoplay, Navigation]}
-            className="h-full"
-            onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
-          >
-            {slides.map((slide, index) => (
-              <SwiperSlide key={index}>
-                <div className="relative flex flex-col md:flex-row text-white px-5 md:px-36 py-10 md:py-16 gap-8 md:gap-20">
-                  {/* Left Section */}
-                  <div className="flex flex-col w-full md:w-1/2 items-start gap-8">
-                    <motion.h1
-                      className="md:text-5xl text-3xl font-bold mb-4 md:leading-normal"
-                      variants={fadeUpVariants}
-                      initial="hidden"
-                      animate={activeSlide === index ? "visible" : "hidden"}
-                    >
-                      {slide.title}
-                    </motion.h1>
-                    <motion.p
-                      className="md:text-xl text-lg  md:flex text-gray-300 tracking-wide max-w-2xl mb-8 leading-[1.5]"
-                      variants={fadeUpVariants}
-                      initial="hidden"
-                      animate={activeSlide === index ? "visible" : "hidden"}
-                      transition={{ delay: 0.2 }}
-                    >
-                      {slide.description}
-                    </motion.p>
-                    <motion.div
-                      variants={fadeUpVariants}
-                      initial="hidden"
-                      animate={activeSlide === index ? "visible" : "hidden"}
-                      transition={{ delay: 0.4 }}
-                    >
-                      <button
-                        className="px-6  md:flex py-3 text-lg font-bold text-white bg-red-500 rounded-md hover:bg-blue-600"
-                        onClick={() => console.log("Clicked")}
-                      >
-                        Free Data Sample
-                      </button>
-                    </motion.div>
-                  </div>
+        {/* Right Image */}
+        <motion.div
+          className="hidden md:flex flex-1 justify-center items-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+        >
+          <img
+            src="/generated-image.png"
+            alt="Email Marketing Illustration"
+            width={500}
+            height={500}
+            className="rounded-3xl shadow-2xl object-contain"
+            loading="lazy"
+          />
+        </motion.div>
+      </section>
 
-                  {/* Right Section (Image) */}
-                  <motion.div
-                    className="flex hidden md:flex justify-center items-center p-0 w-full md:w-1/2"
-                    variants={fadeUpVariants}
-                    initial="hidden"
-                    animate={activeSlide === index ? "visible" : "hidden"}
-                    transition={{ delay: 0.2 }}
-                  >
-                    <Image
-                      src={slide.image}
-                      width={500}
-                      height={200}
-                      alt="Banner"
-                      priority
-                      className="object-contain rounded-2xl"
-                    />
-                  </motion.div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </div>
-
-      {/* Transfotm section*/}
-     
-          <HeroSection />
+  
       {/* ======================================
           A DATA SOLUTION FOR EVERY TEAM
       =======================================*/}
-      <div className="container mx-auto px-4 md:px-8 md:py-16 md:py-24">
-  <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
-    {/* Left Section */}
-    <motion.div
-      className="w-full md:w-[34%] bg-gray-50 rounded-lg p-6 md:p-8 shadow hover:shadow-lg transition mt-8 md:mt-14"
-      variants={fadeUpVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      <h2 className="md:text-3xl text-lg md:text-4xl font-bold mb-6 text-customBlue leading-tight">
-        A data solution for every team, all in one platform
-      </h2>
-      <Image
-        src="/Database-Solution-2.webp"
-        alt="Person with laptop"
-        width={500}
-        height={500}
-        className="object-contain"
-      />
-    </motion.div>
-
-    {/* Right Section (Items Grid) */}
-    <motion.div
-      className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 w-full md:w-[65%]"
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      {items.map((item, index) => (
-        <motion.div
-          key={index}
-          className="relative bg-gray-50 rounded-lg p-8 md:p-10 shadow hover:shadow-lg transition group overflow-hidden"
-          whileHover={{ scale: 1.05 }}
-          variants={fadeUpVariants}
-        >
-          <div className="absolute inset-0 bg-customBlue/10 scale-0 group-hover:scale-100 transition-transform duration-500 ease-in-out rounded-lg"></div>
-
-          <div className="relative z-10">
-            <Image
-              src={item.icon}
-              alt={`${item.title} icon`}
-              width={50}
-              height={50}
-              className="mb-4"
-            />
-            <h3 className="text-lg md:text-xl font-semibold mb-2">{item.title}</h3>
-            <p className="text-gray-600 mb-4 text-sm md:text-base">{item.description}</p>
-            <a
-              href={item.link}
-              className="text-red-400 font-medium hover:underline flex items-center text-sm md:text-base"
-            >
-              Learn more <span className="ml-1">→</span>
-            </a>
-          </div>
-        </motion.div>
-      ))}
-    </motion.div>
-  </div>
-</div>
-
+      
       {/* ======================================
           WHAT WE OFFER SECTION
       =======================================*/}
-      <motion.div
-        className="bg-[url('/h3_services_bg.jpg')] text-white py-16 md:py-20"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <div className="container mx-auto px-4 md:px-8">
-          <motion.h2
-            className="text-lg md:text-xl font-bold text-center mb-4 uppercase text-red-500"
-            variants={fadeUpVariants}
-          >
-            What We Offer
-          </motion.h2>
-          <motion.h3
-            className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16"
-            variants={fadeUpVariants}
-            transition={{ delay: 0.2 }}
-          >
-            LET'S DISCOVER OUR SERVICES
-          </motion.h3>
+    
+ <motion.div
+  className="bg-gradient-to-br from-white via-blue-50 to-red-50 py-16 md:py-20"
+  variants={containerVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+>
+  <div className="container mx-auto px-4 md:px-8">
+    <motion.h2
+      className="text-lg md:text-xl font-bold text-center mb-4 uppercase text-red-500 tracking-widest"
+      variants={fadeUpVariants}
+    >
+      Our Industry Database
+    </motion.h2>
+    <motion.h3
+      className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16"
+      variants={fadeUpVariants}
+      transition={{ delay: 0.2 }}
+    >
+      <span className="bg-gradient-to-r from-customBlue via-blue-600 to-red-500 bg-clip-text text-transparent">
+        Premium Email Lists Across Industries
+      </span>
+    </motion.h3>
 
-          <motion.div
-            className="flex flex-col md:flex-row gap-4 md:gap-5"
-            variants={containerVariants}
-          >
-            {whatweoffer.map((item) => (
-              <motion.div
-                key={item.id}
-                className="bg-white rounded-xl p-6 md:p-8 flex flex-col gap-4"
-                variants={fadeUpVariants}
-              >
-                <div className="flex flex-row gap-4 md:gap-5">
-                  <div className="flex justify-center">
-                    <Image
-                      src={item.icon}
-                      alt={`${item.title} icon`}
-                      width={40}
-                      height={40}
-                    />
-                  </div>
-                  <div className="flex justify-center items-center">
-                    <h4 className="text-lg md:text-xl text-black font-bold text-center border-l-2 border-gray-300 px-4">
-                      {item.title}
-                    </h4>
-                  </div>
+    <motion.div
+      className="overflow-x-auto"
+      variants={fadeUpVariants}
+      transition={{ delay: 0.3 }}
+    >
+      <table className="min-w-full bg-white rounded-xl shadow-xl overflow-hidden border border-blue-100">
+        <thead>
+          <tr className="bg-blue-50">
+            <th className="py-4 px-6 text-customBlue font-bold text-base text-left uppercase tracking-wide">
+              Industry
+            </th>
+            <th className="py-4 px-6 text-customBlue font-bold text-base text-left uppercase tracking-wide">
+              Subcategories
+            </th>
+            <th className="py-4 px-6 text-customBlue font-bold text-base text-left uppercase tracking-wide">
+              Verified Contacts
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {CATEGORIES.map((row, idx) => (
+            <tr
+              key={row.title}
+              className={`${
+                idx % 2 === 0 ? "bg-blue-50/60" : "bg-white"
+              } hover:bg-red-50/70 transition-colors`}
+            >
+              {/* Industry */}
+              <td className="py-4 px-6 font-extrabold text-lg md:text-xl">
+                <span className="px-3 py-1 rounded-lg bg-gradient-to-r from-customBlue via-blue-400 to-blue-300 text-white shadow-md">
+                  {row.title}
+                </span>
+              </td>
+              {/* Subcategories */}
+              <td className="py-4 px-6">
+                <div className="flex flex-wrap gap-2 max-w-[350px]">
+                  {Array.isArray(row.subCategories) &&
+                    row.subCategories.slice(0, 3).map((sub, i) => (
+                      <span
+                        key={i}
+                        className="text-customBlue bg-blue-100/80 text-xs px-2 py-1 rounded-full font-medium"
+                      >
+                        {sub}
+                      </span>
+                    ))}
+                  {Array.isArray(row.subCategories) &&
+                    row.subCategories.length > 3 && (
+                      <span className="text-red-500 text-xs font-bold">
+                        +{row.subCategories.length - 3} more
+                      </span>
+                    )}
                 </div>
-                <p className="text-slate-500 mb-6 font-medium text-sm md:text-base flex-grow">
-                  {item.content}
-                </p>
-                <div className="mt-auto overflow-hidden rounded-xl">
-                  <motion.a
-                    href="#"
-                    className="relative text-black font-medium hover:text-white bg-[#fef6e6] px-4 md:px-6 py-2 md:py-3 inline-flex items-center rounded-xl text-sm md:text-base"
-                    whileHover="hover"
-                    initial="rest"
-                    animate="rest"
-                  >
-                    <motion.div
-                      className="absolute inset-0 bg-customBlue z-0"
-                      variants={{
-                        rest: { translateX: "-100%" },
-                        hover: { translateX: "0%" },
-                      }}
-                      transition={{ duration: 0.5, ease: "easeInOut" }}
-                    ></motion.div>
-                    <span className="relative z-10 text-red-400">
-                      Read More <span className="ml-1 text-red-400">→</span>
-                    </span>
-                  </motion.a>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.div>
+              </td>
+              {/* Data Count */}
+              <td className="py-4 px-6 font-extrabold text-xl text-right">
+                <span className="px-4 py-1 rounded-lg bg-gradient-to-r from-red-500 via-red-400 to-orange-300 text-white shadow">
+                  {row.dataCount}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      
+    </motion.div>
+    <motion.p
+      className="text-center text-gray-700 mt-8 max-w-2xl mx-auto text-base md:text-lg"
+      variants={fadeUpVariants}
+      transition={{ delay: 0.4 }}
+    >
+      <span className="text-customBlue font-bold">Our database is constantly updated and verified for accuracy.</span>
+      <br />
+      <span className="text-red-500 font-bold">Reach decision-makers in any industry, anywhere in the world.</span>
+      <br />
+      <span className="text-customBlue">Grow your business with confidence!</span>
+    </motion.p>
+  </div>
+</motion.div>
+
+
+    {/* Transfotm section*/}
+     
+          <HeroSection />
+
 
       {/* ======================================
           ELEVATE SECTION
@@ -545,6 +777,78 @@ export default function Home() {
           />
         </motion.div>
       </div>
+{/*  */}
+
+<div className="w-full bg-gradient-to-br from-customBlue via-indigo-900 to-blue-900 py-16 md:py-24">
+  <div className="container mx-auto px-4 md:px-8">
+    <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+      {/* Left Section */}
+      <motion.div
+        className="w-full md:w-[34%] bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-2xl transition mt-8 md:mt-14 flex flex-col items-center"
+        variants={fadeUpVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <h2 className="md:text-3xl text-lg md:text-4xl font-bold mb-6 text-white leading-tight text-center drop-shadow-lg">
+          A data solution for every team, all in one platform
+        </h2>
+        <Image
+          src="/Database-Solution-2.webp"
+          alt="Person with laptop"
+          width={500}
+          height={500}
+          className="object-contain rounded-xl"
+        />
+      </motion.div>
+
+      {/* Right Section (Items Grid) */}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 w-full md:w-[65%]"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        {items.map((item, index) => (
+          <motion.div
+            key={index}
+            className="relative bg-white/10 backdrop-blur-md rounded-2xl p-8 md:p-10 shadow-xl transition group overflow-hidden hover:scale-[1.025] hover:shadow-2xl duration-300"
+            whileHover={{ scale: 1.03 }}
+            variants={fadeUpVariants}
+          >
+            {/* Subtle glass effect */}
+            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"></div>
+
+            <div className="relative z-10">
+              <Image
+                src={item.icon}
+                alt={`${item.title} icon`}
+                width={50}
+                height={50}
+                className="mb-4"
+              />
+              <h3 className="text-lg md:text-xl font-semibold mb-2 text-white">{item.title}</h3>
+              <p className="text-blue-100 mb-4 text-sm md:text-base">{item.description}</p>
+              <a
+                href={item.link}
+                className="text-pink-300 font-medium hover:underline flex items-center text-sm md:text-base"
+              >
+                Learn more <span className="ml-1">→</span>
+              </a>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+  </div>
+</div>
+
+
+
+{/* whatweoffer */}
+
+<WhatWeOfferSection />
 
       {/* ======================================
           TESTIMONIAL SECTION

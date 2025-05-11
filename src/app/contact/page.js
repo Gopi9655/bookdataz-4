@@ -89,28 +89,36 @@ const Contactpage = () => {
           </p>
 
           <div className="flex flex-col gap-4 text-gray-700">
-            <div>
-              <p className="font-semibold">Address:</p>
-              <p>
-                6150, Poplar Ave, Suite 200
-                <br />
-                Memphis, TN - 38119
-              </p>
-            </div>
-            <div>
-              <p className="font-semibold">Email:</p>
-              <a
-                href="mailto:sales@bookdataz.com"
-                className="text-customBlue hover:underline"
-              >
-                sales@bookdataz.com
-              </a>
-            </div>
-            <div>
-              <p className="font-semibold">Phone:</p>
-              <p>+1 - 901-942-8334</p>
-            </div>
-          </div>
+  <div>
+    <p className="font-semibold">US Office:</p>
+    <p>
+      6150 Poplar Ave, Suite 200<br />
+      Memphis, TN 38119<br />
+      United States
+    </p>
+  </div>
+  <div>
+    <p className="font-semibold">UK Office:</p>
+    <p>
+      Gateway East, White City<br />
+      London W12 7TU<br />
+      United Kingdom
+    </p>
+  </div>
+  <div>
+    <p className="font-semibold">Email:</p>
+    <a
+      href="mailto:sales@bookdataz.com"
+      className="text-customBlue hover:underline"
+    >
+      sales@bookdataz.com
+    </a>
+  </div>
+  <div>
+    <p className="font-semibold">Phone:</p>
+    <p>+1  (901)-942-8334</p>
+  </div>
+</div>
 
           {/* Google Map Embed */}
           <div className="mt-4 w-full aspect-video rounded-xl overflow-hidden">

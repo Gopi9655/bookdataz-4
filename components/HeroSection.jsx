@@ -75,10 +75,10 @@ const HeroSection = () => {
         {/* Left Column - Hero Content */}
         <div className="w-full md:w-1/2 space-y-6">
           <h1 className="text-4xl md:text-5xl font-extrabold">
-            Transform Your Future with Book Data&apos;z Futuristic Solutions
+            Transform Your Future with BookDataz&apos;s Futuristic Solutions
           </h1>
           <p className="text-lg text-gray-300">
-            At Book Dataza, we take pride in being the trusted choice for over
+            At BookDataz, we take pride in being the trusted choice for over
             7,000 top-ranking companies around the globe.
           </p>
           <p className="text-lg text-gray-300">
@@ -136,9 +136,9 @@ const HeroSection = () => {
 
           {/* Additional Content Block to Fill the Empty Space */}
           <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-6 rounded-lg">
-            <h3 className="text-2xl font-semibold">Why Choose Book Dataza?</h3>
+            <h3 className="text-2xl font-semibold">Why Choose BookDataz?</h3>
             <p className="mt-2 text-gray-300">
-            Book Dataza stands at the forefront of data innovation, offering an unrivaled blend of cutting-edge AI-powered solutions and deep industry expertise that transforms raw data into strategic insights. Our comprehensive suite of services is designed to streamline operations, drive sustainable growth, and empower businesses across diverse sectors—from healthcare to technology—to navigate the complexities of the modern digital landscape.
+            BookDataz stands at the forefront of data innovation, offering an unrivaled blend of cutting-edge AI-powered solutions and deep industry expertise that transforms raw data into strategic insights. Our comprehensive suite of services is designed to streamline operations, drive sustainable growth, and empower businesses across diverse sectors—from healthcare to technology—to navigate the complexities of the modern digital landscape.
             </p>
             <button className="mt-4 bg-blue-600 hover:bg-blue-700 transition duration-300 py-2 px-4 rounded-md text-lg font-semibold">
               Discover More

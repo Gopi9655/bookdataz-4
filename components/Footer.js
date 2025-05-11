@@ -10,9 +10,7 @@ const Footer = () => {
         {/* Left Section: Brand, contact, social icons */}
         <div className="flex flex-col w-full md:w-1/3 lg:w-1/4">
           {/* Brand/Logo */}
-          <div className="flex items-center space-x-2 mb-4">
-            <Image src="/logo-b.jpg" width={150} height={200} alt="Bookdataz Logo" className="rounded-lg" />
-          </div>
+         
           <p className="text-sm text-gray-400 mb-2">B2B DATABASE PROVIDERS</p>
 
           {/* Contact info */}
@@ -24,6 +22,8 @@ const Footer = () => {
           </p>
 
           {/* Social Icons */}
+
+{/*           
           <div className="flex items-center mt-4 space-x-3">
             <a
               href="https://linkedin.com"
@@ -57,7 +57,7 @@ const Footer = () => {
             >
               <FaTwitter />
             </a>
-          </div>
+          </div> */}
         </div>
         
         {/* Right Section: Columns */}
