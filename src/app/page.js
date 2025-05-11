@@ -556,58 +556,58 @@ export default function Home() {
       {/* ======================================
           HERO (VIDEO BACKGROUND + SWIPER)
       =======================================*/}
-      <section className="relative w-full min-h-screen bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 flex items-center px-6 md:px-32">
-        {/* Left Content */}
-        <div className="max-w-2xl text-white space-y-14">
-          <motion.h1
-            className="text-4xl md:text-6xl font-extrabold leading-tight"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Unlock Global Reach with <span className="text-red-500">Premium Email Databases</span>
-          </motion.h1>
+      <section className="relative w-full min-h-screen bg-gradient-to-r from-blue-800 via-indigo-700 to-purple-700 flex items-center px-6 md:px-36 py-16">
+  {/* Left Content */}
+  <div className="max-w-2xl text-white leading-8 space-y-8 md:space-y-12">
+    <motion.h1
+      className="text-4xl md:text-5xl font-extrabold leading-light text-white"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      Unlock Global Reach with <span className="text-orange-500">Premium Email B2B Databases</span>
+    </motion.h1>
 
-          <motion.p
-            className="text-lg md:text-xl text-gray-300 max-w-xl"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            Access verified, up-to-date email lists from over 50 countries. Boost your marketing campaigns with accurate data tailored to your target audience.
-          </motion.p>
+    <motion.p
+      className="text-lg md:text-xl text-gray-200 max-w-xl"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3, duration: 0.8 }}
+    >
+      Access verified, up-to-date email lists from over 50 countries. Boost your marketing campaigns with accurate data tailored to your target audience. Leverage the power of global outreach and stay ahead in the competitive market.
+    </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          >
-            <button
-              className="bg-red-500 hover:bg-indigo-600 transition-colors px-8 py-4 rounded-lg font-semibold text-white shadow-lg"
-              onClick={() => alert("Request your free data sample now!")}
-            >
-              Get Free Data Sample
-            </button>
-          </motion.div>
-        </div>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.6, duration: 0.8 }}
+    >
+      <button
+        className="bg-orange-600 hover:bg-orange-700 transition-colors duration-300 px-8 py-4 rounded-lg font-semibold text-white shadow-xl transform hover:scale-105"
+        onClick={() => alert("Request your free data sample now!")}
+      >
+        Get Free Data Sample
+      </button>
+    </motion.div>
+  </div>
 
-        {/* Right Image */}
-        <motion.div
-          className="hidden md:flex flex-1 justify-center items-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          <img
-            src="/generated-image.png"
-            alt="Email Marketing Illustration"
-            width={500}
-            height={500}
-            className="rounded-3xl shadow-2xl object-contain"
-            loading="lazy"
-          />
-        </motion.div>
-      </section>
+  {/* Right Image */}
+  <motion.div
+    className="hidden md:flex flex-1 justify-center items-center"
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ delay: 0.8, duration: 0.8 }}
+  >
+    <img
+      src="/generated-image.png"
+      alt="Email Marketing Illustration"
+      width={500}
+      height={500}
+      className="rounded-3xl shadow-2xl object-cover"
+      loading="lazy"
+    />
+  </motion.div>
+</section>
 
   
       {/* ======================================
@@ -625,7 +625,7 @@ export default function Home() {
   whileInView="visible"
   viewport={{ once: true, amount: 0.2 }}
 >
-  <div className="container mx-auto px-4 md:px-8">
+  <div className="container mx-auto px-4 md:px-20">
     <motion.h2
       className="text-lg md:text-xl font-bold text-center mb-4 uppercase text-red-500 tracking-widest"
       variants={fadeUpVariants}
@@ -780,7 +780,7 @@ export default function Home() {
 {/*  */}
 
 <div className="w-full bg-gradient-to-br from-customBlue via-indigo-900 to-blue-900 py-16 md:py-24">
-  <div className="container mx-auto px-4 md:px-8">
+  <div className="container mx-auto px-4 md:px-24">
     <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
       {/* Left Section */}
       <motion.div

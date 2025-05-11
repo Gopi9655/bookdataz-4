@@ -415,7 +415,7 @@ export default function BrowseDatacardPage() {
           <div className="bg-customBlue border border-gray-300 rounded-lg shadow-lg p-4 md:p-6 md:h-full flex flex-col md:justify-between">
             <div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white p-10 rounded-xl  text-center">
-                53+ Million Email Contacts
+                150+ Million Email Contacts
               </h2>
              
               <p className="mt-4 text-base md:text-lg text-gray-300 text-center">
