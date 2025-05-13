@@ -15,7 +15,7 @@ import { datacollections, whatweoffer } from "@/resource/data";
 const CATEGORIES = [
   {
     title: "Healthcare",
-    dataCount: "50,26,500",
+    dataCount: "5,026,500",
     subCategories: [
       "Hospitals",
       "Clinics",
@@ -31,7 +31,7 @@ const CATEGORIES = [
   },
   {
     title: "Technology",
-    dataCount:"25,66,372",
+    dataCount:"2,566,372",
     subCategories: [
       "IT Services",
       "Software Development",
@@ -47,7 +47,7 @@ const CATEGORIES = [
   },
   {
     title: "Finance",
-    dataCount: "45,39,826",
+    dataCount: "4,539,826",
     subCategories: [
       "Banks",
       "Investment Firms",
@@ -63,7 +63,7 @@ const CATEGORIES = [
   },
   {
     title: "Education",
-    dataCount:"70,67,704" ,
+    dataCount:"7,067,704" ,
     subCategories: [
       "Schools (K-12)",
       "Colleges",
@@ -79,7 +79,7 @@ const CATEGORIES = [
   },
   {
     title: "Retail",
-    dataCount: "18,50,923",
+    dataCount: "1,850,923",
     subCategories: [
       "E-commerce Platforms",
       "Grocery Stores",
@@ -95,7 +95,7 @@ const CATEGORIES = [
   },
   {
     title: "Manufacturing",
-    dataCount: "90,88,010",
+    dataCount: "9,088,010",
     subCategories: [
       "Automotive Manufacturing",
       "Electronics Manufacturing",
@@ -111,7 +111,7 @@ const CATEGORIES = [
   },
   {
     title: "Energy",
-    dataCount: "50,62,600",
+    dataCount: "5,062,600",
     subCategories: [
       "Oil and Gas",
       "Renewable Energy",
@@ -127,7 +127,7 @@ const CATEGORIES = [
   },
   {
     title: "Hospitality",
-    dataCount: "100,50,900",
+    dataCount: "10,050,900",
     subCategories: [
       "Hotels",
       "Restaurants",
@@ -143,7 +143,7 @@ const CATEGORIES = [
   },
   {
     title: "Real Estate",
-    dataCount: "22,62,600",
+    dataCount: "2,262,600",
     subCategories: [
       "Commercial Real Estate",
       "Residential Real Estate",
@@ -159,7 +159,7 @@ const CATEGORIES = [
   },
   {
     title: "Government",
-    dataCount: "14,80,900",
+    dataCount: "1,480,900",
     subCategories: [
       "Local Governments",
       "State Governments",
@@ -175,7 +175,7 @@ const CATEGORIES = [
   },
   {
     title: "Automotive",
-    dataCount: "15,62,600",
+    dataCount: "1,562,600",
     subCategories: [
       "Car Manufacturers",
       "Car Dealerships",
@@ -191,7 +191,7 @@ const CATEGORIES = [
   },
   {
     title: "Telecommunications",
-    dataCount: "20,10,550",
+    dataCount: "2,010,550",
     subCategories: [
       "Mobile Network Providers",
       "Internet Service Providers",
@@ -207,7 +207,7 @@ const CATEGORIES = [
   },
   {
     title: "Logistics",
-    dataCount: "13,10,087",
+    dataCount: "1,310,087",
     subCategories: [
       "Shipping Companies",
       "Freight Forwarders",
@@ -223,7 +223,7 @@ const CATEGORIES = [
   },
   {
     title: "Legal Services",
-    dataCount: "16,90,180",
+    dataCount: "1,690,180",
     subCategories: [
       "Law Firms",
       "Corporate Lawyers",
@@ -239,7 +239,7 @@ const CATEGORIES = [
   },
   {
     title: "Media and Entertainment",
-    dataCount: "10,25,350",
+    dataCount: "1,025,350",
     subCategories: [
       "Television Networks",
       "Radio Stations",
@@ -255,7 +255,7 @@ const CATEGORIES = [
   },
   {
     title: "Non-Profit",
-    dataCount: "10,25,350",
+    dataCount: "1,025,350",
     subCategories: [
       "Charities",
       "Foundations",
@@ -271,7 +271,7 @@ const CATEGORIES = [
   },
   {
     title: "Construction",
-    dataCount: "20,95,180",
+    dataCount: "2,095,180",
     subCategories: [
       "General Contractors",
       "Subcontractors",
@@ -287,7 +287,7 @@ const CATEGORIES = [
   },
   {
     title: "Food and Beverage",
-    dataCount: "20,45,670",
+    dataCount: "2,045,670",
     subCategories: [
       "Restaurants",
       "Fast Food Chains",

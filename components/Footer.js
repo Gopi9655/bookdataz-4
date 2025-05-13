@@ -15,7 +15,7 @@ const Footer = () => {
 
           {/* Contact info */}
           <p className="text-sm">
-            Phone: <span className="text-white">+1  (901)-942-8334</span>
+            Phone: <span className="text-white">+1  (901)-300-5501</span>
           </p>
           <p className="text-sm">
             Email: <span className="text-white">sales@bookdataz.com</span>

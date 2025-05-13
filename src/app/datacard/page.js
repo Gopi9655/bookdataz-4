@@ -19,7 +19,7 @@ const INDUSTRIES = Array.from({ length: 10 }, (_, i) => ({
 const CATEGORIES = [
   {
     title: "Healthcare",
-    dataCount: 15000,
+    dataCount: "5,026,500",
     subCategories: [
       "Hospitals",
       "Clinics",
@@ -35,7 +35,7 @@ const CATEGORIES = [
   },
   {
     title: "Technology",
-    dataCount: 20000,
+    dataCount:"2,566,372",
     subCategories: [
       "IT Services",
       "Software Development",
@@ -51,7 +51,7 @@ const CATEGORIES = [
   },
   {
     title: "Finance",
-    dataCount: 18000,
+    dataCount: "4,539,826",
     subCategories: [
       "Banks",
       "Investment Firms",
@@ -67,7 +67,7 @@ const CATEGORIES = [
   },
   {
     title: "Education",
-    dataCount: 12000,
+    dataCount:"7,067,704" ,
     subCategories: [
       "Schools (K-12)",
       "Colleges",
@@ -83,7 +83,7 @@ const CATEGORIES = [
   },
   {
     title: "Retail",
-    dataCount: 25000,
+    dataCount: "1,850,923",
     subCategories: [
       "E-commerce Platforms",
       "Grocery Stores",
@@ -99,7 +99,7 @@ const CATEGORIES = [
   },
   {
     title: "Manufacturing",
-    dataCount: 16000,
+    dataCount: "9,088,010",
     subCategories: [
       "Automotive Manufacturing",
       "Electronics Manufacturing",
@@ -115,7 +115,7 @@ const CATEGORIES = [
   },
   {
     title: "Energy",
-    dataCount: 14000,
+    dataCount: "5,062,600",
     subCategories: [
       "Oil and Gas",
       "Renewable Energy",
@@ -131,7 +131,7 @@ const CATEGORIES = [
   },
   {
     title: "Hospitality",
-    dataCount: 13000,
+    dataCount: "10,050,900",
     subCategories: [
       "Hotels",
       "Restaurants",
@@ -147,7 +147,7 @@ const CATEGORIES = [
   },
   {
     title: "Real Estate",
-    dataCount: 11000,
+    dataCount: "2,262,600",
     subCategories: [
       "Commercial Real Estate",
       "Residential Real Estate",
@@ -163,7 +163,7 @@ const CATEGORIES = [
   },
   {
     title: "Government",
-    dataCount: 9000,
+    dataCount: "1,480,900",
     subCategories: [
       "Local Governments",
       "State Governments",
@@ -179,7 +179,7 @@ const CATEGORIES = [
   },
   {
     title: "Automotive",
-    dataCount: 13000,
+    dataCount: "1,562,600",
     subCategories: [
       "Car Manufacturers",
       "Car Dealerships",
@@ -195,7 +195,7 @@ const CATEGORIES = [
   },
   {
     title: "Telecommunications",
-    dataCount: 15000,
+    dataCount: "2,010,550",
     subCategories: [
       "Mobile Network Providers",
       "Internet Service Providers",
@@ -211,7 +211,7 @@ const CATEGORIES = [
   },
   {
     title: "Logistics",
-    dataCount: 14000,
+    dataCount: "1,310,087",
     subCategories: [
       "Shipping Companies",
       "Freight Forwarders",
@@ -227,7 +227,7 @@ const CATEGORIES = [
   },
   {
     title: "Legal Services",
-    dataCount: 11000,
+    dataCount: "1,690,180",
     subCategories: [
       "Law Firms",
       "Corporate Lawyers",
@@ -243,7 +243,7 @@ const CATEGORIES = [
   },
   {
     title: "Media and Entertainment",
-    dataCount: 14000,
+    dataCount: "1,025,350",
     subCategories: [
       "Television Networks",
       "Radio Stations",
@@ -259,7 +259,7 @@ const CATEGORIES = [
   },
   {
     title: "Non-Profit",
-    dataCount: 8000,
+    dataCount: "1,025,350",
     subCategories: [
       "Charities",
       "Foundations",
@@ -275,7 +275,7 @@ const CATEGORIES = [
   },
   {
     title: "Construction",
-    dataCount: 17000,
+    dataCount: "2,095,180",
     subCategories: [
       "General Contractors",
       "Subcontractors",
@@ -291,7 +291,7 @@ const CATEGORIES = [
   },
   {
     title: "Food and Beverage",
-    dataCount: 19000,
+    dataCount: "2,045,670",
     subCategories: [
       "Restaurants",
       "Fast Food Chains",
@@ -304,9 +304,7 @@ const CATEGORIES = [
       "Food Delivery Services",
       "Specialty Food Stores",
     ],
-  },
-  // Add more categories up to 50...
-];
+  },]
 
 
 
@@ -373,7 +371,7 @@ export default function BrowseDatacardPage() {
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-8 md:mb-10">
         {/* LEFT SECTION: Browse Our Data Cards */}
         <div className="flex flex-col bg-gray-50 h-full p-4 md:p-6">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-red-500 mb-6 md:mb-12">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-customBlue mb-6 md:mb-12">
             Browse Our Data Cards
           </h1>
           <p className="text-gray-600 text-base md:text-lg leading-relaxed tracking-wide mb-4 md:mb-0 md:flex-grow leading-[1.8]">
@@ -394,16 +392,16 @@ export default function BrowseDatacardPage() {
             and drive significant business growth.
           </p>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <li className="text-red-500 font-semibold text-base md:text-lg">
+            <li className="text-blue-500 font-semibold text-base md:text-lg">
               100% Data Ownership Guarantee
             </li>
-            <li className="text-red-500 font-semibold text-base md:text-lg">
+            <li className="text-blue-500 font-semibold text-base md:text-lg">
               Privacy Compliant: CAN-SPAM & GDPR
             </li>
-            <li className="text-red-500 font-semibold text-base md:text-lg">
+            <li className="text-blue-500 font-semibold text-base md:text-lg">
               1-to-1 Campaign Assistance: Phone, Email
             </li>
-            <li className="text-red-500 font-semibold text-base md:text-lg">
+            <li className="text-blue-500 font-semibold text-base md:text-lg">
               Custom Build List Delivery: 24-72 Hours
             </li>
           </ul>
@@ -415,7 +413,7 @@ export default function BrowseDatacardPage() {
           <div className="bg-customBlue border border-gray-300 rounded-lg shadow-lg p-4 md:p-6 md:h-full flex flex-col md:justify-between">
             <div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white p-10 rounded-xl  text-center">
-                150+ Million Email Contacts
+                170+ Million Email Contacts
               </h2>
              
               <p className="mt-4 text-base md:text-lg text-gray-300 text-center">
@@ -458,7 +456,7 @@ export default function BrowseDatacardPage() {
                 </p>
               </div>
             </div>
-            <p className="mt-4 text-red-500 px-4 tracking-wide leading-[1.8] text-sm md:text-base">
+            <p className="mt-4 text-black px-4 tracking-wide leading-[1.8] text-sm md:text-base">
               BookDataz is committed to data privacy and security, ensuring
               compliance with global regulations such as GDPR and CCPA. Our
               databases are GDPR Ready, guaranteeing that all data is collected,

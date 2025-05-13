@@ -37,10 +37,10 @@ const HeroSection = () => {
 
     const duration = 2000;
     const increments = {
-      datasets: 450,
-      companies: 11000000,
+      datasets: 170,
+      companies: 10000000,
       countries: 160,
-      contacts: 412000,
+      contacts: 5000,
       firms: 7000,
     };
 
@@ -105,8 +105,8 @@ const HeroSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* First Row: Million Datasets spans two columns */}
             <div className="md:col-span-2 bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
-              <h2 className="text-3xl font-bold">{counts.datasets}+</h2>
-              <p className="uppercase text-xs mt-2">Million Datasets</p>
+              <h2 className="text-3xl font-bold">{counts.datasets}M+</h2>
+              <p className="uppercase text-xs mt-2">Datasets</p>
             </div>
             <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
               <h2 className="text-3xl font-bold">
@@ -122,7 +122,7 @@ const HeroSection = () => {
             </div>
             <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
               <h2 className="text-3xl font-bold">
-                {Math.floor(counts.contacts / 1000)}K+
+                {Math.floor(counts.contacts / 1000)}M+
               </h2>
               <p className="uppercase text-xs mt-2">
                 Global Healthcare Contacts

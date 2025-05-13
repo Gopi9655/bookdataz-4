@@ -70,4 +70,5 @@ export const datacollections = [
         "Instantly connect with your audience using our bulk WhatsApp messaging, delivering personalized messages to thousands in just a few clicks.",
     },
   ];
+
   

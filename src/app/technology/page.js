@@ -23,8 +23,25 @@ const technologies = [
   "DataCore Customer", "Datatel", "Desire2Learn", "Docudesk Technology",
   "dSPACE Technology", "EasyLobby Technology", "EBSuite",
   "eClinicalWorks Technology", "eGain Software", "EHS Technology",
-  "Elementool"
+  "Elementool", "Embedded Systems", "EMC Customer", "EMK3 Technology",
+  "Empirisoft Technology", "EnterpriseWizard", "EpicCare EMR",
+  "Epicor Customer", "EPM Live Technology", "GeoCue LIDAR",
+  "GeoTrust QuickSSL", "Gliffy Technology", "GoldenGate Technology",
+  "Gumbo Technology", "GWOS Technology", "Hadoop", "Hadoop User",
+  "Halogen", "Hardcat", "HelpSTAR", "Heroix Network",
+  "Hosted Survey Technology", "Hostway Technology", "HP Network",
+  "I-net Technology", "IBM AS400 & iSeries", "IBM DBMS", "IBM Lotus Notes",
+  "IBM Mainframe", "IBM Tivoli ERP", "IBM WebSphere ERP", "iCentera",
+  "iDashboards", "IFS Technology", "InfoVista Technology",
+  "IntelliTrack Technology", "IssueTrak", "Java", "JD Edwards User",
+  "Jive software", "QLogic Customer", "Quantum Customer",
+  "Quest Software Customer", "QuickBooks", "Sage", "Salesforce", "SAP",
+  "SAP Business One", "SAP ERP", "SAP ERP Customers", "Siebel",
+  "Stratasoft", "Sugar", "Sybase DBMS", "Tableau", "Talisma", "TeaLeaf",
+  "TechExcel", "UNIX", "Veeam Customer", "Veeam ONE Customer",
+  "VMware vSphere", "WebEx Customer"
 ];
+
 
 export default function TechnologyListPage() {
   const icons = [Laptop2, Cloud, Server, BadgeCheck];
