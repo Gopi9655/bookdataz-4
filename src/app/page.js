@@ -687,12 +687,12 @@ export default function Home() {
                         {sub}
                       </span>
                     ))}
-                  {Array.isArray(row.subCategories) &&
-                    row.subCategories.length > 3 && (
-                      <span className="text-red-500 text-xs font-bold">
-                        +{row.subCategories.length - 3} more
-                      </span>
-                    )}
+                 {Array.isArray(row.subCategories) &&
+  row.subCategories.length > 3 && (
+    <span className="text-red-500 text-xs font-bold">
+      +more
+    </span>
+)}
                 </div>
               </td>
               {/* Data Count */}
