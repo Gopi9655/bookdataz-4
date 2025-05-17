@@ -4,6 +4,7 @@ import Chatbot from "../../components/Chatbot";
 import Footer from "../../components/Footer";
 import PageHeader from "../../components/PageHeader";
 import CookieConsent from "../../components/CookieConsent";
+import DisableCopyPaste from "../../components/DisableCopyPaste";
 export const metadata = {
   title: "Affordable, Reliable Databases for Your Business Growth | Bookdataz.com",
   description:
@@ -60,6 +61,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content={metadata.description} />
       </head>
       <body className="antialiased text-black relative">
+      <DisableCopyPaste />
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <PageHeader />

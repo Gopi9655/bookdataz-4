@@ -574,7 +574,7 @@ export default function Home() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 0.8 }}
     >
-      Access verified, up-to-date email lists from over 50 countries. Boost your marketing campaigns with accurate data tailored to your target audience. Leverage the power of global outreach and stay ahead in the competitive market.
+      Access verified, up-to-date email lists from over 160 countries. Boost your marketing campaigns with accurate data tailored to your target audience. Leverage the power of global outreach and stay ahead in the competitive market.
     </motion.p>
 
     <motion.div

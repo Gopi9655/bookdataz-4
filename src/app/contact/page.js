@@ -1,9 +1,9 @@
 "use client";
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaLinkedin,  } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-
 import { FiLoader } from "react-icons/fi";
 
 const Contactpage = () => {
@@ -16,15 +16,16 @@ const Contactpage = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Update form fields and clear errors on typing
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear errors when user types
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
+  // Simple validation for required fields and email format
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name) newErrors.name = "Name is required";
@@ -34,19 +35,20 @@ const Contactpage = () => {
       newErrors.email = "Email is invalid";
     }
     if (!formData.message) newErrors.message = "Message is required";
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  // Updated to POST to our API route
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
 
     try {
-      // Make a POST request to /api/contact
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -54,9 +56,9 @@ const Contactpage = () => {
       });
 
       const result = await response.json();
+
       if (response.ok && result.success) {
         alert("Form submitted successfully!");
-        // Reset the form
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
         alert("Error submitting form: " + (result.error || "Unknown error"));
@@ -71,14 +73,14 @@ const Contactpage = () => {
 
   return (
     <main className="w-full min-h-screen md:px-32 bg-gradient-to-br from-gray-50 to-blue-50 flex flex-col items-center py-12">
-      {/* Main container with 2 columns: Contact Info + Form */}
+      {/* Contact Info + Form Section */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="container mx-auto px-4 flex flex-col md:flex-row gap-10 pb-10"
       >
-        {/* Left Column: Contact Information */}
+        {/* Left: Contact Info */}
         <div className="w-full md:w-1/2 bg-white rounded-xl shadow-lg p-8 flex flex-col gap-6">
           <h2 className="text-3xl font-bold text-gray-800 border-b pb-2">
             Get in Touch
@@ -89,36 +91,40 @@ const Contactpage = () => {
           </p>
 
           <div className="flex flex-col gap-4 text-gray-700">
-  <div>
-    <p className="font-semibold">US Office:</p>
-    <p>
-      6150 Poplar Ave, Suite 200<br />
-      Memphis, TN 38119<br />
-      United States
-    </p>
-  </div>
-  <div>
-    <p className="font-semibold">UK Office:</p>
-    <p>
-      Gateway East, White City<br />
-      London W12 7TU<br />
-      United Kingdom
-    </p>
-  </div>
-  <div>
-    <p className="font-semibold">Email:</p>
-    <a
-      href="mailto:sales@bookdataz.com"
-      className="text-customBlue hover:underline"
-    >
-      sales@bookdataz.com
-    </a>
-  </div>
-  <div>
-    <p className="font-semibold">Phone:</p>
-    <p>+1  (901)-300-5501</p>
-  </div>
-</div>
+            <div>
+              <p className="font-semibold">US Office:</p>
+              <p>
+                6150 Poplar Ave, Suite 200
+                <br />
+                Memphis, TN 38119
+                <br />
+                United States
+              </p>
+            </div>
+            <div>
+              <p className="font-semibold">UK Office:</p>
+              <p>
+                Gateway East, White City
+                <br />
+                London W12 7TU
+                <br />
+                United Kingdom
+              </p>
+            </div>
+            <div>
+              <p className="font-semibold">Email:</p>
+              <a
+                href="mailto:sales@bookdataz.com"
+                className="text-customBlue hover:underline"
+              >
+                sales@bookdataz.com
+              </a>
+            </div>
+            <div>
+              <p className="font-semibold">Phone:</p>
+              <p>+1 (901)-300-5501</p>
+            </div>
+          </div>
 
           {/* Google Map Embed */}
           <div className="mt-4 w-full aspect-video rounded-xl overflow-hidden">
@@ -128,11 +134,12 @@ const Contactpage = () => {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              title="US Office Location"
             />
           </div>
         </div>
 
-        {/* Right Column: Contact Form */}
+        {/* Right: Contact Form */}
         <div className="w-full md:w-1/2 bg-white rounded-xl shadow-lg p-8">
           <h2 className="text-3xl font-bold text-gray-800 border-b pb-2 mb-6">
             Send a Message
@@ -191,11 +198,7 @@ const Contactpage = () => {
               disabled={isSubmitting}
               className="bg-customBlue text-white font-semibold rounded-lg py-3 px-6 mt-3 hover:bg-customBlue/90 transition-all flex items-center justify-center"
             >
-              {isSubmitting ? (
-                <FiLoader className="animate-spin mr-2" />
-              ) : (
-                "Submit"
-              )}
+              {isSubmitting ? <FiLoader className="animate-spin mr-2" /> : "Submit"}
             </button>
           </form>
         </div>
@@ -208,9 +211,7 @@ const Contactpage = () => {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="container mx-auto px-4 py-12"
       >
-        <h2 className="text-3xl font-bold text-gray-800 mb-8">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-8">Frequently Asked Questions</h2>
         <div className="space-y-4">
           {[
             {
@@ -245,27 +246,24 @@ const Contactpage = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="w-full bg-white py-12 text-center"
+        className="flex gap-6 items-center py-6"
       >
-        <h2 className="text-3xl font-bold text-gray-800 mb-8">
-          Connect With Us
-        </h2>
-        <div className="flex flex-wrap justify-center gap-6">
-  {[
-    { icon: <FaLinkedin />, url: "https://www.linkedin.com/company/bookdataz-global/posts/?feedView=all" },
-    { icon: <SiGmail />, url: "mailto:sales@bookdataz.com" }
-  ].map((social, index) => (
-    <a
-      key={index}
-      href={social.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-customBlue text-white p-4 rounded-full hover:bg-customBlue/90 transition-all"
-    >
-      {social.icon}
-    </a>
-  ))}
-</div>
+        <a
+          href="https://www.linkedin.com/in/yourprofile"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-customBlue text-4xl hover:text-customBlue/80 transition-colors"
+          aria-label="LinkedIn"
+        >
+          <FaLinkedin />
+        </a>
+        <a
+          href="mailto:sales@bookdataz.com"
+          className="text-red-600 text-4xl hover:text-red-500 transition-colors"
+          aria-label="Email"
+        >
+          <SiGmail />
+        </a>
       </motion.section>
     </main>
   );

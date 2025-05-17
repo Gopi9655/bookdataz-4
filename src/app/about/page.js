@@ -168,18 +168,18 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: "John Doe",
-                role: "Marketing Manager",
+                name: "Lars Petersen",
+                role: "Marketing Manager, NovaLink Denmark",
                 quote: "BookDataz helped us scale our campaigns with accurate and reliable data. Highly recommended!",
               },
               {
-                name: "Jane Smith",
-                role: "Sales Director",
+                name: "Darren Mitchell",
+                role: "Email List Strategist, Datastream Berlin",
                 quote: "The quality of data provided by BookDataz has been instrumental in closing deals efficiently.",
               },
               {
-                name: "Robert Lee",
-                role: "CEO",
+                name: "Isabelle Fournier",
+                role: "CMO, BlueMetric France",
                 quote: "Their customizable solutions are exactly what our business needed to expand into new markets.",
               },
             ].map((testimonial, index) => (
