@@ -4,6 +4,9 @@ import pkg from "pg";
 const { Pool } = pkg;
 const connectionString = process.env.NEON_DB_URL;
 
+
+
+
 const pool = new Pool({
   connectionString,
   ssl: { rejectUnauthorized: false },
@@ -85,3 +88,8 @@ export async function POST(request) {
     );
   }
 }
+
+export const config = {
+  runtime: 'nodejs',
+};
+
