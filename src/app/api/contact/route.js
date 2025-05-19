@@ -4,18 +4,30 @@ import pkg from "pg";
 const { Pool } = pkg;
 const connectionString = process.env.NEON_DB_URL;
 
-
-
-
 const pool = new Pool({
   connectionString,
   ssl: { rejectUnauthorized: false },
 });
 
 export async function POST(request) {
+  let body = {};
+
   try {
-    const body = await request.json();
+    try {
+      body = await request.json(); // <-- Strict JSON parsing
+    } catch (jsonError) {
+      console.error("Invalid JSON:", jsonError.message);
+      return NextResponse.json(
+        { success: false, error: "Invalid JSON body" },
+        { status: 400 }
+      );
+    }
+
+    console.log("Received body:", body);
+
     const { name, email, subject, message } = body;
+
+    console.log("Fields -> name:", name, "| email:", email, "| message:", message);
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -29,7 +41,7 @@ export async function POST(request) {
       request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || null;
     const userAgent = request.headers.get("user-agent") || null;
 
-    // Fetch geolocation info
+    // Geolocation lookup
     let geo = {
       city: null,
       region: null,
@@ -83,7 +95,7 @@ export async function POST(request) {
   } catch (err) {
     console.error("Unhandled error:", err);
     return NextResponse.json(
-      { success: false, error: "Request error" },
+      { success: false, error: "Request processing error" },
       { status: 400 }
     );
   }
@@ -92,4 +104,3 @@ export async function POST(request) {
 export const config = {
   runtime: 'nodejs',
 };
-
