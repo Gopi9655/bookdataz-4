@@ -124,7 +124,7 @@ export const mockData = {
       name: "Travel and Transport Industries",
       description:
         "From airline ticketing to logistics management, our travel and transport data enhances operational efficiency and customer service.",
-      barData: [200, 300, 250],
+      barData: [200, 300, 260],
       pieData: [40, 35, 25],
       lineData: [160, 200, 260, 300, 340],
       radarData: [80, 85, 90, 75, 95],
