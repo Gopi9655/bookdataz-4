@@ -359,12 +359,12 @@ const IndustryDetails = ({ industryData }) => {
                         <p className="mb-6">
                             Contact us today to learn more about how our data can help your business grow.
                         </p>
-                        <button
-                            onClick={() => router.push("/contact")}
+                        <a href='/contact'><button
                             className="bg-white text-blue-500 py-2 px-6 rounded-md hover:bg-gray-100 transition duration-200"
                         >
                             Contact Us
-                        </button>
+                        </button></a>
+                        
                     </section>
                 </div>
             </main>

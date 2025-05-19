@@ -1,5 +1,6 @@
 // app/page.js
 "use client";
+import Link from "next/link";
 
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
@@ -369,7 +370,7 @@ const testimonials = [
   {
     id: 2,
     name: "Jonathan Lee",
-    position: "Chief Revenue Officer, NordicReach AB",
+    position: "Chief Revenue Officer, USA san francisco",
     testimonial:
       "The data quality from BookDataz helped streamline our outbound efforts across multiple EU markets. We noticed an immediate uplift in campaign engagement.",
     image: "/testimonials/testimonial3 (1).png",
@@ -396,7 +397,7 @@ const testimonials = [
   {
     id: 5,
     name: "Darren Mitchell",
-    position: "Email List Strategist, Datastream Berlin",
+    position: "Email List Strategist, USA Texas",
     testimonial:
       "We've worked with multiple data providers in the DACH region—BookDataz outperformed them all. Their lists are clean, compliant, and deliver real ROI.",
     image: "/testimonials/testimonial3 (2).webp",
@@ -405,7 +406,7 @@ const testimonials = [
   {
     id: 6,
     name: "Isabelle Fournier",
-    position: "CMO, BlueMetric France",
+    position: "USA new york",
     testimonial:
       "What impressed us most was the speed and relevance of the data. BookDataz helped us hit aggressive Q2 targets with tailored industry contact lists.",
     image: "/testimonials/testimonial3 (7).jpg",
@@ -414,7 +415,7 @@ const testimonials = [
   {
     id: 7,
     name: "Lars Petersen",
-    position: "Marketing Manager, NovaLink Denmark",
+    position: "Marketing Manager, USA newark",
     testimonial:
       "Our marketing funnels were stagnating until we integrated BookDataz leads. The engagement rates are consistently above average.",
     image: "/testimonials/testimonial3 (6).jpg",
@@ -423,7 +424,7 @@ const testimonials = [
   {
     id: 8,
     name: "Anastasia Volkov",
-    position: "VP of Strategy, OptiReach Moscow",
+    position: "VP of Strategy, Ireland Dublin",
     testimonial:
       "We expanded our outreach into Western markets thanks to BookDataz. Their GDPR-compliant data allowed us to scale safely and quickly.",
     image: "/testimonials/testimonial3 (3).webp",
@@ -582,12 +583,13 @@ export default function Home() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6, duration: 0.8 }}
     >
+      <Link href="/contact" passHref>
       <button
         className="bg-orange-600 hover:bg-orange-700 transition-colors duration-300 px-8 py-4 rounded-lg font-semibold text-white shadow-xl transform hover:scale-105"
-        onClick={() => alert("Request your free data sample now!")}
       >
         Get Free Data Sample
       </button>
+    </Link>
     </motion.div>
   </div>
 
@@ -830,10 +832,8 @@ export default function Home() {
               />
               <h3 className="text-lg md:text-xl font-semibold mb-2 text-white">{item.title}</h3>
               <p className="text-blue-100 mb-4 text-sm md:text-base">{item.description}</p>
-              <a
-                href={item.link}
-                className="text-pink-300 font-medium hover:underline flex items-center text-sm md:text-base"
-              >
+              <a href="/contact"
+                className="text-pink-300 font-medium hover:underline flex items-center text-sm md:text-base">
                 Learn more <span className="ml-1">→</span>
               </a>
             </div>

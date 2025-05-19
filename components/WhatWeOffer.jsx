@@ -153,15 +153,15 @@ export default function WhatWeOfferSection() {
 
         {/* Call to Action */}
         <div className="text-center">
+        <a href="/contact"> 
           <button
-            onClick={() =>
-              alert("Contact us to unlock your global data advantage!")
-            }
+           
             className="bg-customBlue hover:bg-blue-800 transition-colors text-white font-bold py-4 px-10 rounded-full shadow-lg text-lg whitespace-nowrap"
             aria-label="Request a Custom Data Solution"
           >
             Request a Custom Data Solution
           </button>
+          </a>
         </div>
       </div>
     </section>

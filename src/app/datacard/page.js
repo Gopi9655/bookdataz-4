@@ -486,33 +486,57 @@ export default function BrowseDatacardPage() {
       </section>
 
       {/* CATEGORY CARDS */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredCategories.map((category, index) => (
-          <div
-            key={index}
-            className="border border-slate-400 shadow rounded-lg p-6 hover:shadow-lg cursor-pointer"
-            onClick={() => setSelectedCategory(category)}
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-6 md:px-12 lg:px-2">
+  {filteredCategories.map((category, index) => (
+    <div
+      key={index}
+      className="relative group border border-slate-400 rounded-2xl p-8 bg-white shadow-md hover:shadow-2xl transition-shadow duration-500 cursor-pointer overflow-hidden"
+      onClick={() => setSelectedCategory(category)}
+      style={{ perspective: '1000px' }}
+    >
+      {/* Animated background block */}
+      <div
+        className="absolute top-0 left-0 w-full h-2 bg-red-400 rounded-t-2xl transform-gpu group-hover:scale-x-110 transition-transform duration-500 origin-left"
+        aria-hidden="true"
+      />
+      <h2 className="relative z-10 text-3xl font-extrabold mb-5 text-custom-blue tracking-tight drop-shadow-sm">
+        {category.title}
+      </h2>
+      <p className="relative z-10 mb-8 font-semibold text-gray-700">
+        Total Records:{' '}
+        <span className="text-red-400 text-2xl font-extrabold tabular-nums">
+          {category.dataCount.toLocaleString()}
+        </span>
+      </p>
+      <ul className="relative z-10 max-h-48 overflow-y-auto space-y-4 pr-3 scrollbar-thin scrollbar-thumb-red-400 scrollbar-track-gray-100">
+        {category.subCategories.map((subCategory, subIndex) => (
+          <li
+            key={subIndex}
+            className="flex items-center gap-4 text-lg text-gray-700 cursor-pointer hover:text-red-500 transition-colors duration-300"
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedSubCategory(subCategory);
+            }}
           >
-            <h2 className="text-2xl font-bold mb-4 text-customBlue">
-              {category.title}
-            </h2>
-            <p className="text-gray-600 mb-4">
-              Total Records: {category.dataCount.toLocaleString()}
-            </p>
-            <ul className="max-h-40 overflow-y-auto space-y-3">
-              {category.subCategories.map((subCategory, subIndex) => (
-                <li
-                  key={subIndex}
-                  className="flex items-center gap-3 text-lg text-gray-700 cursor-pointer hover:text-red-500"
-                  onClick={() => setSelectedSubCategory(subCategory)}
-                >
-                  <FiChevronRight className="text-red-400" /> {subCategory}
-                </li>
-              ))}
-            </ul>
-          </div>
+            <FiChevronRight className="text-red-400 flex-shrink-0 transform transition-transform duration-300 group-hover:translate-x-1" />
+            {subCategory}
+          </li>
         ))}
-      </section>
+      </ul>
+      {/* Micro-interaction: subtle 3D tilt on hover */}
+      <style jsx>{`
+        div[group-hover] {
+          transform-style: preserve-3d;
+          transition: transform 0.4s ease;
+        }
+        div[group-hover]:hover {
+          transform: rotateX(3deg) rotateY(5deg);
+        }
+      `}</style>
+    </div>
+  ))}
+</section>
+
      
         {/* RIGHT SECTION: Sticky Info Box */}
         

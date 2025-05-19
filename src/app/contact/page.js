@@ -217,13 +217,15 @@ const Contactpage = () => {
 />
 
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="bg-customBlue text-white font-semibold rounded-lg py-3 px-6 mt-3 hover:bg-customBlue/90 transition-all flex items-center justify-center"
-            >
-              {isSubmitting ? <FiLoader className="animate-spin mr-2" /> : "Submit"}
-            </button>
+           <button
+  type="submit"
+  disabled={isSubmitting || !recaptchaToken}
+  className={`bg-customBlue text-white font-semibold rounded-lg py-3 px-6 mt-3 hover:bg-customBlue/90 transition-all flex items-center justify-center
+    ${isSubmitting || !recaptchaToken ? 'opacity-50 cursor-not-allowed' : ''}`}
+>
+  {isSubmitting ? <FiLoader className="animate-spin mr-2" /> : "Submit"}
+</button>
+
           </form>
         </div>
       </motion.section>

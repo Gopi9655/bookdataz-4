@@ -44,7 +44,7 @@ const AboutPage = () => {
               className="mt-6"
             >
               <a
-                href="#"
+                href="/contact"
                 className="inline-block px-6 py-3 text-white bg-customBlue hover:bg-blue-700 font-medium text-lg rounded-lg shadow"
               >
                 Find Out More
@@ -98,7 +98,7 @@ const AboutPage = () => {
           </div>
           <div className="mt-12">
             <a
-              href="#"
+              href="/contact"
               className="inline-block px-8 py-4 bg-white text-customBlue font-medium text-lg rounded-lg shadow hover:bg-gray-100"
             >
               Learn More About Our Services
@@ -206,7 +206,7 @@ const AboutPage = () => {
             Partner with BookDataz to access premium databases and unlock growth opportunities in your target markets.
           </p>
           <a
-            href="#"
+            href="/contact"
             className="inline-block px-8 py-4 bg-customBlue text-white font-medium text-lg rounded-lg shadow hover:bg-blue-700"
           >
             Get Started Today

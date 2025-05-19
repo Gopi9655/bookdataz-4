@@ -78,11 +78,11 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Industries We Serve</h3>
             <ul className="space-y-2 text-sm">
-              <li className="hover:text-white"><a href="#">Automotive</a></li>
-              <li className="hover:text-white"><a href="#">Banking</a></li>
-              <li className="hover:text-white"><a href="#">Healthcare</a></li>
-              <li className="hover:text-white"><a href="#">IT & Software</a></li>
-              <li className="hover:text-white"><a href="#">Manufacturing</a></li>
+              <li className="hover:text-white"><a href="/automotive-industry">Automotive</a></li>
+              <li className="hover:text-white"><a href="/banking-and-finance">Banking</a></li>
+              <li className="hover:text-white"><a href="/healthcare-industries">Healthcare</a></li>
+              <li className="hover:text-white"><a href="/pharmaceuticals">Pharmaceutical</a></li>
+              <li className="hover:text-white"><a href="/manufacturing-industries">Manufacturing</a></li>
             </ul>
           </div>
 
@@ -103,14 +103,15 @@ const Footer = () => {
          
 
           {/* Get in Touch column */}
-          <div>
+          <a href="/contact">   <div>
             <h3 className="text-white font-semibold mb-4">Get in Touch</h3>
             <ul className="space-y-2 text-sm">
               <li className="hover:text-white"><a href="#">Request a Demo</a></li>
               <li className="hover:text-white"><a href="#">Contact Us</a></li>
               <li className="hover:text-white"><a href="#">Support</a></li>
             </ul>
-          </div>
+          </div></a>
+       
         </div>
       </div>
     </div>

@@ -94,9 +94,10 @@ const HeroSection = () => {
             Fueled by innovation and dedication, we continue to scale rapidly,
             welcoming 1,800+ new clients annually.
           </p>
-          <button className="bg-blue-600 hover:bg-blue-700 transition duration-300 py-3 px-6 rounded-md text-lg font-semibold">
+          <a href="/contact"> <button className="bg-blue-600 hover:bg-blue-700 transition duration-300 py-3 px-6 rounded-md text-lg font-semibold">
             GET TO KNOW US
-          </button>
+          </button></a>
+         
         </div>
 
         {/* Right Column - Stats and Additional Content */}
@@ -140,9 +141,11 @@ const HeroSection = () => {
             <p className="mt-2 text-gray-300">
             BookDataz stands at the forefront of data innovation, offering an unrivaled blend of cutting-edge AI-powered solutions and deep industry expertise that transforms raw data into strategic insights. Our comprehensive suite of services is designed to streamline operations, drive sustainable growth, and empower businesses across diverse sectors—from healthcare to technology—to navigate the complexities of the modern digital landscape.
             </p>
+            <a href="/contact"> 
             <button className="mt-4 bg-blue-600 hover:bg-blue-700 transition duration-300 py-2 px-4 rounded-md text-lg font-semibold">
               Discover More
             </button>
+            </a>
           </div>
         </div>
       </div>
