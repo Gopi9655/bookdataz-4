@@ -16,6 +16,7 @@ const Contactpage = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Update form fields and clear errors on typing
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -24,6 +25,7 @@ const Contactpage = () => {
     }
   };
 
+  // Simple validation for required fields and email format
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name) newErrors.name = "Name is required";
@@ -38,6 +40,7 @@ const Contactpage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -46,11 +49,17 @@ const Contactpage = () => {
     setIsSubmitting(true);
 
     try {
+
+      console.log("Submitting form with data:", formData);
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+
+      console.log("Response received", response);
+
 
       const result = await response.json();
 
@@ -70,6 +79,7 @@ const Contactpage = () => {
 
   return (
     <main className="w-full min-h-screen md:px-32 bg-gradient-to-br from-gray-50 to-blue-50 flex flex-col items-center py-12">
+      {/* Contact Info + Form Section */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
