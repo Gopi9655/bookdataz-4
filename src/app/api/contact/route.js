@@ -1,56 +1,67 @@
 import { NextResponse } from "next/server";
 import pkg from "pg";
+import { z } from "zod";
 
+// 1. Setup PostgreSQL connection pool (singleton-safe for serverless)
 const { Pool } = pkg;
 const connectionString = process.env.NEON_DB_URL;
 
-const pool = new Pool({
-  connectionString,
-  ssl: { rejectUnauthorized: false },
+let pool;
+if (!global.pgPool) {
+  global.pgPool = new Pool({
+    connectionString,
+    ssl: { rejectUnauthorized: false },
+  });
+}
+pool = global.pgPool;
+
+// 2. Zod schema for validation
+const ContactSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email format"),
+  subject: z.string().optional(),
+  message: z.string().min(1, "Message is required"),
 });
 
+// 3. POST handler
 export async function POST(request) {
   let body = {};
 
   try {
     try {
-      body = await request.json(); // <-- Strict JSON parsing
-    } catch (jsonError) {
-      console.error("Invalid JSON:", jsonError.message);
+      body = await request.json();
+    } catch (jsonErr) {
+      console.error("Invalid JSON body:", jsonErr.message);
+      return NextResponse.json({ success: false, error: "Invalid JSON" }, { status: 400 });
+    }
+
+    const parsed = ContactSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        { success: false, error: "Invalid JSON body" },
+        { success: false, error: "Validation failed", details: parsed.error.errors },
         { status: 400 }
       );
     }
 
-    console.log("Received body:", body);
+    const { name, email, subject, message } = parsed.data;
 
-    const { name, email, subject, message } = body;
-
-    console.log("Fields -> name:", name, "| email:", email, "| message:", message);
-
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { success: false, error: "Missing required fields" },
-        { status: 400 }
-      );
-    }
-
-    // Extract headers
-    const ip =
-      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || null;
+    // 4. Get IP and User-Agent
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || null;
     const userAgent = request.headers.get("user-agent") || null;
 
-    // Geolocation lookup
-    let geo = {
-      city: null,
-      region: null,
-      country_name: null,
-    };
-
+    // 5. Geolocation fetch
+    const geo = { city: null, region: null, country_name: null };
     try {
       if (ip && ip !== "127.0.0.1" && ip !== "::1") {
-        const geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 2000); // 2s timeout
+
+        const geoRes = await fetch(`https://ipapi.co/${ip}/json/`, {
+          signal: controller.signal,
+        });
+
+        clearTimeout(timeout);
+
         if (geoRes.ok) {
           const data = await geoRes.json();
           geo.city = data.city || null;
@@ -58,14 +69,16 @@ export async function POST(request) {
           geo.country_name = data.country_name || null;
         }
       }
-    } catch (err) {
-      console.warn("Geolocation lookup failed:", err.message);
+    } catch (geoErr) {
+      console.warn("Geolocation lookup failed:", geoErr.message);
     }
 
+    // 6. Database insert
     const client = await pool.connect();
     try {
       const query = `
-        INSERT INTO contacts (name, email, subject, message, ip_address, country, region, city, user_agent)
+        INSERT INTO contacts 
+        (name, email, subject, message, ip_address, country, region, city, user_agent)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
         RETURNING id
       `;
@@ -80,27 +93,25 @@ export async function POST(request) {
         geo.city,
         userAgent,
       ];
-      const result = await client.query(query, values);
 
+      const result = await client.query(query, values);
       return NextResponse.json({ success: true, id: result.rows[0].id });
-    } catch (err) {
-      console.error("Database insert error:", err);
-      return NextResponse.json(
-        { success: false, error: "Database error" },
-        { status: 500 }
-      );
+    } catch (dbErr) {
+      console.error("Database error:", dbErr);
+      return NextResponse.json({ success: false, error: "Database error" }, { status: 500 });
     } finally {
       client.release();
     }
   } catch (err) {
     console.error("Unhandled error:", err);
     return NextResponse.json(
-      { success: false, error: "Request processing error" },
-      { status: 400 }
+      { success: false, error: "Unhandled request error" },
+      { status: 500 }
     );
   }
 }
 
+// 7. Vercel Node.js runtime config
 export const config = {
-  runtime: 'nodejs',
+  runtime: "nodejs",
 };
