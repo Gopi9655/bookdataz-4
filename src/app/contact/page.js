@@ -5,8 +5,11 @@ import { motion } from "framer-motion";
 import { FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { FiLoader } from "react-icons/fi";
-
+import ReCAPTCHA from "react-google-recaptcha";
 const Contactpage = () => {
+
+
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,6 +18,13 @@ const Contactpage = () => {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  //captcha
+
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+
+  
+
 
   // Update form fields and clear errors on typing
   const handleChange = (e) => {
@@ -199,6 +209,14 @@ const Contactpage = () => {
                 <p className="text-red-500 text-sm mt-1">{errors.message}</p>
               )}
             </div>
+
+            <ReCAPTCHA
+  sitekey="6Ldf0T8rAAAAAHJlDKnYoqYfgj4i8tlINfa3zIbA"
+  onChange={(token) => setRecaptchaToken(token)}
+  className="mt-2"
+/>
+
+
             <button
               type="submit"
               disabled={isSubmitting}
