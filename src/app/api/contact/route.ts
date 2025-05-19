@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { neon } from "@neondatabase/serverless";
 
-const sql = neon(process.env.NEON_DB_URL!);
+const sql = neon(process.env.NEON_DB_URL);
 
-export async function POST(req: NextRequest) {
+export async function POST(req) {
   try {
     const body = await req.json();
     const { name, email, subject, message } = body;
@@ -15,14 +15,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Get IP address
-    const ip =
-      req.headers.get("x-forwarded-for")?.split(",")[0] ||
-      req.ip ||
-      req.connection?.remoteAddress ||
-      "";
+    // Get IP address (App Router/Edge compatible)
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0] ?? "";
 
-    // Get country from IP
+    // Use geo API to get country
     let country = "";
     if (ip && ip !== "127.0.0.1" && ip !== "::1") {
       try {
@@ -30,7 +26,7 @@ export async function POST(req: NextRequest) {
         const geoData = await geoRes.json();
         country = geoData.country_name || "";
       } catch (geoErr) {
-        console.warn("Geo lookup failed:", geoErr);
+        country = "";
       }
     }
 
