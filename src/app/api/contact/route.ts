@@ -15,9 +15,28 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Get IP address
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0] ||
+      req.ip ||
+      req.connection?.remoteAddress ||
+      "";
+
+    // Get country from IP
+    let country = "";
+    if (ip && ip !== "127.0.0.1" && ip !== "::1") {
+      try {
+        const geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
+        const geoData = await geoRes.json();
+        country = geoData.country_name || "";
+      } catch (geoErr) {
+        console.warn("Geo lookup failed:", geoErr);
+      }
+    }
+
     await sql`
-      INSERT INTO enquiries (name, email, subject, message)
-      VALUES (${name}, ${email}, ${subject || ""}, ${message})
+      INSERT INTO enquiries (name, email, subject, message, country)
+      VALUES (${name}, ${email}, ${subject || ""}, ${message}, ${country})
     `;
 
     return NextResponse.json({ success: true });
