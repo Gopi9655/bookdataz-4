@@ -67,7 +67,7 @@ export const datacollections = [
       icon: "/medicine-drug-health-medical-mail-pharmacy-tablet-svgrepo-com.svg",
       title: "Bulk Email Messaging",
       content:
-        "Instantly connect with your audience using our bulk WhatsApp messaging, delivering personalized messages to thousands in just a few clicks.",
+        "Instantly get connected with your audience using our bulk WhatsApp messaging, delivering personalized messages to thousands in just a few clicks.",
     },
   ];
 
