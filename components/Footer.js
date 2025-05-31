@@ -10,7 +10,6 @@ const Footer = () => {
         {/* Left Section: Brand, contact, social icons */}
         <div className="flex flex-col w-full md:w-1/3 lg:w-1/4">
           {/* Brand/Logo */}
-         
           <p className="text-sm text-gray-400 mb-2">B2B DATABASE PROVIDERS</p>
 
           {/* Contact info */}
@@ -21,43 +20,7 @@ const Footer = () => {
             Email: <span className="text-white">sales@bookdataz.com</span>
           </p>
 
-          {/* Social Icons */}
-
-{/*           
-          <div className="flex items-center mt-4 space-x-3">
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-gray-700"
-            >
-              <FaLinkedinIn />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-gray-700"
-            >
-              <FaInstagram />
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-gray-700"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-gray-700"
-            >
-              <FaTwitter />
-            </a>
-          </div> */}
+          {/* Social Icons (commented out) */}
         </div>
         
         {/* Right Section: Columns */}
@@ -86,9 +49,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services column */}
-          
-
           {/* Company column */}
           <div>
             <h3 className="text-white font-semibold mb-4">Company</h3>
@@ -99,20 +59,21 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Resources column */}
-         
-
           {/* Get in Touch column */}
-          <a href="/contact">   <div>
+          <div>
             <h3 className="text-white font-semibold mb-4">Get in Touch</h3>
             <ul className="space-y-2 text-sm">
               <li className="hover:text-white"><a href="#">Request a Demo</a></li>
               <li className="hover:text-white"><a href="#">Contact Us</a></li>
               <li className="hover:text-white"><a href="#">Support</a></li>
             </ul>
-          </div></a>
-       
+          </div>
         </div>
+      </div>
+
+      {/* Copyright Section */}
+      <div className="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-400">
+        Designed & Developed by <span className="text-white font-medium">Bookdataz</span>. © {new Date().getFullYear()} <span className="text-white font-medium">Bookdataz</span>. All rights reserved.
       </div>
     </div>
   );
