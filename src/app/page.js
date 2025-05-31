@@ -370,7 +370,7 @@ const testimonials = [
   {
     id: 2,
     name: "Jonathan Lee",
-    position: "Chief Revenue Officer, USA san francisco",
+    position: "Chief Revenue Officer, USA California",
     testimonial:
       "The data quality from BookDataz helped streamline our outbound efforts across multiple EU markets. We noticed an immediate uplift in campaign engagement.",
     image: "/testimonials/testimonial3 (1).png",
@@ -415,7 +415,7 @@ const testimonials = [
   {
     id: 7,
     name: "Lars Petersen",
-    position: "Marketing Manager, USA newark",
+    position: "Marketing Manager, USA New Jersey",
     testimonial:
       "Our marketing funnels were stagnating until we integrated BookDataz leads. The engagement rates are consistently above average.",
     image: "/testimonials/testimonial3 (6).jpg",
