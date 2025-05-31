@@ -30,10 +30,10 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">About Us</h3>
             <ul className="space-y-2 text-sm">
-              <li className="hover:text-white"><a href="#">Our Story</a></li>
-              <li className="hover:text-white"><a href="#">Team</a></li>
-              <li className="hover:text-white"><a href="#">Careers</a></li>
-              <li className="hover:text-white"><a href="#">Mission & Vision</a></li>
+              <li className="hover:text-white"><a href="/about">Our Story</a></li>
+              <li className="hover:text-white"><a href="/aboutt">Team</a></li>
+              <li className="hover:text-white"><a href="/about">Careers</a></li>
+              <li className="hover:text-white"><a href="/about">Mission & Vision</a></li>
             </ul>
           </div>
 
@@ -53,9 +53,9 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Company</h3>
             <ul className="space-y-2 text-sm">
-              <li className="hover:text-white"><a href="#">About Bookdataz</a></li>
-              <li className="hover:text-white"><a href="#">Our Values</a></li>
-              <li className="hover:text-white"><a href="#">Customer Reviews</a></li>
+              <li className="hover:text-white"><a href="/about">About Bookdataz</a></li>
+              <li className="hover:text-white"><a href="/about">Our Values</a></li>
+              <li className="hover:text-white"><a href="/">Customer Reviews</a></li>
             </ul>
           </div>
 
@@ -63,9 +63,9 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Get in Touch</h3>
             <ul className="space-y-2 text-sm">
-              <li className="hover:text-white"><a href="#">Request a Demo</a></li>
-              <li className="hover:text-white"><a href="#">Contact Us</a></li>
-              <li className="hover:text-white"><a href="#">Support</a></li>
+              <li className="hover:text-white"><a href="/contact">Request a Demo</a></li>
+              <li className="hover:text-white"><a href="/contact">Contact Us</a></li>
+              <li className="hover:text-white"><a href="/contact">Support</a></li>
             </ul>
           </div>
         </div>

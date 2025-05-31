@@ -379,7 +379,7 @@ export default function BrowseDatacardPage() {
             that specializes in offering data-driven marketing and account
             profiling services. We provide B2B Database of key decision-makers,
             professionals & executives which can be customized as per your
-            requirement. With over 50M data repository of business records, our
+            requirement. With over 170M data repository of business records, our
             company has successfully served many clients globally since
             inception.
           </p>

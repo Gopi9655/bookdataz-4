@@ -18,11 +18,11 @@ const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/technology", label: "Technology List" },
-    { href: "/datacard", label: "Browse Datacard" },
-    { href: "/contact", label: "Contact Us" },
+    { href: "/", label: "HOME" },
+    { href: "/about", label: "ABOUT US" },
+    { href: "/technology", label: "TECHNOLOGY LIST" },
+    { href: "/datacard", label: "BROWSE DATACARDS" },
+    { href: "/contact", label: "CONTACT US" },
   ];
 
   // Framer Motion variants
@@ -102,7 +102,7 @@ const Navbar = () => {
         </motion.div>
 
         {/* Desktop Navigation Links */}
-        <motion.div className="hidden sm:flex space-x-9 text-l font-semibold relative">
+        <motion.div className="hidden sm:flex space-x-9 text-l font-bold relative">
           {/* First two nav links */}
           {navLinks.slice(0, 2).map((link) => (
             <div
@@ -142,7 +142,7 @@ const Navbar = () => {
             onMouseLeave={() => setIsHovering(false)}
           >
             <button className="relative flex items-center gap-2 text-black hover:text-customBlue transition duration-200 focus:outline-none">
-              Mailing List
+              MAILING LISTS
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-4 h-4 text-black hover:text-customBlue"
