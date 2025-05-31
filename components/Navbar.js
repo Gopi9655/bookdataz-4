@@ -102,7 +102,7 @@ const Navbar = () => {
         </motion.div>
 
         {/* Desktop Navigation Links */}
-        <motion.div className="hidden sm:flex space-x-9 text-l font-bold relative">
+        <motion.div className="hidden sm:flex space-x-9 text-l font-semibold relative">
           {/* First two nav links */}
           {navLinks.slice(0, 2).map((link) => (
             <div
