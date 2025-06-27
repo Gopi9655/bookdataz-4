@@ -853,7 +853,7 @@ export default function Home() {
       {/* ======================================
           TESTIMONIAL SECTION
       =======================================*/}
-      <div className="bg-slate-800 px-4 sm:px-6 md:px-10 lg:px-20 py-6 md:py-10 lg:py-20">
+      <div id="testimonials" className="bg-slate-800 px-4 sm:px-6 md:px-10 lg:px-20 py-6 md:py-10 lg:py-20">
       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold text-slate-100 mb-6 md:mb-10 lg:mb-20">
         What Our Clients Say
       </h1>
