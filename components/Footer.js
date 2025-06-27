@@ -70,7 +70,6 @@ return (   <div className="bg-gradient-to-r from-black to-customBlue text-gray-3
         <ul className="space-y-2 text-sm">
           <li className="hover:text-white"><Link href="/about">About Bookdataz</Link></li>
           <li className="hover:text-white"><Link href="/about">Our Values</Link></li>
-          <li className="hover:text-white"><Link href="/#testimonials">Customer Reviews</Link></li>
         </ul>
       </div>
 
