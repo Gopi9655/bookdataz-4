@@ -412,15 +412,7 @@ const testimonials = [
     image: "/testimonials/testimonial3 (7).jpg",
     rating: 5,
   },
-  {
-    id: 7,
-    name: "Lars Petersen",
-    position: "Marketing Manager, USA New Jersey",
-    testimonial:
-      "Our marketing funnels were stagnating until we integrated BookDataz leads. The engagement rates are consistently above average.",
-    image: "/testimonials/testimonial3 (6).jpg",
-    rating: 4.5,
-  },
+
   {
     id: 8,
     name: "Anastasia Volkov",
@@ -853,7 +845,7 @@ export default function Home() {
       {/* ======================================
           TESTIMONIAL SECTION
       =======================================*/}
-      <div className="bg-slate-800 px-4 sm:px-6 md:px-10 lg:px-20 py-6 md:py-10 lg:py-20">
+      <div id="testimonials" className="bg-slate-800 px-4 sm:px-6 md:px-10 lg:px-20 py-6 md:py-10 lg:py-20">
       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold text-slate-100 mb-6 md:mb-10 lg:mb-20">
         What Our Clients Say
       </h1>

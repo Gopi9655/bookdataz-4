@@ -20,12 +20,12 @@ export default function TeamLayout() {
             <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
               <div className="w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-custom-blue/50 flex items-center justify-center bg-gray-200">
                 {/* Placeholder for image */}
-                <img src="/team/team leader 2.jpg" alt="Sarah Chen" className="object-cover w-full h-full" />
+                <img src="/team/teammale1.jpg" alt="Sarah Chen" className="object-cover w-full h-full" />
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-2">Albert John Kingsley</h3>
-              <p className="text-lg text-red-500 font-semibold mb-4">CEO & Co-Founder</p>
+              <h3 className="text-3xl font-bold text-gray-900 mb-2">Brad Allen</h3>
+              <p className="text-lg text-red-500 font-semibold mb-4">CEO & Founder</p>
               <p className="text-base text-gray-600 leading-relaxed">
-                Sarah is the strategic mind behind BookDataZ, passionate about data integrity and ethical business practices.
+                Brad Allen is the strategic mind behind BookDataZ, passionate about data integrity and ethical business practices.
                 She ensures our vision translates into tangible client success.
               </p>
             </div>
@@ -34,7 +34,7 @@ export default function TeamLayout() {
             <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
               <div className="w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-custom-blue/50 flex items-center justify-center bg-gray-200">
                 {/* Placeholder for image */}
-                <img src="/team/team leader 1.jpeg" alt="David Lee" className="object-cover w-full h-full" />
+                <img src="/team/team male 2.jpg " alt="David Lee" className="object-cover w-full h-full" />
               </div>
               <h3 className="text-3xl font-bold text-gray-900 mb-2">David Lee</h3>
               <p className="text-lg text-red-500 font-semibold mb-4">CTO & Co-Founder</p>
@@ -48,12 +48,12 @@ export default function TeamLayout() {
             <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
               <div className="w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-custom-blue/50 flex items-center justify-center bg-gray-200">
                 {/* Placeholder for image */}
-                <img src="/team/team leader 3.jpg" alt="Emily White" className="object-cover w-full h-full" />
+                <img src="" alt="" className="object-cover w-full h-full" />
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-2">Emily White</h3>
+              <h3 className="text-3xl font-bold text-gray-900 mb-2">Rohan Mehta</h3>
               <p className="text-lg text-red-500 font-semibold mb-4">Chief Operations Officer</p>
               <p className="text-base text-gray-600 leading-relaxed">
-                Emily optimizes our operational efficiency and scalability. Her focus on seamless processes ensures
+                Rohan Mehta optimizes our operational efficiency and scalability. Her focus on seamless processes ensures
                 BookDataZ delivers data reliably and consistently to our global clientele.
               </p>
             </div>
@@ -80,7 +80,7 @@ export default function TeamLayout() {
             {/* Team Member 1 */}
             <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:shadow-lg">
               <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-red-400 flex items-center justify-center bg-gray-200">
-                <img src="/team/teammale1.jpg" alt="John Doe" className="object-cover w-full h-full" />
+                <img src="/team/team leader 3.jpg" alt="John Doe" className="object-cover w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">Roger Depay</h3>
               <p className="text-md text-custom-blue font-semibold mb-3">VP of sales</p>
@@ -90,7 +90,7 @@ export default function TeamLayout() {
             {/* Team Member 2 */}
             <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:shadow-lg">
               <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-red-400 flex items-center justify-center bg-gray-200">
-                <img src="/team/team male 2.jpg" alt="Jane Smith" className="object-cover w-full h-full" />
+                <img src="/team/team leader 1.jpeg" alt="Jane Smith" className="object-cover w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">David Johnson</h3>
               <p className="text-md text-custom-blue font-semibold mb-3">Director of sales</p>
