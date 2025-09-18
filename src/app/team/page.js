@@ -144,7 +144,7 @@ export default function TeamLayout() {
                 <img src="" alt="" className="object-cover w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">Sophia Larson</h3>
-              <p className="text-md text-custom-blue font-semibold mb-3">Business Development Manager</p>
+              <p className="text-md text-custom-blue font-semibold mb-3">Senior Business Development Manager</p>
               <p className="text-sm text-gray-600">Senior Business Development Manager</p>
             </div>
             {/* team 8 */}
