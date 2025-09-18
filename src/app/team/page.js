@@ -103,7 +103,7 @@ export default function TeamLayout() {
                 <img src="/team/team male 3.jpg" alt="Michael Brown" className="object-cover w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">Robert Haynes</h3>
-              <p className="text-md text-custom-blue font-semibold mb-3">Business Development Director</p>
+              <p className="text-md text-custom-blue font-semibold mb-3">Business Development Manager</p>
               <p className="text-sm text-gray-600">Business Growth Architect</p>
             </div>
 
@@ -113,7 +113,7 @@ export default function TeamLayout() {
                 <img src="/team/team male 4.jpg" alt="Jessica Green" className="object-cover w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">Kevin Hughes</h3>
-              <p className="text-md text-custom-blue font-semibold mb-3">Sales and marketing director </p>
+              <p className="text-md text-custom-blue font-semibold mb-3">Business Development Manager</p>
               <p className="text-sm text-gray-600">Sales-Driven Marketer
 </p>
             </div>
@@ -125,7 +125,7 @@ export default function TeamLayout() {
                 <img src="/team/team male 5.jpg" alt="Chris Taylor" className="object-cover w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">Peter Stenberg</h3>
-              <p className="text-md text-custom-blue font-semibold mb-3">Business development director</p>
+              <p className="text-md text-custom-blue font-semibold mb-3">Business Development Manager</p>
               <p className="text-sm text-gray-600">Revenue Development Strategist</p>
             </div>
 
@@ -135,9 +135,31 @@ export default function TeamLayout() {
                 <img src="/team/team male 6.jpeg" alt="Olivia King" className="object-cover w-full h-full" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">Michael Brand</h3>
-              <p className="text-md text-custom-blue font-semibold mb-3">Director of sales</p>
+              <p className="text-md text-custom-blue font-semibold mb-3">Business Development Manager</p>
               <p className="text-sm text-gray-600">Data-Led Sales Planner</p>
             </div>
+            {/* team 7 */}
+                        <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:shadow-lg">
+              <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-red-400 flex items-center justify-center bg-gray-200">
+                <img src="" alt="" className="object-cover w-full h-full" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">Sophia Larson</h3>
+              <p className="text-md text-custom-blue font-semibold mb-3">Business Development Manager</p>
+              <p className="text-sm text-gray-600">Senior Business Development Manager</p>
+            </div>
+            {/* team 8 */}
+            <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:shadow-lg">
+              <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-red-400 flex items-center justify-center bg-gray-200">
+                <img src="" alt="" className="object-cover w-full h-full" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">Michael Brand</h3>
+              <p className="text-md text-custom-blue font-semibold mb-3">Business Development Manager</p>
+              <p className="text-sm text-gray-600">Business Development Manager</p>
+            </div>
+
+            
+
+
 
           </div>
         </div>
