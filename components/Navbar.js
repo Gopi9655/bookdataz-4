@@ -114,7 +114,7 @@ const Navbar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.18, ease: "easeOut" }}
-                  className="absolute left-1/2 top-full w-[min(820px,calc(100vw-2.5rem))] -translate-x-1/2 pt-4"
+                  className="absolute right-0 top-full w-[min(820px,calc(100vw-2.5rem))] pt-4"
                 >
                   <div className="max-h-[min(68vh,560px)] overflow-y-auto rounded-3xl border border-blue-300/15 bg-[#071a2d]/[0.98] p-4 shadow-2xl shadow-slate-950/60 backdrop-blur-xl">
                     <div className="grid grid-cols-2 gap-1 lg:grid-cols-3">
