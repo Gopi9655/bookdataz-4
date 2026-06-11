@@ -1,130 +1,133 @@
-// components/Footer.tsx
-import { FaLinkedinIn, FaInstagram, FaFacebookF, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
+import { Mail, MapPin, Phone } from "lucide-react";
+
 import Container from "./ui/Container";
 
-const Footer = () => {
-  return (
-    <footer className="bg-gradient-to-br from-slate-900 via-customBlue to-blue-950 py-20 text-blue-200 lg:py-28">
-      <Container>
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24"> {/* Increased main column gap for spaciousness */}
+const footerGroups = [
+  {
+    title: "Company",
+    links: [
+      { href: "/about", label: "About Bookdataz" },
+      { href: "/story", label: "Our Story" },
+      { href: "/team", label: "Team" },
+      { href: "/mission", label: "Mission & Vision" },
+      { href: "/#testimonials", label: "Customer Reviews" },
+    ],
+  },
+  {
+    title: "Industries We Serve",
+    links: [
+      { href: "/automotive-industry", label: "Automotive" },
+      { href: "/banking-and-finance", label: "Banking and Finance" },
+      { href: "/construction-companies", label: "Construction" },
+      { href: "/educational-industries", label: "Education" },
+      { href: "/healthcare-industries", label: "Healthcare Technology" },
+      { href: "/manufacturing-industries", label: "Manufacturing" },
+      { href: "/real-estate", label: "Real Estate" },
+      { href: "/retail-industries", label: "Retail" },
+    ],
+  },
+  {
+    title: "Get in Touch",
+    links: [
+      { href: "/contact", label: "Request a Demo" },
+      { href: "/contact", label: "Contact Us" },
+      { href: "/contact", label: "Support" },
+    ],
+  },
+];
 
-          {/* Left Column: Contact Info & Offices */}
-          {/* This column is slightly wider on large screens for better balance and content grouping */}
-          <div className="flex flex-col w-full lg:w-1/3 xl:w-1/4 space-y-7"> {/* Increased vertical spacing for clarity */}
+const Footer = () => (
+  <footer className="relative overflow-hidden border-t border-white/10 bg-slate-950 text-slate-300">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.18),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(249,115,22,0.10),transparent_30%)]" />
+    <Container className="relative py-16 lg:py-20">
+      <div className="grid gap-12 lg:grid-cols-[1.05fr_1.95fr] lg:gap-16">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-orange-400">
+            BookDataZ
+          </p>
+          <div className="mt-6 space-y-4 text-sm">
+            <a
+              href="tel:+19013005501"
+              className="flex items-center gap-3 transition hover:text-white"
+            >
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-blue-400/10 text-blue-300">
+                <Phone size={16} />
+              </span>
+              +1 (901)-300-5501
+            </a>
+            <a
+              href="mailto:sales@bookdataz.com"
+              className="flex items-center gap-3 transition hover:text-white"
+            >
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-blue-400/10 text-blue-300">
+                <Mail size={16} />
+              </span>
+              sales@bookdataz.com
+            </a>
+          </div>
 
-            {/* Contact Info Group */}
-            <div>
-              <p className="text-sm pb-1"> {/* Added bottom padding for a subtle visual separation */}
-                <span className="font-semibold text-red-500">Phone:</span>{" "} {/* Highlighted with red-500 */}
-                <Link href="tel:+19013005501" className="text-white hover:text-red-500 transition-colors">
-                  +1 (901)-300-5501
-                </Link>
-              </p>
-              <p className="text-sm">
-                <span className="font-semibold text-red-500">Email:</span>{" "} {/* Highlighted with red-500 */}
-                <a href="mailto:sales@bookdataz.com" className="text-white hover:text-red-500 transition-colors">
-                  sales@bookdataz.com
-                </a>
-              </p>
-            </div>
-
-            {/* US Office Group */}
-            <div>
-              <p className="text-sm font-semibold text-red-500 mb-1">US Office:</p> {/* Highlighted with red-500, tight mb-1 */}
-              <p className="text-sm text-white leading-relaxed"> {/* leading-relaxed for better readability */}
-                6150 Poplar Ave, Suite 200<br />
-                Memphis, TN 38119<br />
+          <div className="mt-8 grid gap-5 text-sm leading-6 sm:grid-cols-2 lg:grid-cols-1">
+            <div className="flex gap-3">
+              <MapPin size={17} className="mt-1 shrink-0 text-orange-400" />
+              <p>
+                <span className="font-semibold text-white">US Office</span>
+                <br />
+                6150 Poplar Ave, Suite 200
+                <br />
+                Memphis, TN 38119
+                <br />
                 United States
               </p>
             </div>
-
-            {/* UK Office Group */}
-            <div>
-              <p className="text-sm font-semibold text-red-500 mb-1">UK Office:</p> {/* Highlighted with red-500, tight mb-1 */}
-              <p className="text-sm text-white leading-relaxed"> {/* leading-relaxed for better readability */}
-                Gateway East, White City<br />
-                London W12 7TU<br />
+            <div className="flex gap-3">
+              <MapPin size={17} className="mt-1 shrink-0 text-orange-400" />
+              <p>
+                <span className="font-semibold text-white">UK Office</span>
+                <br />
+                Gateway East, White City
+                <br />
+                London W12 7TU
+                <br />
                 United Kingdom
               </p>
             </div>
-
-            {/* Social Media Icons - Larger icons and clear spacing */}
-            <div className="flex space-x-6 mt-6"> {/* Increased space-x for icon separation and mt-6 for clear break */}
-              <a href="#" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-500 transition-colors text-3xl"> {/* text-3xl for more prominence */}
-                <FaLinkedinIn />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-500 transition-colors text-3xl">
-                <FaInstagram />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-500 transition-colors text-3xl">
-                <FaFacebookF />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-500 transition-colors text-3xl">
-                <FaTwitter />
-              </a>
-            </div>
-          </div>
-
-
-          {/* Right Columns: Navigation Links Grid */}
-          {/* Responsive grid for links, ensuring good distribution across screen sizes */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-16 w-full lg:w-2/3 xl:w-3/4"> {/* Adjusted md:gap for better spread */}
-
-            {/* Company Links */}
-            <div>
-              {/* Heading with red-500 underline for strong highlight */}
-              <h3 className="text-white text-lg font-semibold mb-6 relative after:absolute after:bottom-[-8px] after:left-0 after:w-12 after:h-[3px] after:bg-red-500"> {/* Increased mb, underline width/thickness, red-500 */}
-                Company
-              </h3>
-              <ul className="space-y-3.5 text-sm"> {/* Slightly increased space-y for fine spacing */}
-                <li><Link href="/about" className="hover:text-white transition-colors">About Bookdataz</Link></li>
-                <li><Link href="/story" className="hover:text-white transition-colors">Our Story</Link></li>
-                <li><Link href="/team" className="hover:text-white transition-colors">Team</Link></li>
-                <li><Link href="/mission" className="hover:text-white transition-colors">Mission & Vision</Link></li>
-                <li><Link href="/#testimonials" className="hover:text-white transition-colors">Customer Reviews</Link></li>
-              </ul>
-            </div>
-
-            {/* Industries We Serve - Updated with all specified links */}
-            <div>
-              {/* Heading with red-500 underline for strong highlight */}
-              <h3 className="text-white text-lg font-semibold mb-6 relative after:absolute after:bottom-[-8px] after:left-0 after:w-12 after:h-[3px] after:bg-red-500"> {/* Increased mb, underline width/thickness, red-500 */}
-                Industries We Serve
-              </h3>
-              <ul className="space-y-3.5 text-sm"> {/* Slightly increased space-y for fine spacing */}
-                <li><Link href="/automotive-industry" className="hover:text-white transition-colors">Automotive</Link></li>
-                <li><Link href="banking-and-finance" className="hover:text-white transition-colors">Banking and Finance</Link></li>
-                <li><Link href="construction-companies" className="hover:text-white transition-colors">Construction</Link></li>
-                <li><Link href="/educational-industries" className="hover:text-white transition-colors">Education</Link></li>
-                <li><Link href="/healthcare-industries" className="hover:text-white transition-colors">Healthcare Technology</Link></li>
-                <li><Link href="/manufacturing-industries" className="hover:text-white transition-colors">Manufacturing</Link></li>
-                <li><Link href="/real-estate" className="hover:text-white transition-colors">Real Estate</Link></li>
-                <li><Link href="/retail-industries" className="hover:text-white transition-colors">Retail</Link></li>
-              </ul>
-            </div>
-
-            {/* Get in Touch */}
-            <div>
-              {/* Heading with red-500 underline for strong highlight */}
-              <h3 className="text-white text-lg font-semibold mb-6 relative after:absolute after:bottom-[-8px] after:left-0 after:w-12 after:h-[3px] after:bg-red-500"> {/* Increased mb, underline width/thickness, red-500 */}
-                Get in Touch
-              </h3>
-              <ul className="space-y-3.5 text-sm"> {/* Slightly increased space-y for fine spacing */}
-                <li><Link href="/contact" className="hover:text-white transition-colors">Request a Demo</Link></li>
-                <li><Link href="/contact">Contact Us</Link></li>
-                <li><Link href="/contact">Support</Link></li>
-              </ul>
-            </div>
           </div>
         </div>
-        {/* Copyright & Disclaimer Section - Separated with a robust border and centered */}
-        <div className="border-t-2 border-blue-700 mt-20 md:mt-28 pt-8 text-center text-sm text-blue-300"> {/* Thicker border, more margin, more padding */}
-          Designed & Developed by <span className="text-white font-semibold">Bookdataz</span>. © {new Date().getFullYear()} <span className="text-white font-semibold">Bookdataz</span>. All rights reserved.
+
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:gap-10">
+          {footerGroups.map((group) => (
+            <div key={group.title}>
+              <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-white">
+                {group.title}
+              </h2>
+              <div className="mt-4 h-px w-10 bg-orange-400" />
+              <ul className="mt-5 space-y-3 text-sm">
+                {group.links.map((link) => (
+                  <li key={`${group.title}-${link.label}`}>
+                    <Link
+                      href={link.href}
+                      className="transition hover:text-blue-300"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-      </Container>
-    </footer>
-  );
-};
+      </div>
+
+      <div className="mt-14 border-t border-white/10 pt-7 text-center text-xs leading-6 text-slate-500 sm:text-left">
+        Designed &amp; Developed by{" "}
+        <span className="font-semibold text-slate-300">Bookdataz</span>. ©{" "}
+        {new Date().getFullYear()}{" "}
+        <span className="font-semibold text-slate-300">Bookdataz</span>. All
+        rights reserved.
+      </div>
+    </Container>
+  </footer>
+);
 
 export default Footer;

@@ -50,8 +50,9 @@ const ThreeDDatabaseScene = () => {
 
         // Animation
         let xPos = -5;
+        let animationFrame;
         function animate() {
-            requestAnimationFrame(animate);
+            animationFrame = requestAnimationFrame(animate);
 
             xPos += 0.02; // Moving speed
             if (xPos > 5) xPos = -5; // Reset position
@@ -65,7 +66,13 @@ const ThreeDDatabaseScene = () => {
 
         // Cleanup on component unmount
         return () => {
-            mountRef.current.removeChild(renderer.domElement);
+            cancelAnimationFrame(animationFrame);
+            scene.traverse((object) => {
+                if (object.geometry) object.geometry.dispose();
+                if (object.material) object.material.dispose();
+            });
+            renderer.dispose();
+            renderer.domElement.remove();
         };
     }, []);
 

@@ -224,12 +224,13 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end space-y-3">
+    <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end space-y-2 sm:bottom-5 sm:right-5 sm:space-y-3">
       {/* --- Mail Icon Button (opens email client) --- */}
       <motion.a
         href="mailto:sales@bookdataz.com"
-        className="bg-customBlue p-3 md:p-3.5 rounded-full shadow-md  flex items-center justify-center hover:shadow-lg transition-all"
-        whileTap={{ scale: 0.9 }}
+        className="flex h-11 w-11 items-center justify-center rounded-full border border-orange-300/30 bg-orange-500 text-white shadow-lg shadow-slate-950/25 transition-colors hover:bg-orange-400 sm:h-12 sm:w-12"
+        whileTap={{ scale: 0.96 }}
+        aria-label="Email BookDataZ"
         title="Email Us"
       >
         <MailIcon />
@@ -237,9 +238,10 @@ export default function Chatbot() {
 
       {/* --- Chatbot Toggle Button --- */}
       <motion.button
-        className="bg-customBlue text-white p-3 md:p-4 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition-all"
+        className="flex h-11 w-11 items-center justify-center rounded-full border border-blue-300/25 bg-[#082d52] text-white shadow-xl shadow-slate-950/30 transition-colors hover:bg-blue-800 sm:h-12 sm:w-12"
         onClick={() => setIsOpen(!isOpen)}
-        whileTap={{ scale: 0.9 }}
+        whileTap={{ scale: 0.96 }}
+        aria-label={isOpen ? "Close chatbot" : "Open chatbot"}
         title="Open Chatbot"
       >
         {isOpen ? (
@@ -253,13 +255,14 @@ export default function Chatbot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="absolute bottom-20 right-0 w-[90vw] max-w-sm md:max-w-md bg-white shadow-xl rounded-lg overflow-hidden border border-gray-200"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="absolute bottom-[6.75rem] right-0 w-[calc(100vw-2rem)] max-w-sm overflow-hidden rounded-3xl border border-blue-300/20 bg-white shadow-2xl shadow-slate-950/30 md:max-w-md"
           >
             {/* Header */}
-            <div className="bg-customBlue text-white p-3 flex justify-between items-center">
+            <div className="flex items-center justify-between bg-[#071a2d] p-4 text-white">
               <h3 className="text-lg md:text-xl font-semibold">BookDataz Chat</h3>
               <button onClick={() => setIsOpen(false)} className="text-white hover:opacity-80">
                 <FiX className="text-lg md:text-xl" />
@@ -274,7 +277,7 @@ export default function Chatbot() {
                   className={`p-2 rounded-lg max-w-[90%] ${
                     msg.sender === "bot"
                       ? "bg-gray-100 text-gray-700 self-start"
-                      : "bg-customBlue text-white self-end ml-auto"
+                      : "bg-[#082d52] text-white self-end ml-auto"
                   }`}
                 >
                   {msg.text}
@@ -287,7 +290,7 @@ export default function Chatbot() {
                           onClick={() => handleSend(question)}
                           className="block text-customBlue hover:underline mt-1 text-sm md:text-base"
                         >
-                          ➜ {question}
+                          {question}
                         </button>
                       ))}
                     </div>
@@ -301,14 +304,14 @@ export default function Chatbot() {
               <input
                 type="text"
                 placeholder="Type your message..."
-                className="flex-1 p-2 md:p-3 border rounded-l-lg focus:outline-none text-sm md:text-base"
+                className="min-w-0 flex-1 rounded-l-xl border border-slate-200 p-2 text-sm text-slate-950 focus:border-blue-400 focus:outline-none md:p-3 md:text-base"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend(input)}
               />
               <button
                 onClick={() => handleSend(input)}
-                className="bg-customBlue text-white p-2 md:p-3 rounded-r-lg hover:bg-blue-700 transition"
+                className="rounded-r-xl bg-orange-500 p-2 text-white transition-colors hover:bg-orange-400 md:p-3"
               >
                 <FiSend className="text-lg md:text-xl" />
               </button>

@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import PageHeader from "../../components/PageHeader";
 import CookieConsent from "../../components/CookieConsent";
 import DisableCopyPaste from "../../components/DisableCopyPaste";
-import Script from "next/script";
+
 export const metadata = {
   title: "Affordable, Reliable Databases for Your Business Growth | Bookdataz.com",
   description:
@@ -45,27 +45,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* --- Schema Markup --- */}
         <script type="application/ld+json">
           {JSON.stringify(websiteSchema)}
         </script>
-
-        {/* --- Cookie Consent CSS & JS --- */}
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"
-        />
-        <Script
-          src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"
-          strategy="beforeInteractive"
-        />
-
-        {/* --- Existing Metadata --- */}
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
       </head>
-      <body className="antialiased text-black relative">
-      <DisableCopyPaste />
+      <body className="relative bg-slate-950 text-black antialiased">
+        <DisableCopyPaste />
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <PageHeader />
@@ -73,34 +58,8 @@ export default function RootLayout({ children }) {
           <Footer />
         </div>
 
-        {/* --- Floating Chatbot & Mail Icon --- */}
         <Chatbot />
         <CookieConsent />
-
-
-        {/* --- Cookie Consent Banner Initialization --- */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.addEventListener("load", function(){
-                window.cookieconsent.initialise({
-                  palette: {
-                    popup: { background: "#000" },
-                    button: { background: "#f1d600" }
-                  },
-                  theme: "classic",
-                  position: "bottom-right",
-                  content: {
-                    message: "We use cookies to ensure you get the best experience on our website.",
-                    dismiss: "Got it!",
-                    link: "Learn more",
-                    href: "/privacy-policy"
-                  }
-                });
-              });
-            `
-          }}
-        ></script>
       </body>
     </html>
   );

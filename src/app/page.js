@@ -24,7 +24,7 @@ import GlassCard from "../../components/ui/GlassCard";
 import Section from "../../components/ui/Section";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 1, y: 12 },
   visible: {
     opacity: 1,
     y: 0,
@@ -260,7 +260,7 @@ export default function Home() {
         </motion.div>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="border-t border-white/10 bg-gradient-to-b from-slate-100 to-slate-50">
         <SectionHeading
           eyebrow="Our Industry Database"
           title="Premium Email Lists Across Industries"
@@ -340,7 +340,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className="bg-white">
+      <Section className="border-y border-slate-200 bg-gradient-to-b from-white to-slate-100">
         <SectionHeading
           eyebrow="Data Category Preview"
           title="Detailed coverage for the markets that matter"
@@ -469,7 +469,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="border-t border-slate-200 bg-gradient-to-b from-slate-100 to-slate-50">
         <motion.div
           variants={fadeUp}
           initial="hidden"

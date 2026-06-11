@@ -1,384 +1,267 @@
-
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+
 import { mailinglinks } from "@/resource/data";
 import Container from "./ui/Container";
 
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/technology", label: "Technology List" },
+  { href: "/datacard", label: "Browse Datacards" },
+  { href: "/contact", label: "Contact Us" },
+];
+
+const industryHref = (name) => `/${name.toLowerCase().replace(/ /g, "-")}`;
+
 const Navbar = () => {
   const pathname = usePathname();
-  const isHome = pathname === "/";
-  const [isHovering, setIsHovering] = useState(false);
-  const [hoveredLink, setHoveredLink] = useState(null);
-  const [activeLink, setActiveLink] = useState(null);
+  const dropdownRef = useRef(null);
+  const [isMailingOpen, setIsMailingOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileMailingOpen, setIsMobileMailingOpen] = useState(false);
 
-  const navLinks = [
-    { href: "/", label: "HOME" },
-    { href: "/about", label: "ABOUT US" },
-    { href: "/technology", label: "TECHNOLOGY LIST" },
-    { href: "/datacard", label: "BROWSE DATACARDS" },
-    { href: "/contact", label: "CONTACT US" },
-  ];
+  const isActive = (href) =>
+    href === "/" ? pathname === href : pathname.startsWith(href);
+  const isIndustryActive = mailinglinks.some(
+    (item) => pathname === industryHref(item.name)
+  );
 
-  // Framer Motion variants
-  const underlineVariants = {
-    hidden: { width: 0 },
-    visible: { width: "100%" },
-  };
-
-  const dropdownVariants = {
-    hidden: { opacity: 0, y: -10, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { type: "spring", stiffness: 200, damping: 20 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: (i) => ({
-      opacity: 1,
-      x: 0,
-      transition: { delay: i * 0.05, type: "tween", duration: 0.3 },
-    }),
-  };
-
-  // Mobile menu variants
-  const mobileMenuVariants = {
-    closed: {
-      opacity: 0,
-      x: "100%",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-      },
-    },
-    open: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-      },
-    },
-  };
-
-  // Set active link on route change
   useEffect(() => {
-    setActiveLink(pathname);
+    setIsMailingOpen(false);
+    setIsMobileMenuOpen(false);
+    setIsMobileMailingOpen(false);
   }, [pathname]);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isMobileMenuOpen && 
-          !event.target.closest('.mobile-menu') && 
-          !event.target.closest('.hamburger-button')) {
-        setIsMobileMenuOpen(false);
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsMailingOpen(false);
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [isMobileMenuOpen]);
+    document.addEventListener("pointerdown", handleOutsideClick);
+    return () => document.removeEventListener("pointerdown", handleOutsideClick);
+  }, []);
 
   return (
-    <motion.nav
-      className={`sticky top-0 z-50 border-b ${
-        isHome
-          ? "border-white/10 bg-slate-950 text-white"
-          : "border-slate-200 bg-gradient-to-r from-white to-gray-100"
-      }`}
-    >
-      <Container className="flex items-center justify-between py-4">
-        {/* Logo */}
-        <motion.div className="flex-shrink-0">
+    <nav className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/95 text-white shadow-lg shadow-slate-950/20 backdrop-blur-xl">
+      <Container className="flex h-[72px] items-center justify-between gap-4">
         <Link
           href="/"
-          className={`block overflow-hidden rounded-xl ${isHome ? "bg-white px-3 py-2" : ""}`}
+          aria-label="BookDataZ home"
+          className="group rounded-2xl border border-white/10 bg-white/[0.97] px-2.5 py-2 shadow-sm shadow-black/20 transition hover:border-blue-300/40"
         >
-              <Image src="/logo-b.jpg" alt="BookDataZ" width={200} height={49} className="h-9 w-auto" />
+          <Image
+            src="/logo-b.jpg"
+            alt="BookDataZ"
+            width={200}
+            height={49}
+            priority
+            className="h-8 w-auto mix-blend-multiply sm:h-9"
+          />
         </Link>
-        </motion.div>
 
-        {/* Desktop Navigation Links */}
-        <motion.div className="hidden sm:flex space-x-9 text-l font-semibold relative">
-          {/* First two nav links */}
+        <div className="hidden items-center gap-1 xl:flex">
           {navLinks.slice(0, 2).map((link) => (
-            <div
+            <Link
               key={link.href}
-              className="relative"
-              onMouseEnter={() => setHoveredLink(link.href)}
-              onMouseLeave={() => setHoveredLink(null)}
+              href={link.href}
+              aria-current={isActive(link.href) ? "page" : undefined}
+              className={`rounded-full px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition ${
+                isActive(link.href)
+                  ? "bg-white/10 text-orange-400"
+                  : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
+              }`}
             >
-              <Link
-                href={link.href}
-                onClick={() => setActiveLink(link.href)}
-                className={`${
-                  activeLink === link.href
-                    ? isHome ? "text-orange-400" : "text-customBlue"
-                    : isHome ? "text-slate-200" : "text-black"
-                } hover:text-orange-400 transition duration-200`}
-              >
-                {link.label}
-              </Link>
-
-              {/* Hover Underline */}
-              <motion.span
-                className={`absolute bottom-0 left-0 h-0.5 ${isHome ? "bg-orange-400" : "bg-customBlue"}`}
-                initial="hidden"
-                animate={
-                  hoveredLink === link.href || activeLink === link.href
-                    ? "visible"
-                    : "hidden"
-                }
-                variants={underlineVariants}
-              />
-            </div>
+              {link.label}
+            </Link>
           ))}
 
-          {/* Mailing List with Dropdown (3rd item) */}
           <div
-            className="relative group"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
+            ref={dropdownRef}
+            className="relative"
+            onMouseEnter={() => setIsMailingOpen(true)}
+            onMouseLeave={() => setIsMailingOpen(false)}
           >
-            <button className={`relative flex items-center gap-2 transition duration-200 focus:outline-none hover:text-orange-400 ${isHome ? "text-slate-200" : "text-black"}`}>
-              MAILING LISTS
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
+            <button
+              type="button"
+              aria-expanded={isMailingOpen}
+              onClick={() => setIsMailingOpen((open) => !open)}
+              className={`flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition ${
+                isIndustryActive
+                  ? "bg-white/10 text-orange-400"
+                  : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
+              }`}
+            >
+              Mailing Lists
+              <ChevronDown
+                size={15}
+                className={`transition-transform ${isMailingOpen ? "rotate-180" : ""}`}
+              />
             </button>
 
-            <motion.div
-              className="absolute left-0 hidden group-hover:flex bg-white rounded-xl shadow-lg p-6 z-50 w-[600px] transform transition duration-300"
-              style={{
-                boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.15)",
-              }}
-              initial="hidden"
-              animate={isHovering ? "visible" : "hidden"}
-              variants={dropdownVariants}
-            >
-              <div className="grid grid-cols-3 gap-8">
-                {mailinglinks.map((item, index) => (
-                  <motion.div
-                    key={item.id}
-                    custom={index}
-                    initial="hidden"
-                    animate={isHovering ? "visible" : "hidden"}
-                    variants={itemVariants}
-                  >
-                    <Link
-                      href={`/${item.name.toLowerCase().replace(/ /g, "-")}`}
-                      className="flex items-center text-gray-700 hover:text-white hover:bg-customBlue hover:rounded-md p-2 transition duration-200"
-                    >
-                      <Image
-                        src={item.icon}
-                        alt={item.name}
-                        width={32}
-                        height={32}
-                        className="mr-3"
-                      />
-                      {item.name}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+            <AnimatePresence>
+              {isMailingOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
+                  className="absolute left-1/2 top-full w-[min(820px,calc(100vw-2.5rem))] -translate-x-1/2 pt-4"
+                >
+                  <div className="max-h-[min(68vh,560px)] overflow-y-auto rounded-3xl border border-blue-300/15 bg-[#071a2d]/[0.98] p-4 shadow-2xl shadow-slate-950/60 backdrop-blur-xl">
+                    <div className="grid grid-cols-2 gap-1 lg:grid-cols-3">
+                      {mailinglinks.map((item) => {
+                        const href = industryHref(item.name);
+                        return (
+                          <Link
+                            key={item.id}
+                            href={href}
+                            className={`flex min-w-0 items-center gap-3 rounded-2xl p-3 text-sm font-medium transition ${
+                              pathname === href
+                                ? "bg-orange-400 text-slate-950"
+                                : "text-slate-200 hover:bg-white/[0.08] hover:text-white"
+                            }`}
+                          >
+                            <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl bg-white">
+                              <Image
+                                src={item.icon}
+                                alt=""
+                                width={28}
+                                height={28}
+                                className="h-7 w-7 object-cover"
+                              />
+                            </span>
+                            <span className="truncate">{item.name}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
-          {/* Remaining nav links */}
           {navLinks.slice(2).map((link) => (
-            <div
+            <Link
               key={link.href}
-              className="relative"
-              onMouseEnter={() => setHoveredLink(link.href)}
-              onMouseLeave={() => setHoveredLink(null)}
+              href={link.href}
+              aria-current={isActive(link.href) ? "page" : undefined}
+              className={`rounded-full px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition ${
+                isActive(link.href)
+                  ? "bg-white/10 text-orange-400"
+                  : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
+              }`}
             >
-              <Link
-                href={link.href}
-                onClick={() => setActiveLink(link.href)}
-                className={`${
-                  activeLink === link.href
-                    ? isHome ? "text-orange-400" : "text-customBlue"
-                    : isHome ? "text-slate-200" : "text-black"
-                } hover:text-orange-400 transition duration-200`}
-              >
-                {link.label}
-              </Link>
-
-              {/* Hover Underline */}
-              <motion.span
-                className={`absolute bottom-0 left-0 h-0.5 ${isHome ? "bg-orange-400" : "bg-customBlue"}`}
-                initial="hidden"
-                animate={
-                  hoveredLink === link.href || activeLink === link.href
-                    ? "visible"
-                    : "hidden"
-                }
-                variants={underlineVariants}
-              />
-            </div>
+              {link.label}
+            </Link>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Mobile Menu Button */}
         <button
-          className={`hamburger-button rounded-xl p-2 sm:hidden ${isHome ? "text-white hover:bg-white/10" : "hover:bg-gray-100"}`}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          type="button"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+          className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-white transition hover:border-blue-300/30 hover:bg-white/10 xl:hidden"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-            />
-          </svg>
+          {isMobileMenuOpen ? <X size={21} /> : <Menu size={21} />}
         </button>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              className="sm:hidden fixed inset-y-0 right-0 w-64 bg-white shadow-xl z-50 mobile-menu"
-              initial="closed"
-              animate="open"
-              exit="closed"
-              variants={mobileMenuVariants}
-            >
-              <div className="flex flex-col h-full">
-                <div className="p-4 border-b border-gray-100">
-                  <div className="flex justify-between items-center">
-                    <h2 className="text-xl font-semibold text-gray-800">Menu</h2>
-                    <button
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="p-2 hover:bg-gray-100 rounded-md"
-                    >
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex-1 p-4 overflow-y-auto">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => {
-                        setActiveLink(link.href);
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className={`block py-3 px-4 text-lg rounded-lg mb-2 ${
-                        activeLink === link.href
-                          ? "bg-customBlue text-white"
-                          : "text-gray-700 hover:bg-gray-50"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-
-                  {/* Mobile Mailing List Accordion */}
-                  <div className="mb-2">
-                    <button
-                      onClick={() => setIsMobileMailingOpen(!isMobileMailingOpen)}
-                      className="w-full flex justify-between items-center py-3 px-4 text-lg text-gray-700 hover:bg-gray-50 rounded-lg"
-                    >
-                      Mailing List
-                      <svg
-                        className={`w-4 h-4 transition-transform ${
-                          isMobileMailingOpen ? "rotate-180" : ""
-                        }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </button>
-
-                    <AnimatePresence>
-                      {isMobileMailingOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden bg-gray-50 rounded-lg mt-1"
-                        >
-                          <div className="p-2">
-                            {mailinglinks.map((item) => (
-                              <Link
-                                key={item.id}
-                                href={`/${item.name.toLowerCase().replace(/ /g, "-")}`}
-                                className="flex items-center py-2 px-4 text-gray-700 hover:bg-white hover:text-customBlue rounded-md"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                              >
-                                <Image
-                                  src={item.icon}
-                                  alt={item.name}
-                                  width={24}
-                                  height={24}
-                                  className="mr-3"
-                                />
-                                <span>{item.name}</span>
-                              </Link>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </Container>
-    </motion.nav>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="overflow-hidden border-t border-white/10 bg-[#071a2d] xl:hidden"
+          >
+            <Container className="max-h-[calc(100vh-72px)] overflow-y-auto py-4">
+              <div className="grid gap-1">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    aria-current={isActive(link.href) ? "page" : undefined}
+                    className={`rounded-2xl px-4 py-3 text-sm font-semibold transition ${
+                      isActive(link.href)
+                        ? "bg-orange-400 text-slate-950"
+                        : "text-slate-200 hover:bg-white/[0.07] hover:text-white"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+
+                <button
+                  type="button"
+                  aria-expanded={isMobileMailingOpen}
+                  onClick={() => setIsMobileMailingOpen((open) => !open)}
+                  className={`flex items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${
+                    isIndustryActive
+                      ? "text-orange-400"
+                      : "text-slate-200 hover:bg-white/[0.07] hover:text-white"
+                  }`}
+                >
+                  Mailing Lists
+                  <ChevronDown
+                    size={17}
+                    className={`transition-transform ${isMobileMailingOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isMobileMailingOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="grid gap-1 rounded-2xl border border-white/10 bg-slate-950/50 p-2 sm:grid-cols-2">
+                        {mailinglinks.map((item) => {
+                          const href = industryHref(item.name);
+                          return (
+                            <Link
+                              key={item.id}
+                              href={href}
+                              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition ${
+                                pathname === href
+                                  ? "bg-white/10 text-orange-400"
+                                  : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
+                              }`}
+                            >
+                              <Image
+                                src={item.icon}
+                                alt=""
+                                width={24}
+                                height={24}
+                                className="h-6 w-6 rounded-lg bg-white object-cover"
+                              />
+                              {item.name}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </Container>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 };
 

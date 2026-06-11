@@ -6,8 +6,8 @@ import Container from "./ui/Container";
 const PageHeader = () => {
   const pathname = usePathname(); // Get the current pathname
 
-  // Don't render the header on the home page
-  if (pathname === "/") {
+  // Redesigned pages provide their own full hero and page title.
+  if (["/", "/datacard", "/technology"].includes(pathname)) {
     return null;
   }
 
@@ -29,12 +29,9 @@ const PageHeader = () => {
   // Determine the final title
   const title = routeTitles[pathname] || formattedTitle || "Page";
 
-  // Apply bg-slate-300 only for Browse Datacards page
-  const bgColor = pathname === "/datacard" ? "bg-slate-600" : "bg-customBlue";
-
   return (
-    <div className={`relative ${bgColor} text-white`}>
-      <div className="absolute inset-0 bg-opacity-60"></div>
+    <div className="relative border-b border-white/10 bg-[#071a2d] text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.16),transparent_42%)]" />
       <Container className="relative z-10 py-5 md:py-8">
         <h1 className="text-2xl md:text-4xl font-bold capitalize">{title}</h1>
       </Container>

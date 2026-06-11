@@ -32,27 +32,27 @@ export default function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-10 md:right-10 z-50 bg-customBlue text-white px-6 py-5 rounded-lg shadow-lg">
+    <div className="fixed bottom-4 left-4 right-20 z-50 rounded-3xl border border-blue-300/20 bg-[#071a2d]/[0.98] px-5 py-5 text-white shadow-2xl shadow-slate-950/40 backdrop-blur-xl md:left-8 md:right-8 md:px-6">
       {!showSettings ? (
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
-          <p className="text-sm md:text-base md:max-w-[60%] leading-relaxed">
+          <p className="text-sm leading-relaxed text-slate-200 md:max-w-[55%] md:text-base">
             We use cookies to enhance your browsing experience, serve personalized ads, and analyze site traffic.
           </p>
           <div className="flex flex-wrap gap-3 justify-end">
             <button
-              className="bg-white text-customBlue px-4 py-2 rounded font-semibold hover:bg-gray-100"
+              className="rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
               onClick={handleRejectAll}
             >
               Reject All
             </button>
             <button
-              className="bg-white text-customBlue px-4 py-2 rounded font-semibold hover:bg-gray-100"
+              className="rounded-full border border-blue-300/25 bg-blue-400/10 px-4 py-2 text-sm font-semibold text-blue-100 transition hover:bg-blue-400/20"
               onClick={() => setShowSettings(true)}
             >
               Manage Preferences
             </button>
             <button
-              className="bg-white text-customBlue px-4 py-2 rounded font-semibold hover:bg-gray-100"
+              className="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-400"
               onClick={handleAcceptAll}
             >
               Accept All
@@ -92,13 +92,13 @@ export default function CookieConsent() {
           </div>
           <div className="flex flex-wrap gap-3 justify-end pt-2">
             <button
-              className="bg-white text-customBlue px-4 py-2 rounded font-semibold hover:bg-gray-100"
+              className="rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
               onClick={() => setShowSettings(false)}
             >
               Back
             </button>
             <button
-              className="bg-white text-customBlue px-4 py-2 rounded font-semibold hover:bg-gray-100"
+              className="rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-400"
               onClick={handleSavePreferences}
             >
               Save Preferences
