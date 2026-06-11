@@ -7,6 +7,7 @@ import {
   ArrowRight,
   BarChart3,
   CheckCircle2,
+  ChevronDown,
   Database,
   Globe2,
   Layers3,
@@ -38,6 +39,12 @@ const stagger = {
 };
 
 const industryHref = (name) => `/${name.toLowerCase().replace(/ /g, "-")}`;
+
+const visibleSubcategoryCount = 4;
+const subcategoryListingCount = CATEGORIES.reduce(
+  (total, category) => total + category.subCategories.length,
+  0
+);
 
 const SectionHeading = ({ eyebrow, title, description, light = false }) => (
   <motion.div
@@ -235,6 +242,184 @@ export default function Home() {
         </Container>
       </section>
 
+      <Section className="relative border-y border-white/10 bg-[#071a2d] text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.2),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(249,115,22,0.1),transparent_30%)]" />
+        <div className="relative">
+          <SectionHeading
+            eyebrow="Available Data Coverage"
+            title="See the breadth of the BookDataZ database"
+            description="Review every available data category, its exact record count, and the subcategories covered within it."
+            light
+          />
+
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3"
+          >
+            <motion.div
+              variants={fadeUp}
+              className="rounded-3xl border border-blue-300/20 bg-blue-400/10 p-5 backdrop-blur-md lg:p-6"
+            >
+              <p className="text-3xl font-bold tabular-nums text-white">
+                {CATEGORIES.length}
+              </p>
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+                Categories Shown
+              </p>
+            </motion.div>
+            <motion.div
+              variants={fadeUp}
+              className="rounded-3xl border border-blue-300/20 bg-blue-400/10 p-5 backdrop-blur-md lg:p-6"
+            >
+              <p className="text-3xl font-bold tabular-nums text-white">
+                {subcategoryListingCount}
+              </p>
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+                Subcategory Listings
+              </p>
+            </motion.div>
+            <motion.div
+              variants={fadeUp}
+              className="flex items-center justify-between gap-4 rounded-3xl border border-orange-300/20 bg-orange-400/10 p-5 backdrop-blur-md lg:p-6"
+            >
+              <div>
+                <p className="font-semibold text-white">
+                  Explore complete coverage
+                </p>
+                <p className="mt-2 text-sm leading-6 text-slate-300">
+                  Open any category to view every available subcategory.
+                </p>
+              </div>
+              <Layers3 className="shrink-0 text-orange-300" size={28} />
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.05 }}
+            className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-6"
+          >
+            {CATEGORIES.map((category, index) => {
+              const visibleSubcategories = category.subCategories.slice(
+                0,
+                visibleSubcategoryCount
+              );
+              const additionalSubcategories = category.subCategories.slice(
+                visibleSubcategoryCount
+              );
+
+              return (
+                <motion.article
+                  key={category.title}
+                  variants={fadeUp}
+                  className="group/card relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.055] shadow-lg shadow-slate-950/10 backdrop-blur-md transition-colors duration-300 hover:border-blue-300/30 hover:bg-white/[0.075]"
+                >
+                  <div
+                    className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-blue-400 to-orange-400"
+                    aria-hidden="true"
+                  />
+                  <div className="p-6 lg:p-8">
+                    <div className="flex items-start justify-between gap-5">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-3">
+                          <span className="text-xs font-bold tabular-nums tracking-[0.18em] text-blue-300">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <span className="h-px w-8 bg-blue-300/30" />
+                          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">
+                            Available category
+                          </span>
+                        </div>
+                        <h3 className="mt-4 text-xl font-bold tracking-tight text-white md:text-2xl">
+                          {category.title}
+                        </h3>
+                      </div>
+                      <div className="shrink-0 rounded-2xl border border-blue-300/20 bg-blue-400/10 px-4 py-3 text-right">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-200">
+                          Contacts
+                        </p>
+                        <p className="mt-1 text-lg font-bold tabular-nums text-white md:text-xl">
+                          {category.dataCount}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {visibleSubcategories.map((subCategory) => (
+                        <span
+                          key={subCategory}
+                          className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-xs font-medium leading-5 text-slate-200"
+                        >
+                          {subCategory}
+                        </span>
+                      ))}
+                    </div>
+
+                    {additionalSubcategories.length > 0 && (
+                      <details className="group/details mt-5 border-t border-white/10 pt-5">
+                        <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl text-sm font-semibold text-blue-200 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-blue-300">
+                          <span>
+                            + {additionalSubcategories.length} more subcategories
+                          </span>
+                          <ChevronDown
+                            size={18}
+                            className="shrink-0 transition-transform duration-200 group-open/details:rotate-180"
+                          />
+                        </summary>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {additionalSubcategories.map((subCategory) => (
+                            <span
+                              key={subCategory}
+                              className="rounded-full border border-blue-300/15 bg-blue-400/10 px-3 py-1.5 text-xs font-medium leading-5 text-blue-100"
+                            >
+                              {subCategory}
+                            </span>
+                          ))}
+                        </div>
+                      </details>
+                    )}
+                  </div>
+                </motion.article>
+              );
+            })}
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="mt-10 flex flex-col items-start justify-between gap-6 rounded-3xl border border-blue-300/20 bg-blue-400/10 p-6 backdrop-blur-md sm:flex-row sm:items-center lg:p-8"
+          >
+            <div>
+              <p className="text-lg font-semibold text-white">
+                Need a closer look at the available data?
+              </p>
+              <p className="mt-2 text-sm leading-6 text-slate-300">
+                Browse the full datacard collection or request a data sample.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Button
+                href="/datacard"
+                variant="outline"
+                className="gap-2 border-blue-200/30 text-white hover:border-blue-200 hover:bg-white/10"
+              >
+                Browse Datacards <ArrowRight size={16} />
+              </Button>
+              <Button href="/contact" variant="accent">
+                Get Free Data Sample
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </Section>
+
       <Section className="border-y border-white/10 bg-slate-900 py-12 lg:py-14">
         <motion.div
           variants={stagger}
@@ -338,62 +523,6 @@ export default function Home() {
             ))}
           </motion.div>
         </div>
-      </Section>
-
-      <Section className="border-y border-slate-200 bg-gradient-to-b from-white to-slate-100">
-        <SectionHeading
-          eyebrow="Data Category Preview"
-          title="Detailed coverage for the markets that matter"
-          description="Browse category records and the subcategories available across the BookDataZ database."
-        />
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.12 }}
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
-        >
-          {CATEGORIES.slice(0, 6).map((category) => (
-            <motion.article
-              key={category.title}
-              variants={fadeUp}
-              className="flex h-full flex-col rounded-3xl border border-slate-200 bg-slate-50 p-6 lg:p-8"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-700">
-                    Total Records
-                  </p>
-                  <p className="mt-2 text-2xl font-bold tabular-nums text-slate-950">
-                    {category.dataCount}
-                  </p>
-                </div>
-                <div className="grid h-11 w-11 place-items-center rounded-2xl bg-blue-100 text-blue-700">
-                  <Database size={20} />
-                </div>
-              </div>
-              <h3 className="mt-7 text-xl font-semibold text-slate-950">
-                {category.title}
-              </h3>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {category.subCategories.slice(0, 4).map((subCategory) => (
-                  <span
-                    key={subCategory}
-                    className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600"
-                  >
-                    {subCategory}
-                  </span>
-                ))}
-              </div>
-              <Link
-                href="/datacard"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-700"
-              >
-                Browse datacards <ArrowRight size={16} />
-              </Link>
-            </motion.article>
-          ))}
-        </motion.div>
       </Section>
 
       <Section className="relative bg-slate-950 text-white">
