@@ -15,6 +15,7 @@ import {
     Legend,
 } from "chart.js";
 import { Bar, Doughnut, Line, Radar } from "react-chartjs-2";
+import GlassCard from "./ui/GlassCard";
 
 // Register necessary Chart.js components
 ChartJS.register(
@@ -80,7 +81,7 @@ const DataDisplay = ({ industryData }) => {
     };
 
     return (
-        <div className="max-w-screen-lg mx-auto py-12">
+        <div className="mx-auto max-w-5xl">
             {/* SEO-Optimized Heading */}
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -90,26 +91,26 @@ const DataDisplay = ({ industryData }) => {
             </div>
 
             {/* Charts Section */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-white rounded-xl p-6 shadow-lg">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+                <GlassCard className="border-gray-200 bg-white">
                     <h2 className="text-xl font-semibold mb-4">Industry Data</h2>
                     <Bar data={barData} />
-                </div>
+                </GlassCard>
 
-                <div className="bg-white rounded-xl p-6 shadow-lg">
+                <GlassCard className="border-gray-200 bg-white">
                     <h2 className="text-xl font-semibold mb-4">Industry Distribution</h2>
                     <Doughnut data={pieData} />
-                </div>
+                </GlassCard>
 
-                <div className="bg-white rounded-xl p-6 shadow-lg">
+                <GlassCard className="border-gray-200 bg-white">
                     <h2 className="text-xl font-semibold mb-4">Data Growth Over Time</h2>
                     <Line data={lineData} />
-                </div>
+                </GlassCard>
 
-                <div className="bg-white rounded-xl p-6 shadow-lg">
+                <GlassCard className="border-gray-200 bg-white">
                     <h2 className="text-xl font-semibold mb-4">Industry Performance Metrics</h2>
                     <Radar data={radarData} />
-                </div>
+                </GlassCard>
             </div>
         </div>
     );

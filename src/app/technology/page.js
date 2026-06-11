@@ -53,7 +53,7 @@ export default function TechnologyListPage() {
       
 
       {/* Tech Grid Section */}
-      <section className="max-w-7xl mx-auto py-16 px-6 md:px-18">
+      <section className="mx-auto max-w-7xl px-5 py-20 md:px-8 lg:px-10 lg:py-28">
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
           initial={{ opacity: 0 }}

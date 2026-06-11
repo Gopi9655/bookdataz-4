@@ -5,10 +5,10 @@ export default function Story() {
     <div className="bg-gradient-to-br from-gray-50 to-white text-gray-800 font-sans">
 
       {/* Section 1: Founding Vision */}
-      <section className="py-20 px-6 md:px-36 bg-white shadow-inner-top">
+      <section className="bg-white px-5 py-20 shadow-inner-top md:px-8 lg:px-10 lg:py-28">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
           <div className="lg:w-1/2 space-y-6 animate-fade-in-left">
-            <h2 className="text-5xl font-extrabold text-custom-blue leading-tight">
+            <h2 className="text-5xl font-extrabold text-customBlue leading-tight">
               The Birth of <span className="block text-red-500">BookDataZ</span>
             </h2>
             <p className="text-xl leading-relaxed text-gray-700">
@@ -44,36 +44,36 @@ export default function Story() {
                 </li>
               </ul>
             </div>
-            <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-custom-blue/10 rounded-full animate-bounce-slow hidden lg:block"></div>
+            <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-customBlue/10 rounded-full animate-bounce-slow hidden lg:block"></div>
           </div>
         </div>
       </section>
 
       {/* Section 2: Scaling Beyond Borders */}
-      <section className="py-24 px-6 md:px-36 bg-gray-50">
+      <section className="bg-gray-50 px-5 py-20 md:px-8 lg:px-10 lg:py-28">
         <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-16">
           <div className="lg:w-1/2 relative">
-            <div className="bg-custom-blue/5 border border-custom-blue/20 p-8 rounded-3xl shadow-xl space-y-6 transform hover:scale-105 transition-transform duration-300 ease-in-out">
-              <h3 className="text-2xl font-bold text-custom-blue mb-4">Global Highlights</h3>
+            <div className="bg-customBlue/5 border border-customBlue/20 p-8 rounded-3xl shadow-xl space-y-6 transform hover:scale-105 transition-transform duration-300 ease-in-out">
+              <h3 className="text-2xl font-bold text-customBlue mb-4">Global Highlights</h3>
               <ul className="list-none space-y-4 text-lg text-gray-700">
                 <li className="flex items-start gap-3">
-                  <span className="text-custom-blue text-2xl mt-0.5">🌐</span>
+                  <span className="text-customBlue text-2xl mt-0.5">🌐</span>
                   <span><strong>Clients in 160+ countries</strong>, including the U.S., U.K., Germany, Australia, and the Middle East.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-custom-blue text-2xl mt-0.5">📈</span>
+                  <span className="text-customBlue text-2xl mt-0.5">📈</span>
                   <span>Coverage of <strong>over 75 industries</strong> — from SaaS startups to Fortune 500 enterprises.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-custom-blue text-2xl mt-0.5">🔗</span>
+                  <span className="text-customBlue text-2xl mt-0.5">🔗</span>
                   <span>Real-time integration with CRMs like <strong>Salesforce, HubSpot, and Zoho</strong>.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-custom-blue text-2xl mt-0.5">🔬</span>
+                  <span className="text-customBlue text-2xl mt-0.5">🔬</span>
                   <span>Global team of <strong>100+ data scientists and compliance experts</strong> ensuring 24/7 quality control.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-custom-blue text-2xl mt-0.5">📊</span>
+                  <span className="text-customBlue text-2xl mt-0.5">📊</span>
                   <span>Daily processing of over <strong>150,000 data records</strong> across healthcare, fintech, manufacturing, and tech sectors.</span>
                 </li>
               </ul>
@@ -82,7 +82,7 @@ export default function Story() {
           </div>
 
           <div className="lg:w-1/2 space-y-6 animate-fade-in-right">
-            <h2 className="text-5xl font-extrabold text-custom-blue leading-tight">
+            <h2 className="text-5xl font-extrabold text-customBlue leading-tight">
               Scaling <span className="block text-red-500">Beyond Borders</span>
             </h2>
             <p className="text-xl leading-relaxed text-gray-700">
@@ -98,9 +98,9 @@ export default function Story() {
       </section>
 
       {/* Section 3: Our Vision & Promise */}
-      <section className="py-24 px-6 md:px-36 bg-gradient-to-br from-gray-100 to-gray-200 border-t border-gray-200">
+      <section className="border-t border-gray-200 bg-gradient-to-br from-gray-100 to-gray-200 px-5 py-20 md:px-8 lg:px-10 lg:py-28">
         <div className="max-w-6xl mx-auto text-center space-y-10">
-          <h2 className="text-5xl font-extrabold text-custom-blue leading-tight max-w-4xl mx-auto">
+          <h2 className="text-5xl font-extrabold text-customBlue leading-tight max-w-4xl mx-auto">
             Our Ongoing <span className="block text-red-500">Mission & Commitment</span>
           </h2>
           <p className="text-xl leading-relaxed max-w-3xl mx-auto text-gray-700">
@@ -109,7 +109,7 @@ export default function Story() {
           </p>
 
           <div className="mt-12 flex flex-col md:flex-row justify-center gap-8">
-            <div className="bg-white border-l-8 border-custom-blue px-8 py-8 shadow-2xl rounded-2xl max-w-md transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+            <div className="bg-white border-l-8 border-customBlue px-8 py-8 shadow-2xl rounded-2xl max-w-md transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
               <h3 className="text-3xl font-bold mb-4 text-gray-900">Vision</h3>
               <p className="text-lg text-gray-700">
                 To become the world's most trusted B2B database brand — empowering ethical marketing through high-quality, relevant data.

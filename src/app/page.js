@@ -51,6 +51,8 @@ import { Autoplay, Navigation } from "swiper/modules";
 import Button from "../../components/Button";
 import HeroSection from "../../components/HeroSection";
 import WhatWeOfferSection from "../../components/WhatWeOffer";
+import Container from "../../components/ui/Container";
+import GlassCard from "../../components/ui/GlassCard";
 
 
 /* -----------------------------
@@ -249,11 +251,12 @@ export default function Home() {
       {/* ======================================
           HERO (VIDEO BACKGROUND + SWIPER)
       =======================================*/}
-      <section className="relative w-full min-h-screen bg-gradient-to-r from-blue-800 via-indigo-700 to-purple-700 flex items-center px-6 md:px-36 py-16">
+      <section className="relative flex min-h-screen w-full items-center bg-gradient-to-r from-blue-800 via-indigo-700 to-purple-700 py-20 lg:py-28">
+  <Container className="flex items-center">
   {/* Left Content */}
   <div className="max-w-2xl text-white leading-8 space-y-8 md:space-y-12">
     <motion.h1
-      className="text-4xl md:text-5xl font-extrabold leading-light text-white"
+      className="text-4xl md:text-5xl font-extrabold leading-tight text-white"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -275,13 +278,9 @@ export default function Home() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6, duration: 0.8 }}
     >
-      <Link href="/contact" passHref>
-      <button
-        className="bg-orange-600 hover:bg-orange-700 transition-colors duration-300 px-8 py-4 rounded-lg font-semibold text-white shadow-xl transform hover:scale-105"
-      >
+      <Button href="/contact" variant="accent" size="lg" className="shadow-xl">
         Get Free Data Sample
-      </button>
-    </Link>
+      </Button>
     </motion.div>
   </div>
 
@@ -301,6 +300,7 @@ export default function Home() {
       loading="lazy"
     />
   </motion.div>
+  </Container>
 </section>
 
   
@@ -313,13 +313,13 @@ export default function Home() {
       =======================================*/}
     
  <motion.div
-  className="bg-gradient-to-br from-white via-blue-50 to-red-50 py-16 md:py-20"
+  className="bg-gradient-to-br from-white via-blue-50 to-red-50 py-20 lg:py-28"
   variants={containerVariants}
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, amount: 0.2 }}
 >
-  <div className="container mx-auto px-4 md:px-20">
+  <Container>
     <motion.h2
       className="text-lg md:text-xl font-bold text-center mb-4 uppercase text-red-500 tracking-widest"
       variants={fadeUpVariants}
@@ -412,7 +412,7 @@ export default function Home() {
       <br />
       <span className="text-customBlue">Grow your business with confidence!</span>
     </motion.p>
-  </div>
+  </Container>
 </motion.div>
 
 
@@ -424,10 +424,11 @@ export default function Home() {
       {/* ======================================
           ELEVATE SECTION
       =======================================*/}
-      <div
+      <section
         ref={elevateRef}
-        className="flex flex-col md:flex-row bg-white justify-between gap-12 md:gap-16 items-center w-full px-4 md:px-36 py-16 md:py-20"
+        className="bg-white py-20 lg:py-28"
       >
+        <Container className="flex flex-col items-center justify-between gap-6 md:flex-row lg:gap-8">
         {/* Left */}
         <motion.div
           className="w-full md:w-1/2"
@@ -470,15 +471,17 @@ export default function Home() {
             className="rounded-xl"
           />
         </motion.div>
-      </div>
+        </Container>
+      </section>
 {/*  */}
 
-<div className="w-full bg-gradient-to-br from-customBlue via-indigo-900 to-blue-900 py-16 md:py-24">
-  <div className="container mx-auto px-4 md:px-24">
-    <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+<section className="w-full bg-gradient-to-br from-customBlue via-indigo-900 to-blue-900 py-20 lg:py-28">
+  <Container>
+    <div className="flex flex-col items-center gap-6 md:flex-row lg:gap-8">
       {/* Left Section */}
-      <motion.div
-        className="w-full md:w-[34%] bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-2xl transition mt-8 md:mt-14 flex flex-col items-center"
+      <GlassCard
+        as={motion.div}
+        className="mt-8 flex w-full flex-col items-center shadow-2xl transition md:mt-14 md:w-[34%]"
         variants={fadeUpVariants}
         initial="hidden"
         whileInView="visible"
@@ -494,20 +497,21 @@ export default function Home() {
           height={500}
           className="object-contain rounded-xl"
         />
-      </motion.div>
+      </GlassCard>
 
       {/* Right Section (Items Grid) */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 w-full md:w-[65%]"
+        className="grid w-full grid-cols-1 gap-6 md:w-[65%] md:grid-cols-2 lg:gap-8"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
         {items.map((item, index) => (
-          <motion.div
+          <GlassCard
+            as={motion.div}
             key={index}
-            className="relative bg-white/10 backdrop-blur-md rounded-2xl p-8 md:p-10 shadow-xl transition group overflow-hidden hover:scale-[1.025] hover:shadow-2xl duration-300"
+            className="group relative overflow-hidden text-blue-100 shadow-xl transition duration-300 hover:shadow-2xl"
             whileHover={{ scale: 1.03 }}
             variants={fadeUpVariants}
           >
@@ -529,12 +533,12 @@ export default function Home() {
                 Learn more <span className="ml-1">→</span>
               </a>
             </div>
-          </motion.div>
+          </GlassCard>
         ))}
       </motion.div>
     </div>
-  </div>
-</div>
+  </Container>
+</section>
 
 
 
@@ -545,7 +549,8 @@ export default function Home() {
       {/* ======================================
           TESTIMONIAL SECTION
       =======================================*/}
-      <div id="testimonials" className="bg-slate-800 px-4 sm:px-6 md:px-10 lg:px-20 py-6 md:py-10 lg:py-20">
+      <section id="testimonials" className="bg-slate-800 py-20 lg:py-28">
+      <Container>
       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold text-slate-100 mb-6 md:mb-10 lg:mb-20">
         What Our Clients Say
       </h1>
@@ -645,7 +650,8 @@ export default function Home() {
           services.
         </p>
       </div>
-    </div>
+      </Container>
+    </section>
       {/* ======================================
           TRUSTED BY SECTION
       =======================================*/}

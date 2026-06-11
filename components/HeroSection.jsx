@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { datacollections } from "@/resource/data";
+import Button from "./ui/Button";
+import Container from "./ui/Container";
+import GlassCard from "./ui/GlassCard";
+import StatCard from "./ui/StatCard";
 
 const getNumericValue = (value) => Number.parseInt(value.replace(/\D/g, ""), 10);
 const getSuffix = (value) => value.replace(/[\d,]/g, "");
@@ -55,9 +59,9 @@ const HeroSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-gradient-to-br from-purple-800 to-indigo-900 text-white py-16 px-4"
+      className="bg-gradient-to-br from-purple-800 to-indigo-900 py-20 text-white lg:py-28"
     >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
+      <Container className="flex flex-col gap-6 md:flex-row lg:gap-8">
         {/* Left Column - Hero Content */}
         <div className="w-full md:w-1/2 space-y-6">
           <h1 className="text-4xl md:text-5xl font-extrabold">
@@ -80,61 +84,38 @@ const HeroSection = () => {
             Fueled by innovation and dedication, we continue to scale rapidly,
             welcoming 1,800+ new clients annually.
           </p>
-          <a href="/contact"> <button className="bg-blue-600 hover:bg-blue-700 transition duration-300 py-3 px-6 rounded-md text-lg font-semibold">
+          <Button href="/contact" className="bg-blue-600 hover:bg-blue-700" size="lg">
             GET TO KNOW US
-          </button></a>
+          </Button>
          
         </div>
 
         {/* Right Column - Stats and Additional Content */}
         <div className="w-full md:w-1/2 space-y-6">
           {/* Grid for Animated Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* First Row: Million Datasets spans two columns */}
-            <div className="md:col-span-2 bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
-              <h2 className="text-3xl font-bold">{counts[0]}{getSuffix(datacollections[0].number)}</h2>
-              <p className="uppercase text-xs mt-2">{datacollections[0].heading}</p>
-            </div>
-            <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
-              <h2 className="text-3xl font-bold">
-                {counts[1]}{getSuffix(datacollections[1].number)}
-              </h2>
-              <p className="uppercase text-xs mt-2">{datacollections[1].heading}</p>
-            </div>
-
-            {/* Second Row */}
-            <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
-              <h2 className="text-3xl font-bold">{counts[2]}{getSuffix(datacollections[2].number)}</h2>
-              <p className="uppercase text-xs mt-2">{datacollections[2].heading}</p>
-            </div>
-            <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
-              <h2 className="text-3xl font-bold">
-                {counts[3]}{getSuffix(datacollections[3].number)}
-              </h2>
-              <p className="uppercase text-xs mt-2">
-                {datacollections[3].heading}
-              </p>
-            </div>
-            <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
-              <h2 className="text-3xl font-bold">{counts[4]}{getSuffix(datacollections[4].number)}</h2>
-              <p className="uppercase text-xs mt-2">{datacollections[4].heading}</p>
-            </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {datacollections.slice(0, 5).map((collection, index) => (
+              <StatCard
+                key={collection.heading}
+                value={`${counts[index]}${getSuffix(collection.number)}`}
+                label={collection.heading}
+                className={index === 0 ? "md:col-span-2" : undefined}
+              />
+            ))}
           </div>
 
           {/* Additional Content Block to Fill the Empty Space */}
-          <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-6 rounded-lg">
+          <GlassCard className="mt-6">
             <h3 className="text-2xl font-semibold">Why Choose BookDataz?</h3>
             <p className="mt-2 text-gray-300">
             BookDataz stands at the forefront of data innovation, offering an unrivaled blend of cutting-edge AI-powered solutions and deep industry expertise that transforms raw data into strategic insights. Our comprehensive suite of services is designed to streamline operations, drive sustainable growth, and empower businesses across diverse sectors—from healthcare to technology—to navigate the complexities of the modern digital landscape.
             </p>
-            <a href="/contact"> 
-            <button className="mt-4 bg-blue-600 hover:bg-blue-700 transition duration-300 py-2 px-4 rounded-md text-lg font-semibold">
+            <Button href="/contact" className="mt-4 bg-blue-600 hover:bg-blue-700">
               Discover More
-            </button>
-            </a>
-          </div>
+            </Button>
+          </GlassCard>
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

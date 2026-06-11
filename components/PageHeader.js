@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Container from "./ui/Container";
 
 const PageHeader = () => {
   const pathname = usePathname(); // Get the current pathname
@@ -34,10 +35,9 @@ const PageHeader = () => {
   return (
     <div className={`relative ${bgColor} text-white`}>
       <div className="absolute inset-0 bg-opacity-60"></div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 md:py-8 py-3">
+      <Container className="relative z-10 py-5 md:py-8">
         <h1 className="text-2xl md:text-4xl font-bold capitalize">{title}</h1>
-       
-      </div>
+      </Container>
     </div>
   );
 };

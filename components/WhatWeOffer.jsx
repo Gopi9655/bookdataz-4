@@ -1,5 +1,8 @@
 import Image from "next/image";
 import React, { useMemo } from "react";
+import Button from "./ui/Button";
+import Container from "./ui/Container";
+import GlassCard from "./ui/GlassCard";
 
 const countriesList = [
   "United States",
@@ -32,8 +35,8 @@ export default function WhatWeOfferSection({ offers }) {
   const capabilities = useMemo(() => offers, [offers]);
 
   return (
-    <section className="bg-gradient-to-tr from-white via-customBlue/20 to-customBlue/40 text-gray-900 py-20 px-6 md:px-36">
-      <div className="max-w-7xl mx-auto space-y-12">
+    <section className="bg-gradient-to-tr from-white via-customBlue/20 to-customBlue/40 py-20 text-gray-900 lg:py-28">
+      <Container className="space-y-12">
         {/* Section Header */}
         <header className="text-center max-w-3xl mx-auto space-y-4">
           <h2 className="text-4xl md:text-5xl font-extrabold text-customBlue whitespace-nowrap truncate">
@@ -45,8 +48,8 @@ export default function WhatWeOfferSection({ offers }) {
         </header>
 
         {/* Countries List */}
-        <div
-          className="bg-white bg-opacity-60 backdrop-blur-md rounded-xl p-8 shadow-md"
+        <GlassCard
+          className="border-white/50 bg-white/60"
           role="region"
           aria-labelledby="countries-heading"
         >
@@ -69,7 +72,7 @@ export default function WhatWeOfferSection({ offers }) {
               </div>
             ))}
           </div>
-        </div>
+        </GlassCard>
 
         {/* Capabilities */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10" role="list">
@@ -94,8 +97,8 @@ export default function WhatWeOfferSection({ offers }) {
         </div>
 
         {/* Compliance & Trust */}
-        <div
-          className="bg-white bg-opacity-60 backdrop-blur-md rounded-xl p-8 shadow-md max-w-4xl mx-auto text-center"
+        <GlassCard
+          className="mx-auto max-w-4xl border-white/50 bg-white/60 text-center"
           role="region"
           aria-labelledby="compliance-heading"
         >
@@ -113,21 +116,20 @@ export default function WhatWeOfferSection({ offers }) {
             ethically sourced and legally compliant data. This commitment protects
             your brand reputation and builds trust with your customers.
           </p>
-        </div>
+        </GlassCard>
 
         {/* Call to Action */}
         <div className="text-center">
-        <a href="/contact"> 
-          <button
-           
-            className="bg-customBlue hover:bg-blue-800 transition-colors text-white font-bold py-4 px-10 rounded-full shadow-lg text-lg whitespace-nowrap"
+          <Button
+            href="/contact"
+            size="lg"
+            className="whitespace-nowrap shadow-lg"
             aria-label="Request a Custom Data Solution"
           >
             Request a Custom Data Solution
-          </button>
-          </a>
+          </Button>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

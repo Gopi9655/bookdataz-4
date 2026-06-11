@@ -1,18 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FiSearch, FiChevronRight } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 import { CATEGORIES } from "@/resource/mockdata";
-
-
+import CategoryCard from "../../../components/ui/CategoryCard";
+import Container from "../../../components/ui/Container";
+import GlassCard from "../../../components/ui/GlassCard";
 
 
 export default function BrowseDatacardPage() {
  
 
 
-  const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+  const [, setSelectedSubCategory] = useState(null);
   const [query, setQuery] = useState("");
   const [filteredCategories, setFilteredCategories] = useState(CATEGORIES);
 
@@ -31,9 +31,10 @@ export default function BrowseDatacardPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 px-4 sm:px-8 md:px-16 lg:px-32 py-8 md:py-10">
+    <main className="min-h-screen bg-gray-50">
+      <Container className="py-20 lg:py-28">
       {/* WRAPPER for Left & Right sections */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-8 md:mb-10">
+      <section className="mb-10 grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
         {/* LEFT SECTION: Browse Our Data Cards */}
         <div className="flex flex-col bg-gray-50 h-full p-4 md:p-6">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-customBlue mb-6 md:mb-12">
@@ -75,9 +76,9 @@ export default function BrowseDatacardPage() {
         {/* RIGHT SECTION */}
         <div className="grid grid-rows-2 gap-4">
           {/* Top Right Box */}
-          <div className="bg-customBlue border border-gray-300 rounded-lg shadow-lg p-4 md:p-6 md:h-full flex flex-col md:justify-between">
+          <GlassCard className="flex flex-col border-gray-300 bg-customBlue text-white md:h-full md:justify-between">
             <div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white p-10 rounded-xl  text-center">
+              <h2 className="text-center text-3xl font-bold text-white md:text-4xl lg:text-5xl">
                 170+ Million Email Contacts
               </h2>
              
@@ -85,10 +86,10 @@ export default function BrowseDatacardPage() {
                 Available for targeted campaigns and lead generation.
               </p>
             </div>
-          </div>
+          </GlassCard>
 
           {/* Bottom Right Box */}
-          <div className="bg-white border border-gray-300 rounded-lg shadow-lg p-4 md:p-6 h-full flex flex-col justify-center">
+          <GlassCard className="flex h-full flex-col justify-center border-gray-300 bg-white">
             <div className="flex flex-wrap justify-around px-4 mb-4 gap-4">
               <div className="flex flex-col items-center">
                 <img
@@ -132,7 +133,7 @@ export default function BrowseDatacardPage() {
               international standards to protect customer information with the
               highest level of integrity.
             </p>
-          </div>
+          </GlassCard>
         </div>
       </section>
 
@@ -151,61 +152,22 @@ export default function BrowseDatacardPage() {
       </section>
 
       {/* CATEGORY CARDS */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-6 md:px-12 lg:px-2">
-  {filteredCategories.map((category, index) => (
-    <div
-      key={index}
-      className="relative group border border-slate-400 rounded-2xl p-8 bg-white shadow-md hover:shadow-2xl transition-shadow duration-500 cursor-pointer overflow-hidden"
-      style={{ perspective: '1000px' }}
-    >
-      {/* Animated background block */}
-      <div
-        className="absolute top-0 left-0 w-full h-2 bg-red-400 rounded-t-2xl transform-gpu group-hover:scale-x-110 transition-transform duration-500 origin-left"
-        aria-hidden="true"
-      />
-      <h2 className="relative z-10 text-3xl font-extrabold mb-5 text-custom-blue tracking-tight drop-shadow-sm">
-        {category.title}
-      </h2>
-      <p className="relative z-10 mb-8 font-semibold text-gray-700">
-        Total Records:{' '}
-        <span className="text-red-400 text-2xl font-extrabold tabular-nums">
-          {category.dataCount.toLocaleString()}
-        </span>
-      </p>
-      <ul className="relative z-10 max-h-48 overflow-y-auto space-y-4 pr-3 scrollbar-thin scrollbar-thumb-red-400 scrollbar-track-gray-100">
-        {category.subCategories.map((subCategory, subIndex) => (
-          <li
-            key={subIndex}
-            className="flex items-center gap-4 text-lg text-gray-700 cursor-pointer hover:text-red-500 transition-colors duration-300"
-            onClick={(e) => {
-              e.stopPropagation();
-              setSelectedSubCategory(subCategory);
-            }}
-          >
-            <FiChevronRight className="text-red-400 flex-shrink-0 transform transition-transform duration-300 group-hover:translate-x-1" />
-            {subCategory}
-          </li>
+      <section className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        {filteredCategories.map((category) => (
+          <CategoryCard
+            key={category.title}
+            category={category}
+            onSubCategorySelect={setSelectedSubCategory}
+          />
         ))}
-      </ul>
-      {/* Micro-interaction: subtle 3D tilt on hover */}
-      <style jsx>{`
-        div[group-hover] {
-          transform-style: preserve-3d;
-          transition: transform 0.4s ease;
-        }
-        div[group-hover]:hover {
-          transform: rotateX(3deg) rotateY(5deg);
-        }
-      `}</style>
-    </div>
-  ))}
-</section>
+      </section>
 
      
         {/* RIGHT SECTION: Sticky Info Box */}
         
       {/* SECOND SECTION: Categories Grid */}
      
+      </Container>
     </main>
   );
 }

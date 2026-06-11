@@ -5,17 +5,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/navigation";
-import { datacollections, mailinglinks } from "@/resource/data";
+import { usePathname } from "next/navigation";
+import { mailinglinks } from "@/resource/data";
+import Container from "./ui/Container";
 
 const Navbar = () => {
-  const router = useRouter();
+  const pathname = usePathname();
   const [isHovering, setIsHovering] = useState(false);
   const [hoveredLink, setHoveredLink] = useState(null);
   const [activeLink, setActiveLink] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileMailingOpen, setIsMobileMailingOpen] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
 
   const navLinks = [
     { href: "/", label: "HOME" },
@@ -74,8 +74,8 @@ const Navbar = () => {
 
   // Set active link on route change
   useEffect(() => {
-    setActiveLink(router.pathname);
-  }, [router.pathname]);
+    setActiveLink(pathname);
+  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -91,8 +91,8 @@ const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <motion.nav className="sticky top-0 z-50 bg-gradient-to-r md:px-32 from-white to-gray-100 py-0">
-      <div className="container mx-auto flex justify-between items-center p-6">
+    <motion.nav className="sticky top-0 z-50 bg-gradient-to-r from-white to-gray-100">
+      <Container className="flex items-center justify-between py-6">
         {/* Logo */}
         <motion.div className="flex-shrink-0">
         <a href="/">
@@ -364,7 +364,7 @@ const Navbar = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </Container>
     </motion.nav>
   );
 };

@@ -1,14 +1,12 @@
 // components/Footer.tsx
 import { FaLinkedinIn, FaInstagram, FaFacebookF, FaTwitter } from "react-icons/fa";
-import Image from "next/image";
 import Link from "next/link";
+import Container from "./ui/Container";
 
 const Footer = () => {
   return (
-    // Background gradient using customBlue and deep blues for a rich theme.
-    // Generous vertical padding and precise horizontal padding (px-36 on large screens).
-    <footer className="bg-gradient-to-br from-slate-900 via-customBlue to-blue-950 text-blue-200 py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-36">
-      <div className="max-w-7xl mx-auto"> {/* Main content confined to a max-width for readability */}
+    <footer className="bg-gradient-to-br from-slate-900 via-customBlue to-blue-950 py-20 text-blue-200 lg:py-28">
+      <Container>
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24"> {/* Increased main column gap for spaciousness */}
 
           {/* Left Column: Contact Info & Offices */}
@@ -120,12 +118,11 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Copyright & Disclaimer Section - Separated with a robust border and centered */}
-      <div className="border-t-2 border-blue-700 mt-20 md:mt-28 pt-8 text-center text-sm text-blue-300 max-w-7xl mx-auto"> {/* Thicker border, more margin, more padding */}
-        Designed & Developed by <span className="text-white font-semibold">Bookdataz</span>. © {new Date().getFullYear()} <span className="text-white font-semibold">Bookdataz</span>. All rights reserved.
-      </div>
+        {/* Copyright & Disclaimer Section - Separated with a robust border and centered */}
+        <div className="border-t-2 border-blue-700 mt-20 md:mt-28 pt-8 text-center text-sm text-blue-300"> {/* Thicker border, more margin, more padding */}
+          Designed & Developed by <span className="text-white font-semibold">Bookdataz</span>. © {new Date().getFullYear()} <span className="text-white font-semibold">Bookdataz</span>. All rights reserved.
+        </div>
+      </Container>
     </footer>
   );
 };

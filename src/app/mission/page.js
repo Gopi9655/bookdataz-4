@@ -4,7 +4,7 @@ export default function MissionVision() {
   return (
     <div className="bg-gradient-to-br from-gray-50 to-white text-gray-800 font-sans min-h-screen">
       {/* Hero Section */}
-      <section className="py-10 px-6 md:px-24 bg-custom-blue text-white">
+      <section className="py-10 px-6 md:px-24 bg-customBlue text-white">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-black">
             Our <span className="text-red-400">Purpose</span>
@@ -21,14 +21,14 @@ export default function MissionVision() {
           <div className="lg:w-1/2">
             <div className="relative">
               <div className="absolute -top-6 -left-6 w-32 h-32 bg-red-500/10 rounded-full animate-pulse"></div>
-              <div className="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-custom-blue relative z-10">
+              <div className="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-customBlue relative z-10">
                 <div className="flex items-center mb-6">
-                  <div className="bg-custom-blue/10 p-3 rounded-full mr-4">
-                    <svg className="w-8 h-8 text-custom-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="bg-customBlue/10 p-3 rounded-full mr-4">
+                    <svg className="w-8 h-8 text-customBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                     </svg>
                   </div>
-                  <h2 className="text-3xl font-bold text-custom-blue">Mission</h2>
+                  <h2 className="text-3xl font-bold text-customBlue">Mission</h2>
                 </div>
                 <p className="text-lg text-gray-700 leading-relaxed">
                   To revolutionize B2B data intelligence by delivering the most accurate, compliant, and actionable contact databases, 
@@ -68,7 +68,7 @@ export default function MissionVision() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-12">
           <div className="lg:w-1/2">
             <div className="relative">
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-custom-blue/10 rounded-full animate-bounce-slow"></div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-customBlue/10 rounded-full animate-bounce-slow"></div>
               <div className="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-red-500 relative z-10">
                 <div className="flex items-center mb-6">
                   <div className="bg-red-100 p-3 rounded-full mr-4">
@@ -92,19 +92,19 @@ export default function MissionVision() {
             <h3 className="text-2xl font-bold text-gray-900">Our Path Forward</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <span className="text-custom-blue text-xl mt-0.5">→</span>
+                <span className="text-customBlue text-xl mt-0.5">→</span>
                 <span className="text-gray-700">Global expansion with localized data solutions for key markets</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-custom-blue text-xl mt-0.5">→</span>
+                <span className="text-customBlue text-xl mt-0.5">→</span>
                 <span className="text-gray-700">AI-driven predictive analytics for smarter business connections</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-custom-blue text-xl mt-0.5">→</span>
+                <span className="text-customBlue text-xl mt-0.5">→</span>
                 <span className="text-gray-700">Strategic partnerships with leading CRM and marketing platforms</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-custom-blue text-xl mt-0.5">→</span>
+                <span className="text-customBlue text-xl mt-0.5">→</span>
                 <span className="text-gray-700">Continuous investment in data privacy and security infrastructure</span>
               </li>
             </ul>
@@ -115,7 +115,7 @@ export default function MissionVision() {
       {/* Values Section */}
       <section className="py-16 px-6 md:px-24">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-custom-blue mb-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-customBlue mb-4">
             Our Core <span className="text-red-500">Values</span>
           </h2>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-12">
@@ -145,7 +145,7 @@ export default function MissionVision() {
                 description: 'We handle data with ethical consideration and respect for privacy'
               }
             ].map((value, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border-t-4 border-custom-blue">
+              <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border-t-4 border-customBlue">
                 <div className="text-4xl mb-4">{value.icon}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{value.title}</h3>
                 <p className="text-gray-700">{value.description}</p>
