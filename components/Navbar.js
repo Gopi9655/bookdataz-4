@@ -11,6 +11,7 @@ import Container from "./ui/Container";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const [isHovering, setIsHovering] = useState(false);
   const [hoveredLink, setHoveredLink] = useState(null);
   const [activeLink, setActiveLink] = useState(null);
@@ -91,13 +92,21 @@ const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <motion.nav className="sticky top-0 z-50 bg-gradient-to-r from-white to-gray-100">
-      <Container className="flex items-center justify-between py-6">
+    <motion.nav
+      className={`sticky top-0 z-50 border-b ${
+        isHome
+          ? "border-white/10 bg-slate-950 text-white"
+          : "border-slate-200 bg-gradient-to-r from-white to-gray-100"
+      }`}
+    >
+      <Container className="flex items-center justify-between py-4">
         {/* Logo */}
         <motion.div className="flex-shrink-0">
-        <Link href="/">
-              <Image src="/logo-b.jpg" alt="logo" width={200} height={150} />
-
+        <Link
+          href="/"
+          className={`block overflow-hidden rounded-xl ${isHome ? "bg-white px-3 py-2" : ""}`}
+        >
+              <Image src="/logo-b.jpg" alt="BookDataZ" width={200} height={49} className="h-9 w-auto" />
         </Link>
         </motion.div>
 
@@ -115,15 +124,17 @@ const Navbar = () => {
                 href={link.href}
                 onClick={() => setActiveLink(link.href)}
                 className={`${
-                  activeLink === link.href ? "text-customBlue" : "text-black"
-                } hover:text-customBlue transition duration-200`}
+                  activeLink === link.href
+                    ? isHome ? "text-orange-400" : "text-customBlue"
+                    : isHome ? "text-slate-200" : "text-black"
+                } hover:text-orange-400 transition duration-200`}
               >
                 {link.label}
               </Link>
 
               {/* Hover Underline */}
               <motion.span
-                className="absolute bottom-0 left-0 h-0.5 bg-customBlue"
+                className={`absolute bottom-0 left-0 h-0.5 ${isHome ? "bg-orange-400" : "bg-customBlue"}`}
                 initial="hidden"
                 animate={
                   hoveredLink === link.href || activeLink === link.href
@@ -141,11 +152,11 @@ const Navbar = () => {
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           >
-            <button className="relative flex items-center gap-2 text-black hover:text-customBlue transition duration-200 focus:outline-none">
+            <button className={`relative flex items-center gap-2 transition duration-200 focus:outline-none hover:text-orange-400 ${isHome ? "text-slate-200" : "text-black"}`}>
               MAILING LISTS
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4 text-black hover:text-customBlue"
+                className="h-4 w-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -208,15 +219,17 @@ const Navbar = () => {
                 href={link.href}
                 onClick={() => setActiveLink(link.href)}
                 className={`${
-                  activeLink === link.href ? "text-customBlue" : "text-black"
-                } hover:text-customBlue transition duration-200`}
+                  activeLink === link.href
+                    ? isHome ? "text-orange-400" : "text-customBlue"
+                    : isHome ? "text-slate-200" : "text-black"
+                } hover:text-orange-400 transition duration-200`}
               >
                 {link.label}
               </Link>
 
               {/* Hover Underline */}
               <motion.span
-                className="absolute bottom-0 left-0 h-0.5 bg-customBlue"
+                className={`absolute bottom-0 left-0 h-0.5 ${isHome ? "bg-orange-400" : "bg-customBlue"}`}
                 initial="hidden"
                 animate={
                   hoveredLink === link.href || activeLink === link.href
@@ -231,7 +244,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="sm:hidden hamburger-button p-2 hover:bg-gray-100 rounded-md"
+          className={`hamburger-button rounded-xl p-2 sm:hidden ${isHome ? "text-white hover:bg-white/10" : "hover:bg-gray-100"}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           <svg
