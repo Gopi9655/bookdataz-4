@@ -1,221 +1,209 @@
-"use client";
-import dynamic from "next/dynamic";
 import Image from "next/image";
-import Link from "next/link";
 
-// Dynamically import motion to prevent SSR errors
-const MotionDiv = dynamic(() => import("framer-motion").then((mod) => mod.motion.div), { ssr: false });
-const MotionH1 = dynamic(() => import("framer-motion").then((mod) => mod.motion.h1), { ssr: false });
-const MotionP = dynamic(() => import("framer-motion").then((mod) => mod.motion.p), { ssr: false });
+import Button from "../../../components/ui/Button";
+import CTASection from "../../../components/ui/CTASection";
+import GlassCard from "../../../components/ui/GlassCard";
+import Section from "../../../components/ui/Section";
 
-const AboutPage = () => {
-  return (
-    <div>
-      {/* First Section */}
-      <div
-        className="relative bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/aboutImages/i4b_EMEA_data_specialists_banner_2.jpg')",
-        }}
-      >
-        <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8 h-full flex justify-between items-center">
-          <div className="py-10 max-w-xl">
-            <MotionH1
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="text-4xl font-extrabold tracking-normal leading-[1.5] text-gray-900 sm:text-3xl"
-            >
-              We are BookDataz, the leading
-              <span className="text-customBlue tracking-normal"> Database Provider</span>
-            </MotionH1>
-            <MotionP
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.2 }}
-              className="mt-4 mb-10 text-lg text-gray-500 leading-[2]"
-            >
-              Our B2B contact database is developed specifically for organizations in the USA, UK,
-              and Europe, helping sales and marketing teams drive pipelines effectively.
-            </MotionP>
-            <MotionDiv
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.4, delay: 0.4 }}
-              className="mt-6"
-            >
-              <Link
-                href="/contact"
-                className="inline-block px-6 py-3 text-white bg-customBlue hover:bg-blue-700 font-medium text-lg rounded-lg shadow"
-              >
-                Find Out More
-              </Link>
-            </MotionDiv>
-          </div>
-        </div>
-      </div>
+const features = [
+  {
+    title: "Global Reach",
+    description:
+      "Connect with businesses worldwide with our expansive geographical database coverage.",
+    icon: "/aboutImages/global-svgrepo-com.svg",
+  },
+  {
+    title: "High-Quality Data",
+    description:
+      "Ensure accuracy and reliability with our regularly verified data resources.",
+    icon: "/aboutImages/data-svgrepo-com.svg",
+  },
+  {
+    title: "Custom Solutions",
+    description: "Tailored data services to meet your unique business needs.",
+    icon: "/aboutImages/solution-key-connect-svgrepo-com.svg",
+  },
+];
 
-      {/* Second Section */}
-      <div className="bg-slate-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 text-center">
-          <MotionH1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl font-bold mb-8"
+const industries = [
+  { name: "Healthcare", img: "/aboutImages/about-healthcare.jpg" },
+  { name: "Retail", img: "/aboutImages/about-retail.jpg" },
+  { name: "Technology", img: "/aboutImages/about-tech.jpg" },
+  { name: "Finance", img: "/aboutImages/about-finance.jpg" },
+  { name: "Manufacturing", img: "/aboutImages/about-manufacturing.jpg" },
+  { name: "Education", img: "/aboutImages/about-education.jpg" },
+];
+
+const testimonials = [
+  {
+    name: "Lars Petersen",
+    role: "Marketing Manager, NovaLink Denmark",
+    quote:
+      "BookDataz helped us scale our campaigns with accurate and reliable data. Highly recommended!",
+  },
+  {
+    name: "Darren Mitchell",
+    role: "Email List Strategist, Datastream Berlin",
+    quote:
+      "The quality of data provided by BookDataz has been instrumental in closing deals efficiently.",
+  },
+  {
+    name: "Isabelle Fournier",
+    role: "CMO, BlueMetric France",
+    quote:
+      "Their customizable solutions are exactly what our business needed to expand into new markets.",
+  },
+];
+
+const AboutPage = () => (
+  <div className="overflow-hidden bg-slate-950">
+    <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#071a2d] py-20 text-white lg:py-28">
+      <Image
+        src="/aboutImages/i4b_EMEA_data_specialists_banner_2.jpg"
+        alt=""
+        fill
+        priority
+        className="-z-20 object-cover object-center opacity-20"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950 via-slate-950/90 to-[#071a2d]/60" />
+      <div className="mx-auto w-full max-w-7xl px-5 md:px-8 lg:px-10">
+        <div className="max-w-3xl">
+          <p className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
+            About BookDataZ
+          </p>
+          <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+            We are BookDataz, the leading{" "}
+            <span className="text-orange-400">Database Provider</span>
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
+            Our B2B contact database is developed specifically for organizations
+            in the USA, UK, and Europe, helping sales and marketing teams drive
+            pipelines effectively.
+          </p>
+          <Button
+            href="/contact"
+            variant="accent"
+            size="lg"
+            className="mt-8 shadow-lg shadow-orange-950/30"
           >
-            Why Choose BookDataz?
-          </MotionH1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Global Reach",
-                description: "Connect with businesses worldwide with our expansive geographical database coverage.",
-                icon: "/aboutImages/global-svgrepo-com.svg",
-              },
-              {
-                title: "High-Quality Data",
-                description: "Ensure accuracy and reliability with our regularly verified data resources.",
-                icon: "/aboutImages/data-svgrepo-com.svg",
-              },
-              {
-                title: "Custom Solutions",
-                description: "Tailored data services to meet your unique business needs.",
-                icon:"/aboutImages/solution-key-connect-svgrepo-com.svg",
-              },
-              
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white text-customBlue rounded-lg p-6 shadow-md hover:shadow-xl transition duration-300"
-              >
-                <div className="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4 mx-auto">
-                  <img src={feature.icon} alt={feature.title} className="w-10 h-10" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-700">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-12">
-            <Link
-              href="/contact"
-              className="inline-block px-8 py-4 bg-white text-customBlue font-medium text-lg rounded-lg shadow hover:bg-gray-100"
-            >
-              Learn More About Our Services
-            </Link>
-          </div>
+            Find Out More
+          </Button>
         </div>
       </div>
+    </section>
 
-      {/* Third Section */}
-      <div className="bg-gray-100 py-16">
-  <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
-    <MotionDiv
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      className="text-center mb-12"
-    >
-      <h2 className="text-4xl font-bold text-customBlue mb-4">
-        Industries We Serve
-      </h2>
-      <p className="text-gray-600 max-w-3xl mx-auto">
-        From healthcare to retail, our databases empower businesses across various industries to achieve their goals.
-      </p>
-    </MotionDiv>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { name: "Healthcare", img: "/aboutImages/about-healthcare.jpg" },
-              { name: "Retail", img: "/aboutImages/about-retail.jpg" },
-              { name: "Technology", img: "/aboutImages/about-tech.jpg" },
-              { name: "Finance", img: "/aboutImages/about-finance.jpg" },
-              { name: "Manufacturing", img: "/aboutImages/about-manufacturing.jpg" },
-              { name: "Education", img: "/aboutImages/about-education.jpg" },
-            ].map((industry, index) => (
-              <div
-          key={index}
-          className="relative bg-white rounded-lg shadow-md overflow-hidden"
-        >
-       <Image
-  src={industry.img} // e.g., "/images/automotive.jpg" or an imported image variable
-  alt={industry.name}
-  width={600} // Replace with the actual image width
-  height={300} // Replace with the actual image height. This will be overridden by h-48
-  className="w-full h-48 object-cover" // Height will be fixed to 192px (h-48)
-/>
-          <div className="absolute inset-0 flex items-center justify-center bg-customBlue bg-opacity-50">
-            <h3 className="text-2xl font-semibold text-white">
+    <Section className="border-b border-white/10 bg-[#071a2d] text-white">
+      <div className="mx-auto mb-12 max-w-3xl text-center">
+        <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
+          Our Difference
+        </p>
+        <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+          Why Choose BookDataz?
+        </h2>
+      </div>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+        {features.map((feature) => (
+          <GlassCard
+            key={feature.title}
+            className="border-blue-300/15 bg-white/[0.06] text-center"
+          >
+            <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-blue-300/20 bg-blue-400/10">
+              <Image
+                src={feature.icon}
+                alt=""
+                width={38}
+                height={38}
+                className="h-10 w-10"
+              />
+            </div>
+            <h3 className="mt-6 text-xl font-semibold">{feature.title}</h3>
+            <p className="mt-3 leading-7 text-slate-300">
+              {feature.description}
+            </p>
+          </GlassCard>
+        ))}
+      </div>
+      <div className="mt-10 text-center">
+        <Button href="/contact" variant="light" size="lg">
+          Learn More About Our Services
+        </Button>
+      </div>
+    </Section>
+
+    <Section className="bg-gradient-to-b from-slate-100 to-white">
+      <div className="mx-auto mb-12 max-w-3xl text-center">
+        <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-700">
+          Market Coverage
+        </p>
+        <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl lg:text-5xl">
+          Industries We Serve
+        </h2>
+        <p className="mx-auto mt-5 max-w-2xl leading-7 text-slate-600">
+          From healthcare to retail, our databases empower businesses across
+          various industries to achieve their goals.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        {industries.map((industry) => (
+          <article
+            key={industry.name}
+            className="group relative min-h-64 overflow-hidden rounded-3xl border border-slate-200 bg-slate-900 shadow-lg"
+          >
+            <Image
+              src={industry.img}
+              alt={industry.name}
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              className="object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+            <h3 className="absolute bottom-0 left-0 p-6 text-2xl font-semibold text-white lg:p-8">
               {industry.name}
             </h3>
-          </div>
-        </div>
-      ))}
-    </div>
+          </article>
+        ))}
+      </div>
+    </Section>
+
+    <Section className="border-y border-white/10 bg-slate-900 text-white">
+      <div className="mx-auto mb-12 max-w-3xl text-center">
+        <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-400">
+          Client Perspective
+        </p>
+        <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+          What Our Clients Say
+        </h2>
+      </div>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+        {testimonials.map((testimonial) => (
+          <GlassCard
+            key={testimonial.name}
+            className="border-blue-300/15 bg-white/[0.055]"
+          >
+            <p className="text-lg leading-8 text-slate-200">
+              &quot;{testimonial.quote}&quot;
+            </p>
+            <div className="mt-6 border-t border-white/10 pt-5">
+              <h3 className="font-semibold text-white">{testimonial.name}</h3>
+              <p className="mt-1 text-sm text-blue-300">{testimonial.role}</p>
+            </div>
+          </GlassCard>
+        ))}
+      </div>
+    </Section>
+
+    <Section className="bg-slate-950">
+      <CTASection
+        title="Ready to Elevate Your Business?"
+        description="Partner with BookDataz to access premium databases and unlock growth opportunities in your target markets."
+        href="/contact"
+        actionLabel="Get Started Today"
+        buttonVariant="accent"
+        className="border-blue-300/20 bg-[#082d52]/75 text-center shadow-2xl shadow-blue-950/40"
+      />
+    </Section>
   </div>
-</div>
-
-      {/* Fourth Section: Testimonials */}
-      <div className="bg-customBlue text-white py-16">
-        <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 text-center">
-          <MotionH1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl font-bold mb-8"
-          >
-            What Our Clients Say
-          </MotionH1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Lars Petersen",
-                role: "Marketing Manager, NovaLink Denmark",
-                quote: "BookDataz helped us scale our campaigns with accurate and reliable data. Highly recommended!",
-              },
-              {
-                name: "Darren Mitchell",
-                role: "Email List Strategist, Datastream Berlin",
-                quote: "The quality of data provided by BookDataz has been instrumental in closing deals efficiently.",
-              },
-              {
-                name: "Isabelle Fournier",
-                role: "CMO, BlueMetric France",
-                quote: "Their customizable solutions are exactly what our business needed to expand into new markets.",
-              },
-            ].map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl text-left"
-              >
-                <p className="italic text-gray-800">&quot;{testimonial.quote}&quot;</p>
-                <div className="mt-4">
-                  <h3 className="font-bold text-lg text-customBlue">{testimonial.name}</h3>
-                  <p className="text-gray-600 text-sm">{testimonial.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Fifth Section: Call to Action */}
-      <div className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-customBlue mb-6">Ready to Elevate Your Business?</h2>
-          <p className="max-w-3xl mx-auto text-lg text-gray-700 mb-8">
-            Partner with BookDataz to access premium databases and unlock growth opportunities in your target markets.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-4 bg-customBlue text-white font-medium text-lg rounded-lg shadow hover:bg-blue-700"
-          >
-            Get Started Today
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-};
+);
 
 export default AboutPage;

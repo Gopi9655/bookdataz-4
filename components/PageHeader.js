@@ -5,6 +5,16 @@ import Container from "./ui/Container";
 
 const PageHeader = () => {
   const pathname = usePathname(); // Get the current pathname
+  const redesignedRoutes = [
+    "/",
+    "/about",
+    "/contact",
+    "/datacard",
+    "/mission",
+    "/story",
+    "/team",
+    "/technology",
+  ];
 
   // Map static routes to page titles
   const routeTitles = {
@@ -20,7 +30,7 @@ const PageHeader = () => {
     pathname.split("/").filter(Boolean).length === 1 && !routeTitles[pathname];
 
   if (
-    ["/", "/datacard", "/technology"].includes(pathname) ||
+    redesignedRoutes.includes(pathname) ||
     isTopLevelDynamicRoute
   ) {
     return null;

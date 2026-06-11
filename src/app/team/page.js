@@ -1,231 +1,247 @@
-import React from 'react';
+import Image from "next/image";
+import { Lightbulb, LockKeyhole, Sprout, Target, Users } from "lucide-react";
+
+import GlassCard from "../../../components/ui/GlassCard";
+import Section from "../../../components/ui/Section";
+
+const leaders = [
+  {
+    name: "Brad Allen",
+    role: "CEO & Founder",
+    image: "/team/teammale1.jpg",
+    description:
+      "Brad Allen is the strategic mind behind BookDataZ, passionate about data integrity and ethical business practices. She ensures our vision translates into tangible client success.",
+  },
+  {
+    name: "David Lee",
+    role: "CTO & Co-Founder",
+    image: "/team/team male 2.jpg",
+    description:
+      "David leads our technological advancements, ensuring BookDataZ utilizes cutting-edge solutions for data aggregation and security. His expertise keeps us ahead of the curve.",
+  },
+  {
+    name: "Rohan Mehta",
+    role: "Chief Operations Officer",
+    description:
+      "Rohan Mehta optimizes our operational efficiency and scalability. Her focus on seamless processes ensures BookDataZ delivers data reliably and consistently to our global clientele.",
+  },
+];
+
+const team = [
+  {
+    name: "Roger Depay",
+    role: "VP of sales",
+    description: "Results-Oriented Sales Strategist",
+    image: "/team/team leader 3.jpg",
+  },
+  {
+    name: "David Johnson",
+    role: "Director of sales",
+    description: "Sales Operations Leader",
+    image: "/team/team leader 1.jpeg",
+  },
+  {
+    name: "Robert Haynes",
+    role: "Business Development Manager",
+    description: "Business Growth Architect",
+    image: "/team/team male 3.jpg",
+  },
+  {
+    name: "Kevin Hughes",
+    role: "Business Development Manager",
+    description: "Sales-Driven Marketer",
+    image: "/team/team male 4.jpg",
+  },
+  {
+    name: "Peter Stenberg",
+    role: "Business Development Manager",
+    description: "Revenue Development Strategist",
+    image: "/team/team male 5.jpg",
+  },
+  {
+    name: "Michael Brand",
+    role: "Business Development Manager",
+    description: "Data-Led Sales Planner",
+    image: "/team/team male 6.jpeg",
+  },
+  {
+    name: "Sophia Larson",
+    role: "Senior Business Development Manager",
+    description: "Senior Business Development Manager",
+  },
+  {
+    name: "Michael Brand",
+    role: "Business Development Manager",
+    description: "Business Development Manager",
+  },
+];
+
+const values = [
+  {
+    title: "Innovation",
+    description:
+      "We foster a culture of continuous learning and adaptation, always seeking new ways to enhance our data solutions and client experience.",
+    Icon: Lightbulb,
+  },
+  {
+    title: "Collaboration",
+    description:
+      "Our strength lies in teamwork. We encourage open communication and mutual support across all departments to achieve collective success.",
+    Icon: Users,
+  },
+  {
+    title: "Excellence",
+    description:
+      "We are committed to delivering the highest quality in everything we do, from data accuracy to customer service, setting industry benchmarks.",
+    Icon: Target,
+  },
+  {
+    title: "Integrity",
+    description:
+      "Trust is our currency. We operate with unwavering honesty, transparency, and adherence to ethical standards in all our interactions.",
+    Icon: LockKeyhole,
+  },
+  {
+    title: "Growth",
+    description:
+      "We believe in nurturing growth—for our employees, our clients, and our company. Continuous improvement is at the heart of our journey.",
+    Icon: Sprout,
+  },
+];
+
+const initials = (name) =>
+  name
+    .split(" ")
+    .map((part) => part[0])
+    .join("");
+
+const Portrait = ({ person, size = "large" }) => {
+  const sizeClasses =
+    size === "large" ? "h-40 w-40 text-4xl" : "h-28 w-28 text-2xl";
+
+  return (
+    <div
+      className={`${sizeClasses} relative overflow-hidden rounded-full border-4 border-blue-300/25 bg-blue-400/10`}
+    >
+      {person.image ? (
+        <Image
+          src={person.image}
+          alt={person.name}
+          fill
+          sizes={size === "large" ? "160px" : "112px"}
+          className="object-cover"
+        />
+      ) : (
+        <div className="grid h-full w-full place-items-center font-bold text-blue-200">
+          {initials(person.name)}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function TeamLayout() {
   return (
-    <div className="bg-white text-gray-800 font-sans">
-
-      {/* Section 1: Our Leadership / Founders */}
-      <section className="bg-gradient-to-br from-gray-50 to-white px-5 py-20 md:px-8 lg:px-10 lg:py-28">
-        <div className="max-w-7xl mx-auto text-center space-y-12">
-          <h2 className="text-5xl font-extrabold text-customBlue leading-tight mb-4">
-            Meet Our <span className="block text-red-500">Visionary Leaders</span>
-          </h2>
-          <p className="text-xl leading-relaxed text-gray-700 max-w-3xl mx-auto">
-            Our leadership team brings decades of experience, innovation, and passion to guide BookDataZ forward,
-            ensuring we stay true to our mission of delivering exceptional B2B data.
+    <div className="overflow-hidden bg-slate-950 text-white">
+      <Section className="relative border-b border-white/10 bg-[#071a2d]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.2),transparent_42%)]" />
+        <div className="relative mx-auto mb-12 max-w-3xl text-center lg:mb-16">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
+            Leadership
           </p>
-
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-
-            {/* Leader 1 */}
-            <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
-              <div className="w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-customBlue/50 flex items-center justify-center bg-gray-200">
-                {/* Placeholder for image */}
-                <img src="/team/teammale1.jpg" alt="Sarah Chen" className="object-cover w-full h-full" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-2">Brad Allen</h3>
-              <p className="text-lg text-red-500 font-semibold mb-4">CEO & Founder</p>
-              <p className="text-base text-gray-600 leading-relaxed">
-                Brad Allen is the strategic mind behind BookDataZ, passionate about data integrity and ethical business practices.
-                She ensures our vision translates into tangible client success.
-              </p>
-            </div>
-
-            {/* Leader 2 */}
-            <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
-              <div className="w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-customBlue/50 flex items-center justify-center bg-gray-200">
-                {/* Placeholder for image */}
-                <img src="/team/team male 2.jpg " alt="David Lee" className="object-cover w-full h-full" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-2">David Lee</h3>
-              <p className="text-lg text-red-500 font-semibold mb-4">CTO & Co-Founder</p>
-              <p className="text-base text-gray-600 leading-relaxed">
-                David leads our technological advancements, ensuring BookDataZ utilizes cutting-edge solutions for data aggregation and security.
-                His expertise keeps us ahead of the curve.
-              </p>
-            </div>
-
-            {/* Leader 3 (Optional: if you have a third leader) */}
-            <div className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
-              <div className="w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-customBlue/50 flex items-center justify-center bg-gray-200">
-                {/* Placeholder for image */}
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-2">Rohan Mehta</h3>
-              <p className="text-lg text-red-500 font-semibold mb-4">Chief Operations Officer</p>
-              <p className="text-base text-gray-600 leading-relaxed">
-                Rohan Mehta optimizes our operational efficiency and scalability. Her focus on seamless processes ensures
-                BookDataZ delivers data reliably and consistently to our global clientele.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      ---
-
-      {/* Section 2: Our Core Team */}
-      <section className="bg-gray-100 px-5 py-20 md:px-8 lg:px-10 lg:py-28">
-        <div className="max-w-7xl mx-auto text-center space-y-12">
-          <h2 className="text-5xl font-extrabold text-customBlue leading-tight mb-4">
-            Meet Our <span className="block text-red-500">Dedicated Team</span>
-          </h2>
-          <p className="text-xl leading-relaxed text-gray-700 max-w-3xl mx-auto">
-            Our global team of experts is the backbone of BookDataZ. From data scientists to compliance specialists,
-            each member is committed to excellence and client success.
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            Meet Our <span className="text-orange-400">Visionary Leaders</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
+            Our leadership team brings decades of experience, innovation, and
+            passion to guide BookDataZ forward, ensuring we stay true to our
+            mission of delivering exceptional B2B data.
           </p>
-
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-
-            {/* Team Member 1 */}
-            <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:shadow-lg">
-              <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-red-400 flex items-center justify-center bg-gray-200">
-                <img src="/team/team leader 3.jpg" alt="John Doe" className="object-cover w-full h-full" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">Roger Depay</h3>
-              <p className="text-base text-customBlue font-semibold mb-3">VP of sales</p>
-              <p className="text-sm text-gray-600">Results-Oriented Sales Strategist</p>
-            </div>
-
-            {/* Team Member 2 */}
-            <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:shadow-lg">
-              <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-red-400 flex items-center justify-center bg-gray-200">
-                <img src="/team/team leader 1.jpeg" alt="Jane Smith" className="object-cover w-full h-full" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">David Johnson</h3>
-              <p className="text-base text-customBlue font-semibold mb-3">Director of sales</p>
-              <p className="text-sm text-gray-600">Sales Operations Leader</p>
-            </div>
-
-            {/* Team Member 3 */}
-            <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:shadow-lg">
-              <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-red-400 flex items-center justify-center bg-gray-200">
-                <img src="/team/team male 3.jpg" alt="Michael Brown" className="object-cover w-full h-full" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">Robert Haynes</h3>
-              <p className="text-base text-customBlue font-semibold mb-3">Business Development Manager</p>
-              <p className="text-sm text-gray-600">Business Growth Architect</p>
-            </div>
-
-            {/* Team Member 4 */}
-            <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:shadow-lg">
-              <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-red-400 flex items-center justify-center bg-gray-200">
-                <img src="/team/team male 4.jpg" alt="Jessica Green" className="object-cover w-full h-full" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">Kevin Hughes</h3>
-              <p className="text-base text-customBlue font-semibold mb-3">Business Development Manager</p>
-              <p className="text-sm text-gray-600">Sales-Driven Marketer
-</p>
-            </div>
-
-             {/* Add more team members as needed, following the same structure */}
-             {/* Team Member 5 */}
-            <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:shadow-lg">
-              <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-red-400 flex items-center justify-center bg-gray-200">
-                <img src="/team/team male 5.jpg" alt="Chris Taylor" className="object-cover w-full h-full" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">Peter Stenberg</h3>
-              <p className="text-base text-customBlue font-semibold mb-3">Business Development Manager</p>
-              <p className="text-sm text-gray-600">Revenue Development Strategist</p>
-            </div>
-
-             {/* Team Member 6 */}
-            <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:shadow-lg">
-              <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-red-400 flex items-center justify-center bg-gray-200">
-                <img src="/team/team male 6.jpeg" alt="Olivia King" className="object-cover w-full h-full" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">Michael Brand</h3>
-              <p className="text-base text-customBlue font-semibold mb-3">Business Development Manager</p>
-              <p className="text-sm text-gray-600">Data-Led Sales Planner</p>
-            </div>
-            {/* team 7 */}
-                        <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:shadow-lg">
-              <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-red-400 flex items-center justify-center bg-gray-200">
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">Sophia Larson</h3>
-              <p className="text-base text-customBlue font-semibold mb-3">Senior Business Development Manager</p>
-              <p className="text-sm text-gray-600">Senior Business Development Manager</p>
-            </div>
-            {/* team 8 */}
-            <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:shadow-lg">
-              <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-red-400 flex items-center justify-center bg-gray-200">
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">Michael Brand</h3>
-              <p className="text-base text-customBlue font-semibold mb-3">Business Development Manager</p>
-              <p className="text-sm text-gray-600">Business Development Manager</p>
-            </div>
-
-            
-
-
-
-          </div>
         </div>
-      </section>
 
-      ---
+        <div className="relative grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+          {leaders.map((leader) => (
+            <GlassCard
+              key={leader.name}
+              className="flex h-full flex-col items-center border-blue-300/15 bg-white/[0.06] text-center"
+            >
+              <Portrait person={leader} />
+              <h2 className="mt-6 text-2xl font-bold">{leader.name}</h2>
+              <p className="mt-2 font-semibold text-orange-400">
+                {leader.role}
+              </p>
+              <p className="mt-5 leading-7 text-slate-300">
+                {leader.description}
+              </p>
+            </GlassCard>
+          ))}
+        </div>
+      </Section>
 
-      {/* Section 3: Our Values & Culture */}
-      <section className="bg-gradient-to-tl from-customBlue/5 to-white px-5 py-20 md:px-8 lg:px-10 lg:py-28">
-        <div className="max-w-7xl mx-auto text-center space-y-12">
-          <h2 className="text-5xl font-extrabold text-customBlue leading-tight mb-4">
-            Our <span className="block text-red-500">Core Values & Culture</span>
-          </h2>
-          <p className="text-xl leading-relaxed text-gray-700 max-w-3xl mx-auto">
-            At BookDataZ, our team thrives on a foundation of shared values that drive our innovation, collaboration,
-            and commitment to excellence.
+      <Section className="bg-gradient-to-b from-slate-100 to-white text-slate-950">
+        <div className="mx-auto mb-12 max-w-3xl text-center lg:mb-16">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-700">
+            Our People
           </p>
-
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-            {/* Value Card 1 */}
-            <div className="bg-white rounded-xl shadow-lg p-8 space-y-4 text-left border-l-4 border-customBlue hover:shadow-xl transition-shadow duration-300">
-              <div className="text-customBlue text-4xl mb-3">💡</div> {/* Icon placeholder */}
-              <h3 className="text-2xl font-bold text-gray-900">Innovation</h3>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                We foster a culture of continuous learning and adaptation, always seeking new ways to enhance our data solutions and client experience.
-              </p>
-            </div>
-
-            {/* Value Card 2 */}
-            <div className="bg-white rounded-xl shadow-lg p-8 space-y-4 text-left border-l-4 border-red-500 hover:shadow-xl transition-shadow duration-300">
-              <div className="text-red-500 text-4xl mb-3">🤝</div> {/* Icon placeholder */}
-              <h3 className="text-2xl font-bold text-gray-900">Collaboration</h3>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Our strength lies in teamwork. We encourage open communication and mutual support across all departments to achieve collective success.
-              </p>
-            </div>
-
-            {/* Value Card 3 */}
-            <div className="bg-white rounded-xl shadow-lg p-8 space-y-4 text-left border-l-4 border-customBlue hover:shadow-xl transition-shadow duration-300">
-              <div className="text-customBlue text-4xl mb-3">🎯</div> {/* Icon placeholder */}
-              <h3 className="text-2xl font-bold text-gray-900">Excellence</h3>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                We are committed to delivering the highest quality in everything we do, from data accuracy to customer service, setting industry benchmarks.
-              </p>
-            </div>
-
-             {/* Value Card 4 (Optional: if you have more values) */}
-            <div className="bg-white rounded-xl shadow-lg p-8 space-y-4 text-left border-l-4 border-red-500 hover:shadow-xl transition-shadow duration-300">
-              <div className="text-red-500 text-4xl mb-3">🔒</div> {/* Icon placeholder */}
-              <h3 className="text-2xl font-bold text-gray-900">Integrity</h3>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Trust is our currency. We operate with unwavering honesty, transparency, and adherence to ethical standards in all our interactions.
-              </p>
-            </div>
-
-             {/* Value Card 5 (Optional) */}
-            <div className="bg-white rounded-xl shadow-lg p-8 space-y-4 text-left border-l-4 border-customBlue hover:shadow-xl transition-shadow duration-300">
-              <div className="text-customBlue text-4xl mb-3">🌱</div> {/* Icon placeholder */}
-              <h3 className="text-2xl font-bold text-gray-900">Growth</h3>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                We believe in nurturing growth—for our employees, our clients, and our company. Continuous improvement is at the heart of our journey.
-              </p>
-            </div>
-
-          </div>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            Meet Our <span className="text-blue-700">Dedicated Team</span>
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl leading-7 text-slate-600 md:text-lg">
+            Our global team of experts is the backbone of BookDataZ. From data
+            scientists to compliance specialists, each member is committed to
+            excellence and client success.
+          </p>
         </div>
-      </section>
 
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          {team.map((member, index) => (
+            <GlassCard
+              key={`${member.name}-${index}`}
+              className="flex h-full flex-col items-center border-slate-200 bg-white text-center shadow-md"
+            >
+              <Portrait person={member} size="small" />
+              <h3 className="mt-5 text-xl font-bold text-slate-950">
+                {member.name}
+              </h3>
+              <p className="mt-2 font-semibold text-blue-700">{member.role}</p>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                {member.description}
+              </p>
+            </GlassCard>
+          ))}
+        </div>
+      </Section>
+
+      <Section className="border-y border-white/10 bg-slate-900">
+        <div className="mx-auto mb-12 max-w-3xl text-center lg:mb-16">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-400">
+            How We Work
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            Our Core Values &amp; Culture
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl leading-7 text-slate-300 md:text-lg">
+            At BookDataZ, our team thrives on a foundation of shared values that
+            drive our innovation, collaboration, and commitment to excellence.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          {values.map(({ title, description, Icon }) => (
+            <GlassCard
+              key={title}
+              className="border-blue-300/15 bg-white/[0.055]"
+            >
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-blue-400/10 text-blue-300">
+                <Icon size={23} />
+              </div>
+              <h3 className="mt-5 text-2xl font-bold">{title}</h3>
+              <p className="mt-3 leading-7 text-slate-300">{description}</p>
+            </GlassCard>
+          ))}
+        </div>
+
+      </Section>
     </div>
   );
 }
