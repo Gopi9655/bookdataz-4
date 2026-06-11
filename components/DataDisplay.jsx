@@ -7,12 +7,14 @@ import {
     LinearScale,
     LineElement,
     PointElement,
+    BarElement,
+    ArcElement,
     RadarController,
     RadialLinearScale,
     Tooltip,
     Legend,
 } from "chart.js";
-import { Line, Radar } from "react-chartjs-2";
+import { Bar, Doughnut, Line, Radar } from "react-chartjs-2";
 
 // Register necessary Chart.js components
 ChartJS.register(
@@ -20,6 +22,8 @@ ChartJS.register(
     LinearScale,
     LineElement,
     PointElement,
+    BarElement,
+    ArcElement,
     RadarController,
     RadialLinearScale,
     Tooltip,
@@ -27,9 +31,31 @@ ChartJS.register(
 );
 
 const DataDisplay = ({ industryData }) => {
+    const barData = {
+        labels: ["Segment 1", "Segment 2", "Segment 3"],
+        datasets: [
+            {
+                label: "Industry Data",
+                data: industryData.barData,
+                backgroundColor: ["#3B82F6", "#4F46E5", "#6366F1"],
+            },
+        ],
+    };
+
+    const pieData = {
+        labels: ["Segment 1", "Segment 2", "Segment 3"],
+        datasets: [
+            {
+                label: "Industry Distribution",
+                data: industryData.pieData,
+                backgroundColor: ["#3B82F6", "#4F46E5", "#6366F1"],
+            },
+        ],
+    };
+
     // Line Chart Data (Tracking Growth)
     const lineData = {
-        labels: ["Q1", "Q2", "Q3", "Q4"],
+        labels: ["Q1", "Q2", "Q3", "Q4", "Q5"],
         datasets: [
             {
                 label: "Data Growth Over Time",
@@ -65,6 +91,16 @@ const DataDisplay = ({ industryData }) => {
 
             {/* Charts Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-xl p-6 shadow-lg">
+                    <h2 className="text-xl font-semibold mb-4">Industry Data</h2>
+                    <Bar data={barData} />
+                </div>
+
+                <div className="bg-white rounded-xl p-6 shadow-lg">
+                    <h2 className="text-xl font-semibold mb-4">Industry Distribution</h2>
+                    <Doughnut data={pieData} />
+                </div>
+
                 <div className="bg-white rounded-xl p-6 shadow-lg">
                     <h2 className="text-xl font-semibold mb-4">Data Growth Over Time</h2>
                     <Line data={lineData} />

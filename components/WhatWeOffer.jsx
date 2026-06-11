@@ -1,11 +1,5 @@
+import Image from "next/image";
 import React, { useMemo } from "react";
-import {
-  FaGlobeAmericas,
-  FaShieldAlt,
-  FaDatabase,
-  FaUserCheck,
-  FaLock,
-} from "react-icons/fa";
 
 const countriesList = [
   "United States",
@@ -32,43 +26,10 @@ const countriesList = [
   // Add more countries as needed
 ];
 
-const capabilitiesList = [
-  {
-    icon: <FaDatabase className="text-customBlue w-8 h-8" aria-hidden="true" />,
-    title: "Extensive Email Databases",
-    description:
-      "Access millions of verified, segmented, and up-to-date email contacts worldwide.",
-  },
-  {
-    icon: <FaGlobeAmericas className="text-customBlue w-8 h-8" aria-hidden="true" />,
-    title: "Global Coverage",
-    description:
-      "Data spanning 160+ countries, covering multiple industries and demographics.",
-  },
-  {
-    icon: <FaShieldAlt className="text-customBlue w-8 h-8" aria-hidden="true" />,
-    title: "GDPR & CCPA Compliant",
-    description:
-      "Strict adherence to data privacy laws ensuring ethical and legal data handling.",
-  },
-  {
-    icon: <FaUserCheck className="text-customBlue w-8 h-8" aria-hidden="true" />,
-    title: "Verified & Accurate",
-    description:
-      "Regularly cleansed and validated data to maximize campaign effectiveness.",
-  },
-  {
-    icon: <FaLock className="text-customBlue w-8 h-8" aria-hidden="true" />,
-    title: "Secure Data Handling",
-    description:
-      "Robust security protocols to protect your data and ours.",
-  },
-];
-
-export default function WhatWeOfferSection() {
+export default function WhatWeOfferSection({ offers }) {
   // Memoize static data to avoid unnecessary re-renders
   const countries = useMemo(() => countriesList, []);
-  const capabilities = useMemo(() => capabilitiesList, []);
+  const capabilities = useMemo(() => offers, [offers]);
 
   return (
     <section className="bg-gradient-to-tr from-white via-customBlue/20 to-customBlue/40 text-gray-900 py-20 px-6 md:px-36">
@@ -112,19 +73,21 @@ export default function WhatWeOfferSection() {
 
         {/* Capabilities */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10" role="list">
-          {capabilities.map(({ icon, title, description }, idx) => (
+          {capabilities.map(({ id, icon, title, content }) => (
             <div
-              key={idx}
+              key={id}
               className="flex items-start space-x-6"
               role="listitem"
               tabIndex={0}
             >
-              <div className="flex-shrink-0">{icon}</div>
+              <div className="flex-shrink-0">
+                <Image src={icon} alt="" width={32} height={32} aria-hidden="true" />
+              </div>
               <div>
                 <h4 className="text-xl font-semibold text-customBlue whitespace-nowrap truncate">
                   {title}
                 </h4>
-                <p className="text-gray-700 mt-1 leading-relaxed max-w-md">{description}</p>
+                <p className="text-gray-700 mt-1 leading-relaxed max-w-md">{content}</p>
               </div>
             </div>
           ))}

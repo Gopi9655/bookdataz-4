@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
+import { datacollections } from "@/resource/data";
+
+const getNumericValue = (value) => Number.parseInt(value.replace(/\D/g, ""), 10);
+const getSuffix = (value) => value.replace(/[\d,]/g, "");
 
 const HeroSection = () => {
-  const [counts, setCounts] = useState({
-    datasets: 0,
-    companies: 0,
-    countries: 0,
-    contacts: 0,
-    firms: 0,
-  });
+  const [counts, setCounts] = useState(datacollections.map(() => 0));
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef(null);
 
@@ -36,13 +34,7 @@ const HeroSection = () => {
     if (!hasAnimated) return;
 
     const duration = 2000;
-    const increments = {
-      datasets: 170,
-      companies: 10000000,
-      countries: 160,
-      contacts: 5000,
-      firms: 7000,
-    };
+    const targets = datacollections.map(({ number }) => getNumericValue(number));
 
     const startTime = Date.now();
 
@@ -50,13 +42,7 @@ const HeroSection = () => {
       const currentTime = Date.now();
       const progress = Math.min((currentTime - startTime) / duration, 1);
 
-      setCounts({
-        datasets: Math.floor(progress * increments.datasets),
-        companies: Math.floor(progress * increments.companies),
-        countries: Math.floor(progress * increments.countries),
-        contacts: Math.floor(progress * increments.contacts),
-        firms: Math.floor(progress * increments.firms),
-      });
+      setCounts(targets.map((target) => Math.floor(progress * target)));
 
       if (progress < 1) {
         requestAnimationFrame(animate);
@@ -106,32 +92,32 @@ const HeroSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* First Row: Million Datasets spans two columns */}
             <div className="md:col-span-2 bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
-              <h2 className="text-3xl font-bold">{counts.datasets}M+</h2>
-              <p className="uppercase text-xs mt-2">Datasets</p>
+              <h2 className="text-3xl font-bold">{counts[0]}{getSuffix(datacollections[0].number)}</h2>
+              <p className="uppercase text-xs mt-2">{datacollections[0].heading}</p>
             </div>
             <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
               <h2 className="text-3xl font-bold">
-                {Math.floor(counts.companies / 1000000)}M+
+                {counts[1]}{getSuffix(datacollections[1].number)}
               </h2>
-              <p className="uppercase text-xs mt-2">Active Companies</p>
+              <p className="uppercase text-xs mt-2">{datacollections[1].heading}</p>
             </div>
 
             {/* Second Row */}
             <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
-              <h2 className="text-3xl font-bold">{counts.countries}+</h2>
-              <p className="uppercase text-xs mt-2">Countries Covered</p>
+              <h2 className="text-3xl font-bold">{counts[2]}{getSuffix(datacollections[2].number)}</h2>
+              <p className="uppercase text-xs mt-2">{datacollections[2].heading}</p>
             </div>
             <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
               <h2 className="text-3xl font-bold">
-                {Math.floor(counts.contacts / 1000)}M+
+                {counts[3]}{getSuffix(datacollections[3].number)}
               </h2>
               <p className="uppercase text-xs mt-2">
-                Global Healthcare Contacts
+                {datacollections[3].heading}
               </p>
             </div>
             <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm p-4 rounded-lg">
-              <h2 className="text-3xl font-bold">{counts.firms}+</h2>
-              <p className="uppercase text-xs mt-2">Top Ranking Firms</p>
+              <h2 className="text-3xl font-bold">{counts[4]}{getSuffix(datacollections[4].number)}</h2>
+              <p className="uppercase text-xs mt-2">{datacollections[4].heading}</p>
             </div>
           </div>
 
