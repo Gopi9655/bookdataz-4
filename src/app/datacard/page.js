@@ -85,7 +85,7 @@ export default function BrowseDatacardPage() {
         <Container className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
           <motion.div
             variants={stagger}
-            initial="hidden"
+            initial={false}
             animate="visible"
             className="max-w-3xl"
           >
@@ -147,7 +147,7 @@ export default function BrowseDatacardPage() {
 
           <motion.div
             variants={stagger}
-            initial="hidden"
+            initial={false}
             animate="visible"
             className="grid gap-6"
           >
@@ -229,7 +229,7 @@ export default function BrowseDatacardPage() {
       <Section className="bg-slate-50">
         <motion.div
           variants={fadeUp}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
           className="mx-auto mb-12 max-w-3xl text-center lg:mb-16"
@@ -265,7 +265,7 @@ export default function BrowseDatacardPage() {
         {filteredCategories.length > 0 ? (
           <motion.div
             variants={stagger}
-            initial="hidden"
+            initial={false}
             whileInView="visible"
             viewport={{ once: true, amount: 0.05 }}
             className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"

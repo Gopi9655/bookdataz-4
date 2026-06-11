@@ -1,4 +1,3 @@
-// src/components/DataDisplay.jsx
 "use client";
 
 import {
@@ -17,7 +16,6 @@ import {
 import { Bar, Doughnut, Line, Radar } from "react-chartjs-2";
 import GlassCard from "./ui/GlassCard";
 
-// Register necessary Chart.js components
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -32,86 +30,178 @@ ChartJS.register(
 );
 
 const DataDisplay = ({ industryData }) => {
+    const labelsFor = (values) => values.map((_, index) => `Value ${index + 1}`);
+    const gridColor = "rgba(148, 163, 184, 0.16)";
+    const tickColor = "#cbd5e1";
+    const legendColor = "#e2e8f0";
+    const tooltipOptions = {
+        backgroundColor: "#020617",
+        borderColor: "rgba(147, 197, 253, 0.28)",
+        borderWidth: 1,
+        titleColor: "#f8fafc",
+        bodyColor: "#cbd5e1",
+        padding: 12,
+    };
+    const cartesianOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: tooltipOptions,
+        },
+        scales: {
+            x: {
+                grid: { display: false },
+                ticks: { color: tickColor },
+                border: { color: gridColor },
+            },
+            y: {
+                beginAtZero: true,
+                grid: { color: gridColor },
+                ticks: { color: tickColor },
+                border: { color: gridColor },
+            },
+        },
+    };
+
     const barData = {
-        labels: ["Segment 1", "Segment 2", "Segment 3"],
+        labels: labelsFor(industryData.barData),
         datasets: [
             {
-                label: "Industry Data",
+                label: "Bar data",
                 data: industryData.barData,
-                backgroundColor: ["#3B82F6", "#4F46E5", "#6366F1"],
+                backgroundColor: ["#60a5fa", "#3b82f6", "#f97316"],
+                borderRadius: 8,
             },
         ],
     };
 
     const pieData = {
-        labels: ["Segment 1", "Segment 2", "Segment 3"],
+        labels: labelsFor(industryData.pieData),
         datasets: [
             {
-                label: "Industry Distribution",
+                label: "Pie data",
                 data: industryData.pieData,
-                backgroundColor: ["#3B82F6", "#4F46E5", "#6366F1"],
+                backgroundColor: ["#60a5fa", "#2563eb", "#f97316"],
+                borderColor: "#071a2d",
+                borderWidth: 4,
             },
         ],
     };
 
-    // Line Chart Data (Tracking Growth)
     const lineData = {
-        labels: ["Q1", "Q2", "Q3", "Q4", "Q5"],
+        labels: labelsFor(industryData.lineData),
         datasets: [
             {
-                label: "Data Growth Over Time",
+                label: "Line data",
                 data: industryData.lineData,
-                borderColor: "#3B82F6",
+                borderColor: "#60a5fa",
+                backgroundColor: "#60a5fa",
+                pointBackgroundColor: "#f97316",
+                pointBorderColor: "#fed7aa",
+                pointRadius: 4,
+                pointHoverRadius: 6,
+                tension: 0.35,
                 fill: false,
             },
         ],
     };
 
-    // Radar Chart Data (Industry Performance Metrics)
     const radarData = {
-        labels: ["Data Accuracy", "Engagement Rate", "Conversion", "Retention", "Market Demand"],
+        labels: labelsFor(industryData.radarData),
         datasets: [
             {
-                label: "Industry Performance",
+                label: "Radar data",
                 data: industryData.radarData,
-                backgroundColor: "rgba(79, 70, 229, 0.2)",
-                borderColor: "#4F46E5",
+                backgroundColor: "rgba(96, 165, 250, 0.18)",
+                borderColor: "#60a5fa",
+                pointBackgroundColor: "#f97316",
+                pointBorderColor: "#fed7aa",
             },
         ],
     };
 
+    const doughnutOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: "64%",
+        plugins: {
+            legend: {
+                position: "bottom",
+                labels: {
+                    color: legendColor,
+                    boxWidth: 10,
+                    boxHeight: 10,
+                    padding: 18,
+                    usePointStyle: true,
+                },
+            },
+            tooltip: tooltipOptions,
+        },
+    };
+    const radarOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: tooltipOptions,
+        },
+        scales: {
+            r: {
+                beginAtZero: true,
+                angleLines: { color: gridColor },
+                grid: { color: gridColor },
+                pointLabels: { color: tickColor, font: { size: 11 } },
+                ticks: {
+                    color: tickColor,
+                    backdropColor: "transparent",
+                    showLabelBackdrop: false,
+                },
+            },
+        },
+    };
+    const panels = [
+        {
+            title: "Bar data",
+            count: industryData.barData.length,
+            chart: <Bar data={barData} options={cartesianOptions} />,
+        },
+        {
+            title: "Pie data",
+            count: industryData.pieData.length,
+            chart: <Doughnut data={pieData} options={doughnutOptions} />,
+        },
+        {
+            title: "Line data",
+            count: industryData.lineData.length,
+            chart: <Line data={lineData} options={cartesianOptions} />,
+        },
+        {
+            title: "Radar data",
+            count: industryData.radarData.length,
+            chart: <Radar data={radarData} options={radarOptions} />,
+        },
+    ];
+
     return (
-        <div className="mx-auto max-w-5xl">
-            {/* SEO-Optimized Heading */}
-            <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                    {industryData.name} Data Insights
-                </h2>
-                <p className="text-lg text-gray-500 leading-relaxed">{industryData.description}</p>
-            </div>
-
-            {/* Charts Section */}
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
-                <GlassCard className="border-gray-200 bg-white">
-                    <h2 className="text-xl font-semibold mb-4">Industry Data</h2>
-                    <Bar data={barData} />
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+            {panels.map((panel) => (
+                <GlassCard
+                    key={panel.title}
+                    as="section"
+                    className="min-w-0 overflow-hidden border-blue-300/15 bg-slate-950/45"
+                >
+                    <div className="mb-6 flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+                        <h3 className="text-lg font-semibold text-white">{panel.title}</h3>
+                        <span className="rounded-full border border-blue-300/15 bg-blue-400/10 px-3 py-1 text-xs font-semibold tabular-nums text-blue-200">
+                            {panel.count} values
+                        </span>
+                    </div>
+                    <div className="relative h-72 min-w-0 w-full sm:h-80">
+                        {panel.chart}
+                    </div>
                 </GlassCard>
-
-                <GlassCard className="border-gray-200 bg-white">
-                    <h2 className="text-xl font-semibold mb-4">Industry Distribution</h2>
-                    <Doughnut data={pieData} />
-                </GlassCard>
-
-                <GlassCard className="border-gray-200 bg-white">
-                    <h2 className="text-xl font-semibold mb-4">Data Growth Over Time</h2>
-                    <Line data={lineData} />
-                </GlassCard>
-
-                <GlassCard className="border-gray-200 bg-white">
-                    <h2 className="text-xl font-semibold mb-4">Industry Performance Metrics</h2>
-                    <Radar data={radarData} />
-                </GlassCard>
-            </div>
+            ))}
         </div>
     );
 };

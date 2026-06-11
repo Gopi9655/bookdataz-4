@@ -6,27 +6,32 @@ import Container from "./ui/Container";
 const PageHeader = () => {
   const pathname = usePathname(); // Get the current pathname
 
-  // Redesigned pages provide their own full hero and page title.
-  if (["/", "/datacard", "/technology"].includes(pathname)) {
-    return null;
-  }
-
   // Map static routes to page titles
   const routeTitles = {
     "/about": "About Us",
     "/contact": "Contact Us",
-    "/datacard": "Browse Datacards",
-    "/technology": "Technology List",
+    "/mission": "Mission",
+    "/story": "Story",
+    "/team": "Team",
   };
 
-  // Dynamically format industry pages (handles "/automotive-industry", etc.)
+  // Redesigned pages and top-level industry routes provide their own page title.
+  const isTopLevelDynamicRoute =
+    pathname.split("/").filter(Boolean).length === 1 && !routeTitles[pathname];
+
+  if (
+    ["/", "/datacard", "/technology"].includes(pathname) ||
+    isTopLevelDynamicRoute
+  ) {
+    return null;
+  }
+
   const formattedTitle = pathname
     .split("/")
     .filter((path) => path)
-    .map((path) => path.replace(/-/g, " ")) // Converts "automotive-industry" to "Automotive Industry"
-    .join(" > "); // Breadcrumb-style title
+    .map((path) => path.replace(/-/g, " "))
+    .join(" > ");
 
-  // Determine the final title
   const title = routeTitles[pathname] || formattedTitle || "Page";
 
   return (

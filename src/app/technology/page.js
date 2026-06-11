@@ -103,7 +103,7 @@ export default function TechnologyListPage() {
         <Container className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
           <motion.div
             variants={stagger}
-            initial="hidden"
+            initial={false}
             animate="visible"
             className="max-w-2xl"
           >
@@ -124,7 +124,7 @@ export default function TechnologyListPage() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.15, ease: "easeOut" }}
           >
@@ -163,7 +163,7 @@ export default function TechnologyListPage() {
         <div className="relative">
           <motion.div
             variants={fadeUp}
-            initial="hidden"
+            initial={false}
             whileInView="visible"
             viewport={{ once: true, amount: 0.25 }}
             className="mx-auto mb-12 max-w-3xl text-center lg:mb-16"
@@ -199,7 +199,7 @@ export default function TechnologyListPage() {
           {filteredTechnologies.length > 0 ? (
             <motion.div
               variants={stagger}
-              initial="hidden"
+              initial={false}
               whileInView="visible"
               viewport={{ once: true, amount: 0.02 }}
               className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
