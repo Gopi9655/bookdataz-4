@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { neon } from "@neondatabase/serverless";
 
-const sql = neon(process.env.NEON_DB_URL);
-
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { name, email, subject, message } = body;
@@ -14,6 +12,16 @@ export async function POST(req) {
         { status: 400 }
       );
     }
+
+    const databaseUrl = process.env.NEON_DB_URL;
+    if (!databaseUrl) {
+      return NextResponse.json(
+        { error: "Contact service is temporarily unavailable" },
+        { status: 503 }
+      );
+    }
+
+    const sql = neon(databaseUrl);
 
     // Get IP address (App Router/Edge compatible)
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0] ?? "";
