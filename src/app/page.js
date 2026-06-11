@@ -528,10 +528,10 @@ export default function Home() {
               />
               <h3 className="text-lg md:text-xl font-semibold mb-2 text-white">{item.title}</h3>
               <p className="text-blue-100 mb-4 text-sm md:text-base">{item.description}</p>
-              <a href="/contact"
+              <Link href="/contact"
                 className="text-pink-300 font-medium hover:underline flex items-center text-sm md:text-base">
                 Learn more <span className="ml-1">→</span>
-              </a>
+              </Link>
             </div>
           </GlassCard>
         ))}
@@ -628,7 +628,7 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-xs sm:text-sm md:text-base italic text-gray-700 mb-4 leading-relaxed">
-                    "{testimonial.testimonial}"
+                    &quot;{testimonial.testimonial}&quot;
                   </p>
                   <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900">
                     {testimonial.name}

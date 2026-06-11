@@ -10,6 +10,7 @@
     "check:content": "node scripts/check-content-lock.mjs"
   },
   "dependencies": {
+    "@emotion/is-prop-valid": "^1.4.0",
     "@neondatabase/serverless": "^1.0.0",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.9",

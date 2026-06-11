@@ -95,10 +95,10 @@ const Navbar = () => {
       <Container className="flex items-center justify-between py-6">
         {/* Logo */}
         <motion.div className="flex-shrink-0">
-        <a href="/">
+        <Link href="/">
               <Image src="/logo-b.jpg" alt="logo" width={200} height={150} />
 
-        </a>
+        </Link>
         </motion.div>
 
         {/* Desktop Navigation Links */}

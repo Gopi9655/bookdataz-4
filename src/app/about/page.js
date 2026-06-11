@@ -1,6 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import Link from "next/link";
 
 // Dynamically import motion to prevent SSR errors
 const MotionDiv = dynamic(() => import("framer-motion").then((mod) => mod.motion.div), { ssr: false });
@@ -43,12 +44,12 @@ const AboutPage = () => {
               transition={{ duration: 1.4, delay: 0.4 }}
               className="mt-6"
             >
-              <a
+              <Link
                 href="/contact"
                 className="inline-block px-6 py-3 text-white bg-customBlue hover:bg-blue-700 font-medium text-lg rounded-lg shadow"
               >
                 Find Out More
-              </a>
+              </Link>
             </MotionDiv>
           </div>
         </div>
@@ -97,12 +98,12 @@ const AboutPage = () => {
             ))}
           </div>
           <div className="mt-12">
-            <a
+            <Link
               href="/contact"
               className="inline-block px-8 py-4 bg-white text-customBlue font-medium text-lg rounded-lg shadow hover:bg-gray-100"
             >
               Learn More About Our Services
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -187,7 +188,7 @@ const AboutPage = () => {
                 key={index}
                 className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl text-left"
               >
-                <p className="italic text-gray-800">"{testimonial.quote}"</p>
+                <p className="italic text-gray-800">&quot;{testimonial.quote}&quot;</p>
                 <div className="mt-4">
                   <h3 className="font-bold text-lg text-customBlue">{testimonial.name}</h3>
                   <p className="text-gray-600 text-sm">{testimonial.role}</p>
@@ -205,12 +206,12 @@ const AboutPage = () => {
           <p className="max-w-3xl mx-auto text-lg text-gray-700 mb-8">
             Partner with BookDataz to access premium databases and unlock growth opportunities in your target markets.
           </p>
-          <a
+          <Link
             href="/contact"
             className="inline-block px-8 py-4 bg-customBlue text-white font-medium text-lg rounded-lg shadow hover:bg-blue-700"
           >
             Get Started Today
-          </a>
+          </Link>
         </div>
       </div>
     </div>

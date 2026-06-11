@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import PageHeader from "../../components/PageHeader";
 import CookieConsent from "../../components/CookieConsent";
 import DisableCopyPaste from "../../components/DisableCopyPaste";
+import Script from "next/script";
 export const metadata = {
   title: "Affordable, Reliable Databases for Your Business Growth | Bookdataz.com",
   description:
@@ -54,7 +55,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"
         />
-        <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+        <Script
+          src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"
+          strategy="beforeInteractive"
+        />
 
         {/* --- Existing Metadata --- */}
         <title>{metadata.title}</title>

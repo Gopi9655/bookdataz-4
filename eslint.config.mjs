@@ -11,4 +11,12 @@ const compat = new FlatCompat({
 
 const eslintConfig = [...compat.extends("next/core-web-vitals")];
 
+for (const config of eslintConfig) {
+  const parser = config.languageOptions?.parser;
+
+  if (parser && !parser.meta) {
+    parser.meta = { name: "eslint-config-next/parser" };
+  }
+}
+
 export default eslintConfig;

@@ -104,7 +104,7 @@ export default function Story() {
             Our Ongoing <span className="block text-red-500">Mission & Commitment</span>
           </h2>
           <p className="text-xl leading-relaxed max-w-3xl mx-auto text-gray-700">
-            BookDataZ is more than a product — it's a partnership. Our clients rely on us to help them find the right decision-makers,
+            BookDataZ is more than a product — it&apos;s a partnership. Our clients rely on us to help them find the right decision-makers,
             at the right time, in the right industries. That responsibility drives our innovation and integrity.
           </p>
 
@@ -112,7 +112,7 @@ export default function Story() {
             <div className="bg-white border-l-8 border-customBlue px-8 py-8 shadow-2xl rounded-2xl max-w-md transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
               <h3 className="text-3xl font-bold mb-4 text-gray-900">Vision</h3>
               <p className="text-lg text-gray-700">
-                To become the world's most trusted B2B database brand — empowering ethical marketing through high-quality, relevant data.
+                To become the world&apos;s most trusted B2B database brand — empowering ethical marketing through high-quality, relevant data.
               </p>
             </div>
             <div className="bg-white border-l-8 border-red-500 px-8 py-8 shadow-2xl rounded-2xl max-w-md transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
