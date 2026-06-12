@@ -10,6 +10,10 @@ export const metadata = {
   title: "Affordable, Reliable Databases for Your Business Growth | Bookdataz.com",
   description:
     "Discover high-quality databases tailored to your business needs. Bookdataz offers verified, up-to-date data solutions to help you target the right audience and scale your business. Contact us today for customized database packages!",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+  },
 };
 
 export default function RootLayout({ children }) {

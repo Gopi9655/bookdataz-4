@@ -27,6 +27,15 @@ module.exports = {
       },
       colors: {
         customBlue: 'rgb(5, 45, 82)',
+        brandNavy: {
+          950: '#06111f',
+          900: '#091c31',
+          800: '#0d2b4a',
+        },
+        brandWarm: {
+          50: '#fbf8f2',
+          100: '#f5efe5',
+        },
       },
       margin: {
         'setMargin-x': '8rem',

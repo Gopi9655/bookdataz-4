@@ -5,10 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  BarChart3,
   CheckCircle2,
   ChevronDown,
-  Database,
   Globe2,
   Layers3,
   Network,
@@ -23,6 +21,9 @@ import Button from "../../components/ui/Button";
 import Container from "../../components/ui/Container";
 import GlassCard from "../../components/ui/GlassCard";
 import Section from "../../components/ui/Section";
+import CategoryIcon from "../../components/home/CategoryIcon";
+import DataStreams from "../../components/home/DataStreams";
+import HeroDashboard from "../../components/home/HeroDashboard";
 
 const fadeUp = {
   hidden: { opacity: 1, y: 12 },
@@ -80,100 +81,28 @@ const SectionHeading = ({ eyebrow, title, description, light = false }) => (
   </motion.div>
 );
 
-const DashboardVisual = () => (
-  <motion.div
-    className="relative mx-auto w-full max-w-xl lg:max-w-none"
-    initial={{ opacity: 0, y: 24 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-  >
-    <div className="absolute -inset-10 rounded-full bg-blue-500/15 blur-3xl" />
-    <GlassCard className="relative overflow-hidden border-blue-300/20 bg-slate-950/70 p-4 shadow-2xl shadow-blue-950/50 lg:p-5">
-      <div className="flex items-center justify-between border-b border-white/10 pb-4">
-        <div className="flex items-center gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-2xl bg-blue-500/15 text-blue-300">
-            <BarChart3 size={19} />
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-white">Data Intelligence</p>
-            <p className="text-xs text-slate-400">BookDataZ global coverage</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold text-emerald-300">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
-          Verified
-        </div>
-      </div>
-
-      <div className="mt-4 grid grid-cols-2 gap-3">
-        {datacollections.slice(0, 4).map((collection, index) => (
-          <div
-            key={collection.id}
-            className={`rounded-2xl border border-white/10 bg-white/[0.055] p-4 ${
-              index === 0 ? "col-span-2" : ""
-            }`}
-          >
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="text-2xl font-bold tracking-tight text-white md:text-3xl">
-                  {collection.number}
-                </p>
-                <p className="mt-1 text-[10px] font-semibold uppercase leading-4 tracking-[0.16em] text-slate-400">
-                  {collection.heading}
-                </p>
-              </div>
-              <Database className="shrink-0 text-blue-300" size={17} />
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-3 rounded-2xl border border-white/10 bg-white/[0.055] p-4">
-        <div className="mb-4 flex items-center justify-between">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">
-            Category coverage
-          </p>
-          <Layers3 className="text-orange-400" size={17} />
-        </div>
-        <div className="space-y-3">
-          {CATEGORIES.slice(0, 3).map((category) => (
-            <div
-              key={category.title}
-              className="flex items-center justify-between gap-4 text-sm"
-            >
-              <div className="flex items-center gap-3 text-slate-300">
-                <span className="h-2 w-2 rounded-full bg-blue-400 shadow-[0_0_12px_rgba(96,165,250,0.8)]" />
-                {category.title}
-              </div>
-              <span className="font-semibold tabular-nums text-white">
-                {category.dataCount}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </GlassCard>
-  </motion.div>
-);
-
 export default function Home() {
   return (
     <div className="overflow-hidden bg-slate-950">
-      <section className="relative isolate min-h-[calc(100vh-88px)] overflow-hidden bg-slate-950 py-20 text-white lg:py-28">
+      <section
+        data-home-section="hero"
+        className="relative isolate min-h-[calc(100vh-72px)] overflow-hidden bg-brandNavy-950 py-20 text-white lg:py-28"
+      >
         <div
-          className="absolute inset-0 -z-20 opacity-35"
+          className="absolute inset-0 -z-20 opacity-40"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(96,165,250,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(96,165,250,0.12) 1px, transparent 1px)",
+              "linear-gradient(rgba(140,193,244,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(140,193,244,0.1) 1px, transparent 1px)",
             backgroundSize: "52px 52px",
             maskImage:
               "linear-gradient(to bottom, black 15%, transparent 92%)",
           }}
         />
-        <div className="absolute left-[8%] top-20 -z-10 h-72 w-72 rounded-full bg-blue-600/15 blur-3xl" />
-        <div className="absolute right-[5%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />
+        <DataStreams />
+        <div className="absolute left-[5%] top-20 -z-10 h-72 w-72 rounded-full bg-blue-700/15 blur-3xl" />
+        <div className="absolute right-[4%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-500/15 blur-3xl" />
 
-        <Container className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+        <Container className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.03fr_0.97fr] lg:gap-10">
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -182,17 +111,19 @@ export default function Home() {
           >
             <motion.div
               variants={fadeUp}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-300/20 bg-blue-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-200"
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-300/20 bg-blue-400/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-200 backdrop-blur-md"
             >
-              <Sparkles size={14} />
+              <Sparkles className="text-orange-400" size={14} />
               Global B2B data solutions
             </motion.div>
             <motion.h1
               variants={fadeUp}
-              className="text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
+              className="text-4xl font-bold leading-[1.04] tracking-[-0.035em] sm:text-5xl lg:text-[4rem]"
             >
               Unlock Global Reach with{" "}
-              <span className="text-orange-400">Premium Email B2B Databases</span>
+              <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
+                Premium Email B2B Databases
+              </span>
             </motion.h1>
             <motion.p
               variants={fadeUp}
@@ -208,7 +139,7 @@ export default function Home() {
                 href="/contact"
                 variant="accent"
                 size="lg"
-                className="gap-2 shadow-lg shadow-orange-950/30"
+                className="gap-2"
               >
                 Get Free Data Sample <ArrowRight size={18} />
               </Button>
@@ -216,7 +147,7 @@ export default function Home() {
                 href="/datacard"
                 variant="outline"
                 size="lg"
-                className="border-white/20 text-white hover:border-blue-300 hover:bg-white/10"
+                className="border-white/20 bg-white/[0.035] text-white backdrop-blur-md hover:border-blue-300 hover:bg-white/10"
               >
                 Browse Datacards
               </Button>
@@ -238,18 +169,29 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          <DashboardVisual />
+          <HeroDashboard />
         </Container>
       </section>
 
-      <Section className="relative border-y border-white/10 bg-[#071a2d] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.2),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(249,115,22,0.1),transparent_30%)]" />
+      <Section
+        data-home-section="available-data-coverage"
+        className="relative border-y border-slate-200 bg-brandWarm-50 text-slate-950"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(46,125,209,0.09),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(238,90,42,0.08),transparent_28%)]" />
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(13,43,74,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(13,43,74,0.06) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+            maskImage: "linear-gradient(to bottom, black, transparent 72%)",
+          }}
+        />
         <div className="relative">
           <SectionHeading
             eyebrow="Available Data Coverage"
             title="See the breadth of the BookDataZ database"
             description="Review every available data category, its exact record count, and the subcategories covered within it."
-            light
           />
 
           <motion.div
@@ -261,39 +203,39 @@ export default function Home() {
           >
             <motion.div
               variants={fadeUp}
-              className="rounded-3xl border border-blue-300/20 bg-blue-400/10 p-5 backdrop-blur-md lg:p-6"
+              className="rounded-3xl border border-slate-200/90 bg-white/80 p-5 shadow-[0_20px_45px_-34px_rgba(5,45,82,0.42)] backdrop-blur-md lg:p-6"
             >
-              <p className="text-3xl font-bold tabular-nums text-white">
+              <p className="text-3xl font-bold tabular-nums text-slate-950">
                 {CATEGORIES.length}
               </p>
-              <p className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-700">
                 Categories Shown
               </p>
             </motion.div>
             <motion.div
               variants={fadeUp}
-              className="rounded-3xl border border-blue-300/20 bg-blue-400/10 p-5 backdrop-blur-md lg:p-6"
+              className="rounded-3xl border border-slate-200/90 bg-white/80 p-5 shadow-[0_20px_45px_-34px_rgba(5,45,82,0.42)] backdrop-blur-md lg:p-6"
             >
-              <p className="text-3xl font-bold tabular-nums text-white">
+              <p className="text-3xl font-bold tabular-nums text-slate-950">
                 {subcategoryListingCount}
               </p>
-              <p className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-700">
                 Subcategory Listings
               </p>
             </motion.div>
             <motion.div
               variants={fadeUp}
-              className="flex items-center justify-between gap-4 rounded-3xl border border-orange-300/20 bg-orange-400/10 p-5 backdrop-blur-md lg:p-6"
+              className="flex items-center justify-between gap-4 rounded-3xl border border-orange-200/80 bg-orange-50/80 p-5 shadow-[0_20px_45px_-34px_rgba(234,88,12,0.42)] backdrop-blur-md lg:p-6"
             >
               <div>
-                <p className="font-semibold text-white">
+                <p className="font-semibold text-slate-950">
                   Explore complete coverage
                 </p>
-                <p className="mt-2 text-sm leading-6 text-slate-300">
+                <p className="mt-2 text-sm leading-6 text-slate-600">
                   Open any category to view every available subcategory.
                 </p>
               </div>
-              <Layers3 className="shrink-0 text-orange-300" size={28} />
+              <Layers3 className="shrink-0 text-orange-600" size={28} />
             </motion.div>
           </motion.div>
 
@@ -317,33 +259,38 @@ export default function Home() {
                 <motion.article
                   key={category.title}
                   variants={fadeUp}
-                  className="group/card relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.055] shadow-lg shadow-slate-950/10 backdrop-blur-md transition-colors duration-300 hover:border-blue-300/30 hover:bg-white/[0.075]"
+                  className="coverage-card group/card relative overflow-hidden rounded-3xl border border-slate-200/90 bg-white/85 shadow-[0_20px_50px_-38px_rgba(5,45,82,0.45)] backdrop-blur-md hover:border-blue-300/70 hover:bg-white"
                 >
                   <div
                     className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-blue-400 to-orange-400"
                     aria-hidden="true"
                   />
                   <div className="p-6 lg:p-8">
-                    <div className="flex items-start justify-between gap-5">
+                    <div className="flex items-start justify-between gap-4">
                       <div className="min-w-0">
                         <div className="flex items-center gap-3">
-                          <span className="text-xs font-bold tabular-nums tracking-[0.18em] text-blue-300">
+                          <span className="text-xs font-bold tabular-nums tracking-[0.18em] text-blue-700">
                             {String(index + 1).padStart(2, "0")}
                           </span>
-                          <span className="h-px w-8 bg-blue-300/30" />
-                          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">
+                          <span className="h-px w-8 bg-blue-700/20" />
+                          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
                             Available category
                           </span>
                         </div>
-                        <h3 className="mt-4 text-xl font-bold tracking-tight text-white md:text-2xl">
-                          {category.title}
-                        </h3>
+                        <div className="mt-4 flex items-center gap-3">
+                          <span className="coverage-icon grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-blue-200/80 bg-blue-50 text-blue-700">
+                            <CategoryIcon title={category.title} />
+                          </span>
+                          <h3 className="text-xl font-bold tracking-tight text-slate-950 md:text-2xl">
+                            {category.title}
+                          </h3>
+                        </div>
                       </div>
-                      <div className="shrink-0 rounded-2xl border border-blue-300/20 bg-blue-400/10 px-4 py-3 text-right">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-200">
+                      <div className="shrink-0 rounded-2xl border border-blue-200/80 bg-blue-50/80 px-3 py-3 text-right sm:px-4">
+                        <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-blue-700 sm:text-[10px]">
                           Contacts
                         </p>
-                        <p className="mt-1 text-lg font-bold tabular-nums text-white md:text-xl">
+                        <p className="mt-1 text-base font-bold tabular-nums text-slate-950 sm:text-lg md:text-xl">
                           {category.dataCount}
                         </p>
                       </div>
@@ -353,7 +300,7 @@ export default function Home() {
                       {visibleSubcategories.map((subCategory) => (
                         <span
                           key={subCategory}
-                          className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-xs font-medium leading-5 text-slate-200"
+                          className="rounded-full border border-slate-200 bg-brandWarm-50 px-3 py-1.5 text-xs font-medium leading-5 text-slate-700"
                         >
                           {subCategory}
                         </span>
@@ -361,8 +308,8 @@ export default function Home() {
                     </div>
 
                     {additionalSubcategories.length > 0 && (
-                      <details className="group/details mt-5 border-t border-white/10 pt-5">
-                        <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl text-sm font-semibold text-blue-200 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-blue-300">
+                      <details className="group/details mt-5 border-t border-slate-200 pt-5">
+                        <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl text-sm font-semibold text-blue-700 outline-none transition-colors hover:text-orange-600 focus-visible:ring-2 focus-visible:ring-blue-400">
                           <span>
                             + {additionalSubcategories.length} more subcategories
                           </span>
@@ -375,7 +322,7 @@ export default function Home() {
                           {additionalSubcategories.map((subCategory) => (
                             <span
                               key={subCategory}
-                              className="rounded-full border border-blue-300/15 bg-blue-400/10 px-3 py-1.5 text-xs font-medium leading-5 text-blue-100"
+                              className="rounded-full border border-blue-200/80 bg-blue-50 px-3 py-1.5 text-xs font-medium leading-5 text-blue-950"
                             >
                               {subCategory}
                             </span>
@@ -394,13 +341,13 @@ export default function Home() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="mt-10 flex flex-col items-start justify-between gap-6 rounded-3xl border border-blue-300/20 bg-blue-400/10 p-6 backdrop-blur-md sm:flex-row sm:items-center lg:p-8"
+            className="mt-10 flex flex-col items-start justify-between gap-6 rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-[0_24px_55px_-40px_rgba(5,45,82,0.5)] backdrop-blur-md sm:flex-row sm:items-center lg:p-8"
           >
             <div>
-              <p className="text-lg font-semibold text-white">
+              <p className="text-lg font-semibold text-slate-950">
                 Need a closer look at the available data?
               </p>
-              <p className="mt-2 text-sm leading-6 text-slate-300">
+              <p className="mt-2 text-sm leading-6 text-slate-600">
                 Browse the full datacard collection or request a data sample.
               </p>
             </div>
@@ -408,7 +355,7 @@ export default function Home() {
               <Button
                 href="/datacard"
                 variant="outline"
-                className="gap-2 border-blue-200/30 text-white hover:border-blue-200 hover:bg-white/10"
+                className="gap-2"
               >
                 Browse Datacards <ArrowRight size={16} />
               </Button>
