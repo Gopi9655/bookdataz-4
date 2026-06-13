@@ -80,21 +80,13 @@ export default function Home() {
     <div className="overflow-hidden bg-brandWarm-50">
       <section
         data-home-section="hero"
-        className="relative isolate min-h-[calc(100vh-72px)] overflow-hidden border-b border-orange-100 bg-gradient-to-br from-[#fffdf9] via-[#f8fbff] to-[#fff4ea] pb-20 pt-12 text-slate-950 lg:pb-28 lg:pt-16"
+        className="premium-hero-navy relative isolate min-h-[calc(100vh-72px)] overflow-hidden border-b border-white/10 pb-20 pt-12 text-slate-100 lg:pb-28 lg:pt-16"
       >
-        <div
-          className="absolute inset-0 -z-20 opacity-40"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(46,125,209,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(46,125,209,0.07) 1px, transparent 1px)",
-            backgroundSize: "52px 52px",
-            maskImage:
-              "linear-gradient(to bottom, black 15%, transparent 92%)",
-          }}
-        />
+        <div className="premium-aurora" aria-hidden="true" />
+        <div className="premium-grid-overlay" aria-hidden="true" />
         <DataStreams />
-        <div className="absolute left-[5%] top-20 -z-10 h-72 w-72 rounded-full bg-blue-300/25 blur-3xl" />
-        <div className="absolute right-[4%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-300/30 blur-3xl" />
+        <div className="absolute left-[5%] top-20 -z-10 h-72 w-72 rounded-full bg-[#3d7ab0]/25 blur-3xl" />
+        <div className="absolute right-[4%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-500/20 blur-3xl" />
 
         <Container className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.03fr_0.97fr] lg:gap-10">
           <motion.div
@@ -105,23 +97,23 @@ export default function Home() {
           >
             <motion.div
               variants={fadeUp}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-700 shadow-sm backdrop-blur-md"
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-200 shadow-sm backdrop-blur-md"
             >
               <Sparkles className="text-orange-400" size={14} />
               Global B2B data solutions
             </motion.div>
             <motion.h1
               variants={fadeUp}
-              className="text-4xl font-bold leading-[1.04] tracking-[-0.035em] sm:text-5xl lg:text-[4rem]"
+              className="text-4xl font-bold leading-[1.04] tracking-[-0.035em] text-white sm:text-5xl lg:text-[4rem]"
             >
               Unlock Global Reach with{" "}
-              <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">
                 Premium Email B2B Databases
               </span>
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className="mt-6 max-w-xl text-base leading-8 text-slate-600 md:text-lg"
+              className="mt-6 max-w-xl text-base leading-8 text-slate-300 md:text-lg"
             >
               Access verified, up-to-date email lists from over 160 countries.
               Boost your marketing campaigns with accurate data tailored to your
@@ -141,21 +133,21 @@ export default function Home() {
                 href="/datacard"
                 variant="outline"
                 size="lg"
-                className="border-blue-200 bg-white/80 text-blue-800 backdrop-blur-md hover:border-blue-400 hover:bg-blue-50"
+                className="border-white/20 bg-white/5 text-slate-100 backdrop-blur-md hover:border-blue-300 hover:bg-white/10"
               >
                 Browse Datacards
               </Button>
             </motion.div>
             <motion.div
               variants={fadeUp}
-              className="mt-10 grid max-w-xl grid-cols-3 gap-3 border-t border-orange-200/70 pt-6"
+              className="mt-10 grid max-w-xl grid-cols-3 gap-3 border-t border-white/10 pt-6"
             >
               {datacollections.slice(0, 3).map((collection) => (
                 <div key={collection.id}>
-                  <p className="text-xl font-bold text-slate-950 md:text-2xl">
+                  <p className="text-xl font-bold text-white md:text-2xl">
                     {collection.number}
                   </p>
-                  <p className="mt-1 text-[9px] font-semibold uppercase leading-4 tracking-[0.13em] text-blue-700 md:text-[10px]">
+                  <p className="mt-1 text-[9px] font-semibold uppercase leading-4 tracking-[0.13em] text-blue-200 md:text-[10px]">
                     {collection.heading}
                   </p>
                 </div>
@@ -247,7 +239,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className="border-y border-orange-100 bg-gradient-to-r from-orange-50 via-white to-blue-50 py-12 lg:py-14">
+      <Section className="border-y border-slate-200/80 bg-gradient-to-r from-brandPlatinum-100 via-white to-brandPlatinum-100 py-12 lg:py-14">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -259,7 +251,7 @@ export default function Home() {
             <motion.div
               key={collection.id}
               variants={fadeUp}
-              className="border-l border-orange-300 pl-4"
+              className="border-l-2 border-[#3d7ab0] pl-4"
             >
               <p className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">
                 {collection.number}
@@ -320,8 +312,8 @@ export default function Home() {
         </motion.div>
       </Section>
 
-      <Section className="relative border-t border-orange-100 bg-gradient-to-br from-[#fff9f3] via-white to-blue-50 text-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(238,90,42,0.12),transparent_38%)]" />
+      <Section className="relative border-t border-slate-200/70 bg-gradient-to-br from-brandPlatinum-50 via-white to-brandPlatinum-100 text-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(61,122,176,0.1),transparent_38%)]" />
         <div className="relative">
           <SectionHeading
             eyebrow="What We Offer"
@@ -355,7 +347,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className="relative border-t border-slate-200 bg-gradient-to-b from-blue-50 to-[#fffdf9] text-slate-950">
+      <Section className="relative border-t border-slate-200 bg-gradient-to-b from-brandPlatinum-100 to-brandPlatinum-50 text-slate-950">
         <div
           className="absolute inset-0 opacity-40"
           style={{
@@ -449,20 +441,20 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="relative overflow-hidden rounded-3xl border border-orange-200 bg-gradient-to-r from-orange-500 to-orange-600 p-6 text-white shadow-2xl shadow-orange-950/20 lg:p-8"
+          className="premium-cta-navy relative overflow-hidden rounded-3xl border border-white/10 p-6 text-white shadow-2xl shadow-slate-950/40 lg:p-8"
         >
-          <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-blue-700/20 blur-3xl" />
-          <div className="absolute -bottom-24 left-1/3 h-64 w-64 rounded-full bg-white/20 blur-3xl" />
+          <div className="premium-aurora" aria-hidden="true" />
+          <div className="premium-grid-overlay" aria-hidden="true" />
           <div className="relative flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
             <div className="max-w-3xl">
-              <div className="mb-5 flex items-center gap-2 text-sm font-semibold text-orange-50">
+              <div className="mb-5 flex items-center gap-2 text-sm font-semibold text-blue-200">
                 <CheckCircle2 size={18} />
                 Premium databases for business growth
               </div>
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
                 Ready to Elevate Your Business?
               </h2>
-              <p className="mt-4 max-w-2xl leading-7 text-orange-50">
+              <p className="mt-4 max-w-2xl leading-7 text-slate-300">
                 Partner with BookDataz to access premium databases and unlock
                 growth opportunities in your target markets.
               </p>

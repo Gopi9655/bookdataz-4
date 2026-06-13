@@ -38,8 +38,8 @@ const footerGroups = [
 ];
 
 const Footer = () => (
-  <footer className="relative overflow-hidden border-t border-white/10 bg-slate-950 text-slate-300">
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.18),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(249,115,22,0.10),transparent_30%)]" />
+  <footer className="relative overflow-hidden border-t border-white/10 bg-gradient-to-b from-brandNavy-900 to-brandNavy-950 text-slate-300">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(61,122,176,0.18),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(226,87,31,0.08),transparent_30%)]" />
     <Container className="relative py-16 lg:py-20">
       <div className="grid gap-12 lg:grid-cols-[1.05fr_1.95fr] lg:gap-16">
         <div>

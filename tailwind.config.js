@@ -28,13 +28,27 @@ module.exports = {
       colors: {
         customBlue: 'rgb(5, 45, 82)',
         brandNavy: {
-          950: '#06111f',
-          900: '#091c31',
-          800: '#0d2b4a',
+          950: '#06101d',
+          900: '#0a1a2f',
+          800: '#0e2238',
+          700: '#143150',
         },
+        // Cool platinum body surfaces (replaces the old warm-cream values).
+        // Token names kept so existing `bg-brandWarm-*` usages cool down site-wide.
         brandWarm: {
-          50: '#fbf8f2',
-          100: '#f5efe5',
+          50: '#e9edf3',
+          100: '#e0e6ef',
+        },
+        brandPlatinum: {
+          50: '#f5f8fc',
+          100: '#e9edf3',
+          200: '#e0e6ef',
+          300: '#d2dae5',
+        },
+        brandSteel: {
+          DEFAULT: '#3d7ab0',
+          soft: '#5fa0d4',
+          100: '#8cbade',
         },
       },
       margin: {

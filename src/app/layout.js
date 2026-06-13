@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
           {JSON.stringify(websiteSchema)}
         </script>
       </head>
-      <body className="relative bg-slate-950 text-black antialiased">
+      <body className="relative bg-brandNavy-950 text-slate-900 antialiased">
         <DisableCopyPaste />
         <div className="flex flex-col min-h-screen">
           <Navbar />

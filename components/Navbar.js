@@ -51,7 +51,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-orange-100/80 bg-[#fffdf9]/95 text-slate-900 shadow-[0_12px_32px_-24px_rgba(5,45,82,0.45)] backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 border-b border-slate-200/70 bg-[#f4f7fb]/85 text-slate-900 shadow-[0_14px_34px_-28px_rgba(8,22,41,0.55)] backdrop-blur-xl">
       <Container className="flex h-[72px] items-center justify-between gap-4">
         <Link
           href="/"
@@ -116,7 +116,7 @@ const Navbar = () => {
                   transition={{ duration: 0.18, ease: "easeOut" }}
                   className="absolute right-0 top-full w-[min(820px,calc(100vw-2.5rem))] pt-4"
                 >
-                  <div className="max-h-[min(68vh,560px)] overflow-y-auto rounded-3xl border border-slate-200 bg-[#fffdf9]/[0.98] p-4 shadow-2xl shadow-blue-950/15 backdrop-blur-xl">
+                  <div className="max-h-[min(68vh,560px)] overflow-y-auto rounded-3xl border border-slate-200 bg-[#f4f7fb]/[0.98] p-4 shadow-2xl shadow-blue-950/15 backdrop-blur-xl">
                     <div className="grid grid-cols-2 gap-1 lg:grid-cols-3">
                       {mailinglinks.map((item) => {
                         const href = industryHref(item.name);
@@ -184,7 +184,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
-            className="overflow-hidden border-t border-slate-200 bg-[#fffdf9] xl:hidden"
+            className="overflow-hidden border-t border-slate-200 bg-[#f4f7fb] xl:hidden"
           >
             <Container className="max-h-[calc(100vh-72px)] overflow-y-auto py-4">
               <div className="grid gap-1">
