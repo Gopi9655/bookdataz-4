@@ -8,7 +8,6 @@ import { SiGmail } from "react-icons/si";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import Button from "../../../components/ui/Button";
-import GlassCard from "../../../components/ui/GlassCard";
 import Section from "../../../components/ui/Section";
 
 const fields = [
@@ -36,7 +35,7 @@ const faqs = [
 ];
 
 const inputClasses =
-  "mt-2 w-full rounded-2xl border border-white/15 bg-slate-950/45 px-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-blue-400 focus:ring-4 focus:ring-blue-500/15";
+  "mt-2 w-full rounded-2xl border border-slate-200 bg-[#fffdf9] px-4 py-3.5 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:bg-white focus:ring-4 focus:ring-orange-100";
 
 const Contactpage = () => {
   const [formData, setFormData] = useState({
@@ -106,19 +105,21 @@ const Contactpage = () => {
   };
 
   return (
-    <div className="overflow-hidden bg-slate-950 text-white">
-      <Section className="relative border-b border-white/10 bg-[#071a2d]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.22),transparent_40%)]" />
-        <div className="absolute right-0 top-20 h-64 w-64 rounded-full bg-orange-500/10 blur-3xl" />
+    <div className="overflow-hidden bg-brandWarm-50 text-slate-950">
+      <Section className="relative border-b border-slate-200 bg-gradient-to-b from-brandWarm-100 to-brandWarm-50">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(46,125,209,0.1),transparent_40%)]" />
+        <div className="absolute right-0 top-20 h-64 w-64 rounded-full bg-orange-400/10 blur-3xl" />
         <div className="relative mx-auto mb-12 max-w-3xl text-center lg:mb-16">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-700">
             Contact BookDataZ
           </p>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
             Let&apos;s build your next{" "}
-            <span className="text-orange-400">data solution</span>
+            <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+              data solution
+            </span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
             Whether you’re looking for more information on our data solutions or
             have specific queries, we’re here to help.
           </p>
@@ -130,21 +131,21 @@ const Contactpage = () => {
           transition={{ duration: 0.5 }}
           className="relative grid grid-cols-1 gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:gap-8"
         >
-          <GlassCard className="border-blue-300/20 bg-white/[0.06]">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-300">
+          <div className="premium-card premium-card-light relative overflow-hidden rounded-3xl p-6 lg:p-8">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700">
               Get in Touch
             </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight">
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
               Talk with our team
             </h2>
 
             <div className="mt-8 space-y-4">
-              <div className="rounded-2xl border border-white/10 bg-slate-950/30 p-5">
-                <div className="flex items-center gap-3 text-blue-300">
+              <div className="rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
+                <div className="flex items-center gap-3 text-orange-600">
                   <FiMapPin size={18} />
-                  <p className="font-semibold text-white">US Office:</p>
+                  <p className="font-semibold text-slate-950">US Office:</p>
                 </div>
-                <p className="mt-3 pl-8 leading-7 text-slate-300">
+                <p className="mt-3 pl-8 leading-7 text-slate-600">
                   6150 Poplar Ave, Suite 200
                   <br />
                   Memphis, TN 38119
@@ -152,12 +153,12 @@ const Contactpage = () => {
                   United States
                 </p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-slate-950/30 p-5">
-                <div className="flex items-center gap-3 text-blue-300">
+              <div className="rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
+                <div className="flex items-center gap-3 text-orange-600">
                   <FiMapPin size={18} />
-                  <p className="font-semibold text-white">UK Office:</p>
+                  <p className="font-semibold text-slate-950">UK Office:</p>
                 </div>
-                <p className="mt-3 pl-8 leading-7 text-slate-300">
+                <p className="mt-3 pl-8 leading-7 text-slate-600">
                   Gateway East, White City
                   <br />
                   London W12 7TU
@@ -166,31 +167,31 @@ const Contactpage = () => {
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-slate-950/30 p-5">
-                  <div className="flex items-center gap-3 text-blue-300">
+                <div className="rounded-2xl border border-orange-100 bg-orange-50/60 p-5">
+                  <div className="flex items-center gap-3 text-orange-600">
                     <FiMail size={18} />
-                    <p className="font-semibold text-white">Email:</p>
+                    <p className="font-semibold text-slate-950">Email:</p>
                   </div>
                   <a
                     href="mailto:sales@bookdataz.com"
-                    className="mt-3 block break-all text-sm text-slate-300 transition hover:text-orange-400"
+                    className="mt-3 block break-all text-sm text-slate-600 transition hover:text-orange-600"
                   >
                     sales@bookdataz.com
                   </a>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-slate-950/30 p-5">
-                  <div className="flex items-center gap-3 text-blue-300">
+                <div className="rounded-2xl border border-orange-100 bg-orange-50/60 p-5">
+                  <div className="flex items-center gap-3 text-orange-600">
                     <FiPhone size={18} />
-                    <p className="font-semibold text-white">Phone:</p>
+                    <p className="font-semibold text-slate-950">Phone:</p>
                   </div>
-                  <p className="mt-3 text-sm text-slate-300">
+                  <p className="mt-3 text-sm text-slate-600">
                     +1 (901)-300-5501
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 aspect-video w-full overflow-hidden rounded-2xl border border-white/10">
+            <div className="mt-6 aspect-video w-full overflow-hidden rounded-2xl border border-slate-200">
               <iframe
                 className="h-full w-full"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3340.364697435597!2d-89.86694644919073!3d35.104037163999906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x887f85c41080d93d%3A0x81a576bd3f798564!2s6150%20Poplar%20Ave%20%23200%2C%20Memphis%2C%20TN%2038119%2C%20USA!5e0!3m2!1sen!2sin!4v1695660212345!5m2!1sen!2sin"
@@ -200,14 +201,15 @@ const Contactpage = () => {
                 title="US Office Location"
               />
             </div>
-          </GlassCard>
+          </div>
 
-          <GlassCard className="border-blue-300/20 bg-white/[0.08] shadow-2xl shadow-blue-950/35">
-            <div className="border-b border-white/10 pb-6">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-400">
+          <div className="premium-card premium-card-light relative overflow-hidden rounded-3xl p-6 lg:p-8">
+            <span className="absolute inset-x-0 top-0 h-1 premium-accent" aria-hidden="true" />
+            <div className="border-b border-slate-200 pb-6">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-600">
                 Send a Message
               </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight">
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
                 Tell us what you need
               </h2>
             </div>
@@ -221,7 +223,7 @@ const Contactpage = () => {
                   >
                     <label
                       htmlFor={field.id}
-                      className="block text-sm font-semibold text-slate-200"
+                      className="block text-sm font-semibold text-slate-700"
                     >
                       {field.label}
                     </label>
@@ -242,7 +244,7 @@ const Contactpage = () => {
                     {errors[field.id] && (
                       <p
                         id={`${field.id}-error`}
-                        className="mt-2 text-sm font-medium text-orange-300"
+                        className="mt-2 text-sm font-medium text-orange-600"
                       >
                         {errors[field.id]}
                       </p>
@@ -254,7 +256,7 @@ const Contactpage = () => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-semibold text-slate-200"
+                  className="block text-sm font-semibold text-slate-700"
                 >
                   Message
                 </label>
@@ -273,14 +275,14 @@ const Contactpage = () => {
                 {errors.message && (
                   <p
                     id="message-error"
-                    className="mt-2 text-sm font-medium text-orange-300"
+                    className="mt-2 text-sm font-medium text-orange-600"
                   >
                     {errors.message}
                   </p>
                 )}
               </div>
 
-              <div className="overflow-x-auto rounded-2xl border border-white/10 bg-slate-950/30 p-3">
+              <div className="overflow-x-auto rounded-2xl border border-orange-100 bg-orange-50/50 p-3">
                 <ReCAPTCHA
                   sitekey="6Ldf0T8rAAAAAHJlDKnYoqYfgj4i8tlINfa3zIbA"
                   onChange={(token) => setRecaptchaToken(token)}
@@ -292,7 +294,7 @@ const Contactpage = () => {
                 variant="accent"
                 size="lg"
                 disabled={isSubmitting || !recaptchaToken}
-                className="w-full gap-2 shadow-lg shadow-orange-950/30"
+                className="w-full gap-2 shadow-lg shadow-orange-500/25"
               >
                 {isSubmitting ? (
                   <>
@@ -304,32 +306,36 @@ const Contactpage = () => {
                 )}
               </Button>
             </form>
-          </GlassCard>
+          </div>
         </motion.div>
       </Section>
 
-      <Section className="border-b border-white/10 bg-slate-900">
+      <Section className="border-b border-slate-200 bg-brandWarm-50">
         <div className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-700">
             Quick Answers
           </p>
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">
             Frequently Asked Questions
           </h2>
         </div>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           {faqs.map((faq) => (
-            <GlassCard
+            <div
               key={faq.question}
-              className="border-blue-300/15 bg-white/[0.055]"
+              className="premium-card premium-card-light premium-card-hover relative overflow-hidden rounded-3xl p-6 lg:p-8"
             >
-              <h3 className="text-lg font-semibold text-white">
+              <span
+                className="absolute inset-y-0 left-0 w-1 premium-accent-vertical"
+                aria-hidden="true"
+              />
+              <h3 className="text-lg font-semibold text-slate-950">
                 {faq.question}
               </h3>
-              <p className="mt-3 text-sm leading-7 text-slate-300">
+              <p className="mt-3 text-sm leading-7 text-slate-600">
                 {faq.answer}
               </p>
-            </GlassCard>
+            </div>
           ))}
         </div>
         <div className="mt-10 flex items-center justify-center gap-4">
@@ -337,14 +343,14 @@ const Contactpage = () => {
             href="https://www.linkedin.com/in/yourprofile"
             target="_blank"
             rel="noopener noreferrer"
-            className="grid h-12 w-12 place-items-center rounded-full border border-blue-300/20 bg-blue-400/10 text-2xl text-blue-200 transition hover:bg-blue-400/20"
+            className="grid h-12 w-12 place-items-center rounded-full border border-blue-200 bg-blue-50 text-2xl text-blue-700 transition hover:bg-blue-100"
             aria-label="LinkedIn"
           >
             <FaLinkedin />
           </a>
           <a
             href="mailto:sales@bookdataz.com"
-            className="grid h-12 w-12 place-items-center rounded-full border border-orange-300/20 bg-orange-400/10 text-2xl text-orange-300 transition hover:bg-orange-400/20"
+            className="grid h-12 w-12 place-items-center rounded-full border border-orange-200 bg-orange-50 text-2xl text-orange-600 transition hover:bg-orange-100"
             aria-label="Email"
           >
             <SiGmail />

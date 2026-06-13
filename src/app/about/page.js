@@ -4,6 +4,7 @@ import Button from "../../../components/ui/Button";
 import CTASection from "../../../components/ui/CTASection";
 import GlassCard from "../../../components/ui/GlassCard";
 import Section from "../../../components/ui/Section";
+import { testimonials } from "@/resource/testimonials";
 
 const features = [
   {
@@ -32,27 +33,6 @@ const industries = [
   { name: "Finance", img: "/aboutImages/about-finance.jpg" },
   { name: "Manufacturing", img: "/aboutImages/about-manufacturing.jpg" },
   { name: "Education", img: "/aboutImages/about-education.jpg" },
-];
-
-const testimonials = [
-  {
-    name: "Lars Petersen",
-    role: "Marketing Manager, NovaLink Denmark",
-    quote:
-      "BookDataz helped us scale our campaigns with accurate and reliable data. Highly recommended!",
-  },
-  {
-    name: "Darren Mitchell",
-    role: "Email List Strategist, Datastream Berlin",
-    quote:
-      "The quality of data provided by BookDataz has been instrumental in closing deals efficiently.",
-  },
-  {
-    name: "Isabelle Fournier",
-    role: "CMO, BlueMetric France",
-    quote:
-      "Their customizable solutions are exactly what our business needed to expand into new markets.",
-  },
 ];
 
 const AboutPage = () => (

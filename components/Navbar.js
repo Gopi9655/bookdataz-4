@@ -51,12 +51,12 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/95 text-white shadow-lg shadow-slate-950/20 backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 border-b border-orange-100/80 bg-[#fffdf9]/95 text-slate-900 shadow-[0_12px_32px_-24px_rgba(5,45,82,0.45)] backdrop-blur-xl">
       <Container className="flex h-[72px] items-center justify-between gap-4">
         <Link
           href="/"
           aria-label="BookDataZ home"
-          className="group rounded-2xl border border-white/10 bg-white/[0.97] px-2.5 py-2 shadow-sm shadow-black/20 transition hover:border-blue-300/40"
+          className="group rounded-2xl border border-slate-200/80 bg-white px-2.5 py-2 shadow-sm transition hover:border-orange-300 hover:shadow-orange-100"
         >
           <Image
             src="/logo-b.jpg"
@@ -76,8 +76,8 @@ const Navbar = () => {
               aria-current={isActive(link.href) ? "page" : undefined}
               className={`rounded-full px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition ${
                 isActive(link.href)
-                  ? "bg-white/10 text-orange-400"
-                  : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
+                  ? "bg-orange-50 text-orange-600"
+                  : "text-slate-600 hover:bg-blue-50 hover:text-blue-800"
               }`}
             >
               {link.label}
@@ -96,8 +96,8 @@ const Navbar = () => {
               onClick={() => setIsMailingOpen((open) => !open)}
               className={`flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition ${
                 isIndustryActive
-                  ? "bg-white/10 text-orange-400"
-                  : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
+                  ? "bg-orange-50 text-orange-600"
+                  : "text-slate-600 hover:bg-blue-50 hover:text-blue-800"
               }`}
             >
               Mailing Lists
@@ -116,7 +116,7 @@ const Navbar = () => {
                   transition={{ duration: 0.18, ease: "easeOut" }}
                   className="absolute right-0 top-full w-[min(820px,calc(100vw-2.5rem))] pt-4"
                 >
-                  <div className="max-h-[min(68vh,560px)] overflow-y-auto rounded-3xl border border-blue-300/15 bg-[#071a2d]/[0.98] p-4 shadow-2xl shadow-slate-950/60 backdrop-blur-xl">
+                  <div className="max-h-[min(68vh,560px)] overflow-y-auto rounded-3xl border border-slate-200 bg-[#fffdf9]/[0.98] p-4 shadow-2xl shadow-blue-950/15 backdrop-blur-xl">
                     <div className="grid grid-cols-2 gap-1 lg:grid-cols-3">
                       {mailinglinks.map((item) => {
                         const href = industryHref(item.name);
@@ -126,8 +126,8 @@ const Navbar = () => {
                             href={href}
                             className={`flex min-w-0 items-center gap-3 rounded-2xl p-3 text-sm font-medium transition ${
                               pathname === href
-                                ? "bg-orange-400 text-slate-950"
-                                : "text-slate-200 hover:bg-white/[0.08] hover:text-white"
+                                ? "bg-orange-500 text-white"
+                                : "text-slate-700 hover:bg-blue-50 hover:text-blue-800"
                             }`}
                           >
                             <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl bg-white">
@@ -157,8 +157,8 @@ const Navbar = () => {
               aria-current={isActive(link.href) ? "page" : undefined}
               className={`rounded-full px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition ${
                 isActive(link.href)
-                  ? "bg-white/10 text-orange-400"
-                  : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
+                  ? "bg-orange-50 text-orange-600"
+                  : "text-slate-600 hover:bg-blue-50 hover:text-blue-800"
               }`}
             >
               {link.label}
@@ -171,7 +171,7 @@ const Navbar = () => {
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileMenuOpen}
           onClick={() => setIsMobileMenuOpen((open) => !open)}
-          className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-white transition hover:border-blue-300/30 hover:bg-white/10 xl:hidden"
+          className="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600 xl:hidden"
         >
           {isMobileMenuOpen ? <X size={21} /> : <Menu size={21} />}
         </button>
@@ -184,7 +184,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
-            className="overflow-hidden border-t border-white/10 bg-[#071a2d] xl:hidden"
+            className="overflow-hidden border-t border-slate-200 bg-[#fffdf9] xl:hidden"
           >
             <Container className="max-h-[calc(100vh-72px)] overflow-y-auto py-4">
               <div className="grid gap-1">
@@ -195,8 +195,8 @@ const Navbar = () => {
                     aria-current={isActive(link.href) ? "page" : undefined}
                     className={`rounded-2xl px-4 py-3 text-sm font-semibold transition ${
                       isActive(link.href)
-                        ? "bg-orange-400 text-slate-950"
-                        : "text-slate-200 hover:bg-white/[0.07] hover:text-white"
+                        ? "bg-orange-500 text-white"
+                        : "text-slate-700 hover:bg-blue-50 hover:text-blue-800"
                     }`}
                   >
                     {link.label}
@@ -209,8 +209,8 @@ const Navbar = () => {
                   onClick={() => setIsMobileMailingOpen((open) => !open)}
                   className={`flex items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${
                     isIndustryActive
-                      ? "text-orange-400"
-                      : "text-slate-200 hover:bg-white/[0.07] hover:text-white"
+                      ? "bg-orange-50 text-orange-600"
+                      : "text-slate-700 hover:bg-blue-50 hover:text-blue-800"
                   }`}
                 >
                   Mailing Lists
@@ -228,7 +228,7 @@ const Navbar = () => {
                       exit={{ opacity: 0, height: 0 }}
                       className="overflow-hidden"
                     >
-                      <div className="grid gap-1 rounded-2xl border border-white/10 bg-slate-950/50 p-2 sm:grid-cols-2">
+                      <div className="grid gap-1 rounded-2xl border border-slate-200 bg-blue-50/60 p-2 sm:grid-cols-2">
                         {mailinglinks.map((item) => {
                           const href = industryHref(item.name);
                           return (
@@ -237,8 +237,8 @@ const Navbar = () => {
                               href={href}
                               className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition ${
                                 pathname === href
-                                  ? "bg-white/10 text-orange-400"
-                                  : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
+                                  ? "bg-orange-500 text-white"
+                                  : "text-slate-700 hover:bg-white hover:text-blue-800"
                               }`}
                             >
                               <Image

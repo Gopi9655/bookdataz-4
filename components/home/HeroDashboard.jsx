@@ -1,7 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BarChart3, CheckCircle2, Database, Layers3 } from "lucide-react";
+import {
+  BarChart3,
+  CheckCircle2,
+  Database,
+  Layers3,
+  ShieldCheck,
+} from "lucide-react";
 
 import { datacollections } from "@/resource/data";
 import { CATEGORIES } from "@/resource/mockdata";
@@ -22,6 +28,7 @@ const HeroDashboard = () => (
 
     <div className="hero-dashboard">
       <div className="hero-dashboard-panel">
+        <div className="hero-dashboard-shimmer" aria-hidden="true" />
         <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
           <div className="flex items-center gap-3">
             <div className="data-icon-tile">
@@ -93,6 +100,30 @@ const HeroDashboard = () => (
     <div className="hero-float-chip hero-float-chip-right">
       <Layers3 size={15} />
       {CATEGORIES.length} Categories
+    </div>
+
+    <div className="hero-float-card" aria-hidden="false">
+      <div className="flex items-center gap-2">
+        <span className="grid h-7 w-7 place-items-center rounded-lg bg-orange-400/15 text-orange-300">
+          <ShieldCheck size={15} />
+        </span>
+        <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-700">
+          Live coverage
+        </p>
+      </div>
+      <div className="mt-3 space-y-2.5">
+        {CATEGORIES.slice(3, 5).map((category) => (
+          <div key={category.title}>
+            <div className="flex items-center justify-between text-[11px] text-slate-600">
+              <span>{category.title}</span>
+              <span className="font-semibold tabular-nums text-slate-900">
+                {category.dataCount}
+              </span>
+            </div>
+            <span className="hero-float-bar" />
+          </div>
+        ))}
+      </div>
     </div>
   </motion.div>
 );

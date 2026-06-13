@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 
 import Container from "../../../components/ui/Container";
-import GlassCard from "../../../components/ui/GlassCard";
 import Section from "../../../components/ui/Section";
 
 const technologies = [
@@ -86,19 +85,19 @@ export default function TechnologyListPage() {
   }, [query]);
 
   return (
-    <main className="min-h-screen overflow-hidden bg-slate-950 text-white">
-      <section className="relative isolate overflow-hidden py-20 lg:py-28">
+    <main className="min-h-screen overflow-hidden bg-brandWarm-50 text-slate-950">
+      <section className="relative isolate overflow-hidden border-b border-slate-200 py-20 lg:py-28">
         <div
-          className="absolute inset-0 -z-20 opacity-35"
+          className="absolute inset-0 -z-20 opacity-40"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(96,165,250,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(96,165,250,0.12) 1px, transparent 1px)",
-            backgroundSize: "52px 52px",
-            maskImage: "linear-gradient(to bottom, black 10%, transparent 95%)",
+              "linear-gradient(rgba(13,43,74,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(13,43,74,0.06) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
+            maskImage: "linear-gradient(to bottom, black 10%, transparent 92%)",
           }}
         />
-        <div className="absolute left-[8%] top-12 -z-10 h-72 w-72 rounded-full bg-blue-600/15 blur-3xl" />
-        <div className="absolute right-[5%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />
+        <div className="absolute left-[8%] top-12 -z-10 h-72 w-72 rounded-full bg-blue-400/15 blur-3xl" />
+        <div className="absolute right-[5%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-400/12 blur-3xl" />
 
         <Container className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
           <motion.div
@@ -109,18 +108,28 @@ export default function TechnologyListPage() {
           >
             <motion.div
               variants={fadeUp}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-300/20 bg-blue-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-200"
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-700"
             >
-              <Sparkles size={14} />
+              <Sparkles size={14} className="text-orange-500" />
               Technology directory
             </motion.div>
             <motion.h1
               variants={fadeUp}
-              className="text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
+              className="text-4xl font-bold leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl"
             >
               Explore the BookDataZ{" "}
-              <span className="text-orange-400">Technology List</span>
+              <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                Technology List
+              </span>
             </motion.h1>
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 max-w-xl text-base leading-8 text-slate-600 md:text-lg"
+            >
+              Target accounts by the platforms they run. Search the full
+              install-base directory and zero in on the technologies that matter
+              to your campaigns.
+            </motion.p>
           </motion.div>
 
           <motion.div
@@ -128,18 +137,19 @@ export default function TechnologyListPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.15, ease: "easeOut" }}
           >
-            <GlassCard className="relative overflow-hidden border-blue-300/20 bg-[#082d52]/75 shadow-2xl shadow-blue-950/40">
-              <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-blue-400/20 blur-3xl" />
-              <div className="relative flex items-start justify-between gap-6 border-b border-white/10 pb-6">
+            <div className="premium-card premium-card-light premium-card-hover relative overflow-hidden rounded-3xl p-6 text-slate-900 lg:p-8">
+              <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-orange-300/25 blur-3xl" />
+              <span className="absolute inset-x-0 top-0 h-1 premium-accent" aria-hidden="true" />
+              <div className="relative flex items-start justify-between gap-6 border-b border-slate-200 pb-6">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-orange-600">
                     Technology list
                   </p>
-                  <p className="mt-3 text-4xl font-bold tabular-nums tracking-tight text-white lg:text-5xl">
+                  <p className="mt-3 text-4xl font-bold tabular-nums tracking-tight text-slate-950 lg:text-5xl">
                     {technologies.length}
                   </p>
                 </div>
-                <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-blue-400/15 text-blue-200">
+                <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-blue-200 bg-blue-50 text-blue-700">
                   <Server size={26} />
                 </div>
               </div>
@@ -147,19 +157,19 @@ export default function TechnologyListPage() {
                 {technologyIcons.slice(0, 3).map((Icon, index) => (
                   <div
                     key={index}
-                    className="grid min-h-20 place-items-center rounded-2xl border border-white/10 bg-white/[0.05] text-blue-300"
+                    className="grid min-h-20 place-items-center rounded-2xl border border-blue-200/80 bg-blue-50/70 text-blue-700 transition hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600"
                   >
                     <Icon size={22} />
                   </div>
                 ))}
               </div>
-            </GlassCard>
+            </div>
           </motion.div>
         </Container>
       </section>
 
-      <Section className="relative border-t border-white/10 bg-[#071a2d]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.18),transparent_38%)]" />
+      <Section className="relative bg-gradient-to-b from-brandWarm-100 to-brandWarm-50">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(46,125,209,0.07),transparent_36%)]" />
         <div className="relative">
           <motion.div
             variants={fadeUp}
@@ -168,10 +178,10 @@ export default function TechnologyListPage() {
             viewport={{ once: true, amount: 0.25 }}
             className="mx-auto mb-12 max-w-3xl text-center lg:mb-16"
           >
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-blue-700">
               Browse technologies
             </p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl lg:text-5xl">
               Search the complete technology list
             </h2>
           </motion.div>
@@ -181,16 +191,16 @@ export default function TechnologyListPage() {
               <span className="sr-only">Search technologies</span>
               <Search
                 size={20}
-                className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-blue-300"
+                className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-blue-700"
               />
               <input
                 type="search"
                 placeholder="Search technologies..."
-                className="w-full rounded-full border border-blue-300/20 bg-slate-950/90 py-4 pl-14 pr-28 text-base text-white shadow-2xl shadow-slate-950/30 outline-none backdrop-blur-md transition placeholder:text-slate-500 focus:border-blue-400 focus:ring-4 focus:ring-blue-400/10"
+                className="w-full rounded-full border border-slate-200 bg-white py-4 pl-14 pr-28 text-base text-slate-950 shadow-lg shadow-slate-950/5 outline-none transition placeholder:text-slate-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
               />
-              <span className="absolute right-5 top-1/2 -translate-y-1/2 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">
+              <span className="absolute right-5 top-1/2 -translate-y-1/2 text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
                 {filteredTechnologies.length} results
               </span>
             </label>
@@ -208,29 +218,32 @@ export default function TechnologyListPage() {
                 const Icon = technologyIcons[index % technologyIcons.length];
 
                 return (
-                  <GlassCard
-                    as={motion.article}
+                  <motion.article
                     key={technology}
                     variants={fadeUp}
-                    className="group flex min-h-32 items-center gap-5 border-blue-300/15 bg-white/[0.06] transition duration-300 hover:-translate-y-1 hover:border-blue-300/40 hover:bg-white/[0.09]"
+                    className="premium-card premium-card-light premium-card-hover group flex min-h-28 items-center gap-5 overflow-hidden rounded-3xl p-6"
                   >
-                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-400/10 text-blue-300 transition-colors duration-300 group-hover:bg-blue-400/20 group-hover:text-blue-200">
+                    <span
+                      className="absolute inset-y-0 left-0 w-1 premium-accent-vertical"
+                      aria-hidden="true"
+                    />
+                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-blue-200/80 bg-blue-50 text-blue-700 transition-colors duration-300 group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white">
                       <Icon size={21} />
                     </div>
-                    <h3 className="min-w-0 text-base font-semibold leading-6 text-white md:text-lg">
+                    <h3 className="min-w-0 text-base font-semibold leading-6 text-slate-900 md:text-lg">
                       {technology}
                     </h3>
-                  </GlassCard>
+                  </motion.article>
                 );
               })}
             </motion.div>
           ) : (
-            <GlassCard className="border-blue-300/15 bg-white/[0.06] text-center">
-              <p className="font-semibold text-white">No technologies found.</p>
-              <p className="mt-2 text-sm text-slate-400">
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm">
+              <p className="font-semibold text-slate-950">No technologies found.</p>
+              <p className="mt-2 text-sm text-slate-500">
                 Try a different technology name.
               </p>
-            </GlassCard>
+            </div>
           )}
         </div>
       </Section>

@@ -31,9 +31,9 @@ ChartJS.register(
 
 const DataDisplay = ({ industryData }) => {
     const labelsFor = (values) => values.map((_, index) => `Value ${index + 1}`);
-    const gridColor = "rgba(148, 163, 184, 0.16)";
-    const tickColor = "#cbd5e1";
-    const legendColor = "#e2e8f0";
+    const gridColor = "rgba(46, 125, 209, 0.14)";
+    const tickColor = "#64748b";
+    const legendColor = "#475569";
     const tooltipOptions = {
         backgroundColor: "#020617",
         borderColor: "rgba(147, 197, 253, 0.28)",
@@ -83,7 +83,7 @@ const DataDisplay = ({ industryData }) => {
                 label: "Pie data",
                 data: industryData.pieData,
                 backgroundColor: ["#60a5fa", "#2563eb", "#f97316"],
-                borderColor: "#071a2d",
+                borderColor: "#ffffff",
                 borderWidth: 4,
             },
         ],
@@ -189,11 +189,11 @@ const DataDisplay = ({ industryData }) => {
                 <GlassCard
                     key={panel.title}
                     as="section"
-                    className="min-w-0 overflow-hidden border-blue-300/15 bg-slate-950/45"
+                    className="min-w-0 overflow-hidden border-slate-200 bg-white/90 shadow-[0_24px_55px_-42px_rgba(5,45,82,0.45)]"
                 >
-                    <div className="mb-6 flex items-center justify-between gap-4 border-b border-white/10 pb-4">
-                        <h3 className="text-lg font-semibold text-white">{panel.title}</h3>
-                        <span className="rounded-full border border-blue-300/15 bg-blue-400/10 px-3 py-1 text-xs font-semibold tabular-nums text-blue-200">
+                    <div className="mb-6 flex items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                        <h3 className="text-lg font-semibold text-slate-950">{panel.title}</h3>
+                        <span className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold tabular-nums text-orange-700">
                             {panel.count} values
                         </span>
                     </div>

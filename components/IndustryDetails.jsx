@@ -12,7 +12,6 @@ import {
 import DataDisplay from "./DataDisplay";
 import Button from "./ui/Button";
 import Container from "./ui/Container";
-import GlassCard from "./ui/GlassCard";
 import Section from "./ui/Section";
 
 const IndustryDetails = ({ industryData }) => {
@@ -31,37 +30,37 @@ const IndustryDetails = ({ industryData }) => {
     ];
 
     return (
-        <div className="min-h-screen overflow-hidden bg-slate-950 text-white">
-            <section className="relative isolate overflow-hidden py-20 lg:py-28">
+        <div className="min-h-screen overflow-hidden bg-brandWarm-50 text-slate-950">
+            <section className="relative isolate overflow-hidden border-b border-slate-200 py-20 lg:py-28">
                 <div
-                    className="absolute inset-0 -z-20 opacity-35"
+                    className="absolute inset-0 -z-20 opacity-40"
                     style={{
                         backgroundImage:
-                            "linear-gradient(rgba(96,165,250,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(96,165,250,0.12) 1px, transparent 1px)",
-                        backgroundSize: "52px 52px",
-                        maskImage: "linear-gradient(to bottom, black 12%, transparent 95%)",
+                            "linear-gradient(rgba(13,43,74,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(13,43,74,0.06) 1px, transparent 1px)",
+                        backgroundSize: "56px 56px",
+                        maskImage: "linear-gradient(to bottom, black 12%, transparent 92%)",
                     }}
                 />
-                <div className="absolute left-[8%] top-12 -z-10 h-72 w-72 rounded-full bg-blue-600/15 blur-3xl" />
-                <div className="absolute right-[5%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />
+                <div className="absolute left-[8%] top-12 -z-10 h-72 w-72 rounded-full bg-blue-400/15 blur-3xl" />
+                <div className="absolute right-[5%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-400/12 blur-3xl" />
 
                 <Container className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
                     <div className="max-w-3xl">
-                        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-300/20 bg-blue-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-200">
-                            <Sparkles size={14} />
+                        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
+                            <Sparkles size={14} className="text-orange-500" />
                             Industry intelligence
                         </div>
-                        <h1 className="text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+                        <h1 className="text-4xl font-bold leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
                             {industryData.name}
                         </h1>
-                        <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
+                        <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
                             {industryData.description}
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
                             {industryData.keywords.map((keyword) => (
                                 <span
                                     key={keyword}
-                                    className="rounded-full border border-blue-300/20 bg-white/[0.06] px-4 py-2 text-sm font-medium text-blue-100"
+                                    className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-800"
                                 >
                                     {keyword}
                                 </span>
@@ -69,18 +68,19 @@ const IndustryDetails = ({ industryData }) => {
                         </div>
                     </div>
 
-                    <GlassCard className="relative overflow-hidden border-blue-300/20 bg-[#082d52]/75 p-5 shadow-2xl shadow-blue-950/40 lg:p-6">
-                        <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-blue-400/20 blur-3xl" />
-                        <div className="relative flex items-center justify-between gap-4 border-b border-white/10 pb-5">
+                    <div className="premium-card premium-card-light premium-card-hover relative overflow-hidden rounded-3xl p-5 text-slate-900 lg:p-6">
+                        <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-orange-300/25 blur-3xl" />
+                        <span className="absolute inset-x-0 top-0 h-1 premium-accent" aria-hidden="true" />
+                        <div className="relative flex items-center justify-between gap-4 border-b border-slate-200 pb-5">
                             <div>
-                                <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-200">
+                                <p className="text-xs font-bold uppercase tracking-[0.18em] text-orange-600">
                                     Analytics overview
                                 </p>
-                                <h2 className="mt-2 text-xl font-semibold text-white">
+                                <h2 className="mt-2 text-xl font-semibold text-slate-950">
                                     {industryData.name}
                                 </h2>
                             </div>
-                            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-400/15 text-blue-200">
+                            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-blue-200 bg-blue-50 text-blue-700">
                                 <Database size={22} />
                             </div>
                         </div>
@@ -88,16 +88,16 @@ const IndustryDetails = ({ industryData }) => {
                             {dataGroups.map((group) => (
                                 <div
                                     key={group.label}
-                                    className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/[0.055] p-4 sm:flex-row sm:items-center sm:justify-between"
+                                    className="flex flex-col gap-3 rounded-2xl border border-blue-100 bg-blue-50/55 p-4 sm:flex-row sm:items-center sm:justify-between"
                                 >
-                                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">
+                                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
                                         {group.label}
                                     </p>
                                     <div className="flex flex-wrap gap-2">
                                         {group.values.map((value, index) => (
                                             <span
                                                 key={`${group.label}-${index}`}
-                                                className="rounded-lg bg-slate-950/50 px-2.5 py-1 text-xs font-semibold tabular-nums text-blue-100"
+                                                className="rounded-lg border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs font-semibold tabular-nums text-orange-700"
                                             >
                                                 {value}
                                             </span>
@@ -106,22 +106,22 @@ const IndustryDetails = ({ industryData }) => {
                                 </div>
                             ))}
                         </div>
-                    </GlassCard>
+                    </div>
                 </Container>
             </section>
 
-            <Section className="relative border-t border-white/10 bg-[#071a2d]">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.18),transparent_38%)]" />
+            <Section className="relative border-t border-slate-200 bg-gradient-to-b from-brandWarm-100 to-brandWarm-50">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,125,209,0.08),transparent_38%)]" />
                 <div className="relative">
                     <div className="mb-10 flex max-w-3xl items-start gap-4 lg:mb-12">
-                        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-400/10 text-blue-300">
+                        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-blue-200 bg-blue-50 text-blue-700">
                             <Crosshair size={22} />
                         </div>
                         <div>
-                            <p className="text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
+                            <p className="text-xs font-bold uppercase tracking-[0.24em] text-blue-700">
                                 Data summary
                             </p>
-                            <h2 className="mt-3 text-3xl font-bold tracking-tight text-white md:text-4xl">
+                            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">
                                 {industryData.name} analytics
                             </h2>
                         </div>
@@ -132,24 +132,28 @@ const IndustryDetails = ({ industryData }) => {
                             const Icon = summary.icon;
 
                             return (
-                                <GlassCard
+                                <div
                                     key={summary.label}
-                                    className="border-blue-300/15 bg-white/[0.06]"
+                                    className="premium-card premium-card-light premium-card-hover relative overflow-hidden rounded-3xl p-6"
                                 >
+                                    <span
+                                        className="absolute inset-x-0 top-0 h-1 premium-accent"
+                                        aria-hidden="true"
+                                    />
                                     <div className="flex items-start justify-between gap-4">
                                         <div>
-                                            <p className="text-3xl font-bold tabular-nums tracking-tight text-white">
+                                            <p className="text-3xl font-bold tabular-nums tracking-tight text-slate-950">
                                                 {summary.value}
                                             </p>
-                                            <p className="mt-2 text-xs font-bold uppercase leading-5 tracking-[0.14em] text-slate-400">
+                                            <p className="mt-2 text-xs font-bold uppercase leading-5 tracking-[0.14em] text-slate-500">
                                                 {summary.label}
                                             </p>
                                         </div>
-                                        <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-blue-400/10 text-blue-300">
+                                        <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-blue-200/80 bg-blue-50 text-blue-700">
                                             <Icon size={20} />
                                         </div>
                                     </div>
-                                </GlassCard>
+                                </div>
                             );
                         })}
                     </div>
@@ -158,15 +162,13 @@ const IndustryDetails = ({ industryData }) => {
                 </div>
             </Section>
 
-            <Section className="border-t border-white/10 bg-slate-950">
-                <GlassCard
-                    as="section"
-                    className="relative overflow-hidden border-blue-300/20 bg-[#082d52]/80 shadow-2xl shadow-blue-950/30"
-                >
-                    <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-orange-500/10 blur-3xl" />
+            <Section className="border-t border-slate-200 bg-brandWarm-50">
+                <div className="premium-card relative overflow-hidden rounded-3xl border border-orange-200 bg-gradient-to-r from-orange-500 to-orange-600 p-6 text-white shadow-[0_34px_80px_-48px_rgba(194,65,12,0.65)] lg:p-8">
+                    <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-blue-700/20 blur-3xl" />
+                    <span className="absolute inset-x-0 top-0 h-1 premium-accent" aria-hidden="true" />
                     <div className="relative flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
                         <div className="max-w-2xl">
-                            <p className="text-xs font-bold uppercase tracking-[0.24em] text-blue-200">
+                            <p className="text-xs font-bold uppercase tracking-[0.24em] text-orange-50">
                                 BookDataZ
                             </p>
                             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white md:text-4xl">
@@ -181,13 +183,13 @@ const IndustryDetails = ({ industryData }) => {
                                 href="/datacard"
                                 variant="outline"
                                 size="lg"
-                                className="border-white/20 text-white hover:border-blue-300 hover:bg-white/10"
+                                className="border-white/50 text-white hover:border-white hover:bg-white hover:text-orange-600"
                             >
                                 Browse Datacards
                             </Button>
                         </div>
                     </div>
-                </GlassCard>
+                </div>
             </Section>
         </div>
     );

@@ -40,10 +40,10 @@ const icons = {
   "Food and Beverage": Utensils,
 };
 
-const CategoryIcon = ({ title, size = 22 }) => {
+const CategoryIcon = ({ title, size = 22, className }) => {
   const Icon = icons[title] ?? Building2;
 
-  return <Icon size={size} aria-hidden="true" />;
+  return <Icon size={size} className={className} aria-hidden="true" />;
 };
 
 export default CategoryIcon;
