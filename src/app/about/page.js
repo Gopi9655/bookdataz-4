@@ -6,6 +6,7 @@ import {
   Layers3,
   MapPin,
   ShieldCheck,
+  Star,
   Target,
 } from "lucide-react";
 
@@ -330,6 +331,31 @@ const AboutPage = () => (
             key={testimonial.name}
             className="rounded-[1.8rem] border-white/10 bg-white/[0.05]"
           >
+            {testimonial.rating ? (
+              <div
+                className="mb-4 flex items-center gap-1"
+                role="img"
+                aria-label={`Rated ${testimonial.rating} out of 5 by ${testimonial.name}`}
+              >
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    size={16}
+                    aria-hidden="true"
+                    className={
+                      i < Math.round(testimonial.rating)
+                        ? "text-[color:var(--accent-soft)]"
+                        : "text-white/25"
+                    }
+                    style={
+                      i < Math.round(testimonial.rating)
+                        ? { fill: "var(--accent-soft)" }
+                        : undefined
+                    }
+                  />
+                ))}
+              </div>
+            ) : null}
             <p className="text-lg leading-8 text-slate-200">
               &ldquo;{testimonial.quote}&rdquo;
             </p>

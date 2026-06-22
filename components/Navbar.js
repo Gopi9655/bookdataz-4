@@ -4,7 +4,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Briefcase,
+  Building2,
+  Car,
+  ChevronDown,
+  Factory,
+  Fuel,
+  GraduationCap,
+  HardHat,
+  HeartPulse,
+  Landmark,
+  Layers3,
+  Menu,
+  Pill,
+  Plane,
+  ShoppingBag,
+  UtensilsCrossed,
+  X,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { mailinglinks } from "@/resource/data";
@@ -17,6 +37,26 @@ const navLinks = [
   { href: "/datacard", label: "Browse Datacards" },
   { href: "/contact", label: "Contact Us" },
 ];
+
+// Consistent, premium B2B line icons per industry (keyed by the data file's
+// stable ids) — replaces the mismatched raster clipart with one icon family.
+// Presentation only; sectors/names still come from data.js.
+const INDUSTRY_ICONS = {
+  31: Car, // Automotive Industry
+  32: Landmark, // Banking and Finance
+  33: HardHat, // Construction Companies
+  34: GraduationCap, // Educational Industries
+  35: UtensilsCrossed, // Food and Beverages
+  36: HeartPulse, // Healthcare Industries
+  37: Factory, // Manufacturing Industries
+  38: Fuel, // Oil and Gas
+  39: Pill, // Pharmaceuticals
+  40: Building2, // Real Estate
+  41: ShoppingBag, // Retail Industries
+  42: Plane, // Travel and Transport Industries
+};
+
+const industryIcon = (id) => INDUSTRY_ICONS[id] || Briefcase;
 
 const industryHref = (name) => `/${name.toLowerCase().replace(/ /g, "-")}`;
 
@@ -92,13 +132,24 @@ const Navbar = () => {
             className="relative"
             onMouseEnter={() => setIsMailingOpen(true)}
             onMouseLeave={() => setIsMailingOpen(false)}
+            onFocus={() => setIsMailingOpen(true)}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                setIsMailingOpen(false);
+              }
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") setIsMailingOpen(false);
+            }}
           >
             <button
               type="button"
+              aria-haspopup="true"
               aria-expanded={isMailingOpen}
+              aria-controls="mailing-mega"
               onClick={() => setIsMailingOpen((open) => !open)}
               className={`${baseNavLink} flex items-center gap-1.5 ${
-                isIndustryActive
+                isIndustryActive || isMailingOpen
                   ? "bg-[var(--nav-active-bg)] text-[color:var(--nav-active-text)]"
                   : "text-[color:var(--nav-muted)] hover:bg-[var(--nav-hover-bg)] hover:text-[color:var(--nav-text)]"
               }`}
@@ -106,56 +157,74 @@ const Navbar = () => {
               Mailing Lists
               <ChevronDown
                 size={15}
-                className={`transition-transform ${isMailingOpen ? "rotate-180" : ""}`}
+                className={`transition-transform duration-200 ${
+                  isMailingOpen ? "rotate-180" : ""
+                }`}
               />
             </button>
 
             <AnimatePresence>
               {isMailingOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
-                  transition={{ duration: 0.18, ease: "easeOut" }}
-                  className="absolute right-0 top-full w-[min(860px,calc(100vw-2.5rem))] pt-4"
+                  id="mailing-mega"
+                  role="region"
+                  aria-label="Industry mailing lists"
+                  className="mailing-mega"
+                  initial={{ opacity: 0, y: 6, scale: 0.985, x: "-50%" }}
+                  animate={{ opacity: 1, y: 0, scale: 1, x: "-50%" }}
+                  exit={{ opacity: 0, y: 6, scale: 0.985, x: "-50%" }}
+                  transition={{ duration: 0.18, ease: [0.22, 0.61, 0.36, 1] }}
                 >
-                  <div className="overflow-hidden rounded-[1.8rem] border border-[color:var(--nav-border)] bg-[var(--card-bg)] shadow-[0_32px_70px_-42px_rgba(var(--shadow-rgb),0.4)] backdrop-blur-xl">
-                    <div className="border-b border-[color:var(--card-border)] px-5 py-4">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-700">
-                        Industry coverage
-                      </p>
-                      <p className="mt-1 text-sm text-slate-500">
-                        Browse the BookDataZ mailing list catalogue by sector.
-                      </p>
-                    </div>
-                    <div className="max-h-[min(64vh,520px)] overflow-y-auto p-4">
-                      <div className="grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-3">
-                        {mailinglinks.map((item) => {
-                          const href = industryHref(item.name);
-                          return (
-                            <Link
-                              key={item.id}
-                              href={href}
-                              className={`flex min-w-0 items-center gap-3 rounded-2xl border px-3 py-3 text-sm font-medium transition ${
-                                pathname === href
-                                  ? "border-[color:var(--accent)] bg-[image:var(--accent-grad)] text-[color:var(--accent-contrast)] shadow-[0_18px_34px_-24px_rgba(var(--shadow-rgb),0.5)]"
-                                  : "border-transparent text-[color:var(--nav-muted)] hover:border-[color:var(--card-border)] hover:bg-[var(--nav-hover-bg)] hover:text-[color:var(--nav-text)]"
-                              }`}
-                            >
-                              <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl border border-[color:var(--card-border)] bg-[var(--card-bg)]">
-                                <Image
-                                  src={item.icon}
-                                  alt=""
-                                  width={28}
-                                  height={28}
-                                  className="h-7 w-7 object-cover"
-                                />
-                              </span>
-                              <span className="truncate">{item.name}</span>
-                            </Link>
-                          );
-                        })}
+                  <span className="mailing-mega-caret" aria-hidden="true" />
+                  <div className="mailing-mega-panel">
+                    <div className="mailing-mega-head">
+                      <div className="min-w-0">
+                        <p className="mailing-mega-eyebrow">Industry coverage</p>
+                        <p className="mailing-mega-subtitle">
+                          Browse the BookDataZ mailing list catalogue by sector.
+                        </p>
                       </div>
+                      <span className="mailing-mega-head-ico" aria-hidden="true">
+                        <Layers3 size={18} />
+                      </span>
+                    </div>
+
+                    <div className="mailing-mega-grid">
+                      {mailinglinks.map((item) => {
+                        const href = industryHref(item.name);
+                        const Icon = industryIcon(item.id);
+                        const active = pathname === href;
+                        return (
+                          <Link
+                            key={item.id}
+                            href={href}
+                            aria-current={active ? "page" : undefined}
+                            className={`mailing-mega-item${
+                              active ? " mailing-mega-item-active" : ""
+                            }`}
+                          >
+                            <span className="mailing-mega-ico" aria-hidden="true">
+                              <Icon size={18} />
+                            </span>
+                            <span className="mailing-mega-name">{item.name}</span>
+                            <ArrowUpRight
+                              size={15}
+                              className="mailing-mega-arrow"
+                              aria-hidden="true"
+                            />
+                          </Link>
+                        );
+                      })}
+                    </div>
+
+                    <div className="mailing-mega-foot">
+                      <span className="mailing-mega-foot-note">
+                        {mailinglinks.length} industry sectors
+                      </span>
+                      <Link href="/datacard" className="mailing-mega-foot-link">
+                        Browse all datacards
+                        <ArrowRight size={14} />
+                      </Link>
                     </div>
                   </div>
                 </motion.div>
@@ -245,26 +314,32 @@ const Navbar = () => {
                       exit={{ opacity: 0, height: 0 }}
                       className="overflow-hidden"
                     >
-                      <div className="grid gap-1 rounded-2xl border border-[color:var(--card-border)] bg-[var(--surface-1)] p-2 sm:grid-cols-2">
+                      <div className="grid gap-1.5 rounded-2xl border border-[color:var(--card-border)] bg-[var(--surface-1)] p-2 sm:grid-cols-2">
                         {mailinglinks.map((item) => {
                           const href = industryHref(item.name);
+                          const Icon = industryIcon(item.id);
+                          const active = pathname === href;
                           return (
                             <Link
                               key={item.id}
                               href={href}
-                              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition ${
-                                pathname === href
+                              aria-current={active ? "page" : undefined}
+                              className={`flex min-h-[48px] items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium transition ${
+                                active
                                   ? "bg-[image:var(--accent-grad)] text-[color:var(--accent-contrast)]"
                                   : "text-[color:var(--nav-muted)] hover:bg-[var(--nav-hover-bg)] hover:text-[color:var(--accent-strong)]"
                               }`}
                             >
-                              <Image
-                                src={item.icon}
-                                alt=""
-                                width={24}
-                                height={24}
-                                className="h-6 w-6 rounded-lg bg-white object-cover"
-                              />
+                              <span
+                                className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg border ${
+                                  active
+                                    ? "border-white/40 bg-white/15 text-[color:var(--accent-contrast)]"
+                                    : "border-[color:var(--accent-border)] bg-[var(--accent-tint)] text-[color:var(--accent)]"
+                                }`}
+                                aria-hidden="true"
+                              >
+                                <Icon size={17} />
+                              </span>
                               {item.name}
                             </Link>
                           );

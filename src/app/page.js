@@ -22,6 +22,7 @@ import CoverageCommandCenter from "../../components/home/CoverageCommandCenter";
 import ValuePillars from "../../components/home/ValuePillars";
 import GlobalReach from "../../components/home/GlobalReach";
 import TestimonialsCarousel from "../../components/home/TestimonialsCarousel";
+import TrustedBy from "../../components/home/TrustedBy";
 import DataStreams from "../../components/home/DataStreams";
 import HeroCarousel from "../../components/home/HeroCarousel";
 
@@ -81,14 +82,18 @@ const SectionHeading = ({
   >
     <p
       className={`mb-4 text-xs font-bold uppercase tracking-[0.24em] ${
-        light ? "text-orange-200" : "text-orange-700"
+        light
+          ? "text-[color:var(--accent-soft)]"
+          : "text-[color:var(--accent-strong)]"
       }`}
     >
       {eyebrow}
     </p>
     <h2
       className={`text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl ${
-        light ? "text-white" : "text-[#151515]"
+        light
+          ? "text-[color:var(--section-contrast-text)]"
+          : "text-[color:var(--heading)]"
       }`}
     >
       {title}
@@ -96,7 +101,9 @@ const SectionHeading = ({
     {description && (
       <p
         className={`mt-5 max-w-2xl text-base leading-8 md:text-lg ${
-          light ? "text-[#e7d7cc]" : "text-slate-600"
+          light
+            ? "text-[color:var(--section-contrast-muted)]"
+            : "text-[color:var(--text-muted)]"
         }`}
       >
         {description}
@@ -457,6 +464,21 @@ export default function Home() {
             description="A few words from teams who put our data to work."
           />
           <TestimonialsCarousel />
+        </div>
+      </Section>
+
+      <Section
+        id="trusted-by"
+        className="relative overflow-hidden border-t border-[color:var(--card-border)] bg-[var(--section-bg)] text-[color:var(--heading)]"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,var(--accent-tint),transparent_38%)] opacity-60" />
+        <div className="relative">
+          <SectionHeading
+            eyebrow="Trusted By"
+            title="Trusted by data-driven teams"
+            description="Built for sales and marketing teams that rely on accurate, structured B2B data."
+          />
+          <TrustedBy />
         </div>
       </Section>
 

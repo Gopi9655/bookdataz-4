@@ -45,10 +45,9 @@ const PageHeader = () => {
   const title = routeTitles[pathname] || formattedTitle || "Page";
 
   return (
-    <div className="relative border-b border-white/10 bg-[#1b1714] text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,106,42,0.18),transparent_42%)]" />
+    <div className="bdz-page-header relative border-b border-white/10">
       <Container className="relative z-10 py-5 md:py-8">
-        <h1 className="text-2xl font-bold capitalize tracking-tight md:text-4xl">
+        <h1 className="text-2xl font-bold capitalize tracking-tight text-[color:var(--section-contrast-text)] md:text-4xl">
           {title}
         </h1>
       </Container>

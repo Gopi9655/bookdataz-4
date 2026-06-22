@@ -93,6 +93,27 @@
   --footer-text: rgba(255, 255, 255, 0.74);
   --footer-muted: rgba(255, 255, 255, 0.45);
 
+  /* --- Generic light section surfaces (rhythm helpers) ------------------- */
+  /* Mapped to existing palette surfaces so every theme stays coherent.       */
+  --section-bg: var(--surface-1);
+  --section-alt-bg: var(--surface-2);
+  --section-muted-bg: color-mix(in srgb, var(--surface-2) 70%, var(--surface-1));
+
+  /* --- Semantic page + surface tokens (drive the .bdz-* class system) ---- */
+  --page-bg: var(--site-bg);
+  --card-elevated-bg: var(--card-bg-2);
+
+  /* --- Dropdown tokens promoted to :root so every menu inherits them. The   */
+  /*     navbar mega-menu may still override these locally. ----------------- */
+  --dropdown-bg: var(--card-bg);
+  --dropdown-text: var(--text-main);
+  --dropdown-muted: var(--text-muted);
+  --dropdown-border: var(--card-border);
+
+  /* --- Testimonials + Trusted By (social proof) ------------------------- */
+  --testimonial-bg: var(--card-bg);
+  --trusted-logo-bg: var(--card-bg);
+
   /* --- Buttons --- */
   --btn-primary-bg: var(--accent-2);
   --btn-primary-text: #ffffff;
@@ -157,6 +178,232 @@ h4 {
 ::selection {
   background: var(--accent);
   color: var(--accent-contrast);
+}
+
+/* ----------------------------------------------------------------------- */
+/* Mailing Lists mega menu (navbar dropdown)                               */
+/* ----------------------------------------------------------------------- */
+
+/* Positioning shell — anchored under and centered on the nav item.
+   Horizontal centering uses Framer's persistent x:-50% so it never fights
+   the open animation. Width is capped so it can't overflow the viewport. */
+.mailing-mega {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 60;
+  width: min(920px, calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
+  padding-top: 14px; /* ~12-16px gap below navbar + hover bridge */
+  /* Scoped dropdown tokens — derive from shared surface/text vars so all 40+
+     palettes are covered without touching lib/themePalettes.js. Palettes that
+     define explicit --dropdown-* keys will override these fallbacks. */
+  --dropdown-bg: var(--card-bg);
+  --dropdown-text: var(--text-main);
+  --dropdown-muted: var(--text-muted);
+  --dropdown-border: var(--card-border);
+  --dropdown-card-hover: color-mix(in srgb, var(--surface-1) 60%, var(--accent-tint));
+  --dropdown-icon-bg: var(--accent-tint);
+}
+
+/* On tighter desktop widths keep the centered panel clear of both edges. */
+@media (max-width: 1399px) {
+  .mailing-mega {
+    width: min(820px, calc(100vw - 32px));
+  }
+}
+
+.mailing-mega-caret {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translateX(-50%) rotate(45deg);
+  border-top: 1px solid var(--dropdown-border);
+  border-left: 1px solid var(--dropdown-border);
+  border-top-left-radius: 4px;
+  background: var(--dropdown-bg);
+}
+
+.mailing-mega-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.4rem;
+  border: 1px solid var(--dropdown-border);
+  /* Solid background — no transparency so the hero never bleeds through. */
+  background: var(--dropdown-bg);
+  box-shadow:
+    0 40px 90px -48px rgba(var(--shadow-rgb), 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.mailing-mega-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1.25rem;
+  border-bottom: 1px solid var(--card-border);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent-tint) 70%, transparent),
+    transparent
+  );
+}
+
+.mailing-mega-eyebrow {
+  color: var(--accent-strong);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.mailing-mega-subtitle {
+  margin-top: 0.2rem;
+  color: var(--dropdown-muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.mailing-mega-head-ico {
+  display: grid;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  flex: none;
+  border-radius: 0.8rem;
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  background: var(--accent-tint);
+}
+
+.mailing-mega-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  max-height: min(64vh, 460px);
+  overflow-y: auto;
+  padding: 0.85rem;
+}
+
+.mailing-mega-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+  border-radius: 0.95rem;
+  border: 1px solid transparent;
+  padding: 0.6rem 0.65rem;
+  color: var(--dropdown-text);
+  transition:
+    transform 0.25s var(--motion-ease),
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s var(--motion-ease);
+}
+
+.mailing-mega-item:hover {
+  transform: translateY(-1px);
+  border-color: var(--dropdown-border);
+  background: var(--dropdown-card-hover);
+  color: var(--heading);
+  box-shadow: 0 18px 34px -28px rgba(var(--shadow-rgb), 0.4);
+}
+
+.mailing-mega-item:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.mailing-mega-item-active {
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  background: var(--accent-grad);
+  color: var(--accent-contrast);
+  box-shadow: 0 18px 34px -24px rgba(var(--shadow-rgb), 0.5);
+}
+
+.mailing-mega-ico {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  flex: none;
+  border-radius: 0.75rem;
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  background: var(--accent-tint);
+  transition:
+    transform 0.25s var(--motion-ease),
+    border-color 0.25s ease;
+}
+
+.mailing-mega-item:hover .mailing-mega-ico {
+  transform: scale(1.06);
+}
+
+.mailing-mega-item-active .mailing-mega-ico {
+  color: var(--accent-contrast);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.mailing-mega-name {
+  min-width: 0;
+  flex: 1;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.mailing-mega-arrow {
+  flex: none;
+  opacity: 0;
+  transform: translate(-3px, 2px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s var(--motion-ease);
+}
+
+.mailing-mega-item:hover .mailing-mega-arrow,
+.mailing-mega-item-active .mailing-mega-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.mailing-mega-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 1.25rem;
+  border-top: 1px solid var(--dropdown-border);
+  /* Solid footer — blend of surface-1 into card-bg so it's always readable. */
+  background: color-mix(in srgb, var(--surface-1) 50%, var(--dropdown-bg));
+}
+
+.mailing-mega-foot-note {
+  color: var(--dropdown-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mailing-mega-foot-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--accent-strong);
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: gap 0.25s var(--motion-ease);
+}
+
+.mailing-mega-foot-link:hover {
+  gap: 0.6rem;
 }
 
 /* Accessible, theme-aware keyboard focus for native interactive elements. */
@@ -1575,6 +1822,303 @@ select:focus-visible,
 }
 
 /* ----------------------------------------------------------------------- */
+/* Testimonials v2 — photo avatar quote card (theme-aware)               */
+/* ----------------------------------------------------------------------- */
+
+.testimonial-card-v2 {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  border: 1px solid var(--card-border);
+  background:
+    radial-gradient(circle at 100% 0%, var(--accent-tint), transparent 42%),
+    var(--testimonial-bg);
+  color: var(--text-main);
+  padding: 2rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 36px 80px -52px rgba(var(--shadow-rgb), 0.34);
+}
+
+@media (min-width: 640px) {
+  .testimonial-card-v2 {
+    padding: 2.5rem;
+  }
+}
+
+.testimonial-accent-bar {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-soft), var(--accent));
+  background-size: 200% 100%;
+  animation: accent-slide 4.2s linear infinite;
+}
+
+.testimonial-quote-glyph {
+  position: absolute;
+  top: -0.6rem;
+  right: 0.6rem;
+  z-index: -1;
+  color: var(--accent);
+  opacity: 0.1;
+}
+
+.testimonial-grid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .testimonial-grid {
+    grid-template-columns: auto 1fr;
+    gap: 2.25rem;
+  }
+}
+
+.testimonial-portrait-wrap {
+  position: relative;
+  width: 7.5rem;
+  height: 7.5rem;
+  flex: none;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .testimonial-portrait-wrap {
+    width: 10rem;
+    height: 10rem;
+    margin-inline: 0;
+  }
+}
+
+.testimonial-portrait-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 140deg,
+    var(--accent),
+    var(--accent-soft),
+    color-mix(in srgb, var(--accent-2) 70%, transparent),
+    var(--accent)
+  );
+  opacity: 0.85;
+  filter: blur(0.5px);
+}
+
+.testimonial-portrait {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 9999px;
+  border: 3px solid var(--card-bg);
+  background: var(--surface-2);
+  box-shadow: 0 18px 40px -22px rgba(var(--shadow-rgb), 0.55);
+}
+
+.testimonial-quote-tile {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.9rem;
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  background: var(--accent-tint);
+}
+
+.testimonial-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin-top: 1.1rem;
+}
+
+.testimonial-star {
+  color: color-mix(in srgb, var(--text-muted) 38%, transparent);
+  fill: transparent;
+}
+
+.testimonial-star-on {
+  color: var(--accent);
+  fill: var(--accent);
+}
+
+.testimonial-quote-text {
+  margin-top: 1rem;
+  color: var(--heading);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+  .testimonial-quote-text {
+    font-size: 1.4rem;
+  }
+}
+
+.testimonial-caption {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--card-border);
+}
+
+.testimonial-name {
+  display: block;
+  color: var(--heading);
+  font-weight: 700;
+}
+
+.testimonial-role {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--accent-strong);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.testimonial-nav-btn {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-main);
+  box-shadow: 0 12px 24px -18px rgba(var(--shadow-rgb), 0.4);
+  transition:
+    transform 0.25s var(--motion-ease),
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.testimonial-nav-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.testimonial-dot {
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 9999px;
+  background: var(--card-border);
+  transition:
+    width 0.3s var(--motion-ease),
+    background-color 0.3s ease;
+}
+
+.testimonial-dot:hover {
+  background: var(--accent-soft);
+}
+
+.testimonial-dot-active {
+  width: 1.75rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+}
+
+/* ----------------------------------------------------------------------- */
+/* Trusted By — theme-aware logo marquee                                  */
+/* ----------------------------------------------------------------------- */
+
+.trusted-marquee {
+  position: relative;
+  width: 100%;
+}
+
+.trusted-marquee-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 8%;
+  min-width: 48px;
+  pointer-events: none;
+}
+
+.trusted-marquee-fade-l {
+  left: 0;
+  background: linear-gradient(90deg, var(--section-bg), transparent);
+}
+
+.trusted-marquee-fade-r {
+  right: 0;
+  background: linear-gradient(270deg, var(--section-bg), transparent);
+}
+
+.trusted-marquee-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.trusted-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1.25rem;
+  animation: trusted-scroll 38s linear infinite;
+}
+
+.trusted-marquee:hover .trusted-marquee-track {
+  animation-play-state: paused;
+}
+
+.trusted-grid {
+  display: none;
+}
+
+.trusted-logo-tile {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 11rem;
+  height: 5.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid var(--card-border);
+  background: var(--trusted-logo-bg);
+  box-shadow: 0 18px 38px -34px rgba(var(--shadow-rgb), 0.4);
+  transition:
+    transform 0.3s var(--motion-ease),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.trusted-logo-tile:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-border);
+  box-shadow: 0 24px 46px -30px rgba(var(--shadow-rgb), 0.5);
+}
+
+.trusted-logo-img {
+  height: auto;
+  width: auto;
+  max-height: 3.25rem;
+  max-width: 100%;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.7;
+  transition:
+    filter 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.trusted-logo-tile:hover .trusted-logo-img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+@keyframes trusted-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ----------------------------------------------------------------------- */
 /* Global reach — network globe                                           */
 /* ----------------------------------------------------------------------- */
 
@@ -1641,6 +2185,164 @@ select:focus-visible,
 }
 
 /* ======================================================================= */
+/* BDZ SEMANTIC CLASSES — the single shared theme layer for every route.   */
+/* ----------------------------------------------------------------------- */
+/* These map directly onto the palette tokens, so any page that uses them  */
+/* follows the active ThemeTweaks palette automatically. New / refactored   */
+/* markup should prefer these over hardcoded Tailwind color utilities.      */
+/* ======================================================================= */
+
+.bdz-page {
+  background: var(--page-bg);
+  color: var(--text-main);
+}
+
+.bdz-section {
+  background: var(--section-bg);
+  color: var(--text-main);
+}
+
+.bdz-section-alt {
+  background: var(--section-alt-bg);
+  color: var(--text-main);
+}
+
+.bdz-section-muted {
+  background: var(--section-muted-bg);
+  color: var(--text-main);
+}
+
+.bdz-section-contrast {
+  background: var(--section-contrast-bg);
+  color: var(--section-contrast-text);
+}
+
+.bdz-section-contrast .bdz-heading,
+.bdz-section-contrast .bdz-text {
+  color: var(--section-contrast-text);
+}
+
+.bdz-section-contrast .bdz-muted {
+  color: var(--section-contrast-muted);
+}
+
+.bdz-card {
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-main);
+  box-shadow: 0 24px 52px -44px rgba(var(--shadow-rgb), 0.24);
+}
+
+.bdz-card-elevated {
+  border: 1px solid var(--card-border);
+  background: var(--card-elevated-bg);
+  color: var(--text-main);
+  box-shadow: 0 30px 64px -46px rgba(var(--shadow-rgb), 0.3);
+}
+
+.bdz-gradient-card {
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at 100% 0%, var(--accent-tint), transparent 42%),
+    linear-gradient(160deg, var(--card-bg) 0%, var(--surface-1) 100%);
+  box-shadow: 0 30px 64px -46px rgba(var(--shadow-rgb), 0.26);
+}
+
+.bdz-heading {
+  color: var(--heading);
+}
+
+.bdz-text {
+  color: var(--text-main);
+}
+
+.bdz-muted {
+  color: var(--text-muted);
+}
+
+.bdz-eyebrow {
+  color: var(--accent-strong);
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.bdz-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--accent-border);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  color: var(--accent-strong);
+  background: var(--accent-tint);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.bdz-button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--cta-bg);
+  color: var(--cta-text);
+  transition:
+    transform 0.25s var(--motion-ease),
+    box-shadow 0.25s var(--motion-ease),
+    filter 0.25s ease;
+}
+
+.bdz-button-primary:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+  box-shadow: 0 18px 34px -22px rgba(var(--shadow-rgb), 0.5);
+}
+
+.bdz-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-main);
+  transition:
+    transform 0.25s var(--motion-ease),
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.bdz-button-secondary:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.bdz-page-header {
+  color: var(--section-contrast-text);
+  background:
+    radial-gradient(circle at 82% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 38%),
+    var(--section-contrast-bg);
+}
+
+.bdz-logo-tile {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--card-border);
+  background: var(--trusted-logo-bg);
+}
+
+.bdz-social-proof-section {
+  background: var(--testimonial-bg);
+  color: var(--text-main);
+}
+
+/* ======================================================================= */
 /* THEME COMPAT OVERRIDES                                                  */
 /* ----------------------------------------------------------------------- */
 /* Re-map the inline Tailwind utilities used across components to the      */
@@ -1684,8 +2386,32 @@ select:focus-visible,
 
 [class~="border-orange-200"],
 [class~="border-orange-300"],
-[class~="border-orange-200/70"] {
+[class~="border-orange-200/70"],
+[class~="border-orange-100"],
+[class~="border-orange-400"],
+[class~="border-orange-50"] {
   border-color: var(--accent-border) !important;
+}
+
+/* --- Remaining accent shades (mid + extra-light tints / text) ---------- */
+[class~="text-orange-400"] {
+  color: var(--accent) !important;
+}
+
+[class~="text-orange-50"] {
+  color: var(--accent-soft) !important;
+}
+
+[class~="bg-orange-400"] {
+  background-color: var(--accent) !important;
+}
+
+[class~="bg-orange-100"],
+[class~="bg-orange-50/50"],
+[class~="bg-orange-50/60"],
+[class~="bg-orange-400/10"],
+[class~="bg-orange-400/12"] {
+  background-color: var(--accent-tint) !important;
 }
 
 /* --- Headings (page light contexts) --- */
@@ -1722,6 +2448,7 @@ select:focus-visible,
 [class~="border-[#d8c6b7]"],
 [class~="border-[#efe4d9]"],
 [class~="border-[#eadccf]/90"],
+[class~="border-[#dacdbf]"],
 [class~="border-slate-200"] {
   border-color: var(--card-border) !important;
 }
@@ -1739,8 +2466,28 @@ select:focus-visible,
 [class~="bg-[#fffaf5]/95"],
 [class~="bg-[#faf4ed]"],
 [class~="bg-[#fbf5ee]"],
-[class~="bg-[#fff4ec]"] {
+[class~="bg-[#fff4ec]"],
+[class~="bg-[#fbf7f2]"],
+[class~="bg-[#fffdf9]"],
+[class~="bg-[#ffffff]"] {
   background-color: var(--card-bg) !important;
+}
+
+/* --- Dark anchor element surfaces (chatbot, page headers, dark tiles,    */
+/*     inner-page contrast bands) → theme dark-anchor so they stay dark    */
+/*     with readable light content on every palette. --- */
+[class~="bg-[#211713]"],
+[class~="bg-[#211814]"],
+[class~="bg-[#161311]"],
+[class~="bg-[#191512]"],
+[class~="bg-[#1b1714]"],
+[class~="bg-[#082d52]"] {
+  background: var(--section-contrast-bg) !important;
+}
+
+/* --- Dark borders paired with the above dark tiles → heading tone. --- */
+[class~="border-[#211814]"] {
+  border-color: var(--heading) !important;
 }
 
 /* --- Navbar --- */
@@ -1839,6 +2586,61 @@ select:focus-visible,
 
 [class~="bg-brandWarm-100"] {
   background-color: var(--surface-2) !important;
+}
+
+/* --- Generic neutral utilities (long-tail not covered above) ----------- */
+/* These plain Tailwind neutrals appeared on internal pages and previously  */
+/* ignored the palette entirely. Mapping them to tokens is what lets every  */
+/* route follow ThemeTweaks, alongside the .bdz-* refactor of shared parts. */
+[class~="bg-white"],
+[class~="bg-gray-50"] {
+  background-color: var(--card-bg) !important;
+}
+
+[class~="bg-gray-100"],
+[class~="bg-gray-200"] {
+  background-color: var(--surface-2) !important;
+}
+
+[class~="text-gray-900"],
+[class~="text-gray-800"] {
+  color: var(--heading) !important;
+}
+
+[class~="text-gray-700"],
+[class~="text-gray-600"],
+[class~="text-gray-500"],
+[class~="text-gray-400"] {
+  color: var(--text-muted) !important;
+}
+
+/* gray-300 is used as light text on dark sections — keep it readable there. */
+[class~="text-gray-300"],
+[class~="text-gray-200"],
+[class~="text-slate-400"],
+[class~="text-slate-300"],
+[class~="text-slate-200"] {
+  color: var(--section-contrast-muted) !important;
+}
+
+[class~="border-gray-100"],
+[class~="border-gray-200"],
+[class~="border-gray-300"] {
+  border-color: var(--card-border) !important;
+}
+
+/* Dark slate page bands (mission/story/team contrast strips) → theme dark  */
+/* anchor so they follow the palette instead of a fixed slate. ----------- */
+[class~="bg-slate-950"],
+[class~="bg-slate-900"],
+[class~="bg-slate-800"] {
+  background: var(--section-contrast-bg) !important;
+}
+
+/* Placeholder text → muted token (search/contact inputs). */
+[class~="placeholder:text-slate-400"]::placeholder,
+[class~="placeholder:text-gray-400"]::placeholder {
+  color: var(--text-muted) !important;
 }
 
 [class~="from-brandWarm-100"] {
@@ -2089,5 +2891,63 @@ select:focus-visible,
   .premium-card-dark.premium-card-hover:hover,
   .value-pillar:hover {
     transform: none;
+  }
+
+  .testimonial-accent-bar,
+  .trusted-marquee-track {
+    animation: none !important;
+  }
+
+  /* Swap the moving marquee for a calm, wrapping logo grid. */
+  .trusted-marquee-viewport,
+  .trusted-marquee-fade {
+    display: none;
+  }
+
+  .trusted-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 640px) {
+  .trusted-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 1024px) {
+  .trusted-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+/* Demo polish: shrink right hero dashboard but keep it vertically balanced */
+@media (min-width: 1024px) {
+  .hero-dashboard-stage {
+    margin-top: 0 !important;
+    transform: translateY(10px) scale(0.94) !important;
+    transform-origin: top center;
+  }
+
+  .hero-dashboard-panel {
+    transform-origin: top center;
+  }
+
+  .hero-float-chip-left {
+    top: 0.25rem !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-dashboard-stage {
+    transform: translateY(8px) scale(0.95) !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-dashboard-stage {
+    margin-top: 0 !important;
+    transform: none !important;
   }
 }
