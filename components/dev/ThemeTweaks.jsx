@@ -10,7 +10,7 @@
 //
 // Visibility gate (panel is hidden unless one is true):
 //   - running in development (NODE_ENV !== "production"), OR
-//   - URL contains ?theme  (e.g. /?theme=1), OR
+//   - URL contains ?themeTweaks=1, OR
 //   - localStorage "bdz-theme-panel" === "1"
 //
 // The *selected palette* is always re-applied on load (even when the panel is
@@ -58,38 +58,69 @@ const ThemeTweaks = () => {
   const [enabled, setEnabled] = useState(false);
   const [open, setOpen] = useState(false);
   const [activeId, setActiveId] = useState(DEFAULT_ID);
+  const [pendingPaletteId, setPendingPaletteId] = useState(null);
+  const [hideRequested, setHideRequested] = useState(false);
 
   // Apply persisted palette + decide whether the panel is visible.
   useEffect(() => {
     setMounted(true);
 
-    let storedId = DEFAULT_ID;
+    let storedPalette = findPalette(DEFAULT_ID);
     try {
-      storedId = window.localStorage.getItem(STORAGE_KEY) || DEFAULT_ID;
+      storedPalette = findPalette(
+        window.localStorage.getItem(STORAGE_KEY) || DEFAULT_ID
+      );
     } catch {
       /* ignore storage access errors */
     }
-    setActiveId(storedId);
-    applyPalette(findPalette(storedId));
+    setActiveId(storedPalette.id);
+    applyPalette(storedPalette);
 
     const isDev = process.env.NODE_ENV !== "production";
     const params = new URLSearchParams(window.location.search);
-    // Accept ?themeTweaks=1 (preferred) or legacy ?theme to enable in prod.
-    const queryEnabled =
-      params.get("themeTweaks") === "1" || params.has("theme");
+    const queryEnabled = params.get("themeTweaks") === "1";
     let panelFlag = false;
     try {
-      panelFlag = window.localStorage.getItem(PANEL_KEY) === "1";
       // Persist the enabled state when explicitly turned on via the URL.
-      if (queryEnabled && !panelFlag) {
+      if (queryEnabled) {
         window.localStorage.setItem(PANEL_KEY, "1");
         panelFlag = true;
+      } else {
+        panelFlag = window.localStorage.getItem(PANEL_KEY) === "1";
       }
     } catch {
       /* ignore */
     }
     setEnabled(isDev || queryEnabled || panelFlag);
   }, []);
+
+  // Keep palette persistence in localStorage after explicit user selections.
+  useEffect(() => {
+    if (!pendingPaletteId) return;
+
+    const palette = findPalette(pendingPaletteId);
+    applyPalette(palette);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, palette.id);
+    } catch {
+      /* ignore */
+    }
+    setPendingPaletteId(null);
+  }, [pendingPaletteId]);
+
+  // Allow production testers to remove the persisted panel flag.
+  useEffect(() => {
+    if (!hideRequested) return;
+
+    try {
+      window.localStorage.removeItem(PANEL_KEY);
+    } catch {
+      /* ignore */
+    }
+    setOpen(false);
+    setEnabled(false);
+    setHideRequested(false);
+  }, [hideRequested]);
 
   // Escape closes the open panel (keyboard accessibility).
   useEffect(() => {
@@ -103,12 +134,7 @@ const ThemeTweaks = () => {
 
   const select = (palette) => {
     setActiveId(palette.id);
-    applyPalette(palette);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, palette.id);
-    } catch {
-      /* ignore */
-    }
+    setPendingPaletteId(palette.id);
   };
 
   const grouped = useMemo(() => {
@@ -309,7 +335,24 @@ const ThemeTweaks = () => {
                 color: "#e7ebf2",
               }}
             >
-              Reset to default
+              Reset theme
+            </button>
+            <button
+              type="button"
+              onClick={() => setHideRequested(true)}
+              style={{
+                flex: 1,
+                cursor: "pointer",
+                fontSize: 11.5,
+                fontWeight: 600,
+                padding: "8px 10px",
+                borderRadius: 9,
+                border: "1px solid rgba(255,255,255,0.16)",
+                background: "rgba(255,255,255,0.02)",
+                color: "#e7ebf2",
+              }}
+            >
+              Hide panel
             </button>
           </div>
         </div>
