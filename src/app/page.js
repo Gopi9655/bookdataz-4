@@ -118,9 +118,7 @@ export default function Home() {
         <div className="absolute left-[4%] top-24 -z-10 h-72 w-72 rounded-full bg-orange-200/30 blur-3xl" />
         <div className="absolute right-[5%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-500/14 blur-3xl" />
 
-        <div className="mx-auto w-full max-w-7xl min-w-0 px-5 md:px-8 lg:px-10">
-          <HeroCarousel />
-        </div>
+        <HeroCarousel />
 
         <a
           href="#coverage"
@@ -135,16 +133,14 @@ export default function Home() {
       <Section
         id="coverage"
         data-home-section="available-data-coverage"
-        className="premium-tech-espresso relative border-y border-white/10 text-white"
+        className="premium-section-after-hero relative border-y border-[color:var(--section-after-hero-border)] text-[color:var(--section-after-hero-text)]"
       >
-        <div className="premium-dark-grid opacity-25" aria-hidden="true" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(245,106,42,0.14),transparent_36%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(245,106,42,0.08),transparent_34%)]" />
         <div className="relative">
           <SectionHeading
             eyebrow="Available Data Coverage"
             title="Your data command centre"
             description="Select any category to inspect its exact record count and every subcategory it covers from one structured control surface."
-            light
           />
 
           <motion.div

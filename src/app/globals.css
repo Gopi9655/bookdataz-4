@@ -75,6 +75,19 @@
   --contrast-card-bg: rgba(255, 255, 255, 0.05);
   --contrast-border: rgba(255, 255, 255, 0.1);
 
+  /* --- Section immediately after the hero (rhythm control) --------------- */
+  /* The hero is dark on the great majority of palettes, so the next section  */
+  /* must read as light/clean to avoid two stacked dark blocks. These derive  */
+  /* from the active palette's light surface tokens, so every theme stays     */
+  /* coherent and ThemeTweaks keeps working with no palette-file changes.     */
+  --section-after-hero-bg:
+    radial-gradient(circle at 88% 0%, var(--accent-tint), transparent 30%),
+    linear-gradient(180deg, var(--surface-1) 0%, var(--surface-2) 100%);
+  --section-after-hero-text: var(--heading);
+  --section-after-hero-muted: var(--text-muted);
+  --section-after-hero-card: var(--card-bg);
+  --section-after-hero-border: var(--card-border);
+
   /* --- Footer --- */
   --footer-bg: #0a1a30;
   --footer-text: rgba(255, 255, 255, 0.74);
@@ -183,17 +196,26 @@ select:focus-visible,
   position: relative;
   isolation: isolate;
   min-height: auto;
-  padding-top: 2rem !important;
-  padding-bottom: 2.5rem !important;
+  padding-top: 1.5rem !important;
+  padding-bottom: 2.25rem !important;
   color: var(--hero-text);
   background: var(--hero-bg) !important;
 }
 
 @media (min-width: 1024px) {
   .premium-hero-warm {
-    min-height: 480px;
-    padding-top: 2.25rem !important;
-    padding-bottom: 2.75rem !important;
+    min-height: 420px;
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.75rem !important;
+  }
+
+  /* Pull the whole hero composition (both columns) up so it reads as a strong
+     above-the-fold landing section instead of starting halfway down. Desktop
+     only — mobile keeps its natural flow (no negative shift). The shift stays
+     smaller than the section's top padding so the grid never clips above the
+     section edge / under the sticky navbar. */
+  .hero-grid-shell {
+    transform: translateY(-12px);
   }
 }
 
@@ -245,10 +267,12 @@ select:focus-visible,
 }
 
 .hero-headline-highlight {
+  /* Solid fallback first so the words are never invisible if clip is unsupported. */
+  color: var(--accent);
   background: linear-gradient(90deg, var(--accent), var(--accent-soft));
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-eyebrow-pill {
@@ -1176,6 +1200,12 @@ select:focus-visible,
   background:
     radial-gradient(circle at 18% 0%, var(--accent-tint), transparent 30%),
     linear-gradient(180deg, var(--surface-3) 0%, var(--surface-2) 100%);
+}
+
+/* Light/clean band used directly after the dark hero (see rhythm tokens). */
+.premium-section-after-hero {
+  color: var(--section-after-hero-text);
+  background: var(--section-after-hero-bg);
 }
 
 .premium-surface-rich {

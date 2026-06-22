@@ -11,3 +11,8 @@ yarn-error.log*
 pnpm-debug.log*
 .vscode/
 .idea/
+
+# QA layout measurement outputs
+scripts/qa-screens/
+
+.vercel
