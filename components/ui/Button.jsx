@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
+// Theme-aware variants — colours resolve from the CSS variable layer
+// (see globals.css / lib/themePalettes) so every palette restyles buttons.
 const variants = {
   primary:
-    "border border-blue-700/10 bg-customBlue text-white shadow-[0_14px_32px_-20px_rgba(5,45,82,0.7)] hover:bg-blue-900 focus-visible:ring-customBlue/40",
+    "border border-transparent bg-[var(--btn-primary-bg)] text-[color:var(--btn-primary-text)] shadow-[0_18px_40px_-24px_rgba(var(--shadow-rgb),0.7)] hover:brightness-110 focus-visible:ring-[color:var(--btn-primary-bg)]",
   accent:
-    "border border-orange-400/40 bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-[0_16px_36px_-18px_rgba(234,88,12,0.9)] hover:from-orange-400 hover:to-orange-600 focus-visible:ring-orange-500/40",
+    "border border-[color:var(--accent)] bg-[image:var(--accent-grad)] text-[color:var(--accent-contrast)] shadow-[0_18px_40px_-20px_rgba(var(--shadow-rgb),0.65)] hover:brightness-105 focus-visible:ring-[color:var(--accent)]",
   light:
-    "border border-slate-200 bg-white text-customBlue shadow-[0_14px_30px_-22px_rgba(5,45,82,0.45)] hover:bg-orange-50 focus-visible:ring-white/50",
+    "border border-[color:var(--card-border)] bg-[var(--card-bg)] text-[color:var(--heading)] shadow-[0_16px_34px_-22px_rgba(var(--shadow-rgb),0.3)] hover:border-[color:var(--accent-border)] focus-visible:ring-[color:var(--accent)]",
   outline:
-    "border border-customBlue/25 bg-transparent text-customBlue hover:border-customBlue/50 hover:bg-customBlue hover:text-white focus-visible:ring-customBlue/30",
+    "border border-[color:var(--card-border)] bg-[var(--card-bg)] text-[color:var(--text-main)] shadow-[0_12px_28px_-24px_rgba(var(--shadow-rgb),0.3)] hover:border-[color:var(--accent)] hover:text-[color:var(--heading)] focus-visible:ring-[color:var(--accent)]",
 };
 
 const sizes = {

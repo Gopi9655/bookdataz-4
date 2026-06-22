@@ -5,25 +5,25 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
+  Building2,
   CheckCircle2,
+  ChevronDown,
   Globe2,
   Network,
   Search,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 
 import { datacollections, mailinglinks, whatweoffer } from "@/resource/data";
 import Button from "../../components/ui/Button";
-import Container from "../../components/ui/Container";
 import GlassCard from "../../components/ui/GlassCard";
 import Section from "../../components/ui/Section";
 import CoverageCommandCenter from "../../components/home/CoverageCommandCenter";
-import ValueCarousel from "../../components/home/ValueCarousel";
+import ValuePillars from "../../components/home/ValuePillars";
 import GlobalReach from "../../components/home/GlobalReach";
 import TestimonialsCarousel from "../../components/home/TestimonialsCarousel";
 import DataStreams from "../../components/home/DataStreams";
-import HeroDashboard from "../../components/home/HeroDashboard";
+import HeroCarousel from "../../components/home/HeroCarousel";
 
 const fadeUp = {
   hidden: { opacity: 1, y: 12 },
@@ -41,9 +41,39 @@ const stagger = {
 
 const industryHref = (name) => `/${name.toLowerCase().replace(/ /g, "-")}`;
 
-const SectionHeading = ({ eyebrow, title, description, light = false }) => (
+const companyPillars = [
+  {
+    title: "Global Reach",
+    description:
+      "Connect with businesses worldwide with our expansive geographical database coverage.",
+    icon: Globe2,
+  },
+  {
+    title: "High-Quality Data",
+    description:
+      "Ensure accuracy and reliability with our regularly verified data resources.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Custom Solutions",
+    description: "Tailored data services to meet your unique business needs.",
+    icon: Building2,
+  },
+];
+
+const SectionHeading = ({
+  eyebrow,
+  title,
+  description,
+  light = false,
+  align = "center",
+}) => (
   <motion.div
-    className="mx-auto mb-12 max-w-3xl text-center lg:mb-16"
+    className={`mb-12 lg:mb-16 ${
+      align === "center"
+        ? "mx-auto max-w-3xl text-center"
+        : "max-w-3xl text-left"
+    }`}
     variants={fadeUp}
     initial="hidden"
     whileInView="visible"
@@ -51,22 +81,22 @@ const SectionHeading = ({ eyebrow, title, description, light = false }) => (
   >
     <p
       className={`mb-4 text-xs font-bold uppercase tracking-[0.24em] ${
-        light ? "text-blue-300" : "text-blue-700"
+        light ? "text-orange-200" : "text-orange-700"
       }`}
     >
       {eyebrow}
     </p>
     <h2
       className={`text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl ${
-        light ? "text-white" : "text-slate-950"
+        light ? "text-white" : "text-[#151515]"
       }`}
     >
       {title}
     </h2>
     {description && (
       <p
-        className={`mx-auto mt-5 max-w-2xl text-base leading-7 md:text-lg ${
-          light ? "text-slate-300" : "text-slate-600"
+        className={`mt-5 max-w-2xl text-base leading-8 md:text-lg ${
+          light ? "text-[#e7d7cc]" : "text-slate-600"
         }`}
       >
         {description}
@@ -77,107 +107,44 @@ const SectionHeading = ({ eyebrow, title, description, light = false }) => (
 
 export default function Home() {
   return (
-    <div className="overflow-hidden bg-brandWarm-50">
+    <div className="overflow-hidden text-[color:var(--text-main)]">
       <section
         data-home-section="hero"
-        className="premium-hero-navy relative isolate min-h-[calc(100vh-72px)] overflow-hidden border-b border-white/10 pb-20 pt-12 text-slate-100 lg:pb-28 lg:pt-16"
+        className="premium-hero-warm relative isolate overflow-hidden border-b border-[color:var(--card-border)] text-[color:var(--hero-text)]"
       >
-        <div className="premium-aurora" aria-hidden="true" />
-        <div className="premium-grid-overlay" aria-hidden="true" />
+        <div className="premium-warm-aurora" aria-hidden="true" />
+        <div className="premium-warm-grid" aria-hidden="true" />
         <DataStreams />
-        <div className="absolute left-[5%] top-20 -z-10 h-72 w-72 rounded-full bg-[#3d7ab0]/25 blur-3xl" />
-        <div className="absolute right-[4%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-500/20 blur-3xl" />
+        <div className="absolute left-[4%] top-24 -z-10 h-72 w-72 rounded-full bg-orange-200/30 blur-3xl" />
+        <div className="absolute right-[5%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-500/14 blur-3xl" />
 
-        <Container className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.03fr_0.97fr] lg:gap-10">
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            className="max-w-2xl"
-          >
-            <motion.div
-              variants={fadeUp}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-200 shadow-sm backdrop-blur-md"
-            >
-              <Sparkles className="text-orange-400" size={14} />
-              Global B2B data solutions
-            </motion.div>
-            <motion.h1
-              variants={fadeUp}
-              className="text-4xl font-bold leading-[1.04] tracking-[-0.035em] text-white sm:text-5xl lg:text-[4rem]"
-            >
-              Unlock Global Reach with{" "}
-              <span className="bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">
-                Premium Email B2B Databases
-              </span>
-            </motion.h1>
-            <motion.p
-              variants={fadeUp}
-              className="mt-6 max-w-xl text-base leading-8 text-slate-300 md:text-lg"
-            >
-              Access verified, up-to-date email lists from over 160 countries.
-              Boost your marketing campaigns with accurate data tailored to your
-              target audience. Leverage the power of global outreach and stay
-              ahead in the competitive market.
-            </motion.p>
-            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
-              <Button
-                href="/contact"
-                variant="accent"
-                size="lg"
-                className="gap-2"
-              >
-                Get Free Data Sample <ArrowRight size={18} />
-              </Button>
-              <Button
-                href="/datacard"
-                variant="outline"
-                size="lg"
-                className="border-white/20 bg-white/5 text-slate-100 backdrop-blur-md hover:border-blue-300 hover:bg-white/10"
-              >
-                Browse Datacards
-              </Button>
-            </motion.div>
-            <motion.div
-              variants={fadeUp}
-              className="mt-10 grid max-w-xl grid-cols-3 gap-3 border-t border-white/10 pt-6"
-            >
-              {datacollections.slice(0, 3).map((collection) => (
-                <div key={collection.id}>
-                  <p className="text-xl font-bold text-white md:text-2xl">
-                    {collection.number}
-                  </p>
-                  <p className="mt-1 text-[9px] font-semibold uppercase leading-4 tracking-[0.13em] text-blue-200 md:text-[10px]">
-                    {collection.heading}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
+        <div className="mx-auto w-full max-w-7xl min-w-0 px-5 md:px-8 lg:px-10">
+          <HeroCarousel />
+        </div>
 
-          <HeroDashboard />
-        </Container>
+        <a
+          href="#coverage"
+          aria-label="Scroll to data coverage"
+          className="scroll-cue absolute bottom-3 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[color:var(--hero-muted)] lg:flex"
+        >
+          Explore coverage
+          <ChevronDown size={16} className="text-[color:var(--hero-eyebrow)]" />
+        </a>
       </section>
 
       <Section
+        id="coverage"
         data-home-section="available-data-coverage"
-        className="relative border-y border-slate-200 bg-brandWarm-50 text-slate-950"
+        className="premium-tech-espresso relative border-y border-white/10 text-white"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(46,125,209,0.09),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(238,90,42,0.08),transparent_28%)]" />
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(13,43,74,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(13,43,74,0.06) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-            maskImage: "linear-gradient(to bottom, black, transparent 72%)",
-          }}
-        />
+        <div className="premium-dark-grid opacity-25" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(245,106,42,0.14),transparent_36%)]" />
         <div className="relative">
           <SectionHeading
             eyebrow="Available Data Coverage"
             title="Your data command centre"
-            description="Select any category to inspect its exact record count and every subcategory it covers — all from one premium control surface."
+            description="Select any category to inspect its exact record count and every subcategory it covers from one structured control surface."
+            light
           />
 
           <motion.div
@@ -194,7 +161,7 @@ export default function Home() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="mt-10 flex flex-col items-start justify-between gap-6 rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-[0_24px_55px_-40px_rgba(5,45,82,0.5)] backdrop-blur-md sm:flex-row sm:items-center lg:p-8"
+            className="premium-white-card mt-10 flex flex-col items-start justify-between gap-6 rounded-3xl p-6 sm:flex-row sm:items-center lg:p-8"
           >
             <div>
               <p className="text-lg font-semibold text-slate-950">
@@ -205,11 +172,7 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button
-                href="/datacard"
-                variant="outline"
-                className="gap-2"
-              >
+              <Button href="/datacard" variant="outline" className="gap-2">
                 Browse Datacards <ArrowRight size={16} />
               </Button>
               <Button href="/contact" variant="accent">
@@ -220,51 +183,118 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className="relative overflow-hidden border-t border-slate-200 bg-gradient-to-b from-brandWarm-100 to-brandWarm-50 text-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(46,125,209,0.08),transparent_38%)]" />
+      <Section
+        id="value"
+        className="premium-surface-alt relative overflow-hidden border-t border-[#eadccf] text-slate-950"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,225,207,0.6),transparent_38%)]" />
         <div className="relative">
           <SectionHeading
             eyebrow="Why teams choose BookDataZ"
             title="Built for modern B2B data teams"
-            description="A running view of what the platform delivers — drawn straight from the BookDataZ catalogue, never invented claims."
+            description="A focused view of what the BookDataZ catalogue delivers, using real product structure rather than generic claims."
           />
-          <ValueCarousel />
+          <ValuePillars />
         </div>
       </Section>
 
-      <Section className="relative overflow-hidden border-t border-slate-200 bg-brandWarm-50 text-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(238,90,42,0.07),transparent_34%)]" />
-        <div className="relative">
-          <GlobalReach />
-        </div>
+      <Section
+        id="reach"
+        className="premium-surface-rich relative overflow-hidden border-t border-white/10 text-white"
+      >
+        <GlobalReach />
       </Section>
 
-      <Section className="border-y border-slate-200/80 bg-gradient-to-r from-brandPlatinum-100 via-white to-brandPlatinum-100 py-12 lg:py-14">
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5 lg:gap-8"
-        >
-          {datacollections.map((collection) => (
-            <motion.div
-              key={collection.id}
+      <Section
+        id="platform"
+        className="premium-about-band relative overflow-hidden border-y border-[#e8ddd2]"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,106,42,0.07),transparent_34%)]" />
+        <div className="relative grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-16">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <motion.p
               variants={fadeUp}
-              className="border-l-2 border-[#3d7ab0] pl-4"
+              className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-700"
             >
-              <p className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">
-                {collection.number}
-              </p>
-              <p className="mt-2 text-[10px] font-semibold uppercase leading-4 tracking-[0.15em] text-blue-700">
-                {collection.heading}
-              </p>
+              Platform value
+            </motion.p>
+            <motion.h2
+              variants={fadeUp}
+              className="text-3xl font-bold tracking-tight text-[#151515] md:text-4xl lg:text-5xl"
+            >
+              A trusted foundation for B2B outreach
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="mt-5 max-w-xl text-base leading-8 text-[#5f6672] md:text-lg"
+            >
+              BookDataZ pairs a deep, structured catalogue with verified,
+              regularly maintained records and broad global coverage — so sales
+              and marketing teams can target with confidence instead of guesswork.
+            </motion.p>
+
+            <motion.div
+              variants={fadeUp}
+              className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3"
+            >
+              {datacollections.slice(0, 3).map((collection) => (
+                <div
+                  key={collection.id}
+                  className="rounded-3xl border border-[#e8ddd2] bg-white p-4 shadow-[0_24px_52px_-44px_rgba(26,22,19,0.24)]"
+                >
+                  <p className="text-2xl font-bold text-[#151515]">
+                    {collection.number}
+                  </p>
+                  <p className="mt-2 text-[10px] font-semibold uppercase leading-4 tracking-[0.16em] text-orange-700">
+                    {collection.heading}
+                  </p>
+                </div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              className="mt-7 inline-flex items-center gap-2 rounded-full border border-emerald-500/18 bg-emerald-500/10 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-emerald-700"
+            >
+              <ShieldCheck size={14} className="text-emerald-600" />
+              Verified and regularly maintained
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            className="grid gap-4 sm:grid-cols-2"
+          >
+            {companyPillars.map(({ title, description, icon: Icon }, index) => (
+              <motion.div
+                key={title}
+                variants={fadeUp}
+                className={`premium-card premium-card-light premium-card-hover rounded-[1.6rem] p-6 ${
+                  index === 0 ? "sm:col-span-2" : ""
+                }`}
+              >
+                <div className="value-pillar-icon">
+                  <Icon size={22} />
+                </div>
+                <h3 className="mt-5 text-xl font-semibold text-[#151515]">
+                  {title}
+                </h3>
+                <p className="mt-2.5 leading-7 text-[#5f6672]">{description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </Section>
 
-      <Section className="border-t border-slate-200 bg-gradient-to-b from-slate-100 to-slate-50">
+      <Section id="industries" className="bg-[#fffdfa] border-t border-[#eadccf]">
         <SectionHeading
           eyebrow="Our Industry Database"
           title="Premium Email Lists Across Industries"
@@ -281,13 +311,13 @@ export default function Home() {
             <motion.div key={industry.id} variants={fadeUp}>
               <Link
                 href={industryHref(industry.name)}
-                className="coverage-card group relative flex h-full items-center gap-4 overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm hover:border-blue-300 hover:bg-blue-50/40 lg:p-8"
+                className="premium-white-card coverage-card group relative flex h-full items-center gap-4 overflow-hidden rounded-3xl p-6 lg:p-8"
               >
                 <span
-                  className="absolute inset-y-0 left-0 w-1 -translate-x-full bg-gradient-to-b from-blue-400 to-orange-400 transition-transform duration-300 group-hover:translate-x-0"
+                  className="absolute inset-y-0 left-0 w-1 -translate-x-full bg-gradient-to-b from-orange-300 to-orange-600 transition-transform duration-300 group-hover:translate-x-0"
                   aria-hidden="true"
                 />
-                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl bg-slate-100">
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-[#efe1d3] bg-[#faf4ee]">
                   <Image
                     src={industry.icon}
                     alt={industry.name}
@@ -304,7 +334,7 @@ export default function Home() {
                 </div>
                 <ArrowRight
                   size={18}
-                  className="shrink-0 text-blue-700 transition-transform duration-200 group-hover:translate-x-1"
+                  className="shrink-0 text-orange-600 transition-transform duration-200 group-hover:translate-x-1"
                 />
               </Link>
             </motion.div>
@@ -312,8 +342,11 @@ export default function Home() {
         </motion.div>
       </Section>
 
-      <Section className="relative border-t border-slate-200/70 bg-gradient-to-br from-brandPlatinum-50 via-white to-brandPlatinum-100 text-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(61,122,176,0.1),transparent_38%)]" />
+      <Section
+        id="services"
+        className="premium-surface-panel relative border-t border-[#eadccf] text-slate-950"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,106,42,0.08),transparent_38%)]" />
         <div className="relative">
           <SectionHeading
             eyebrow="What We Offer"
@@ -332,7 +365,7 @@ export default function Home() {
                 as={motion.article}
                 key={offer.id}
                 variants={fadeUp}
-                className="h-full border-slate-200 bg-white/85 shadow-[0_24px_55px_-40px_rgba(5,45,82,0.45)]"
+                className="premium-card premium-card-light h-full rounded-[1.8rem] bg-white/95"
               >
                 <div className="grid h-14 w-14 place-items-center rounded-2xl border border-orange-200 bg-orange-50">
                   <Image src={offer.icon} alt="" width={32} height={32} />
@@ -347,15 +380,11 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className="relative border-t border-slate-200 bg-gradient-to-b from-brandPlatinum-100 to-brandPlatinum-50 text-slate-950">
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(46,125,209,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(46,125,209,0.08) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
+      <Section
+        id="technology-intelligence"
+        className="premium-tech-espresso relative border-t border-white/10 text-white"
+      >
+        <div className="premium-dark-grid opacity-20" aria-hidden="true" />
         <div className="relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
           <motion.div
             variants={fadeUp}
@@ -363,19 +392,19 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.25 }}
           >
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-orange-600">
-              Technology & Data Intelligence
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-orange-200">
+              Technology and Data Intelligence
             </p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-              Transform Your Future with BookDataz&apos;s Futuristic Solutions
+              Transform Your Future with BookDataZ&apos;s Futuristic Solutions
             </h2>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
               As pioneers in AI-powered DaaS and SaaS solutions, we deliver
               expertise in Contextual Intelligence, Ad hoc Sales, Marketing, and
               Growth Strategies.
             </p>
-            <p className="mt-4 max-w-2xl leading-7 text-slate-500">
-              BookDataz stands at the forefront of data innovation, offering an
+            <p className="mt-4 max-w-2xl leading-7 text-slate-400">
+              BookDataZ stands at the forefront of data innovation, offering an
               unrivaled blend of cutting-edge AI-powered solutions and deep
               industry expertise that transforms raw data into strategic
               insights.
@@ -406,12 +435,12 @@ export default function Home() {
                 as={motion.div}
                 key={label}
                 variants={fadeUp}
-                className="min-h-40 border-slate-200 bg-white/90 p-5 shadow-[0_22px_50px_-38px_rgba(5,45,82,0.45)] lg:p-6"
+                className="min-h-40 rounded-[1.6rem] border-white/10 bg-white/[0.06] p-5 shadow-[0_28px_60px_-42px_rgba(0,0,0,0.8)] lg:p-6"
               >
-                <div className="grid h-11 w-11 place-items-center rounded-2xl border border-blue-200 bg-blue-50 text-blue-700">
+                <div className="grid h-11 w-11 place-items-center rounded-2xl border border-orange-200/20 bg-orange-300/10 text-orange-200">
                   <Icon size={20} />
                 </div>
-                <p className="mt-8 text-sm font-semibold leading-6 text-slate-900 md:text-base">
+                <p className="mt-8 text-sm font-semibold leading-6 text-white md:text-base">
                   {label}
                 </p>
               </GlassCard>
@@ -422,9 +451,9 @@ export default function Home() {
 
       <Section
         id="testimonials"
-        className="relative overflow-hidden border-t border-slate-200 bg-gradient-to-b from-brandWarm-100 to-brandWarm-50 text-slate-950 scroll-mt-24"
+        className="premium-surface-alt relative overflow-hidden border-t border-[#eadccf] text-slate-950 scroll-mt-24"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(238,90,42,0.07),transparent_36%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(245,106,42,0.07),transparent_36%)]" />
         <div className="relative">
           <SectionHeading
             eyebrow="What Our Clients Say"
@@ -435,19 +464,19 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className="border-t border-slate-200 bg-gradient-to-b from-slate-100 to-slate-50">
+      <Section className="premium-surface border-t border-[#eadccf]">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="premium-cta-navy relative overflow-hidden rounded-3xl border border-white/10 p-6 text-white shadow-2xl shadow-slate-950/40 lg:p-8"
+          className="premium-cta-espresso relative overflow-hidden rounded-[2rem] border border-white/10 p-8 text-white shadow-2xl shadow-slate-950/40 lg:p-12"
         >
-          <div className="premium-aurora" aria-hidden="true" />
-          <div className="premium-grid-overlay" aria-hidden="true" />
+          <div className="premium-warm-aurora" aria-hidden="true" />
+          <div className="premium-warm-grid" aria-hidden="true" />
           <div className="relative flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
             <div className="max-w-3xl">
-              <div className="mb-5 flex items-center gap-2 text-sm font-semibold text-blue-200">
+              <div className="mb-5 flex items-center gap-2 text-sm font-semibold text-orange-100">
                 <CheckCircle2 size={18} />
                 Premium databases for business growth
               </div>
@@ -455,7 +484,7 @@ export default function Home() {
                 Ready to Elevate Your Business?
               </h2>
               <p className="mt-4 max-w-2xl leading-7 text-slate-300">
-                Partner with BookDataz to access premium databases and unlock
+                Partner with BookDataZ to access premium databases and unlock
                 growth opportunities in your target markets.
               </p>
             </div>

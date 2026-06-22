@@ -26,29 +26,45 @@ module.exports = {
         xl: '1280px',
       },
       colors: {
-        customBlue: 'rgb(5, 45, 82)',
+        // Warm charcoal structural colour. Names are kept for existing classes.
+        customBlue: '#1b1815',
         brandNavy: {
-          950: '#06101d',
-          900: '#0a1a2f',
-          800: '#0e2238',
-          700: '#143150',
+          950: '#141211',
+          900: '#1b1815',
+          800: '#241d18',
+          700: '#322620',
+          600: '#5a3a2a',
         },
-        // Cool platinum body surfaces (replaces the old warm-cream values).
-        // Token names kept so existing `bg-brandWarm-*` usages cool down site-wide.
+        // Warm data accents. Names are kept for compatibility.
+        brandBlue: {
+          DEFAULT: '#f15a24',
+          bright: '#ff6b2a',
+          soft: '#ffe3d1',
+          pale: '#fff3e8',
+        },
+        brandOrange: {
+          DEFAULT: '#f15a24',
+          soft: '#ff6b2a',
+        },
+        // Verified green — trust cue only.
+        brandGreen: {
+          DEFAULT: '#16a66a',
+          soft: '#22c55e',
+        },
         brandWarm: {
-          50: '#e9edf3',
-          100: '#e0e6ef',
+          50: '#fff8f2',
+          100: '#fff3e8',
         },
         brandPlatinum: {
-          50: '#f5f8fc',
-          100: '#e9edf3',
-          200: '#e0e6ef',
-          300: '#d2dae5',
+          50: '#ffffff',
+          100: '#fff8f2',
+          200: '#fff3e8',
+          300: '#f0e2d8',
         },
         brandSteel: {
-          DEFAULT: '#3d7ab0',
-          soft: '#5fa0d4',
-          100: '#8cbade',
+          DEFAULT: '#f15a24',
+          soft: '#ff6b2a',
+          100: '#ffe3d1',
         },
       },
       margin: {
@@ -59,7 +75,7 @@ module.exports = {
         'custom-x': '8rem',
       },
       backgroundImage: {
-        'custom-gradient': 'linear-gradient(180deg, #000 0%, #000163 100%)',
+        'custom-gradient': 'linear-gradient(180deg, #1b1815 0%, #141211 100%)',
       },
       backdropBlur: {
         '2xl': '40px',

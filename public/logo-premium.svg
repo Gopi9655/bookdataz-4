@@ -1,0 +1,21 @@
+<svg width="252" height="56" viewBox="0 0 252 56" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BookDataZ">
+  <defs>
+    <linearGradient id="vlabMarkBg" x1="6" y1="6" x2="50" y2="50" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B3D73"/>
+      <stop offset="1" stop-color="#155EEF"/>
+    </linearGradient>
+  </defs>
+  <!-- Icon tile -->
+  <rect x="6" y="6" width="44" height="44" rx="13" fill="url(#vlabMarkBg)"/>
+  <rect x="6.75" y="6.75" width="42.5" height="42.5" rx="12.25" stroke="#38BDF8" stroke-opacity="0.35" stroke-width="1.5"/>
+  <!-- stacked data layers -->
+  <rect x="15" y="17" width="24" height="5" rx="2.5" fill="#FFFFFF" fill-opacity="0.95"/>
+  <rect x="15" y="25.5" width="17" height="5" rx="2.5" fill="#38BDF8"/>
+  <rect x="15" y="34" width="21" height="5" rx="2.5" fill="#FFFFFF" fill-opacity="0.78"/>
+  <!-- node accent -->
+  <circle cx="40.5" cy="36.5" r="3.6" fill="#FF6A1A"/>
+  <!-- wordmark -->
+  <text x="63" y="37" font-family="'Segoe UI', system-ui, Arial, Helvetica, sans-serif" font-size="27" font-weight="700" letter-spacing="-0.6">
+    <tspan fill="#061A2D">BookData</tspan><tspan fill="#155EEF">Z</tspan>
+  </text>
+</svg>

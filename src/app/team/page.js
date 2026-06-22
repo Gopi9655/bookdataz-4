@@ -143,8 +143,8 @@ const Portrait = ({ person, size = "large" }) => {
 export default function TeamLayout() {
   return (
     <div className="overflow-hidden bg-slate-950 text-white">
-      <Section className="relative border-b border-white/10 bg-[#071a2d]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.2),transparent_42%)]" />
+      <Section className="relative border-b border-white/10 bg-[#211713]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(241,90,36,0.18),transparent_42%)]" />
         <div className="relative mx-auto mb-12 max-w-3xl text-center lg:mb-16">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
             Leadership

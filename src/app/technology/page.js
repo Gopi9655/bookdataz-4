@@ -91,7 +91,7 @@ export default function TechnologyListPage() {
           className="absolute inset-0 -z-20 opacity-40"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(13,43,74,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(13,43,74,0.06) 1px, transparent 1px)",
+              "linear-gradient(rgba(90,52,38,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(90,52,38,0.05) 1px, transparent 1px)",
             backgroundSize: "56px 56px",
             maskImage: "linear-gradient(to bottom, black 10%, transparent 92%)",
           }}
@@ -169,7 +169,7 @@ export default function TechnologyListPage() {
       </section>
 
       <Section className="relative bg-gradient-to-b from-brandWarm-100 to-brandWarm-50">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(46,125,209,0.07),transparent_36%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,227,209,0.6),transparent_36%)]" />
         <div className="relative">
           <motion.div
             variants={fadeUp}

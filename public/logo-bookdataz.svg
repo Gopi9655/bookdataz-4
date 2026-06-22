@@ -1,0 +1,30 @@
+<svg width="262" height="56" viewBox="0 0 262 56" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BookDataZ">
+  <defs>
+    <linearGradient id="bdzEnvelope" x1="8" y1="14" x2="48" y2="46" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1687D9"/>
+      <stop offset="1" stop-color="#082F57"/>
+    </linearGradient>
+    <linearGradient id="bdzBadge" x1="40" y1="6" x2="54" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22C55E"/>
+      <stop offset="1" stop-color="#16A66A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Email / data icon (no outer box frame, transparent canvas) -->
+  <rect x="8" y="15" width="40" height="29" rx="8" fill="url(#bdzEnvelope)"/>
+  <!-- envelope flap -->
+  <path d="M12.5 20 L28 31.5 L43.5 20" fill="none" stroke="#EAF4FF" stroke-opacity="0.95" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- stacked data lines -->
+  <rect x="14" y="36.5" width="17" height="2.8" rx="1.4" fill="#7CC4F0" fill-opacity="0.92"/>
+  <rect x="14" y="36.5" width="9" height="2.8" rx="1.4" fill="#F15A24"/>
+
+  <!-- Subtle green verified badge near the email icon (trust cue only) -->
+  <circle cx="45.5" cy="14.5" r="9" fill="#ffffff"/>
+  <circle cx="45.5" cy="14.5" r="7.2" fill="url(#bdzBadge)"/>
+  <path d="M42.1 14.6 L44.5 17 L49.2 12" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Wordmark: Book (orange) + DataZ (navy) -->
+  <text x="62" y="37.5" font-family="'Segoe UI', system-ui, Arial, Helvetica, sans-serif" font-size="27" font-weight="800" letter-spacing="-0.7">
+    <tspan fill="#F15A24">Book</tspan><tspan fill="#082F57">DataZ</tspan>
+  </text>
+</svg>

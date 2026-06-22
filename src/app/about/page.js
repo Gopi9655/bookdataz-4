@@ -1,28 +1,59 @@
 import Image from "next/image";
+import {
+  ArrowRight,
+  Building2,
+  Globe2,
+  Layers3,
+  MapPin,
+  ShieldCheck,
+  Target,
+} from "lucide-react";
 
 import Button from "../../../components/ui/Button";
 import CTASection from "../../../components/ui/CTASection";
 import GlassCard from "../../../components/ui/GlassCard";
 import Section from "../../../components/ui/Section";
 import { testimonials } from "@/resource/testimonials";
+import { datacollections, whatweoffer } from "@/resource/data";
 
-const features = [
+const profilePillars = [
   {
     title: "Global Reach",
     description:
       "Connect with businesses worldwide with our expansive geographical database coverage.",
-    icon: "/aboutImages/global-svgrepo-com.svg",
+    icon: Globe2,
   },
   {
     title: "High-Quality Data",
     description:
       "Ensure accuracy and reliability with our regularly verified data resources.",
-    icon: "/aboutImages/data-svgrepo-com.svg",
+    icon: ShieldCheck,
   },
   {
     title: "Custom Solutions",
     description: "Tailored data services to meet your unique business needs.",
-    icon: "/aboutImages/solution-key-connect-svgrepo-com.svg",
+    icon: Building2,
+  },
+];
+
+const approach = [
+  {
+    icon: Layers3,
+    title: "Structured by design",
+    description:
+      "Data is organised into clear categories and subcategories, so teams can move from a broad market to a precise audience quickly.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Verified and maintained",
+    description:
+      "Records are regularly verified and kept current, reducing wasted outreach and protecting sender reputation.",
+  },
+  {
+    icon: Target,
+    title: "Built for outreach",
+    description:
+      "Every dataset is shaped to drop into real sales and marketing workflows — not just sit in a spreadsheet.",
   },
 ];
 
@@ -35,100 +66,232 @@ const industries = [
   { name: "Education", img: "/aboutImages/about-education.jpg" },
 ];
 
+const offices = [
+  {
+    title: "US Office",
+    lines: ["6150 Poplar Ave, Suite 200", "Memphis, TN 38119", "United States"],
+  },
+  {
+    title: "UK Office",
+    lines: ["Gateway East, White City", "London W12 7TU", "United Kingdom"],
+  },
+];
+
 const AboutPage = () => (
-  <div className="overflow-hidden bg-slate-950">
-    <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#071a2d] py-20 text-white lg:py-28">
+  <div className="overflow-hidden bg-[#fbf7f2] text-[#151515]">
+    {/* Hero */}
+    <section className="premium-hero-warm relative isolate overflow-hidden border-b border-[#e8ddd2]">
       <Image
         src="/aboutImages/i4b_EMEA_data_specialists_banner_2.jpg"
         alt=""
         fill
         priority
-        className="-z-20 object-cover object-center opacity-20"
+        className="-z-20 object-cover object-center opacity-[0.1]"
         sizes="100vw"
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950 via-slate-950/90 to-[#071a2d]/60" />
-      <div className="mx-auto w-full max-w-7xl px-5 md:px-8 lg:px-10">
-        <div className="max-w-3xl">
-          <p className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#fcf8f3] via-[#f8f1ea]/95 to-[#f1e8de]/80" />
+      <div className="premium-warm-aurora" aria-hidden="true" />
+
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:px-10">
+        <div className="max-w-2xl">
+          <p className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-orange-700">
             About BookDataZ
           </p>
-          <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            We are BookDataz, the leading{" "}
-            <span className="text-orange-400">Database Provider</span>
+          <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-[#151515] sm:text-5xl lg:text-6xl">
+            The team behind your{" "}
+            <span className="bg-gradient-to-r from-[#f56a2a] to-[#ff8a4c] bg-clip-text text-transparent">
+              B2B data
+            </span>
           </h1>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
-            Our B2B contact database is developed specifically for organizations
-            in the USA, UK, and Europe, helping sales and marketing teams drive
-            pipelines effectively.
+          <p className="mt-6 max-w-xl text-base leading-8 text-[#5f6672] md:text-lg">
+            BookDataZ provides premium B2B email data, datacards, industry lists,
+            and databases. Our contact database is developed specifically for
+            organizations in the USA, UK, and Europe, helping sales and marketing
+            teams drive pipelines effectively.
           </p>
-          <Button
-            href="/contact"
-            variant="accent"
-            size="lg"
-            className="mt-8 shadow-lg shadow-orange-950/30"
-          >
-            Find Out More
-          </Button>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Button href="/contact" variant="accent" size="lg" className="gap-2">
+              Find Out More <ArrowRight size={18} />
+            </Button>
+            <Button
+              href="/datacard"
+              variant="outline"
+              size="lg"
+              className="border-[#dacdbf] bg-white/75 text-[#211814] backdrop-blur-md"
+            >
+              Browse Datacards
+            </Button>
+          </div>
+        </div>
+
+        <div className="premium-card premium-card-light overflow-hidden rounded-[2rem] p-6 lg:p-8">
+          <div className="flex items-center gap-3">
+            <span className="value-pillar-icon">
+              <MapPin size={22} />
+            </span>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-orange-700">
+                Company overview
+              </p>
+              <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#151515]">
+                Premium B2B data, structured for outreach
+              </h2>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            {datacollections.slice(0, 3).map((item) => (
+              <div
+                key={item.id}
+                className="rounded-3xl border border-[#e8ddd2] bg-[#fbf7f2] p-4"
+              >
+                <p className="text-2xl font-bold text-[#151515]">{item.number}</p>
+                <p className="mt-2 text-[10px] font-semibold uppercase leading-4 tracking-[0.16em] text-orange-700">
+                  {item.heading}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            {offices.map((office) => (
+              <div
+                key={office.title}
+                className="rounded-3xl border border-[#e8ddd2] bg-white p-5"
+              >
+                <p className="text-sm font-semibold text-[#151515]">
+                  {office.title}
+                </p>
+                <p className="mt-3 text-sm leading-7 text-[#5f6672]">
+                  {office.lines[0]}
+                  <br />
+                  {office.lines[1]}
+                  <br />
+                  {office.lines[2]}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
 
-    <Section className="border-b border-white/10 bg-[#071a2d] text-white">
-      <div className="mx-auto mb-12 max-w-3xl text-center">
-        <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
-          Our Difference
-        </p>
-        <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-          Why Choose BookDataz?
-        </h2>
-      </div>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
-        {features.map((feature) => (
-          <GlassCard
-            key={feature.title}
-            className="border-blue-300/15 bg-white/[0.06] text-center"
-          >
-            <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-blue-300/20 bg-blue-400/10">
-              <Image
-                src={feature.icon}
-                alt=""
-                width={38}
-                height={38}
-                className="h-10 w-10"
-              />
+    {/* Approach / story */}
+    <Section className="premium-surface border-b border-[#e8ddd2]">
+      <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
+        <div>
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-700">
+            Our Approach
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight text-[#151515] md:text-4xl lg:text-5xl">
+            Data you can build a pipeline on
+          </h2>
+          <p className="mt-5 max-w-xl text-base leading-8 text-[#5f6672] md:text-lg">
+            We focus on the parts of B2B data that actually move revenue:
+            structure, accuracy, and relevance. The result is a catalogue that
+            sales and marketing teams can trust and act on with confidence.
+          </p>
+        </div>
+
+        <div className="grid gap-4">
+          {approach.map(({ icon: Icon, title, description }) => (
+            <div
+              key={title}
+              className="premium-card premium-card-light premium-card-hover flex items-start gap-4 rounded-[1.6rem] p-6"
+            >
+              <span className="value-pillar-icon shrink-0">
+                <Icon size={22} />
+              </span>
+              <div>
+                <h3 className="text-lg font-semibold text-[#151515]">{title}</h3>
+                <p className="mt-2 leading-7 text-[#5f6672]">{description}</p>
+              </div>
             </div>
-            <h3 className="mt-6 text-xl font-semibold">{feature.title}</h3>
-            <p className="mt-3 leading-7 text-slate-300">
-              {feature.description}
-            </p>
-          </GlassCard>
-        ))}
-      </div>
-      <div className="mt-10 text-center">
-        <Button href="/contact" variant="light" size="lg">
-          Learn More About Our Services
-        </Button>
+          ))}
+        </div>
       </div>
     </Section>
 
-    <Section className="bg-gradient-to-b from-slate-100 to-white">
+    {/* Why teams choose us */}
+    <Section className="premium-about-band border-b border-[#e8ddd2]">
       <div className="mx-auto mb-12 max-w-3xl text-center">
-        <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-700">
+        <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-700">
+          Company Profile
+        </p>
+        <h2 className="text-3xl font-bold tracking-tight text-[#151515] md:text-4xl lg:text-5xl">
+          A more mature view of why teams choose BookDataZ
+        </h2>
+        <p className="mx-auto mt-5 max-w-2xl leading-8 text-[#5f6672]">
+          BookDataZ combines global database coverage, verified business records,
+          and tailored support for sales and marketing workflows.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+        {profilePillars.map(({ title, description, icon: Icon }) => (
+          <GlassCard
+            key={title}
+            className="premium-card premium-card-light premium-card-hover text-left"
+          >
+            <div className="value-pillar-icon">
+              <Icon size={24} />
+            </div>
+            <h3 className="mt-6 text-xl font-semibold text-[#151515]">{title}</h3>
+            <p className="mt-3 leading-7 text-[#5f6672]">{description}</p>
+          </GlassCard>
+        ))}
+      </div>
+    </Section>
+
+    {/* What we provide */}
+    <Section className="bg-[#ffffff] border-b border-[#e8ddd2]">
+      <div className="mx-auto mb-12 max-w-3xl text-center">
+        <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-700">
+          What BookDataZ Provides
+        </p>
+        <h2 className="text-3xl font-bold tracking-tight text-[#151515] md:text-4xl lg:text-5xl">
+          Services built around business data needs
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+        {whatweoffer.map((offer) => (
+          <GlassCard
+            key={offer.id}
+            className="premium-card premium-card-light premium-card-hover h-full"
+          >
+            <div className="grid h-14 w-14 place-items-center rounded-2xl border border-orange-200 bg-orange-50">
+              <Image src={offer.icon} alt="" width={32} height={32} />
+            </div>
+            <h3 className="mt-7 text-xl font-semibold text-[#151515]">
+              {offer.title}
+            </h3>
+            <p className="mt-4 leading-7 text-[#5f6672]">{offer.content}</p>
+          </GlassCard>
+        ))}
+      </div>
+    </Section>
+
+    {/* Industries */}
+    <Section className="premium-surface-panel border-b border-[#e8ddd2]">
+      <div className="mx-auto mb-12 max-w-3xl text-center">
+        <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-700">
           Market Coverage
         </p>
-        <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl lg:text-5xl">
+        <h2 className="text-3xl font-bold tracking-tight text-[#151515] md:text-4xl lg:text-5xl">
           Industries We Serve
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl leading-7 text-slate-600">
+        <p className="mx-auto mt-5 max-w-2xl leading-7 text-[#5f6672]">
           From healthcare to retail, our databases empower businesses across
           various industries to achieve their goals.
         </p>
       </div>
+
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {industries.map((industry) => (
           <article
             key={industry.name}
-            className="group relative min-h-64 overflow-hidden rounded-3xl border border-slate-200 bg-slate-900 shadow-lg"
+            className="group relative min-h-72 overflow-hidden rounded-[1.8rem] border border-[#e8ddd2] bg-[#161311] shadow-[0_30px_70px_-48px_rgba(26,22,19,0.4)]"
           >
             <Image
               src={industry.img}
@@ -137,18 +300,24 @@ const AboutPage = () => (
               sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
               className="object-cover transition duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
-            <h3 className="absolute bottom-0 left-0 p-6 text-2xl font-semibold text-white lg:p-8">
-              {industry.name}
-            </h3>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#151515] via-[#151515]/28 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-6 lg:p-8">
+              <div className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-orange-100 backdrop-blur-sm">
+                Industry coverage
+              </div>
+              <h3 className="mt-4 text-2xl font-semibold text-white">
+                {industry.name}
+              </h3>
+            </div>
           </article>
         ))}
       </div>
     </Section>
 
-    <Section className="border-y border-white/10 bg-slate-900 text-white">
+    {/* Testimonials */}
+    <Section className="premium-tech-espresso border-y border-white/10 text-white">
       <div className="mx-auto mb-12 max-w-3xl text-center">
-        <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-400">
+        <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-200">
           Client Perspective
         </p>
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
@@ -159,28 +328,28 @@ const AboutPage = () => (
         {testimonials.map((testimonial) => (
           <GlassCard
             key={testimonial.name}
-            className="border-blue-300/15 bg-white/[0.055]"
+            className="rounded-[1.8rem] border-white/10 bg-white/[0.05]"
           >
             <p className="text-lg leading-8 text-slate-200">
-              &quot;{testimonial.quote}&quot;
+              &ldquo;{testimonial.quote}&rdquo;
             </p>
             <div className="mt-6 border-t border-white/10 pt-5">
               <h3 className="font-semibold text-white">{testimonial.name}</h3>
-              <p className="mt-1 text-sm text-blue-300">{testimonial.role}</p>
+              <p className="mt-1 text-sm text-orange-200">{testimonial.role}</p>
             </div>
           </GlassCard>
         ))}
       </div>
     </Section>
 
-    <Section className="bg-slate-950">
+    <Section className="premium-surface">
       <CTASection
         title="Ready to Elevate Your Business?"
-        description="Partner with BookDataz to access premium databases and unlock growth opportunities in your target markets."
+        description="Partner with BookDataZ to access premium databases and unlock growth opportunities in your target markets."
         href="/contact"
         actionLabel="Get Started Today"
         buttonVariant="accent"
-        className="border-blue-300/20 bg-[#082d52]/75 text-center shadow-2xl shadow-blue-950/40"
+        className="text-left lg:text-center"
       />
     </Section>
   </div>

@@ -32,7 +32,7 @@ export default function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-20 z-50 rounded-3xl border border-blue-300/20 bg-[#071a2d]/[0.98] px-5 py-5 text-white shadow-2xl shadow-slate-950/40 backdrop-blur-xl md:left-8 md:right-8 md:px-6">
+    <div className="fixed bottom-4 left-4 right-20 z-50 rounded-3xl border border-orange-200/20 bg-[#211713]/[0.98] px-5 py-5 text-white shadow-2xl shadow-slate-950/40 backdrop-blur-xl md:left-8 md:right-8 md:px-6">
       {!showSettings ? (
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
           <p className="text-sm leading-relaxed text-slate-200 md:max-w-[55%] md:text-base">
@@ -46,7 +46,7 @@ export default function CookieConsent() {
               Reject All
             </button>
             <button
-              className="rounded-full border border-blue-300/25 bg-blue-400/10 px-4 py-2 text-sm font-semibold text-blue-100 transition hover:bg-blue-400/20"
+              className="rounded-full border border-orange-200/25 bg-orange-300/10 px-4 py-2 text-sm font-semibold text-orange-100 transition hover:bg-orange-300/20"
               onClick={() => setShowSettings(true)}
             >
               Manage Preferences

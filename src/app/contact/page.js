@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FiLoader, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { FaLinkedin } from "react-icons/fa";
@@ -37,6 +37,14 @@ const faqs = [
 const inputClasses =
   "mt-2 w-full rounded-2xl border border-slate-200 bg-[#fffdf9] px-4 py-3.5 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:bg-white focus:ring-4 focus:ring-orange-100";
 
+// Public reCAPTCHA site key. Prefer env (per-environment); fall back to the
+// existing production key so deployed behaviour is unchanged. Only the public
+// site key is referenced here — never the secret (that lives server-side).
+const RECAPTCHA_SITE_KEY =
+  process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ||
+  "6Ldf0T8rAAAAAHJlDKnYoqYfgj4i8tlINfa3zIbA";
+const RECAPTCHA_FROM_ENV = Boolean(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
+
 const Contactpage = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -47,6 +55,17 @@ const Contactpage = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState(null);
+  // Dev-only hint: the bundled production key won't validate on localhost
+  // unless that domain is allowed in the reCAPTCHA admin console.
+  const [showDevCaptchaHint, setShowDevCaptchaHint] = useState(false);
+
+  useEffect(() => {
+    const host = window.location.hostname;
+    const isLocal = host === "localhost" || host === "127.0.0.1";
+    if (isLocal && !RECAPTCHA_FROM_ENV) {
+      setShowDevCaptchaHint(true);
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -107,7 +126,7 @@ const Contactpage = () => {
   return (
     <div className="overflow-hidden bg-brandWarm-50 text-slate-950">
       <Section className="relative border-b border-slate-200 bg-gradient-to-b from-brandWarm-100 to-brandWarm-50">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(46,125,209,0.1),transparent_40%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(241,90,36,0.08),transparent_40%)]" />
         <div className="absolute right-0 top-20 h-64 w-64 rounded-full bg-orange-400/10 blur-3xl" />
         <div className="relative mx-auto mb-12 max-w-3xl text-center lg:mb-16">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-700">
@@ -284,9 +303,19 @@ const Contactpage = () => {
 
               <div className="overflow-x-auto rounded-2xl border border-orange-100 bg-orange-50/50 p-3">
                 <ReCAPTCHA
-                  sitekey="6Ldf0T8rAAAAAHJlDKnYoqYfgj4i8tlINfa3zIbA"
+                  sitekey={RECAPTCHA_SITE_KEY}
                   onChange={(token) => setRecaptchaToken(token)}
                 />
+                {showDevCaptchaHint && (
+                  <p className="mt-3 rounded-xl border border-amber-300/60 bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-800">
+                    <strong>Dev note:</strong> reCAPTCHA may not load or validate
+                    on <code>localhost</code> with the default key. Set{" "}
+                    <code>NEXT_PUBLIC_RECAPTCHA_SITE_KEY</code> in{" "}
+                    <code>.env.local</code> and allow <code>localhost</code> in
+                    the reCAPTCHA admin console (or use a test key). Production is
+                    unaffected.
+                  </p>
+                )}
               </div>
 
               <Button

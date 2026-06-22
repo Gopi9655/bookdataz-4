@@ -79,8 +79,8 @@ const highlights = [
 export default function Story() {
   return (
     <div className="overflow-hidden bg-slate-950 text-white">
-      <Section className="relative border-b border-white/10 bg-[#071a2d]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.22),transparent_40%)]" />
+      <Section className="relative border-b border-white/10 bg-[#211713]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(241,90,36,0.18),transparent_40%)]" />
         <div className="relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-8">
           <div>
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-300">

@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import PageHeader from "../../components/PageHeader";
 import CookieConsent from "../../components/CookieConsent";
 import DisableCopyPaste from "../../components/DisableCopyPaste";
+import ThemeTweaks from "../../components/dev/ThemeTweaks";
 
 export const metadata = {
   title: "Affordable, Reliable Databases for Your Business Growth | Bookdataz.com",
@@ -53,7 +54,7 @@ export default function RootLayout({ children }) {
           {JSON.stringify(websiteSchema)}
         </script>
       </head>
-      <body className="relative bg-brandNavy-950 text-slate-900 antialiased">
+      <body className="relative antialiased">
         <DisableCopyPaste />
         <div className="flex flex-col min-h-screen">
           <Navbar />
@@ -64,6 +65,8 @@ export default function RootLayout({ children }) {
 
         <Chatbot />
         <CookieConsent />
+        {/* Temporary visual-selection tooling — remove to revert. */}
+        <ThemeTweaks />
       </body>
     </html>
   );

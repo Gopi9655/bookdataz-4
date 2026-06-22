@@ -47,7 +47,7 @@ const TestimonialsCarousel = () => {
 
   return (
     <div
-      className="relative mx-auto max-w-3xl"
+      className="relative mx-auto max-w-4xl"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -65,7 +65,7 @@ const TestimonialsCarousel = () => {
             animate={{ opacity: 1, rotateY: 0, x: 0 }}
             exit={exit}
             transition={{ duration: reduceMotion ? 0.2 : 0.55, ease: [0.22, 0.61, 0.36, 1] }}
-            className="testimonial-card relative overflow-hidden rounded-3xl border border-slate-200 p-8 text-slate-900 shadow-[0_36px_80px_-52px_rgba(5,45,82,0.5)] sm:p-10"
+            className="testimonial-card relative overflow-hidden rounded-3xl border border-[#e8d9cc] p-8 text-slate-900 shadow-[0_36px_80px_-52px_rgba(64,42,32,0.28)] sm:p-10"
             aria-roledescription="slide"
             aria-label={`${active + 1} of ${count}`}
           >
@@ -87,12 +87,12 @@ const TestimonialsCarousel = () => {
                 &ldquo;{item.quote}&rdquo;
               </blockquote>
               <figcaption className="mt-8 flex items-center gap-4 border-t border-slate-200 pt-6">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-blue-200 bg-gradient-to-br from-blue-100 to-orange-50 text-sm font-bold tracking-wide text-blue-800">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-orange-200 bg-gradient-to-br from-orange-100 to-orange-50 text-sm font-bold tracking-wide text-orange-800">
                   {initials(item.name)}
                 </span>
                 <span>
                   <span className="block font-semibold text-slate-950">{item.name}</span>
-                  <span className="mt-0.5 block text-sm text-blue-700">{item.role}</span>
+                  <span className="mt-0.5 block text-sm text-orange-700">{item.role}</span>
                 </span>
               </figcaption>
             </div>
@@ -105,7 +105,7 @@ const TestimonialsCarousel = () => {
           type="button"
           onClick={() => paginate(-1)}
           aria-label="Previous testimonial"
-          className="grid h-11 w-11 place-items-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-orange-300 hover:text-orange-600"
+          className="grid h-11 w-11 place-items-center rounded-full border border-[#d8c6b7] bg-white/90 text-slate-700 shadow-[0_12px_24px_-18px_rgba(64,42,32,0.28)] transition hover:-translate-y-0.5 hover:border-orange-300 hover:text-orange-600"
         >
           <ChevronLeft size={18} />
         </button>
@@ -122,7 +122,7 @@ const TestimonialsCarousel = () => {
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === active
                   ? "w-7 bg-gradient-to-r from-orange-500 to-orange-400"
-                  : "w-2 bg-slate-300 hover:bg-slate-400"
+                  : "w-2 bg-[#c9b7aa] hover:bg-[#b79f91]"
               }`}
             />
           ))}
@@ -132,7 +132,7 @@ const TestimonialsCarousel = () => {
           type="button"
           onClick={() => paginate(1)}
           aria-label="Next testimonial"
-          className="grid h-11 w-11 place-items-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-orange-300 hover:text-orange-600"
+          className="grid h-11 w-11 place-items-center rounded-full border border-[#d8c6b7] bg-white/90 text-slate-700 shadow-[0_12px_24px_-18px_rgba(64,42,32,0.28)] transition hover:-translate-y-0.5 hover:border-orange-300 hover:text-orange-600"
         >
           <ChevronRight size={18} />
         </button>

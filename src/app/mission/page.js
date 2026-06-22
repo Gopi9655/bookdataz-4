@@ -68,8 +68,8 @@ const StepList = ({ items, icon: Icon, accentClass }) => (
 export default function MissionVision() {
   return (
     <div className="overflow-hidden bg-slate-950 text-white">
-      <Section className="relative border-b border-white/10 bg-[#071a2d]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.22),transparent_40%)]" />
+      <Section className="relative border-b border-white/10 bg-[#211713]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(241,90,36,0.18),transparent_40%)]" />
         <div className="relative mx-auto max-w-4xl text-center">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
             Mission &amp; Vision
@@ -113,7 +113,7 @@ export default function MissionVision() {
         </div>
       </Section>
 
-      <Section className="border-b border-white/10 bg-[#071a2d]">
+      <Section className="border-b border-white/10 bg-[#211713]">
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2">
           <div className="lg:order-2">
             <GlassCard className="border-orange-300/20 bg-white/[0.065] shadow-2xl shadow-blue-950/35">

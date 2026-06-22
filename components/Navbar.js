@@ -20,6 +20,9 @@ const navLinks = [
 
 const industryHref = (name) => `/${name.toLowerCase().replace(/ /g, "-")}`;
 
+const baseNavLink =
+  "rounded-full px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.14em] transition";
+
 const Navbar = () => {
   const pathname = usePathname();
   const dropdownRef = useRef(null);
@@ -51,20 +54,20 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-slate-200/70 bg-[#f4f7fb]/85 text-slate-900 shadow-[0_14px_34px_-28px_rgba(8,22,41,0.55)] backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 border-b border-[color:var(--nav-border)] bg-[var(--nav-bg)] text-[color:var(--nav-text)] shadow-[0_18px_46px_-34px_rgba(var(--shadow-rgb),0.32)] backdrop-blur-xl">
       <Container className="flex h-[72px] items-center justify-between gap-4">
         <Link
           href="/"
           aria-label="BookDataZ home"
-          className="group rounded-2xl border border-slate-200/80 bg-white px-2.5 py-2 shadow-sm transition hover:border-orange-300 hover:shadow-orange-100"
+          className="group flex shrink-0 items-center rounded-[1.15rem] border border-[color:var(--nav-logo-border)] bg-[var(--nav-logo-bg)] px-3 py-2 shadow-[0_16px_36px_-24px_rgba(var(--shadow-rgb),0.28)] transition hover:border-[color:var(--accent-border)]"
         >
           <Image
-            src="/logo-b.jpg"
+            src="/logo-bookdataz.svg"
             alt="BookDataZ"
-            width={200}
-            height={49}
+            width={210}
+            height={45}
             priority
-            className="h-8 w-auto mix-blend-multiply sm:h-9"
+            className="h-8 w-auto sm:h-9"
           />
         </Link>
 
@@ -74,10 +77,10 @@ const Navbar = () => {
               key={link.href}
               href={link.href}
               aria-current={isActive(link.href) ? "page" : undefined}
-              className={`rounded-full px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition ${
+              className={`${baseNavLink} ${
                 isActive(link.href)
-                  ? "bg-orange-50 text-orange-600"
-                  : "text-slate-600 hover:bg-blue-50 hover:text-blue-800"
+                  ? "bg-[var(--nav-active-bg)] text-[color:var(--nav-active-text)]"
+                  : "text-[color:var(--nav-muted)] hover:bg-[var(--nav-hover-bg)] hover:text-[color:var(--nav-text)]"
               }`}
             >
               {link.label}
@@ -94,10 +97,10 @@ const Navbar = () => {
               type="button"
               aria-expanded={isMailingOpen}
               onClick={() => setIsMailingOpen((open) => !open)}
-              className={`flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition ${
+              className={`${baseNavLink} flex items-center gap-1.5 ${
                 isIndustryActive
-                  ? "bg-orange-50 text-orange-600"
-                  : "text-slate-600 hover:bg-blue-50 hover:text-blue-800"
+                  ? "bg-[var(--nav-active-bg)] text-[color:var(--nav-active-text)]"
+                  : "text-[color:var(--nav-muted)] hover:bg-[var(--nav-hover-bg)] hover:text-[color:var(--nav-text)]"
               }`}
             >
               Mailing Lists
@@ -114,35 +117,45 @@ const Navbar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.18, ease: "easeOut" }}
-                  className="absolute right-0 top-full w-[min(820px,calc(100vw-2.5rem))] pt-4"
+                  className="absolute right-0 top-full w-[min(860px,calc(100vw-2.5rem))] pt-4"
                 >
-                  <div className="max-h-[min(68vh,560px)] overflow-y-auto rounded-3xl border border-slate-200 bg-[#f4f7fb]/[0.98] p-4 shadow-2xl shadow-blue-950/15 backdrop-blur-xl">
-                    <div className="grid grid-cols-2 gap-1 lg:grid-cols-3">
-                      {mailinglinks.map((item) => {
-                        const href = industryHref(item.name);
-                        return (
-                          <Link
-                            key={item.id}
-                            href={href}
-                            className={`flex min-w-0 items-center gap-3 rounded-2xl p-3 text-sm font-medium transition ${
-                              pathname === href
-                                ? "bg-orange-500 text-white"
-                                : "text-slate-700 hover:bg-blue-50 hover:text-blue-800"
-                            }`}
-                          >
-                            <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl bg-white">
-                              <Image
-                                src={item.icon}
-                                alt=""
-                                width={28}
-                                height={28}
-                                className="h-7 w-7 object-cover"
-                              />
-                            </span>
-                            <span className="truncate">{item.name}</span>
-                          </Link>
-                        );
-                      })}
+                  <div className="overflow-hidden rounded-[1.8rem] border border-[color:var(--nav-border)] bg-[var(--card-bg)] shadow-[0_32px_70px_-42px_rgba(var(--shadow-rgb),0.4)] backdrop-blur-xl">
+                    <div className="border-b border-[color:var(--card-border)] px-5 py-4">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-700">
+                        Industry coverage
+                      </p>
+                      <p className="mt-1 text-sm text-slate-500">
+                        Browse the BookDataZ mailing list catalogue by sector.
+                      </p>
+                    </div>
+                    <div className="max-h-[min(64vh,520px)] overflow-y-auto p-4">
+                      <div className="grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-3">
+                        {mailinglinks.map((item) => {
+                          const href = industryHref(item.name);
+                          return (
+                            <Link
+                              key={item.id}
+                              href={href}
+                              className={`flex min-w-0 items-center gap-3 rounded-2xl border px-3 py-3 text-sm font-medium transition ${
+                                pathname === href
+                                  ? "border-[color:var(--accent)] bg-[image:var(--accent-grad)] text-[color:var(--accent-contrast)] shadow-[0_18px_34px_-24px_rgba(var(--shadow-rgb),0.5)]"
+                                  : "border-transparent text-[color:var(--nav-muted)] hover:border-[color:var(--card-border)] hover:bg-[var(--nav-hover-bg)] hover:text-[color:var(--nav-text)]"
+                              }`}
+                            >
+                              <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl border border-[color:var(--card-border)] bg-[var(--card-bg)]">
+                                <Image
+                                  src={item.icon}
+                                  alt=""
+                                  width={28}
+                                  height={28}
+                                  className="h-7 w-7 object-cover"
+                                />
+                              </span>
+                              <span className="truncate">{item.name}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -155,10 +168,14 @@ const Navbar = () => {
               key={link.href}
               href={link.href}
               aria-current={isActive(link.href) ? "page" : undefined}
-              className={`rounded-full px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition ${
-                isActive(link.href)
-                  ? "bg-orange-50 text-orange-600"
-                  : "text-slate-600 hover:bg-blue-50 hover:text-blue-800"
+              className={`${
+                link.href === "/contact"
+                  ? "ml-1 rounded-full border border-[color:var(--accent)] bg-[image:var(--accent-grad)] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--nav-cta-text)] shadow-[0_16px_34px_-18px_rgba(var(--shadow-rgb),0.6)] transition hover:brightness-110"
+                  : `${baseNavLink} ${
+                      isActive(link.href)
+                        ? "bg-[var(--nav-active-bg)] text-[color:var(--nav-active-text)]"
+                        : "text-[color:var(--nav-muted)] hover:bg-[var(--nav-hover-bg)] hover:text-[color:var(--nav-text)]"
+                    }`
               }`}
             >
               {link.label}
@@ -171,7 +188,7 @@ const Navbar = () => {
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileMenuOpen}
           onClick={() => setIsMobileMenuOpen((open) => !open)}
-          className="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-orange-300 hover:bg-orange-50 hover:text-orange-600 xl:hidden"
+          className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--nav-logo-border)] bg-[var(--nav-logo-bg)] text-[color:var(--nav-text)] shadow-sm transition hover:border-[color:var(--accent-border)] hover:bg-[var(--nav-hover-bg)] hover:text-[color:var(--accent)] xl:hidden"
         >
           {isMobileMenuOpen ? <X size={21} /> : <Menu size={21} />}
         </button>
@@ -184,9 +201,9 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
-            className="overflow-hidden border-t border-slate-200 bg-[#f4f7fb] xl:hidden"
+            className="overflow-hidden border-t border-[color:var(--nav-border)] bg-[var(--nav-bg)] xl:hidden"
           >
-            <Container className="max-h-[calc(100vh-72px)] overflow-y-auto py-4">
+            <Container className="max-h-[calc(100vh-76px)] overflow-y-auto py-4">
               <div className="grid gap-1">
                 {navLinks.map((link) => (
                   <Link
@@ -195,8 +212,8 @@ const Navbar = () => {
                     aria-current={isActive(link.href) ? "page" : undefined}
                     className={`rounded-2xl px-4 py-3 text-sm font-semibold transition ${
                       isActive(link.href)
-                        ? "bg-orange-500 text-white"
-                        : "text-slate-700 hover:bg-blue-50 hover:text-blue-800"
+                        ? "bg-[image:var(--accent-grad)] text-[color:var(--accent-contrast)]"
+                        : "text-[color:var(--nav-muted)] hover:bg-[var(--nav-hover-bg)] hover:text-[color:var(--nav-text)]"
                     }`}
                   >
                     {link.label}
@@ -207,10 +224,10 @@ const Navbar = () => {
                   type="button"
                   aria-expanded={isMobileMailingOpen}
                   onClick={() => setIsMobileMailingOpen((open) => !open)}
-                  className={`flex items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${
+                  className={`mt-1 flex items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${
                     isIndustryActive
-                      ? "bg-orange-50 text-orange-600"
-                      : "text-slate-700 hover:bg-blue-50 hover:text-blue-800"
+                      ? "bg-[var(--nav-active-bg)] text-[color:var(--nav-active-text)]"
+                      : "text-[color:var(--nav-muted)] hover:bg-[var(--nav-hover-bg)] hover:text-[color:var(--nav-text)]"
                   }`}
                 >
                   Mailing Lists
@@ -228,7 +245,7 @@ const Navbar = () => {
                       exit={{ opacity: 0, height: 0 }}
                       className="overflow-hidden"
                     >
-                      <div className="grid gap-1 rounded-2xl border border-slate-200 bg-blue-50/60 p-2 sm:grid-cols-2">
+                      <div className="grid gap-1 rounded-2xl border border-[color:var(--card-border)] bg-[var(--surface-1)] p-2 sm:grid-cols-2">
                         {mailinglinks.map((item) => {
                           const href = industryHref(item.name);
                           return (
@@ -237,8 +254,8 @@ const Navbar = () => {
                               href={href}
                               className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition ${
                                 pathname === href
-                                  ? "bg-orange-500 text-white"
-                                  : "text-slate-700 hover:bg-white hover:text-blue-800"
+                                  ? "bg-[image:var(--accent-grad)] text-[color:var(--accent-contrast)]"
+                                  : "text-[color:var(--nav-muted)] hover:bg-[var(--nav-hover-bg)] hover:text-[color:var(--accent-strong)]"
                               }`}
                             >
                               <Image

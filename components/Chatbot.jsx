@@ -238,7 +238,7 @@ export default function Chatbot() {
 
       {/* --- Chatbot Toggle Button --- */}
       <motion.button
-        className="flex h-11 w-11 items-center justify-center rounded-full border border-blue-300/25 bg-[#082d52] text-white shadow-xl shadow-slate-950/30 transition-colors hover:bg-blue-800 sm:h-12 sm:w-12"
+        className="flex h-11 w-11 items-center justify-center rounded-full border border-orange-200/25 bg-[#211713] text-white shadow-xl shadow-slate-950/30 transition-colors hover:bg-[#191512] sm:h-12 sm:w-12"
         onClick={() => setIsOpen(!isOpen)}
         whileTap={{ scale: 0.96 }}
         aria-label={isOpen ? "Close chatbot" : "Open chatbot"}
@@ -259,10 +259,10 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute bottom-[6.75rem] right-0 w-[calc(100vw-2rem)] max-w-sm overflow-hidden rounded-3xl border border-blue-300/20 bg-white shadow-2xl shadow-slate-950/30 md:max-w-md"
+            className="absolute bottom-[6.75rem] right-0 w-[calc(100vw-2rem)] max-w-sm overflow-hidden rounded-3xl border border-orange-200/40 bg-white shadow-2xl shadow-slate-950/30 md:max-w-md"
           >
             {/* Header */}
-            <div className="flex items-center justify-between bg-[#071a2d] p-4 text-white">
+            <div className="flex items-center justify-between bg-[#211713] p-4 text-white">
               <h3 className="text-lg md:text-xl font-semibold">BookDataz Chat</h3>
               <button onClick={() => setIsOpen(false)} className="text-white hover:opacity-80">
                 <FiX className="text-lg md:text-xl" />
@@ -277,7 +277,7 @@ export default function Chatbot() {
                   className={`p-2 rounded-lg max-w-[90%] ${
                     msg.sender === "bot"
                       ? "bg-gray-100 text-gray-700 self-start"
-                      : "bg-[#082d52] text-white self-end ml-auto"
+                      : "bg-[#211713] text-white self-end ml-auto"
                   }`}
                 >
                   {msg.text}
@@ -288,7 +288,7 @@ export default function Chatbot() {
                         <button
                           key={qIndex}
                           onClick={() => handleSend(question)}
-                          className="block text-customBlue hover:underline mt-1 text-sm md:text-base"
+                          className="mt-1 block text-orange-700 hover:underline text-sm md:text-base"
                         >
                           {question}
                         </button>
@@ -304,7 +304,7 @@ export default function Chatbot() {
               <input
                 type="text"
                 placeholder="Type your message..."
-                className="min-w-0 flex-1 rounded-l-xl border border-slate-200 p-2 text-sm text-slate-950 focus:border-blue-400 focus:outline-none md:p-3 md:text-base"
+                className="min-w-0 flex-1 rounded-l-xl border border-slate-200 p-2 text-sm text-slate-950 focus:border-orange-400 focus:outline-none md:p-3 md:text-base"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend(input)}

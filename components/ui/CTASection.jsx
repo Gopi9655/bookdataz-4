@@ -14,12 +14,12 @@ const CTASection = ({
   <GlassCard
     as="section"
     className={twMerge(
-      "border-blue-400/30 bg-customBlue text-white shadow-md",
+      "premium-cta-espresso border-white/10 text-white shadow-[0_36px_72px_-44px_rgba(21,21,21,0.65)]",
       className
     )}
   >
-    <h2 className="text-2xl font-semibold">{title}</h2>
-    {description && <p className="mt-4 leading-relaxed">{description}</p>}
+    <h2 className="text-2xl font-semibold md:text-3xl">{title}</h2>
+    {description && <p className="mt-4 max-w-2xl leading-7 text-slate-300">{description}</p>}
     {children}
     {href && actionLabel && (
       <Button href={href} variant={buttonVariant} className="mt-6">

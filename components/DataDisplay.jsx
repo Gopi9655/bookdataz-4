@@ -31,12 +31,12 @@ ChartJS.register(
 
 const DataDisplay = ({ industryData }) => {
     const labelsFor = (values) => values.map((_, index) => `Value ${index + 1}`);
-    const gridColor = "rgba(46, 125, 209, 0.14)";
+    const gridColor = "rgba(90, 52, 38, 0.14)";
     const tickColor = "#64748b";
     const legendColor = "#475569";
     const tooltipOptions = {
         backgroundColor: "#020617",
-        borderColor: "rgba(147, 197, 253, 0.28)",
+        borderColor: "rgba(255, 227, 209, 0.28)",
         borderWidth: 1,
         titleColor: "#f8fafc",
         bodyColor: "#cbd5e1",
@@ -70,7 +70,7 @@ const DataDisplay = ({ industryData }) => {
             {
                 label: "Bar data",
                 data: industryData.barData,
-                backgroundColor: ["#60a5fa", "#3b82f6", "#f97316"],
+                backgroundColor: ["#f15a24", "#ff9a5c", "#5a3426"],
                 borderRadius: 8,
             },
         ],
@@ -82,7 +82,7 @@ const DataDisplay = ({ industryData }) => {
             {
                 label: "Pie data",
                 data: industryData.pieData,
-                backgroundColor: ["#60a5fa", "#2563eb", "#f97316"],
+                backgroundColor: ["#f15a24", "#ff9a5c", "#5a3426"],
                 borderColor: "#ffffff",
                 borderWidth: 4,
             },
@@ -95,8 +95,8 @@ const DataDisplay = ({ industryData }) => {
             {
                 label: "Line data",
                 data: industryData.lineData,
-                borderColor: "#60a5fa",
-                backgroundColor: "#60a5fa",
+                borderColor: "#f15a24",
+                backgroundColor: "#f15a24",
                 pointBackgroundColor: "#f97316",
                 pointBorderColor: "#fed7aa",
                 pointRadius: 4,
@@ -113,8 +113,8 @@ const DataDisplay = ({ industryData }) => {
             {
                 label: "Radar data",
                 data: industryData.radarData,
-                backgroundColor: "rgba(96, 165, 250, 0.18)",
-                borderColor: "#60a5fa",
+                backgroundColor: "rgba(241, 90, 36, 0.18)",
+                borderColor: "#f15a24",
                 pointBackgroundColor: "#f97316",
                 pointBorderColor: "#fed7aa",
             },
@@ -189,7 +189,7 @@ const DataDisplay = ({ industryData }) => {
                 <GlassCard
                     key={panel.title}
                     as="section"
-                    className="min-w-0 overflow-hidden border-slate-200 bg-white/90 shadow-[0_24px_55px_-42px_rgba(5,45,82,0.45)]"
+                    className="min-w-0 overflow-hidden border-slate-200 bg-white/90 shadow-[0_24px_55px_-42px_rgba(90,52,38,0.34)]"
                 >
                     <div className="mb-6 flex items-center justify-between gap-4 border-b border-slate-200 pb-4">
                         <h3 className="text-lg font-semibold text-slate-950">{panel.title}</h3>

@@ -1,0 +1,293 @@
+/* =========================================================================
+   BookDataZ — Visual Lab (isolated brand-refresh experiment)
+   Every rule is scoped under .vlab / body.vlab-active so it never touches
+   the live site. Premium white / soft-blue SaaS canvas + deep-navy structure.
+   ========================================================================= */
+
+.vlab {
+  --navy: #061a2d;
+  --blue: #0b3d73;
+  --premium: #155eef;
+  --cyan: #38bdf8;
+  --orange: #ff6a1a;
+  --surface: #f7fafc;
+  --white: #ffffff;
+  --ink: #0c2438;
+  --muted: #5b7187;
+  --line: #e2e9f1;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  background:
+    radial-gradient(circle at 82% -6%, rgba(21, 94, 239, 0.08), transparent 42%),
+    radial-gradient(circle at 0% 8%, rgba(56, 189, 248, 0.08), transparent 38%),
+    var(--surface);
+  color: var(--ink);
+  font-feature-settings: "ss01" on, "cv01" on;
+}
+
+/* Hide the live-site chrome only while the lab route is mounted. Fully
+   reversible — the body class is added on mount and removed on unmount. */
+body.vlab-active {
+  background: var(--surface);
+}
+body.vlab-active > div > nav,
+body.vlab-active > div > footer {
+  display: none !important;
+}
+
+/* ---------------- Navbar ---------------- */
+.vlab-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(11, 61, 115, 0.1);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 16px 40px -32px rgba(6, 26, 45, 0.55);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+
+.vlab-navlink {
+  position: relative;
+  border-radius: 999px;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.vlab-navlink:hover {
+  color: var(--blue);
+  background: rgba(21, 94, 239, 0.07);
+}
+
+/* ---------------- Buttons ---------------- */
+.vlab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease),
+    background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+.vlab-btn:hover {
+  transform: translateY(-2px);
+}
+.vlab-btn-primary {
+  color: #fff;
+  background: linear-gradient(135deg, #ff7d33, var(--orange));
+  box-shadow: 0 18px 38px -16px rgba(255, 106, 26, 0.65);
+}
+.vlab-btn-primary:hover {
+  box-shadow: 0 24px 48px -16px rgba(255, 106, 26, 0.7);
+}
+.vlab-btn-navy {
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue), var(--navy));
+  box-shadow: 0 18px 40px -20px rgba(6, 26, 45, 0.7);
+}
+.vlab-btn-ghost {
+  color: var(--blue);
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px -22px rgba(6, 26, 45, 0.5);
+}
+.vlab-btn-ghost:hover {
+  border-color: rgba(21, 94, 239, 0.4);
+  color: var(--premium);
+}
+.vlab-btn-onnavy {
+  color: #eaf2ff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.vlab-btn-onnavy:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+/* ---------------- Eyebrow + badges ---------------- */
+.vlab-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(21, 94, 239, 0.18);
+  background: rgba(21, 94, 239, 0.06);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--premium);
+}
+.vlab-eyebrow-light {
+  border-color: rgba(56, 189, 248, 0.28);
+  background: rgba(56, 189, 248, 0.1);
+  color: #bfe6fb;
+}
+
+/* ---------------- Surfaces ---------------- */
+.vlab-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.vlab-hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    linear-gradient(rgba(11, 61, 115, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 61, 115, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(circle at 70% 18%, #000, transparent 78%);
+  mask-image: radial-gradient(circle at 70% 18%, #000, transparent 78%);
+}
+.vlab-hero-aurora {
+  position: absolute;
+  inset: -25% -10% auto 30%;
+  height: 70%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(42% 60% at 40% 30%, rgba(21, 94, 239, 0.18), transparent 70%),
+    radial-gradient(38% 52% at 76% 44%, rgba(56, 189, 248, 0.16), transparent 72%);
+  filter: blur(26px);
+  opacity: 0.85;
+  animation: vlab-aurora 18s var(--ease) infinite;
+}
+
+/* Premium white card */
+.vlab-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 30px 70px -44px rgba(6, 26, 45, 0.4);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease),
+    border-color 0.3s ease;
+}
+.vlab-card-hover:hover {
+  transform: translateY(-6px);
+  border-color: rgba(21, 94, 239, 0.35);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 40px 80px -40px rgba(21, 94, 239, 0.4);
+}
+
+/* Deep navy product / CTA panel */
+.vlab-panel-navy {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #eaf2ff;
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  border-radius: 1.75rem;
+  background:
+    radial-gradient(circle at 14% 0%, rgba(21, 94, 239, 0.3), transparent 46%),
+    radial-gradient(circle at 92% 8%, rgba(56, 189, 248, 0.18), transparent 42%),
+    linear-gradient(160deg, #0a2c4f 0%, #07203a 52%, var(--navy) 100%);
+  box-shadow: 0 60px 120px -52px rgba(6, 16, 29, 0.85);
+}
+.vlab-panel-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(circle at 30% 0%, #000, transparent 80%);
+  mask-image: radial-gradient(circle at 30% 0%, #000, transparent 80%);
+}
+
+/* ---------------- Dashboard preview (inside product card) ---------------- */
+.vlab-dash {
+  animation: vlab-float 9s var(--ease) infinite;
+}
+.vlab-dash-tile {
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+.vlab-dash-bar {
+  height: 0.5rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--premium), var(--cyan));
+}
+.vlab-dash-bar-soft {
+  background: linear-gradient(90deg, rgba(21, 94, 239, 0.55), rgba(56, 189, 248, 0.4));
+}
+.vlab-live {
+  position: relative;
+}
+.vlab-live::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6);
+  animation: vlab-pulse 2.2s ease-out infinite;
+}
+
+/* ---------------- Stats strip ---------------- */
+.vlab-stat {
+  position: relative;
+  padding-left: 1.1rem;
+}
+.vlab-stat::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  bottom: 0.15rem;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--orange), var(--premium));
+}
+
+/* ---------------- Chips ---------------- */
+.vlab-chip {
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--blue);
+  box-shadow: 0 10px 24px -20px rgba(6, 26, 45, 0.5);
+}
+
+/* ---------------- Keyframes (motion-safe) ---------------- */
+@keyframes vlab-aurora {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-3%, 3%, 0) scale(1.08); }
+}
+@keyframes vlab-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes vlab-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.55); }
+  70% { box-shadow: 0 0 0 9px rgba(56, 189, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vlab-hero-aurora,
+  .vlab-dash,
+  .vlab-live::after {
+    animation: none !important;
+  }
+  .vlab-btn:hover,
+  .vlab-card-hover:hover {
+    transform: none;
+  }
+}

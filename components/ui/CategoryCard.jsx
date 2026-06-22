@@ -14,14 +14,14 @@ const CategoryCard = ({ category, className }) => (
     />
     <div className="flex items-start justify-between gap-4">
       <div>
-        <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-700">
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-orange-700">
           Total Records
         </p>
         <p className="mt-2 text-2xl font-bold tabular-nums tracking-tight text-slate-950">
           {category.dataCount}
         </p>
       </div>
-      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-blue-200 bg-blue-50 text-blue-700 transition-colors duration-300 group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white">
+      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-orange-200 bg-orange-50 text-orange-700 transition-colors duration-300 group-hover:border-orange-500 group-hover:bg-orange-500 group-hover:text-white">
         <Database size={21} />
       </div>
     </div>

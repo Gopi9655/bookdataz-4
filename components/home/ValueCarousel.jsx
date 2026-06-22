@@ -115,7 +115,7 @@ const ValueCarousel = () => {
 
   return (
     <div
-      className="relative mx-auto max-w-3xl"
+      className="relative mx-auto max-w-4xl"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -140,7 +140,7 @@ const ValueCarousel = () => {
             animate={{ opacity: 1, rotateY: 0, x: 0 }}
             exit={exit}
             transition={{ duration: reduceMotion ? 0.2 : 0.55, ease: [0.22, 0.61, 0.36, 1] }}
-            className="value-card relative overflow-hidden rounded-3xl border border-slate-200 p-7 text-slate-900 shadow-[0_36px_80px_-52px_rgba(5,45,82,0.5)] sm:p-9"
+            className="value-card relative overflow-hidden rounded-3xl border border-[#e8d9cc] p-7 text-slate-900 shadow-[0_36px_80px_-52px_rgba(64,42,32,0.28)] sm:p-9"
             aria-roledescription="slide"
             aria-label={`${active + 1} of ${count}`}
           >
@@ -150,18 +150,18 @@ const ValueCarousel = () => {
                 <span className="data-icon-tile h-12 w-12">
                   <Icon size={22} />
                 </span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-orange-600">
+                <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-orange-700">
                   {slide.kicker}
                 </span>
               </div>
-              <h3 className="mt-6 text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+              <h3 className="mt-6 max-w-2xl text-3xl font-bold leading-tight tracking-tight md:text-4xl">
                 {slide.title}
               </h3>
               <p className="mt-4 max-w-xl leading-7 text-slate-600">
                 {slide.body}
               </p>
               {slide.stat && (
-                <div className="mt-7 inline-flex items-center gap-3 rounded-2xl border border-orange-200 bg-orange-50/80 px-4 py-3">
+                <div className="mt-7 inline-flex items-center gap-3 rounded-2xl border border-orange-200 bg-orange-50/90 px-4 py-3">
                   <span className="text-2xl font-bold tabular-nums text-slate-950">
                     {slide.stat}
                   </span>
@@ -181,7 +181,7 @@ const ValueCarousel = () => {
           type="button"
           onClick={() => paginate(-1)}
           aria-label="Previous slide"
-          className="grid h-11 w-11 place-items-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-orange-300 hover:text-orange-600"
+          className="grid h-11 w-11 place-items-center rounded-full border border-[#d8c6b7] bg-white/90 text-slate-700 shadow-[0_12px_24px_-18px_rgba(64,42,32,0.28)] transition hover:-translate-y-0.5 hover:border-orange-300 hover:text-orange-600"
         >
           <ChevronLeft size={18} />
         </button>
@@ -198,7 +198,7 @@ const ValueCarousel = () => {
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === active
                   ? "w-7 bg-gradient-to-r from-orange-500 to-orange-400"
-                  : "w-2 bg-slate-300 hover:bg-slate-400"
+                  : "w-2 bg-[#c9b7aa] hover:bg-[#b79f91]"
               }`}
             />
           ))}
@@ -208,7 +208,7 @@ const ValueCarousel = () => {
           type="button"
           onClick={() => paginate(1)}
           aria-label="Next slide"
-          className="grid h-11 w-11 place-items-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-orange-300 hover:text-orange-600"
+          className="grid h-11 w-11 place-items-center rounded-full border border-[#d8c6b7] bg-white/90 text-slate-700 shadow-[0_12px_24px_-18px_rgba(64,42,32,0.28)] transition hover:-translate-y-0.5 hover:border-orange-300 hover:text-orange-600"
         >
           <ChevronRight size={18} />
         </button>
