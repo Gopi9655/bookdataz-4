@@ -8,7 +8,7 @@ const GlassCard = ({
 }) => (
   <Component
     className={twMerge(
-      "rounded-3xl border border-[#e8d9cc] bg-[#fffdfa]/90 p-6 shadow-[0_28px_64px_-40px_rgba(64,42,32,0.22)] backdrop-blur-md lg:p-8",
+      "rounded-3xl border border-[color:var(--card-border)] bg-[var(--card-bg)] p-6 shadow-[0_28px_64px_-40px_rgba(var(--shadow-rgb),0.28)] backdrop-blur-md lg:p-8",
       className
     )}
     {...props}

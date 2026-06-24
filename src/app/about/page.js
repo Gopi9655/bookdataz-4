@@ -79,9 +79,9 @@ const offices = [
 ];
 
 const AboutPage = () => (
-  <div className="overflow-hidden bg-[#fbf7f2] text-[#151515]">
+  <div className="about-page-premium overflow-hidden text-[color:var(--text-main)]">
     {/* Hero */}
-    <section className="premium-hero-warm relative isolate overflow-hidden border-b border-[#e8ddd2]">
+    <section className="about-hero-dark relative isolate overflow-hidden border-b border-white/10">
       <Image
         src="/aboutImages/i4b_EMEA_data_specialists_banner_2.jpg"
         alt=""
@@ -90,21 +90,21 @@ const AboutPage = () => (
         className="-z-20 object-cover object-center opacity-[0.1]"
         sizes="100vw"
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#fcf8f3] via-[#f8f1ea]/95 to-[#f1e8de]/80" />
+      <div className="about-hero-overlay absolute inset-0 -z-10" />
       <div className="premium-warm-aurora" aria-hidden="true" />
 
       <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:px-10">
         <div className="max-w-2xl">
-          <p className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-orange-700">
+          <p className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-[color:var(--accent-soft)]">
             About BookDataZ
           </p>
-          <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-[#151515] sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
             The team behind your{" "}
-            <span className="bg-gradient-to-r from-[#f56a2a] to-[#ff8a4c] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-200 via-indigo-200 to-white bg-clip-text text-transparent">
               B2B data
             </span>
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-8 text-[#5f6672] md:text-lg">
+          <p className="mt-6 max-w-xl text-base leading-8 text-white/78 md:text-lg">
             BookDataZ provides premium B2B email data, datacards, industry lists,
             and databases. Our contact database is developed specifically for
             organizations in the USA, UK, and Europe, helping sales and marketing
@@ -125,7 +125,7 @@ const AboutPage = () => (
           </div>
         </div>
 
-        <div className="premium-card premium-card-light overflow-hidden rounded-[2rem] p-6 lg:p-8">
+        <div className="about-bright-card overflow-hidden rounded-[2rem] p-6 lg:p-8">
           <div className="flex items-center gap-3">
             <span className="value-pillar-icon">
               <MapPin size={22} />
@@ -178,7 +178,7 @@ const AboutPage = () => (
     </section>
 
     {/* Approach / story */}
-    <Section className="premium-surface border-b border-[#e8ddd2]">
+    <Section className="about-section-light border-b border-[color:var(--card-border)]">
       <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
         <div>
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-700">
@@ -214,7 +214,7 @@ const AboutPage = () => (
     </Section>
 
     {/* Why teams choose us */}
-    <Section className="premium-about-band border-b border-[#e8ddd2]">
+    <Section className="about-section-dark-cards border-b border-white/10">
       <div className="mx-auto mb-12 max-w-3xl text-center">
         <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-700">
           Company Profile
@@ -245,7 +245,7 @@ const AboutPage = () => (
     </Section>
 
     {/* What we provide */}
-    <Section className="bg-[#ffffff] border-b border-[#e8ddd2]">
+    <Section className="about-section-light border-b border-[color:var(--card-border)]">
       <div className="mx-auto mb-12 max-w-3xl text-center">
         <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-700">
           What BookDataZ Provides
@@ -274,7 +274,7 @@ const AboutPage = () => (
     </Section>
 
     {/* Industries */}
-    <Section className="premium-surface-panel border-b border-[#e8ddd2]">
+    <Section className="about-section-muted border-b border-[color:var(--card-border)]">
       <div className="mx-auto mb-12 max-w-3xl text-center">
         <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-700">
           Market Coverage
@@ -368,7 +368,7 @@ const AboutPage = () => (
       </div>
     </Section>
 
-    <Section className="premium-surface">
+    <Section className="about-section-light">
       <CTASection
         title="Ready to Elevate Your Business?"
         description="Partner with BookDataZ to access premium databases and unlock growth opportunities in your target markets."

@@ -67,8 +67,8 @@ export default function BrowseDatacardPage() {
   }, [query]);
 
   return (
-    <main className="overflow-hidden bg-brandWarm-50">
-      <section className="relative isolate overflow-hidden border-b border-slate-200 py-20 text-slate-950 lg:py-28">
+    <main className="browse-datacard-page overflow-hidden">
+      <section className="browse-datacard-hero relative isolate overflow-hidden border-b border-white/10 py-16 text-[color:var(--section-contrast-text)] lg:py-24">
         <div
           className="absolute inset-0 -z-20 opacity-40"
           style={{
@@ -78,8 +78,8 @@ export default function BrowseDatacardPage() {
             maskImage: "linear-gradient(to bottom, black 10%, transparent 92%)",
           }}
         />
-        <div className="absolute left-[8%] top-12 -z-10 h-72 w-72 rounded-full bg-blue-400/15 blur-3xl" />
-        <div className="absolute right-[5%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-400/12 blur-3xl" />
+        <div className="browse-hero-orb-left absolute left-[8%] top-12 -z-10 h-72 w-72 rounded-full blur-3xl" />
+        <div className="browse-hero-orb-right absolute right-[5%] top-1/3 -z-10 h-80 w-80 rounded-full blur-3xl" />
 
         <Container className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
           <motion.div
@@ -90,23 +90,23 @@ export default function BrowseDatacardPage() {
           >
             <motion.div
               variants={fadeUp}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-700"
+              className="browse-hero-kicker mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em]"
             >
               <Sparkles size={14} className="text-orange-500" />
               Data category directory
             </motion.div>
             <motion.h1
               variants={fadeUp}
-              className="text-4xl font-bold leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl"
+              className="browse-hero-title text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
             >
               Browse Our{" "}
-              <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+              <span className="browse-title-highlight bg-clip-text text-transparent">
                 Data Cards
               </span>
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className="mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg"
+              className="browse-hero-copy mt-6 max-w-2xl text-base leading-8 md:text-lg"
             >
               BookDataz is one of the prominent B2B marketing solution providers
               that specializes in offering data-driven marketing and account
@@ -118,7 +118,7 @@ export default function BrowseDatacardPage() {
             </motion.p>
             <motion.p
               variants={fadeUp}
-              className="mt-4 max-w-2xl text-base leading-8 text-slate-500"
+              className="browse-hero-copy mt-4 max-w-2xl text-base leading-8"
             >
               Our commitment to delivering high-quality, verified data ensures
               that businesses can target the right audience with precision,
@@ -155,9 +155,9 @@ export default function BrowseDatacardPage() {
           >
             <motion.div
               variants={fadeUp}
-              className="premium-card premium-card-light premium-card-hover relative overflow-hidden rounded-3xl p-6 text-slate-900 lg:p-8"
+              className="browse-hero-card premium-card premium-card-hover relative overflow-hidden rounded-3xl p-6 lg:p-8"
             >
-              <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-orange-300/25 blur-3xl" />
+              <div className="browse-card-orb absolute -right-14 -top-14 h-40 w-40 rounded-full blur-3xl" />
               <span className="absolute inset-x-0 top-0 h-1 premium-accent" aria-hidden="true" />
               <div className="relative flex items-start justify-between gap-6">
                 <div>
@@ -227,7 +227,7 @@ export default function BrowseDatacardPage() {
         </Container>
       </section>
 
-      <Section className="bg-gradient-to-b from-brandWarm-100 to-brandWarm-50">
+      <Section className="browse-category-section">
         <motion.div
           variants={fadeUp}
           initial={false}

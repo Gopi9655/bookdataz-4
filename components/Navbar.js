@@ -95,19 +95,19 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 border-b border-[color:var(--nav-border)] bg-[var(--nav-bg)] text-[color:var(--nav-text)] shadow-[0_18px_46px_-34px_rgba(var(--shadow-rgb),0.32)] backdrop-blur-xl">
-      <Container className="flex h-[72px] items-center justify-between gap-4">
+      <Container className="flex h-[80px] items-center justify-between gap-4 lg:h-[92px]">
         <Link
           href="/"
           aria-label="BookDataZ home"
-          className="group flex shrink-0 items-center rounded-[1.15rem] border border-[color:var(--nav-logo-border)] bg-[var(--nav-logo-bg)] px-3 py-2 shadow-[0_16px_36px_-24px_rgba(var(--shadow-rgb),0.28)] transition hover:border-[color:var(--accent-border)]"
+          className="group flex shrink-0 items-center rounded-[1.25rem] border border-[color:var(--nav-logo-border)] bg-[var(--nav-logo-bg)] px-4 py-2.5 shadow-[0_16px_36px_-24px_rgba(var(--shadow-rgb),0.28)] transition hover:border-[color:var(--accent-border)]"
         >
           <Image
             src="/logo-bookdataz.svg"
             alt="BookDataZ"
-            width={210}
-            height={45}
+            width={240}
+            height={52}
             priority
-            className="h-8 w-auto sm:h-9"
+            className="h-10 w-auto sm:h-11 lg:h-12"
           />
         </Link>
 

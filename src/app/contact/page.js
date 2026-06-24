@@ -124,33 +124,26 @@ const Contactpage = () => {
   };
 
   return (
-    <div className="overflow-hidden bg-brandWarm-50 text-slate-950">
-      <Section className="relative border-b border-slate-200 bg-gradient-to-b from-brandWarm-100 to-brandWarm-50">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(241,90,36,0.08),transparent_40%)]" />
-        <div className="absolute right-0 top-20 h-64 w-64 rounded-full bg-orange-400/10 blur-3xl" />
-        <div className="relative mx-auto mb-12 max-w-3xl text-center lg:mb-16">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-700">
-            Contact BookDataZ
-          </p>
-          <h1 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+    <div className="contact-page-premium overflow-hidden text-[color:var(--text-main)]">
+      <Section className="contact-hero-compact relative border-b border-[color:var(--card-border)]">
+        <div className="contact-hero-aurora" />
+        <div className="absolute right-0 top-8 h-64 w-64 rounded-full bg-[color:var(--accent-tint)] blur-3xl" />
+        <div className="relative mx-auto mb-8 max-w-3xl text-center lg:mb-10">
+          <h1 className="text-4xl font-bold tracking-tight text-[color:var(--heading)] sm:text-5xl lg:text-6xl">
             Let&apos;s build your next{" "}
-            <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[color:var(--accent)] to-[color:var(--accent-2)] bg-clip-text text-transparent">
               data solution
             </span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
-            Whether you’re looking for more information on our data solutions or
-            have specific queries, we’re here to help.
-          </p>
         </div>
 
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative grid grid-cols-1 gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:gap-8"
+          className="contact-grid-premium relative grid grid-cols-1 gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:gap-8"
         >
-          <div className="premium-card premium-card-light relative overflow-hidden rounded-3xl p-6 lg:p-8">
+          <div className="contact-card-premium relative overflow-hidden rounded-3xl p-6 lg:p-8">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700">
               Get in Touch
             </p>
@@ -203,9 +196,12 @@ const Contactpage = () => {
                     <FiPhone size={18} />
                     <p className="font-semibold text-slate-950">Phone:</p>
                   </div>
-                  <p className="mt-3 text-sm text-slate-600">
-                    +1 (901)-300-5501
-                  </p>
+                  <a
+                    href="tel:9017800114"
+                    className="mt-3 block text-sm text-slate-600 transition hover:text-orange-600"
+                  >
+                    9017800114
+                  </a>
                 </div>
               </div>
             </div>
@@ -222,9 +218,9 @@ const Contactpage = () => {
             </div>
           </div>
 
-          <div className="premium-card premium-card-light relative overflow-hidden rounded-3xl p-6 lg:p-8">
+          <div className="contact-card-premium relative overflow-hidden rounded-3xl p-6 lg:p-8">
             <span className="absolute inset-x-0 top-0 h-1 premium-accent" aria-hidden="true" />
-            <div className="border-b border-slate-200 pb-6">
+            <div className="border-b border-[color:var(--card-border)] pb-6">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-600">
                 Send a Message
               </p>
@@ -339,9 +335,9 @@ const Contactpage = () => {
         </motion.div>
       </Section>
 
-      <Section className="border-b border-slate-200 bg-brandWarm-50">
+      <Section className="contact-faq-section border-b border-[color:var(--card-border)]">
         <div className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-700">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-[color:var(--accent-strong)]">
             Quick Answers
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">

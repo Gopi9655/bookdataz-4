@@ -32,6 +32,10 @@ const StarRating = ({ rating, name }) => {
   );
 };
 
+// Auto-advance delay (ms). Kept in the 5500ΓÇô7000ms range so readers have time
+// to finish a quote before it rotates. The progress bar uses the same value.
+const AUTO_MS = 6000;
+
 const TestimonialsCarousel = () => {
   const reduceMotion = useReducedMotion();
   const [[active, direction], setState] = useState([0, 0]);
@@ -46,11 +50,14 @@ const TestimonialsCarousel = () => {
   const goTo = (index) =>
     setState(([current]) => [index, index >= current ? 1 : -1]);
 
+  // Reliable auto-swipe: a single interval advances the active slide using a
+  // functional update, so it keeps ticking regardless of which slide is shown.
+  // Pauses on hover/focus (paused) and is disabled for reduced-motion users.
   useEffect(() => {
     if (reduceMotion || paused || count <= 1) return undefined;
     const id = setInterval(() => {
       setState(([current]) => [(current + 1) % count, 1]);
-    }, 5200);
+    }, AUTO_MS);
     return () => clearInterval(id);
   }, [reduceMotion, paused, count]);
 
@@ -65,7 +72,7 @@ const TestimonialsCarousel = () => {
 
   return (
     <div
-      className="relative mx-auto max-w-4xl"
+      className="testimonial-carousel relative mx-auto max-w-4xl"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -168,6 +175,18 @@ const TestimonialsCarousel = () => {
           <ChevronRight size={18} />
         </button>
       </div>
+
+      {/* Auto-swipe progress ΓÇö restarts each slide (keyed by active) and pauses
+          on hover/focus via CSS. Hidden for reduced-motion users. */}
+      {!reduceMotion && count > 1 && (
+        <div className="testimonial-progress" aria-hidden="true">
+          <span
+            key={`${active}-${paused}`}
+            className="testimonial-progress-bar"
+            style={{ animationDuration: `${AUTO_MS}ms` }}
+          />
+        </div>
+      )}
     </div>
   );
 };

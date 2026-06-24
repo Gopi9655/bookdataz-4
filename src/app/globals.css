@@ -14,25 +14,26 @@
 :root {
   /* --- Core surfaces --- */
   --site-bg:
-    radial-gradient(circle at 12% -4%, rgba(46, 91, 186, 0.06), transparent 30%),
-    linear-gradient(180deg, #f7f9fc 0%, #eff3f9 52%, #e9eef6 100%);
-  --surface-1: #f4f7fb;
-  --surface-2: #eaf0f8;
+    radial-gradient(circle at 12% -6%, rgba(47, 86, 230, 0.1), transparent 32%),
+    radial-gradient(circle at 92% 2%, rgba(109, 74, 214, 0.08), transparent 34%),
+    linear-gradient(180deg, #f5f7ff 0%, #eef1fc 52%, #e7ecfb 100%);
+  --surface-1: #f3f6fe;
+  --surface-2: #e8eefb;
   --surface-3: var(--surface-2);
   --card-bg: #ffffff;
   --card-bg-2: color-mix(in srgb, var(--card-bg) 90%, var(--heading));
-  --card-border: #dce4ef;
+  --card-border: #d8e1f5;
 
   /* --- Text --- */
-  --heading: #0b1f3a;
-  --text-main: #243349;
-  --text-muted: #5a6b82;
+  --heading: #0c1c44;
+  --text-main: #273352;
+  --text-muted: #586691;
 
-  /* --- Accents --- */
-  --accent: #e8622a;
-  --accent-2: #2e5bba;
-  --accent-soft: #f4a37a;
-  --accent-strong: #c24a18;
+  /* --- Accents (Enterprise Royal Blue: royal blue + violet secondary) --- */
+  --accent: #2f56e6;
+  --accent-2: #6d4ad6;
+  --accent-soft: #93a6f7;
+  --accent-strong: #2342c4;
   --accent-contrast: #ffffff;
   --accent-tint: color-mix(in srgb, var(--accent) 12%, var(--card-bg));
   --accent-border: color-mix(in srgb, var(--accent) 36%, transparent);
@@ -56,22 +57,44 @@
   --cta-text: var(--accent-contrast);
   --focus-ring: var(--accent);
 
+  /* --- Contact pill / CTA chip (always readable on any surface) --------- */
+  /* A solid accent pill with guaranteed-contrast text, used for phone/CTA   */
+  /* chips that previously rendered white-on-white in some themes.           */
+  --contact-pill-bg: var(--accent);
+  --contact-pill-text: var(--accent-contrast);
+  --contact-pill-border: color-mix(in srgb, var(--accent) 60%, #000000);
+
   /* --- Hero --- */
   --hero-bg:
-    radial-gradient(circle at 82% 14%, rgba(46, 91, 186, 0.2), transparent 38%),
-    radial-gradient(circle at 4% 100%, rgba(232, 98, 42, 0.12), transparent 36%),
-    linear-gradient(155deg, #0c2a63 0%, #103a86 55%, #0b2552 100%);
+    radial-gradient(circle at 82% 12%, rgba(109, 74, 214, 0.34), transparent 42%),
+    radial-gradient(circle at 6% 100%, rgba(47, 86, 230, 0.3), transparent 40%),
+    linear-gradient(155deg, #0d1f5c 0%, #1a36a8 56%, #0c1a4e 100%);
   --hero-text: #ffffff;
-  --hero-muted: rgba(226, 234, 247, 0.82);
+  --hero-muted: rgba(223, 230, 250, 0.84);
   --hero-eyebrow: var(--accent-soft);
   --hero-card-bg: rgba(255, 255, 255, 0.1);
   --hero-card-text: #ffffff;
-  --hero-card-border: rgba(255, 255, 255, 0.18);
+  --hero-card-border: rgba(255, 255, 255, 0.2);
+
+  /* --- Hero highlight phrase (default = dark hero ├óΓÇáΓÇÖ cool ice/lavender) ---- */
+  /* Light-hero palettes override these (see lightHero in lib/themePalettes)   */
+  /* with deep royal/indigo so the phrase always pops, never blends in.        */
+  --hero-highlight: #bcd4ff;
+  --hero-highlight-2: #ecdcff;
+  --hero-highlight-glow: rgba(124, 162, 255, 0.5);
+  /* Premium highlight gradient ΓÇö DARK hero default (mirrors BASE in
+     lib/themePalettes). Luminous icy-cyan -> silver -> electric blue-violet so
+     the phrase pops off the navy/violet hero instead of blending into it. */
+  --hero-highlight-start: color-mix(in srgb, var(--accent-soft) 42%, #a9f0ff 58%);
+  --hero-highlight-mid: color-mix(in srgb, #ffffff 64%, var(--accent-soft) 36%);
+  --hero-highlight-end: color-mix(in srgb, var(--accent-2) 62%, #d2c2ff 38%);
+  --hero-highlight-glow-strong: color-mix(in srgb, var(--accent-soft) 55%, transparent);
 
   /* --- Contrast / dark anchor sections (command, tech, reach, CTA) --- */
-  --section-contrast-bg: linear-gradient(155deg, #0b1f3a 0%, #0a1a30 100%);
+  --section-contrast-bg:
+    linear-gradient(155deg, #0d1f5c 0%, #122a86 55%, #0a164a 100%);
   --section-contrast-text: #ffffff;
-  --section-contrast-muted: rgba(255, 255, 255, 0.62);
+  --section-contrast-muted: rgba(255, 255, 255, 0.72);
   --contrast-card-bg: rgba(255, 255, 255, 0.05);
   --contrast-border: rgba(255, 255, 255, 0.1);
 
@@ -89,15 +112,49 @@
   --section-after-hero-border: var(--card-border);
 
   /* --- Footer --- */
-  --footer-bg: #0a1a30;
-  --footer-text: rgba(255, 255, 255, 0.74);
-  --footer-muted: rgba(255, 255, 255, 0.45);
+  --footer-bg: #0a1540;
+  --footer-text: rgba(255, 255, 255, 0.76);
+  --footer-muted: rgba(255, 255, 255, 0.48);
 
   /* --- Generic light section surfaces (rhythm helpers) ------------------- */
   /* Mapped to existing palette surfaces so every theme stays coherent.       */
   --section-bg: var(--surface-1);
   --section-alt-bg: var(--surface-2);
   --section-muted-bg: color-mix(in srgb, var(--surface-2) 70%, var(--surface-1));
+
+  /* --- Premium override primitives -------------------------------------- */
+  /* These keep late-stage visual polish tied to the active ThemeTweaks
+     palette instead of fixed test colors. */
+  --premium-dark-bg: var(--section-contrast-bg);
+  --premium-dark-bg-2: var(--section-contrast-bg);
+  --premium-dark-text: var(--section-contrast-text);
+  --premium-dark-muted: var(--section-contrast-muted);
+  --premium-dark-glow: color-mix(in srgb, var(--accent) 22%, transparent);
+  --premium-dark-glow-2: color-mix(in srgb, var(--accent-2) 18%, transparent);
+  --premium-grid-line: color-mix(in srgb, var(--section-contrast-text) 5%, transparent);
+  --premium-grid-line-strong: color-mix(in srgb, var(--section-contrast-text) 7%, transparent);
+  --premium-dark-overlay: rgba(var(--shadow-rgb), 0.88);
+  --premium-dark-overlay-soft: rgba(var(--shadow-rgb), 0.72);
+  --premium-card-light-bg: color-mix(in srgb, var(--card-bg) 18%, white 82%);
+  --premium-card-light-bg-2: color-mix(in srgb, var(--surface-1) 18%, white 82%);
+  --premium-card-light-bg-3: color-mix(in srgb, var(--surface-2) 24%, white 76%);
+  --premium-card-light-text: rgb(var(--shadow-rgb));
+  --premium-card-light-muted: color-mix(in srgb, var(--text-muted) 58%, rgb(var(--shadow-rgb)) 42%);
+  --premium-card-light-border: color-mix(in srgb, var(--accent) 26%, var(--card-border));
+  --premium-card-light-accent: color-mix(in srgb, var(--accent) 82%, rgb(var(--shadow-rgb)) 18%);
+  --premium-card-light-accent-text: color-mix(in srgb, var(--accent-strong) 70%, rgb(var(--shadow-rgb)) 30%);
+  --premium-card-light-accent-bg: color-mix(in srgb, var(--accent) 10%, var(--premium-card-light-bg));
+  --premium-card-light-accent-bg-2: color-mix(in srgb, var(--accent-soft) 18%, var(--premium-card-light-bg-2));
+  --premium-card-glow: color-mix(in srgb, var(--accent) 24%, transparent);
+  --premium-card-glow-strong: color-mix(in srgb, var(--accent) 34%, transparent);
+  --premium-card-inner-highlight: color-mix(in srgb, var(--section-contrast-text) 84%, transparent);
+  --contact-hero-bg: var(--premium-dark-bg);
+  --about-hero-bg: var(--premium-dark-bg);
+  --value-section-bg: var(--premium-dark-bg);
+  --value-card-bg: var(--premium-card-light-bg);
+  --value-card-bg-2: var(--premium-card-light-bg-2);
+  --value-card-text: var(--premium-card-light-text);
+  --value-card-muted: var(--premium-card-light-muted);
 
   /* --- Semantic page + surface tokens (drive the .bdz-* class system) ---- */
   --page-bg: var(--site-bg);
@@ -109,6 +166,9 @@
   --dropdown-text: var(--text-main);
   --dropdown-muted: var(--text-muted);
   --dropdown-border: var(--card-border);
+  --dropdown-card-bg: var(--surface-1);
+  --dropdown-card-hover: color-mix(in srgb, var(--surface-1) 55%, var(--accent-tint));
+  --dropdown-icon-bg: var(--accent-tint);
 
   /* --- Testimonials + Trusted By (social proof) ------------------------- */
   --testimonial-bg: var(--card-bg);
@@ -119,7 +179,7 @@
   --btn-primary-text: #ffffff;
 
   /* --- Shadow tint (R,G,B) --- */
-  --shadow-rgb: 11, 31, 58;
+  --shadow-rgb: 12, 28, 78;
 
   /* ===================================================================== */
   /* Legacy variable bridge — existing classes reference these names, so   */
@@ -515,11 +575,21 @@ select:focus-visible,
 
 .hero-headline-highlight {
   /* Solid fallback first so the words are never invisible if clip is unsupported. */
-  color: var(--accent);
-  background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+  color: var(--hero-highlight);
+  background: linear-gradient(
+    92deg,
+    var(--hero-highlight) 0%,
+    var(--hero-highlight-2) 52%,
+    var(--hero-highlight) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* drop-shadow (not text-shadow) renders against the clipped glyphs, so the
+     phrase keeps a soft halo and separates from the hero background + the
+     surrounding white headline on every theme. */
+  filter: drop-shadow(0 1px 1px rgba(8, 14, 38, 0.35))
+    drop-shadow(0 4px 16px var(--hero-highlight-glow));
 }
 
 .hero-eyebrow-pill {
@@ -2230,7 +2300,21 @@ select:focus-visible,
   border: 1px solid var(--card-border);
   background: var(--card-bg);
   color: var(--text-main);
-  box-shadow: 0 24px 52px -44px rgba(var(--shadow-rgb), 0.24);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 24px 52px -44px rgba(var(--shadow-rgb), 0.24);
+  transition:
+    transform 0.3s var(--motion-ease),
+    border-color 0.3s ease,
+    box-shadow 0.3s var(--motion-ease);
+}
+
+.bdz-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 30px 60px -42px rgba(var(--shadow-rgb), 0.3);
 }
 
 .bdz-card-elevated {
@@ -2340,6 +2424,153 @@ select:focus-visible,
 .bdz-social-proof-section {
   background: var(--testimonial-bg);
   color: var(--text-main);
+}
+
+/* Elevated card for use ON dark contrast sections ├óΓé¼ΓÇ¥ readable on every theme. */
+.bdz-contrast-card {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid var(--contrast-border);
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 46%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035));
+  color: var(--section-contrast-text);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 38px 80px -54px rgba(0, 0, 0, 0.78);
+  transition:
+    transform 0.4s var(--motion-ease),
+    border-color 0.3s ease,
+    box-shadow 0.4s var(--motion-ease);
+}
+
+.bdz-contrast-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 46px 96px -52px rgba(0, 0, 0, 0.82);
+}
+
+/* Premium panel ├óΓé¼ΓÇ¥ a strong contrast band wrapper (CTA / feature panels). */
+.bdz-premium-panel {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--contrast-border);
+  color: var(--section-contrast-text);
+  background:
+    radial-gradient(circle at 84% 0%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 40%),
+    radial-gradient(circle at 8% 100%, color-mix(in srgb, var(--accent-2) 28%, transparent), transparent 42%),
+    var(--section-contrast-bg);
+  box-shadow: 0 44px 96px -58px rgba(0, 0, 0, 0.85);
+}
+
+/* Contrast-aware variant of the value pillar (dark "Why teams choose"). */
+/* Calmer, more neutral dark band ├óΓé¼ΓÇ¥ veils the themed contrast bg so it supports
+   (rather than overpowers) the cards. Stays theme-coherent via a faint accent
+   radial + the palette's own --section-contrast-bg underneath. */
+.bdz-section-graphite {
+  position: relative;
+  color: var(--section-contrast-text);
+  background:
+    radial-gradient(circle at 82% -12%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 42%),
+    radial-gradient(circle at 8% 112%, color-mix(in srgb, var(--accent-2) 14%, transparent), transparent 44%),
+    linear-gradient(180deg, rgba(6, 9, 20, 0.66), rgba(6, 9, 20, 0.84)),
+    var(--section-contrast-bg);
+}
+
+.value-pillar-contrast {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 1.65rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, rgba(255, 255, 255, 0.14));
+  /* Brighter glass so the card clearly lifts off the graphite section. */
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 50%),
+    linear-gradient(162deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.055) 46%, rgba(255, 255, 255, 0.03) 100%);
+  color: var(--section-contrast-text);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    0 34px 70px -42px rgba(0, 0, 0, 0.85);
+  transition:
+    transform 0.4s var(--motion-ease),
+    border-color 0.3s ease,
+    box-shadow 0.4s var(--motion-ease);
+}
+
+/* Always-on top edge shine (brightens on hover) for premium depth. */
+.value-pillar-contrast::before {
+  content: "";
+  position: absolute;
+  inset-inline: 1.2rem;
+  top: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--accent-soft) 90%, #ffffff),
+    transparent
+  );
+  opacity: 0.55;
+  transition: opacity 0.35s ease;
+}
+
+/* Soft radial shine that fades in on hover. */
+.value-pillar-contrast::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 80% at 80% -10%,
+    color-mix(in srgb, var(--accent) 30%, transparent),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.value-pillar-contrast:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    0 46px 92px -44px rgba(0, 0, 0, 0.9);
+}
+
+.value-pillar-contrast:hover::before {
+  opacity: 1;
+}
+
+.value-pillar-contrast:hover::after {
+  opacity: 1;
+}
+
+.value-pillar-contrast .value-pillar-icon {
+  color: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 42%, transparent);
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.value-pillar-contrast .value-pillar-tag {
+  color: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.value-pillar-contrast .value-pillar-metric {
+  background: linear-gradient(120deg, #ffffff, var(--accent-soft));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* ======================================================================= */
@@ -2883,14 +3114,24 @@ select:focus-visible,
   .command-card,
   .premium-card,
   .premium-card-hover,
-  .value-pillar {
+  .value-pillar,
+  .value-pillar-contrast,
+  .bdz-card,
+  .bdz-contrast-card {
     transition: none;
   }
 
   .premium-card-hover:hover,
   .premium-card-dark.premium-card-hover:hover,
-  .value-pillar:hover {
+  .value-pillar:hover,
+  .value-pillar-contrast:hover,
+  .bdz-card:hover,
+  .bdz-contrast-card:hover {
     transform: none;
+  }
+
+  .value-pillar-contrast:hover::after {
+    opacity: 0;
   }
 
   .testimonial-accent-bar,
@@ -2951,3 +3192,2406 @@ select:focus-visible,
     transform: none !important;
   }
 }
+
+/* Softer premium value section: contrast without becoming too dark */
+.bdz-section-value-soft {
+  background:
+    radial-gradient(circle at 10% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 34%),
+    radial-gradient(circle at 90% 8%, color-mix(in srgb, var(--accent-2) 14%, transparent), transparent 38%),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--surface-1) 88%, #ffffff 12%) 0%,
+      color-mix(in srgb, var(--surface-2) 82%, var(--accent-soft) 18%) 48%,
+      color-mix(in srgb, var(--surface-1) 90%, #ffffff 10%) 100%
+    );
+}
+
+.value-soft-aurora {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.18;
+}
+
+/* Make only this section's pillar cards brighter and more focused */
+.bdz-section-value-soft .value-pillar-contrast {
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--card-border));
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 44%),
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--card-bg) 92%, #ffffff 8%),
+      color-mix(in srgb, var(--surface-1) 88%, var(--accent-soft) 12%)
+    );
+  color: var(--text-main);
+  box-shadow:
+    0 26px 70px -48px rgba(var(--shadow-rgb), 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.bdz-section-value-soft .value-pillar-contrast h3,
+.bdz-section-value-soft .value-pillar-contrast .value-pillar-title {
+  color: var(--heading);
+}
+
+.bdz-section-value-soft .value-pillar-contrast p {
+  color: var(--text-muted);
+}
+
+.bdz-section-value-soft .value-pillar-contrast .value-pillar-metric {
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--card-border));
+  background: color-mix(in srgb, var(--surface-2) 76%, #ffffff 24%);
+}
+
+.bdz-section-value-soft .value-pillar-contrast:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 48%, var(--card-border));
+  box-shadow:
+    0 34px 90px -54px rgba(var(--shadow-rgb), 0.55),
+    0 0 34px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+/* Final value section: dark premium background + readable white cards */
+.value-section-dark-cards {
+  background:
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 34%),
+    radial-gradient(circle at 86% 12%, color-mix(in srgb, var(--accent-2) 16%, transparent), transparent 40%),
+    var(--value-section-bg) !important;
+}
+
+.value-section-dark-cards .value-pillar-contrast {
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 42%),
+    linear-gradient(160deg, var(--value-card-bg) 0%, var(--value-card-bg-2) 100%) !important;
+  color: var(--value-card-text) !important;
+  border: 1px solid var(--premium-card-light-border) !important;
+  box-shadow:
+    0 28px 80px -42px rgba(var(--shadow-rgb), 0.7),
+    0 0 34px var(--premium-card-glow),
+    inset 0 1px 0 var(--premium-card-inner-highlight) !important;
+}
+
+.value-section-dark-cards .value-pillar-contrast h3,
+.value-section-dark-cards .value-pillar-contrast .value-pillar-title {
+  color: var(--value-card-text) !important;
+}
+
+.value-section-dark-cards .value-pillar-contrast p {
+  color: var(--value-card-muted) !important;
+}
+
+.value-section-dark-cards .value-pillar-contrast span,
+.value-section-dark-cards .value-pillar-contrast li {
+  color: inherit;
+}
+
+.value-section-dark-cards .value-pillar-contrast svg {
+  color: var(--accent) !important;
+}
+
+.value-section-dark-cards .value-pillar-contrast .value-pillar-metric {
+  background: linear-gradient(135deg, var(--premium-card-light-accent-bg-2), var(--value-card-bg)) !important;
+  border-color: var(--premium-card-light-border) !important;
+  color: var(--value-card-text) !important;
+}
+
+.value-section-dark-cards .value-pillar-contrast .value-pillar-metric strong,
+.value-section-dark-cards .value-pillar-contrast .value-pillar-metric span {
+  color: var(--premium-card-light-text) !important;
+}
+
+.value-section-dark-cards .value-pillar-contrast [class*="chip"],
+.value-section-dark-cards .value-pillar-contrast [class*="pill"],
+.value-section-dark-cards .value-pillar-contrast [class*="tag"] {
+  background: var(--premium-card-light-accent-bg) !important;
+  border-color: var(--premium-card-light-border) !important;
+  color: var(--premium-card-light-accent-text) !important;
+}
+
+.value-section-dark-cards .value-pillar-contrast:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent) 54%, var(--card-border)) !important;
+  box-shadow:
+    0 34px 90px -46px rgba(var(--shadow-rgb), 0.82),
+    0 0 48px var(--premium-card-glow-strong),
+    inset 0 1px 0 var(--premium-card-inner-highlight) !important;
+}
+
+/* === FINAL VALUE SECTION DARK CARDS START === */
+/* Dark premium section + luminous readable cards */
+.value-section-dark-cards {
+  background:
+    radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 34%),
+    radial-gradient(circle at 84% 12%, color-mix(in srgb, var(--accent-2) 16%, transparent), transparent 42%),
+    var(--value-section-bg) !important;
+}
+/* Premium white-blue card surface */
+.value-section-dark-cards .value-pillar-contrast {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 82% 0%, var(--premium-card-glow), transparent 38%),
+    radial-gradient(circle at 12% 12%, color-mix(in srgb, var(--value-card-bg) 88%, transparent), transparent 34%),
+    linear-gradient(145deg, var(--value-card-bg) 0%, var(--value-card-bg-2) 45%, var(--premium-card-light-bg-3) 100%) !important;
+  color: var(--value-card-text) !important;
+  border: 1px solid var(--premium-card-light-border) !important;
+  box-shadow:
+    0 30px 80px -45px rgba(var(--shadow-rgb), 0.82),
+    0 16px 42px -32px color-mix(in srgb, var(--accent) 50%, transparent),
+    0 0 0 1px var(--premium-card-inner-highlight) inset,
+    inset 0 1px 0 var(--premium-card-inner-highlight) !important;
+  transition:
+    transform 0.35s var(--motion-ease),
+    box-shadow 0.35s var(--motion-ease),
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
+/* Animated premium shine layer */
+.value-section-dark-cards .value-pillar-contrast::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  z-index: -1;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 34%,
+      color-mix(in srgb, var(--section-contrast-text) 58%, transparent) 45%,
+      color-mix(in srgb, var(--accent-soft) 26%, transparent) 52%,
+      transparent 64%
+    );
+  transform: translateX(-42%) rotate(7deg);
+  opacity: 0.58;
+  pointer-events: none;
+}
+/* Soft blue aura inside each card */
+.value-section-dark-cards .value-pillar-contrast::after {
+  content: "";
+  position: absolute;
+  inset: auto -18% -35% -18%;
+  height: 48%;
+  z-index: -1;
+  background: radial-gradient(circle, var(--premium-card-glow), transparent 62%);
+  opacity: 0.72;
+  pointer-events: none;
+}
+/* Text hierarchy */
+.value-section-dark-cards .value-pillar-contrast h3,
+.value-section-dark-cards .value-pillar-contrast .value-pillar-title {
+  color: var(--value-card-text) !important;
+  text-shadow: none !important;
+}
+.value-section-dark-cards .value-pillar-contrast p {
+  color: var(--value-card-muted) !important;
+  text-shadow: none !important;
+}
+/* Icon tile */
+.value-section-dark-cards .value-pillar-contrast svg {
+  color: var(--premium-card-light-accent) !important;
+}
+.value-section-dark-cards .value-pillar-contrast > div:first-child span:first-child,
+.value-section-dark-cards .value-pillar-contrast [class*="icon"] {
+  background: linear-gradient(145deg, var(--premium-card-light-accent-bg-2), var(--premium-card-light-accent-bg)) !important;
+  border-color: var(--premium-card-light-border) !important;
+}
+/* Metric module */
+.value-section-dark-cards .value-pillar-contrast .value-pillar-metric {
+  background:
+    radial-gradient(circle at 100% 0%, var(--premium-card-glow), transparent 44%),
+    linear-gradient(135deg, var(--premium-card-light-bg-2), var(--premium-card-light-accent-bg-2)) !important;
+  border: 1px solid var(--premium-card-light-border) !important;
+  color: var(--value-card-text) !important;
+  box-shadow:
+    inset 0 1px 0 var(--premium-card-inner-highlight),
+    0 18px 38px -34px color-mix(in srgb, var(--accent) 48%, rgba(var(--shadow-rgb), 0.55));
+}
+.value-section-dark-cards .value-pillar-contrast .value-pillar-metric strong,
+.value-section-dark-cards .value-pillar-contrast .value-pillar-metric span {
+  color: var(--premium-card-light-text) !important;
+}
+/* Chips/tags */
+.value-section-dark-cards .value-pillar-contrast [class*="chip"],
+.value-section-dark-cards .value-pillar-contrast [class*="pill"],
+.value-section-dark-cards .value-pillar-contrast [class*="tag"] {
+  background: linear-gradient(135deg, var(--value-card-bg), var(--premium-card-light-accent-bg)) !important;
+  border-color: var(--premium-card-light-border) !important;
+  color: var(--premium-card-light-accent-text) !important;
+  box-shadow: 0 8px 18px -16px rgba(var(--shadow-rgb), 0.45);
+}
+/* Hover polish */
+.value-section-dark-cards .value-pillar-contrast:hover {
+  transform: translateY(-7px);
+  border-color: color-mix(in srgb, var(--accent) 62%, var(--card-border)) !important;
+  box-shadow:
+    0 40px 100px -48px rgba(var(--shadow-rgb), 0.92),
+    0 0 56px var(--premium-card-glow-strong),
+    0 0 0 1px var(--premium-card-inner-highlight) inset,
+    inset 0 1px 0 var(--premium-card-inner-highlight) !important;
+}
+.value-section-dark-cards .value-pillar-contrast:hover::before {
+  opacity: 0.95;
+  transform: translateX(18%) rotate(7deg);
+}
+/* Subtle living shine, disabled for reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  .value-section-dark-cards .value-pillar-contrast::before {
+    transition:
+      transform 0.85s var(--motion-ease),
+      opacity 0.45s ease;
+  }
+  .value-section-dark-cards .value-pillar-contrast {
+    animation: valueCardGlow 7s ease-in-out infinite;
+  }
+  .value-section-dark-cards .value-pillar-contrast:nth-child(2) {
+    animation-delay: 0.8s;
+  }
+  .value-section-dark-cards .value-pillar-contrast:nth-child(3) {
+    animation-delay: 1.6s;
+  }
+  .value-section-dark-cards .value-pillar-contrast:nth-child(4) {
+    animation-delay: 2.4s;
+  }
+  .value-section-dark-cards .value-pillar-contrast:nth-child(5) {
+    animation-delay: 3.2s;
+  }
+  .value-section-dark-cards .value-pillar-contrast:nth-child(6) {
+    animation-delay: 4s;
+  }
+}
+@keyframes valueCardGlow {
+  0%, 100% {
+    box-shadow:
+      0 30px 80px -45px rgba(var(--shadow-rgb), 0.82),
+      0 16px 42px -32px color-mix(in srgb, var(--accent) 44%, transparent),
+      0 0 0 1px var(--premium-card-inner-highlight) inset,
+      inset 0 1px 0 var(--premium-card-inner-highlight);
+  }
+  50% {
+    box-shadow:
+      0 34px 92px -48px rgba(var(--shadow-rgb), 0.9),
+      0 0 48px -22px var(--premium-card-glow-strong),
+      0 0 0 1px var(--premium-card-inner-highlight) inset,
+      inset 0 1px 0 var(--premium-card-inner-highlight);
+  }
+}
+/* === FINAL VALUE SECTION DARK CARDS END === */
+
+/* === REMOVE VALUE METRIC INNER BOXES START === */
+/* Remove unwanted inner boxes around metric numbers like 450M+ / 180 / 11M+ */
+.value-section-dark-cards .value-pillar-contrast .value-pillar-metric strong,
+.value-section-dark-cards .value-pillar-contrast .value-pillar-metric span,
+.value-section-dark-cards .value-pillar-contrast .value-pillar-metric b,
+.value-section-dark-cards .value-pillar-contrast .value-pillar-metric em {
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.value-section-dark-cards .value-pillar-contrast .value-pillar-metric {
+  overflow: visible !important;
+}
+.value-section-dark-cards .value-pillar-contrast .value-pillar-metric strong {
+  display: inline-flex !important;
+  align-items: center;
+  color: var(--premium-card-light-text) !important;
+  line-height: 1 !important;
+}
+/* === REMOVE VALUE METRIC INNER BOXES END === */
+
+/* === VALUE PILLARS PREMIUM REDESIGN START === */
+.value-grid-premium {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.35rem, 2vw, 2rem);
+  margin-top: clamp(3rem, 5vw, 5.5rem);
+}
+.value-card-premium {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 360px;
+  border-radius: 2rem;
+  padding: clamp(1.65rem, 2vw, 2.15rem);
+  border: 1px solid var(--premium-card-light-border);
+  background:
+    radial-gradient(circle at 88% 0%, var(--premium-card-glow), transparent 36%),
+    radial-gradient(circle at 8% 8%, color-mix(in srgb, var(--value-card-bg) 86%, transparent), transparent 34%),
+    linear-gradient(145deg, var(--value-card-bg) 0%, var(--value-card-bg-2) 45%, var(--premium-card-light-bg-3) 100%);
+  color: var(--value-card-text);
+  box-shadow:
+    0 34px 86px -50px rgba(var(--shadow-rgb), 0.85),
+    0 18px 48px -36px color-mix(in srgb, var(--accent) 50%, transparent),
+    inset 0 1px 0 var(--premium-card-inner-highlight);
+  transition:
+    transform 0.35s var(--motion-ease),
+    box-shadow 0.35s var(--motion-ease),
+    border-color 0.35s ease;
+}
+.value-card-shine {
+  position: absolute;
+  inset: -42%;
+  z-index: -1;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 34%,
+      color-mix(in srgb, var(--section-contrast-text) 70%, transparent) 45%,
+      color-mix(in srgb, var(--accent-soft) 24%, transparent) 54%,
+      transparent 66%
+    );
+  transform: translateX(-44%) rotate(8deg);
+  opacity: 0.7;
+  pointer-events: none;
+  transition:
+    transform 0.9s var(--motion-ease),
+    opacity 0.4s ease;
+}
+.value-card-premium::after {
+  content: "";
+  position: absolute;
+  inset: auto -18% -30% -18%;
+  height: 46%;
+  z-index: -1;
+  background: radial-gradient(circle, var(--premium-card-glow), transparent 64%);
+  pointer-events: none;
+}
+.value-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.value-icon-tile {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--premium-card-light-border);
+  background: linear-gradient(145deg, var(--premium-card-light-accent-bg-2), var(--premium-card-light-accent-bg));
+  color: var(--premium-card-light-accent);
+  box-shadow:
+    inset 0 1px 0 var(--premium-card-inner-highlight),
+    0 16px 30px -24px color-mix(in srgb, var(--accent) 58%, transparent);
+}
+.value-card-eyebrow {
+  max-width: 13rem;
+  border-radius: 999px;
+  border: 1px solid var(--premium-card-light-border);
+  background: linear-gradient(135deg, var(--value-card-bg), var(--premium-card-light-accent-bg));
+  color: var(--premium-card-light-accent-text);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow: 0 12px 24px -22px rgba(var(--shadow-rgb), 0.55);
+}
+.value-card-body {
+  margin-top: 2rem;
+}
+.value-card-body h3 {
+  color: var(--value-card-text);
+  font-size: clamp(1.2rem, 1.4vw, 1.45rem);
+  line-height: 1.25;
+  font-weight: 850;
+  letter-spacing: -0.035em;
+}
+.value-card-body p {
+  margin-top: 1rem;
+  color: var(--value-card-muted);
+  font-size: 0.98rem;
+  line-height: 1.85;
+}
+.value-metric-panel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.8rem;
+  border-radius: 1.2rem;
+  border: 1px solid var(--premium-card-light-border);
+  background:
+    radial-gradient(circle at 100% 0%, var(--premium-card-glow), transparent 42%),
+    linear-gradient(135deg, var(--premium-card-light-bg-2), var(--premium-card-light-accent-bg-2));
+  padding: 0.9rem 1.1rem;
+  box-shadow:
+    inset 0 1px 0 var(--premium-card-inner-highlight),
+    0 18px 38px -34px color-mix(in srgb, var(--accent) 46%, rgba(var(--shadow-rgb), 0.55));
+}
+/* No inner boxes around numbers */
+.value-metric-panel strong {
+  display: block;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  color: var(--premium-card-light-text);
+  font-size: clamp(2rem, 2.5vw, 2.65rem);
+  font-weight: 950;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+.value-metric-panel span {
+  display: block;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  color: var(--premium-card-light-text);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+.value-card-footer {
+  margin-top: 1.65rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid color-mix(in srgb, var(--accent) 16%, transparent);
+}
+.value-card-footer p {
+  color: var(--value-card-muted);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.value-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+.value-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--premium-card-light-border);
+  background: linear-gradient(135deg, var(--value-card-bg), var(--premium-card-light-accent-bg));
+  color: var(--premium-card-light-accent-text);
+  padding: 0.42rem 0.72rem;
+  font-size: 0.75rem;
+  font-weight: 750;
+  box-shadow: 0 10px 20px -18px rgba(var(--shadow-rgb), 0.45);
+}
+.value-card-premium:hover {
+  transform: translateY(-7px);
+  border-color: color-mix(in srgb, var(--accent) 62%, var(--card-border));
+  box-shadow:
+    0 42px 105px -50px rgba(var(--shadow-rgb), 0.92),
+    0 0 56px var(--premium-card-glow-strong),
+    inset 0 1px 0 var(--premium-card-inner-highlight);
+}
+.value-card-premium:hover .value-card-shine {
+  transform: translateX(18%) rotate(8deg);
+  opacity: 0.95;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .value-card-premium {
+    animation: valuePremiumFloat 7s ease-in-out infinite;
+    animation-delay: var(--delay);
+  }
+}
+@keyframes valuePremiumFloat {
+  0%, 100% {
+    box-shadow:
+      0 34px 86px -50px rgba(var(--shadow-rgb), 0.85),
+      0 18px 48px -36px color-mix(in srgb, var(--accent) 44%, transparent),
+      inset 0 1px 0 var(--premium-card-inner-highlight);
+  }
+  50% {
+    box-shadow:
+      0 38px 96px -52px rgba(var(--shadow-rgb), 0.92),
+      0 0 54px -24px var(--premium-card-glow-strong),
+      inset 0 1px 0 var(--premium-card-inner-highlight);
+  }
+}
+@media (max-width: 1100px) {
+  .value-grid-premium {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 720px) {
+  .value-grid-premium {
+    grid-template-columns: 1fr;
+  }
+  .value-card-premium {
+    min-height: auto;
+  }
+  .value-card-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .value-card-eyebrow {
+    text-align: left;
+  }
+}
+/* === VALUE PILLARS PREMIUM REDESIGN END === */
+
+/* === VALUE SECTION PERFORMANCE FIX START === */
+/* Stop scroll lag: no infinite box-shadow animation on large cards */
+.value-card-premium {
+  animation: none !important;
+  will-change: transform;
+  box-shadow:
+    0 24px 54px -38px rgba(var(--shadow-rgb), 0.68),
+    0 10px 30px -26px color-mix(in srgb, var(--accent) 36%, transparent),
+    inset 0 1px 0 var(--premium-card-inner-highlight) !important;
+}
+.value-card-premium::after {
+  opacity: 0.46 !important;
+}
+.value-card-shine {
+  opacity: 0.38 !important;
+  transition:
+    transform 0.65s var(--motion-ease),
+    opacity 0.35s ease !important;
+}
+.value-card-premium:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 30px 70px -42px rgba(var(--shadow-rgb), 0.8),
+    0 0 32px var(--premium-card-glow),
+    inset 0 1px 0 var(--premium-card-inner-highlight) !important;
+}
+.value-card-premium:hover .value-card-shine {
+  opacity: 0.78 !important;
+  transform: translateX(16%) rotate(8deg);
+}
+/* Keep grid/aurora cheap while scrolling */
+.value-section-dark-cards .premium-dark-grid,
+.value-section-dark-cards .value-section-balanced-bg {
+  animation: none !important;
+  opacity: 0.12 !important;
+}
+/* === VALUE SECTION PERFORMANCE FIX END === */
+
+/* === TESTIMONIALS AUTO-SWIPE PROGRESS START === */
+/* Auto-swipe progress indicator (signals the carousel is auto-advancing). */
+.testimonial-progress {
+  position: relative;
+  margin: 1.1rem auto 0;
+  height: 3px;
+  width: min(220px, 60%);
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--card-border) 80%, transparent);
+}
+
+.testimonial-progress-bar {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transform-origin: left center;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+  animation-name: testimonial-progress-fill;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+/* Pause the fill while the reader is hovering/focused (matches JS pause). */
+.testimonial-carousel:hover .testimonial-progress-bar,
+.testimonial-carousel:focus-within .testimonial-progress-bar {
+  animation-play-state: paused;
+}
+
+@keyframes testimonial-progress-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-progress-bar {
+    animation: none !important;
+    transform: scaleX(1);
+  }
+}
+/* === TESTIMONIALS AUTO-SWIPE PROGRESS END === */
+
+/* === CONTACT PAGE COMPACT PREMIUM START === */
+.contact-page-premium {
+  background:
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34%),
+    linear-gradient(180deg, var(--section-bg) 0%, var(--section-alt-bg) 100%);
+}
+.contact-hero-compact {
+  padding-top: clamp(3.2rem, 5vw, 5.8rem) !important;
+  padding-bottom: clamp(4rem, 5.8vw, 6.5rem) !important;
+  background:
+    radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 36%),
+    radial-gradient(circle at 86% 8%, color-mix(in srgb, var(--accent-2) 10%, transparent), transparent 38%),
+    linear-gradient(135deg, var(--premium-card-light-bg-2), var(--premium-card-light-bg-3));
+}
+.contact-hero-aurora {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--premium-grid-line-strong) 1px, transparent 1px),
+    linear-gradient(90deg, var(--premium-grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.5;
+}
+.contact-grid-premium {
+  align-items: start;
+  max-width: 78rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-card-premium {
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--card-border));
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 42%),
+    linear-gradient(145deg, var(--premium-card-light-bg), var(--premium-card-light-bg-2));
+  color: var(--premium-card-light-text);
+  box-shadow:
+    0 28px 72px -48px rgba(var(--shadow-rgb), 0.55),
+    0 0 34px color-mix(in srgb, var(--accent) 8%, transparent),
+    inset 0 1px 0 var(--premium-card-inner-highlight);
+}
+.contact-card-premium h2,
+.contact-card-premium h3 {
+  color: var(--premium-card-light-text) !important;
+}
+.contact-card-premium p,
+.contact-card-premium label,
+.contact-card-premium a {
+  color: var(--premium-card-light-muted);
+}
+.contact-card-premium a:hover {
+  color: var(--accent);
+}
+.contact-card-premium input,
+.contact-card-premium textarea {
+  border-color: var(--card-border) !important;
+  background: var(--premium-card-light-bg) !important;
+  color: var(--premium-card-light-text) !important;
+}
+.contact-card-premium input:focus,
+.contact-card-premium textarea:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent) !important;
+}
+.contact-card-premium [class*="bg-blue-50"],
+.contact-card-premium [class*="bg-orange-50"],
+.contact-card-premium [class*="bg-amber-50"] {
+  background: var(--premium-card-light-bg-3) !important;
+}
+.contact-card-premium [class*="border-blue-100"],
+.contact-card-premium [class*="border-orange-100"],
+.contact-card-premium [class*="border-amber-300"] {
+  border-color: color-mix(in srgb, var(--accent) 22%, var(--card-border)) !important;
+}
+.contact-card-premium [class*="text-orange-600"],
+.contact-card-premium [class*="text-blue-700"] {
+  color: var(--accent) !important;
+}
+.contact-faq-section {
+  background: var(--section-alt-bg);
+  color: var(--text-main);
+}
+@media (max-width: 768px) {
+  .contact-hero-compact {
+    padding-top: 2.6rem !important;
+    padding-bottom: 3.6rem !important;
+  }
+}
+/* === CONTACT PAGE COMPACT PREMIUM END === */
+
+/* === CONTACT HERO FINAL TIGHTEN START === */
+/* Pull contact page content up and remove excessive hero whitespace */
+.contact-hero-compact {
+  padding-top: clamp(1.4rem, 2.2vw, 2.4rem) !important;
+  padding-bottom: clamp(2.4rem, 3.4vw, 4rem) !important;
+}
+.contact-hero-compact .relative.mx-auto {
+  margin-bottom: clamp(1.6rem, 2.4vw, 2.5rem) !important;
+}
+.contact-hero-compact h1 {
+  margin-top: 0 !important;
+  line-height: 0.98 !important;
+  max-width: 58rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-grid-premium {
+  margin-top: 0 !important;
+}
+/* Keep the contact page visually compact on laptop viewports */
+@media (min-width: 1024px) {
+  .contact-hero-compact {
+    padding-top: 1.6rem !important;
+  }
+}
+/* === CONTACT HERO FINAL TIGHTEN END === */
+
+/* === CONTACT DARK HERO FINAL START === */
+/* Dark top contact section, bright form/cards preserved */
+.contact-hero-compact {
+  padding-top: clamp(1.4rem, 2.2vw, 2.4rem) !important;
+  padding-bottom: clamp(2.6rem, 3.8vw, 4.4rem) !important;
+  background:
+    radial-gradient(circle at 18% 0%, var(--premium-dark-glow), transparent 34%),
+    radial-gradient(circle at 86% 12%, var(--premium-dark-glow-2), transparent 42%),
+    var(--contact-hero-bg) !important;
+  color: var(--premium-dark-text) !important;
+}
+.contact-hero-compact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--premium-grid-line-strong) 1px, transparent 1px),
+    linear-gradient(90deg, var(--premium-grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.55;
+}
+.contact-hero-compact .contact-hero-aurora {
+  opacity: 0.18 !important;
+}
+.contact-hero-compact h1 {
+  color: var(--premium-dark-text) !important;
+  text-shadow: 0 18px 46px rgba(var(--shadow-rgb), 0.34);
+}
+.contact-hero-compact h1 span {
+  background: linear-gradient(90deg, var(--accent-soft) 0%, color-mix(in srgb, var(--accent-2) 58%, var(--premium-dark-text)) 45%, var(--premium-dark-text) 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+.contact-hero-compact .relative.mx-auto {
+  margin-bottom: clamp(1.8rem, 2.8vw, 3rem) !important;
+}
+/* Keep contact cards bright on the dark hero */
+.contact-hero-compact .contact-card-premium {
+  background:
+    radial-gradient(circle at 100% 0%, var(--premium-card-glow), transparent 42%),
+    linear-gradient(145deg, var(--value-card-bg) 0%, var(--value-card-bg-2) 48%, var(--premium-card-light-bg-3) 100%) !important;
+  color: var(--value-card-text) !important;
+  border-color: var(--premium-card-light-border) !important;
+  box-shadow:
+    0 32px 82px -46px rgba(var(--shadow-rgb), 0.55),
+    0 0 38px var(--premium-card-glow),
+    inset 0 1px 0 var(--premium-card-inner-highlight) !important;
+}
+.contact-hero-compact .contact-card-premium h2,
+.contact-hero-compact .contact-card-premium h3,
+.contact-hero-compact .contact-card-premium p.font-semibold {
+  color: var(--value-card-text) !important;
+}
+.contact-hero-compact .contact-card-premium p,
+.contact-hero-compact .contact-card-premium label,
+.contact-hero-compact .contact-card-premium a {
+  color: var(--value-card-muted) !important;
+}
+.contact-hero-compact .contact-card-premium [class*="text-orange-600"],
+.contact-hero-compact .contact-card-premium [class*="text-blue-700"] {
+  color: var(--premium-card-light-accent) !important;
+}
+/* === CONTACT DARK HERO FINAL END === */
+
+/* === ABOUT DARK LIGHT PATTERN START === */
+.about-page-premium {
+  background: var(--section-bg);
+}
+/* 1. Dark hero */
+.about-hero-dark {
+  min-height: auto;
+  padding-top: clamp(4.2rem, 6vw, 7rem);
+  padding-bottom: clamp(4.8rem, 7vw, 8rem);
+  background:
+    radial-gradient(circle at 16% 0%, var(--premium-dark-glow), transparent 36%),
+    radial-gradient(circle at 84% 10%, var(--premium-dark-glow-2), transparent 42%),
+    var(--about-hero-bg);
+  color: var(--premium-dark-text);
+}
+.about-hero-overlay {
+  background:
+    linear-gradient(90deg, var(--premium-dark-overlay), var(--premium-dark-overlay-soft), var(--premium-dark-overlay));
+}
+.about-hero-dark .premium-warm-aurora {
+  opacity: 0.16 !important;
+}
+.about-hero-dark img {
+  opacity: 0.16 !important;
+}
+.about-hero-dark a[href="/datacard"] {
+  background: color-mix(in srgb, var(--premium-dark-text) 10%, transparent) !important;
+  color: var(--premium-dark-text) !important;
+  border-color: color-mix(in srgb, var(--premium-dark-text) 26%, transparent) !important;
+}
+/* Bright card inside dark hero */
+.about-bright-card {
+  border: 1px solid var(--premium-card-light-border);
+  background:
+    radial-gradient(circle at 100% 0%, var(--premium-card-glow), transparent 42%),
+    linear-gradient(145deg, var(--value-card-bg) 0%, var(--value-card-bg-2) 48%, var(--premium-card-light-bg-3) 100%);
+  color: var(--value-card-text);
+  box-shadow:
+    0 32px 82px -46px rgba(var(--shadow-rgb), 0.58),
+    0 0 38px var(--premium-card-glow),
+    inset 0 1px 0 var(--premium-card-inner-highlight);
+}
+.about-bright-card h2,
+.about-bright-card h3,
+.about-bright-card p.font-semibold {
+  color: var(--value-card-text) !important;
+}
+.about-bright-card p {
+  color: var(--value-card-muted) !important;
+}
+.about-bright-card [class*="text-orange-700"],
+.about-bright-card [class*="text-orange-600"] {
+  color: var(--premium-card-light-accent) !important;
+}
+.about-bright-card .grid > div[class*="rounded-3xl"] {
+  background: linear-gradient(135deg, var(--premium-card-light-bg-2), var(--premium-card-light-accent-bg-2)) !important;
+  border-color: color-mix(in srgb, var(--accent) 24%, var(--card-border)) !important;
+}
+/* 2. Light section */
+.about-section-light {
+  background:
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 34%),
+    linear-gradient(180deg, var(--premium-card-light-bg-2) 0%, var(--value-card-bg) 100%);
+  color: var(--value-card-text);
+}
+.about-section-light h2,
+.about-section-light h3 {
+  color: var(--value-card-text) !important;
+}
+.about-section-light p {
+  color: var(--value-card-muted);
+}
+.about-section-light [class*="text-orange-700"],
+.about-section-light [class*="text-orange-600"] {
+  color: var(--premium-card-light-accent) !important;
+}
+/* 3. Dark section with bright cards */
+.about-section-dark-cards {
+  background:
+    radial-gradient(circle at 18% 0%, var(--premium-dark-glow), transparent 34%),
+    radial-gradient(circle at 86% 12%, var(--premium-dark-glow-2), transparent 42%),
+    var(--premium-dark-bg);
+  color: var(--premium-dark-text);
+}
+.about-section-dark-cards h2 {
+  color: var(--premium-dark-text) !important;
+}
+.about-section-dark-cards > div > p,
+.about-section-dark-cards .mx-auto > p {
+  color: var(--premium-dark-muted) !important;
+}
+.about-section-dark-cards [class*="text-orange-700"] {
+  color: var(--accent-soft) !important;
+}
+.about-section-dark-cards .premium-card,
+.about-section-dark-cards .premium-card-light,
+.about-section-dark-cards .premium-card-hover {
+  border: 1px solid var(--premium-card-light-border) !important;
+  background:
+    radial-gradient(circle at 100% 0%, var(--premium-card-glow), transparent 38%),
+    linear-gradient(145deg, var(--value-card-bg) 0%, var(--value-card-bg-2) 45%, var(--premium-card-light-bg-3) 100%) !important;
+  color: var(--value-card-text) !important;
+  box-shadow:
+    0 30px 80px -45px rgba(var(--shadow-rgb), 0.82),
+    0 16px 42px -32px color-mix(in srgb, var(--accent) 46%, transparent),
+    inset 0 1px 0 var(--premium-card-inner-highlight) !important;
+}
+.about-section-dark-cards .premium-card h3 {
+  color: var(--value-card-text) !important;
+}
+.about-section-dark-cards .premium-card p {
+  color: var(--value-card-muted) !important;
+}
+/* 4. Muted light section */
+.about-section-muted {
+  background:
+    radial-gradient(circle at 90% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 36%),
+    linear-gradient(180deg, var(--premium-card-light-accent-bg-2) 0%, var(--premium-card-light-bg-2) 100%);
+  color: var(--value-card-text);
+}
+.about-section-muted h2,
+.about-section-muted h3 {
+  color: var(--value-card-text) !important;
+}
+.about-section-muted p {
+  color: var(--value-card-muted);
+}
+.about-section-muted [class*="text-orange-700"] {
+  color: var(--premium-card-light-accent) !important;
+}
+/* Shared About cards */
+.about-page-premium .premium-card-light,
+.about-page-premium .premium-card-hover {
+  border-color: var(--premium-card-light-border) !important;
+}
+.about-page-premium .value-pillar-icon {
+  border-color: var(--premium-card-light-border) !important;
+  background: linear-gradient(145deg, var(--premium-card-light-accent-bg-2), var(--premium-card-light-accent-bg)) !important;
+  color: var(--premium-card-light-accent) !important;
+}
+/* === ABOUT DARK LIGHT PATTERN END === */
+
+/* === INDUSTRY MAILING LIST LANDING PAGE START === */
+.industry-page-premium {
+  overflow: hidden;
+  background: var(--page-bg);
+  color: var(--text-main);
+}
+
+.industry-hero-premium {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(4.5rem, 8vw, 7.5rem);
+  border-bottom: 1px solid var(--contrast-border);
+  color: var(--section-contrast-text);
+  background:
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 36%),
+    radial-gradient(circle at 86% 14%, color-mix(in srgb, var(--accent-2) 22%, transparent), transparent 42%),
+    var(--section-contrast-bg);
+}
+
+.industry-hero-gridline,
+.industry-cta-gridline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--section-contrast-text) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--section-contrast-text) 5%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.58;
+  mask-image: radial-gradient(circle at 30% 10%, var(--section-contrast-text), transparent 78%);
+}
+
+.industry-hero-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.72fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.industry-hero-copy {
+  max-width: 48rem;
+}
+
+.industry-hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  border: 1px solid color-mix(in srgb, var(--section-contrast-text) 18%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--section-contrast-text) 8%, transparent);
+  color: var(--accent-soft);
+  padding: 0.55rem 0.9rem;
+  font-size: 0.74rem;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.industry-hero-title {
+  margin-top: 1.35rem;
+  max-width: 48rem;
+  color: var(--section-contrast-text);
+  font-size: clamp(2.7rem, 6vw, 5.75rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.industry-hero-description {
+  margin-top: 1.4rem;
+  max-width: 43rem;
+  color: var(--section-contrast-muted);
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.85;
+}
+
+.industry-hero-chips,
+.industry-hero-actions,
+.industry-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.industry-hero-chips {
+  margin-top: 1.7rem;
+}
+
+.industry-hero-actions {
+  margin-top: 2.1rem;
+}
+
+.industry-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--accent-border);
+  border-radius: 999px;
+  background: var(--accent-tint);
+  color: var(--accent-strong);
+  padding: 0.5rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.industry-chip-dark {
+  border-color: color-mix(in srgb, var(--section-contrast-text) 18%, transparent);
+  background: color-mix(in srgb, var(--section-contrast-text) 8%, transparent);
+  color: var(--section-contrast-text);
+}
+
+.industry-dark-button {
+  border-color: color-mix(in srgb, var(--section-contrast-text) 44%, transparent) !important;
+  background: color-mix(in srgb, var(--section-contrast-text) 8%, transparent) !important;
+  color: var(--section-contrast-text) !important;
+}
+
+.industry-dark-button:hover {
+  border-color: var(--section-contrast-text) !important;
+  background: var(--section-contrast-text) !important;
+  color: rgb(var(--shadow-rgb)) !important;
+}
+
+.industry-hero-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, var(--card-border));
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 42%),
+    linear-gradient(150deg, var(--card-bg) 0%, var(--surface-1) 100%);
+  color: var(--heading);
+  padding: clamp(1.35rem, 2.4vw, 2rem);
+  box-shadow:
+    0 34px 90px -52px rgba(var(--shadow-rgb), 0.82),
+    inset 0 1px 0 color-mix(in srgb, var(--section-contrast-text) 70%, transparent);
+}
+
+.industry-card-accent {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-soft), var(--accent-2));
+}
+
+.industry-hero-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 1.25rem;
+}
+
+.industry-hero-card-head p,
+.industry-section-heading p,
+.industry-split-heading p:first-child,
+.industry-related-panel > p,
+.industry-quality-copy > p,
+.industry-cta-copy > p {
+  color: var(--accent-strong);
+  font-size: 0.74rem;
+  font-weight: 850;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.industry-hero-card-head h2 {
+  margin-top: 0.45rem;
+  color: var(--heading);
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  font-weight: 850;
+  line-height: 1.15;
+}
+
+.industry-hero-card-icon,
+.industry-icon-tile {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border: 1px solid var(--accent-border);
+  background: var(--accent-tint);
+  color: var(--accent);
+}
+
+.industry-hero-card-icon {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 1.2rem;
+}
+
+.industry-profile-list {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+.industry-profile-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 16%, var(--card-border));
+  border-radius: 1.15rem;
+  background: color-mix(in srgb, var(--surface-1) 72%, var(--card-bg));
+  padding: 0.9rem;
+}
+
+.industry-profile-icon {
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 0.9rem;
+  background: var(--accent-tint);
+  color: var(--accent);
+}
+
+.industry-profile-row strong,
+.industry-profile-row span {
+  display: block;
+}
+
+.industry-profile-row strong {
+  color: var(--heading);
+  font-size: 1rem;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.industry-profile-row div > span {
+  margin-top: 0.2rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.industry-value-strip,
+.industry-use-section {
+  border-block: 1px solid var(--card-border);
+  background:
+    radial-gradient(circle at 12% 0%, var(--accent-tint), transparent 34%),
+    var(--section-bg);
+  color: var(--text-main);
+}
+
+.industry-section-heading {
+  max-width: 46rem;
+  margin-bottom: clamp(2rem, 4vw, 3.2rem);
+}
+
+.industry-section-heading h2,
+.industry-split-heading h2,
+.industry-quality-copy h2,
+.industry-cta-copy h2 {
+  margin-top: 0.75rem;
+  color: var(--heading);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 850;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.industry-value-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.industry-value-card,
+.industry-segment-card,
+.industry-use-card,
+.industry-quality-card {
+  border: 1px solid var(--card-border);
+  background:
+    radial-gradient(circle at 100% 0%, var(--accent-tint), transparent 42%),
+    linear-gradient(160deg, var(--card-bg) 0%, var(--surface-1) 100%);
+  color: var(--text-main);
+  box-shadow: 0 28px 64px -48px rgba(var(--shadow-rgb), 0.28);
+}
+
+.industry-value-card {
+  min-height: 16rem;
+  border-radius: 1.55rem;
+  padding: 1.35rem;
+}
+
+.industry-value-card h3,
+.industry-use-card h3,
+.industry-quality-card h3 {
+  color: var(--heading);
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.industry-value-card h3 {
+  margin-top: 2.5rem;
+  font-size: 1.08rem;
+}
+
+.industry-value-card p,
+.industry-use-card p,
+.industry-quality-card p,
+.industry-split-heading > p,
+.industry-quality-copy span,
+.industry-cta-copy span {
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.industry-value-card p {
+  margin-top: 0.75rem;
+  font-size: 0.94rem;
+}
+
+.industry-icon-tile {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1rem;
+}
+
+.industry-segments-section,
+.industry-quality-section,
+.industry-final-section {
+  background: var(--section-alt-bg);
+  color: var(--text-main);
+}
+
+.industry-split-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(18rem, 0.55fr);
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: clamp(2rem, 4vw, 3.2rem);
+}
+
+.industry-segment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.industry-segment-card {
+  display: flex;
+  min-height: 6.5rem;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 1.25rem;
+  padding: 1rem;
+}
+
+.industry-segment-card svg,
+.industry-use-card svg,
+.industry-quality-card svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.industry-segment-card span {
+  color: var(--heading);
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.industry-related-panel {
+  margin-top: 1.6rem;
+  border: 1px solid var(--card-border);
+  border-radius: 1.5rem;
+  background: var(--card-bg);
+  padding: 1.25rem;
+  box-shadow: 0 24px 54px -46px rgba(var(--shadow-rgb), 0.24);
+}
+
+.industry-related-panel > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.9rem;
+}
+
+.industry-use-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.industry-use-card {
+  min-height: 13rem;
+  border-radius: 1.35rem;
+  padding: 1.2rem;
+}
+
+.industry-use-card h3 {
+  margin-top: 1.4rem;
+  font-size: 1rem;
+}
+
+.industry-use-card p {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.industry-quality-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  border: 1px solid var(--card-border);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at 0% 0%, var(--accent-tint), transparent 36%),
+    var(--card-bg);
+  padding: clamp(1.4rem, 4vw, 3rem);
+  box-shadow: 0 32px 76px -54px rgba(var(--shadow-rgb), 0.3);
+}
+
+.industry-quality-copy span {
+  display: block;
+  margin-top: 1rem;
+  max-width: 42rem;
+}
+
+.industry-quality-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.industry-quality-card {
+  display: flex;
+  gap: 0.8rem;
+  min-height: 8.5rem;
+  border-radius: 1.25rem;
+  padding: 1rem;
+}
+
+.industry-quality-card h3 {
+  font-size: 0.98rem;
+}
+
+.industry-quality-card p {
+  margin-top: 0.45rem;
+  font-size: 0.88rem;
+}
+
+.industry-final-section {
+  border-top: 1px solid var(--card-border);
+}
+
+.industry-cta-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  border: 1px solid var(--contrast-border);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at 84% 0%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 40%),
+    radial-gradient(circle at 10% 100%, color-mix(in srgb, var(--accent-2) 20%, transparent), transparent 42%),
+    var(--section-contrast-bg);
+  color: var(--section-contrast-text);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  box-shadow: 0 42px 96px -58px rgba(var(--shadow-rgb), 0.86);
+}
+
+.industry-cta-copy {
+  position: relative;
+  max-width: 48rem;
+}
+
+.industry-cta-copy > p {
+  color: var(--accent-soft);
+}
+
+.industry-cta-copy h2 {
+  color: var(--section-contrast-text);
+}
+
+.industry-cta-copy span {
+  display: block;
+  margin-top: 1rem;
+  max-width: 40rem;
+  color: var(--section-contrast-muted);
+}
+
+.industry-cta-actions {
+  position: relative;
+  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1100px) {
+  .industry-hero-layout,
+  .industry-quality-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .industry-value-grid,
+  .industry-use-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .industry-split-heading {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .industry-cta-panel {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .industry-cta-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .industry-hero-premium {
+    padding-block: 3.4rem 4.2rem;
+  }
+
+  .industry-hero-title {
+    font-size: clamp(2.35rem, 12vw, 3.4rem);
+  }
+
+  .industry-hero-actions,
+  .industry-cta-actions {
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .industry-hero-actions > *,
+  .industry-cta-actions > * {
+    width: 100%;
+  }
+
+  .industry-value-grid,
+  .industry-segment-grid,
+  .industry-use-grid,
+  .industry-quality-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .industry-value-card,
+  .industry-use-card,
+  .industry-quality-card {
+    min-height: auto;
+  }
+}
+/* === INDUSTRY MAILING LIST LANDING PAGE END === */
+
+/* === INDUSTRY HERO SPACING FIX START === */
+/* Pull dynamic industry page hero closer to navbar */
+.industry-hero-premium {
+  padding-top: clamp(3rem, 4.5vw, 5rem) !important;
+  padding-bottom: clamp(4rem, 5.5vw, 6.25rem) !important;
+}
+.industry-hero-layout {
+  align-items: center !important;
+}
+@media (min-width: 1024px) {
+  .industry-hero-premium {
+    padding-top: 4rem !important;
+  }
+}
+@media (max-width: 768px) {
+  .industry-hero-premium {
+    padding-top: 2.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+}
+/* === INDUSTRY HERO SPACING FIX END === */
+
+/* === INDUSTRY HERO HIERARCHY POLISH START === */
+/* Reduce oversized left hero title */
+.industry-hero-title {
+  max-width: 11ch;
+  font-size: clamp(4rem, 6.8vw, 6.7rem) !important;
+  line-height: 0.96 !important;
+  letter-spacing: -0.075em !important;
+}
+/* Keep description readable and slightly less dominant */
+.industry-hero-description {
+  max-width: 48rem !important;
+  font-size: clamp(1.05rem, 1.25vw, 1.28rem) !important;
+  line-height: 1.75 !important;
+}
+/* Make the profile card feel more important */
+.industry-hero-card {
+  max-width: 34rem !important;
+  padding: clamp(2rem, 2.3vw, 2.6rem) !important;
+  border-radius: 2.1rem !important;
+  box-shadow:
+    0 36px 92px -48px rgba(var(--shadow-rgb), 0.78),
+    0 0 48px color-mix(in srgb, var(--accent) 18%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78) !important;
+}
+/* Industry name inside right card should dominate */
+.industry-hero-card-head h2 {
+  font-size: clamp(2.05rem, 2.7vw, 3rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.055em !important;
+  color: var(--heading) !important;
+}
+.industry-hero-card-head p {
+  font-size: 0.78rem !important;
+  letter-spacing: 0.2em !important;
+  color: var(--accent-strong) !important;
+}
+/* Make first record-count row the primary stat */
+.industry-profile-list .industry-profile-row:first-child {
+  padding: 1.35rem 1.45rem !important;
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 44%),
+    linear-gradient(135deg, var(--card-bg), var(--surface-1)) !important;
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--card-border)) !important;
+  box-shadow:
+    0 18px 42px -32px rgba(var(--shadow-rgb), 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
+}
+/* Record count should be clearly bigger */
+.industry-profile-list .industry-profile-row:first-child strong {
+  font-size: clamp(1.75rem, 2.4vw, 2.45rem) !important;
+  line-height: 1 !important;
+  letter-spacing: -0.055em !important;
+  color: var(--heading) !important;
+}
+.industry-profile-list .industry-profile-row:first-child span {
+  font-size: 0.78rem !important;
+  letter-spacing: 0.14em !important;
+  color: var(--accent-strong) !important;
+}
+/* Secondary rows should look useful but smaller */
+.industry-profile-list .industry-profile-row:not(:first-child) {
+  padding: 1rem 1.15rem !important;
+  opacity: 0.92;
+}
+.industry-profile-list .industry-profile-row:not(:first-child) strong {
+  font-size: clamp(1rem, 1.18vw, 1.18rem) !important;
+  line-height: 1.15 !important;
+}
+.industry-profile-list .industry-profile-row:not(:first-child) span {
+  font-size: 0.72rem !important;
+}
+/* Slightly reduce hero chip dominance */
+.industry-hero-chips {
+  margin-top: 1.7rem !important;
+}
+.industry-chip-dark {
+  font-size: 0.78rem !important;
+  padding: 0.48rem 0.9rem !important;
+}
+/* Keep CTAs balanced */
+.industry-hero-actions {
+  margin-top: 2rem !important;
+}
+/* Responsive safety */
+@media (max-width: 1023px) {
+  .industry-hero-title {
+    max-width: 100%;
+    font-size: clamp(3.2rem, 12vw, 5.2rem) !important;
+  }
+  .industry-hero-card {
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 640px) {
+  .industry-hero-title {
+    font-size: clamp(2.7rem, 13vw, 4rem) !important;
+  }
+  .industry-hero-card-head h2 {
+    font-size: clamp(1.7rem, 8vw, 2.2rem) !important;
+  }
+  .industry-profile-list .industry-profile-row:first-child strong {
+    font-size: clamp(1.6rem, 8vw, 2.1rem) !important;
+  }
+}
+/* === INDUSTRY HERO HIERARCHY POLISH END === */
+
+/* === INDUSTRY TITLE SIZE FINAL START === */
+/* Reduce oversized industry titles on dynamic mailing-list pages */
+/* Left hero title */
+.industry-hero-title {
+  max-width: 12ch !important;
+  font-size: clamp(3.35rem, 5.4vw, 5.45rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.055em !important;
+}
+/* Right card industry name */
+.industry-hero-card-head h2 {
+  font-size: clamp(1.55rem, 1.9vw, 2.15rem) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.035em !important;
+}
+/* Record count should remain dominant, but not oversized */
+.industry-profile-list .industry-profile-row:first-child strong {
+  font-size: clamp(1.45rem, 1.9vw, 2rem) !important;
+  line-height: 1 !important;
+}
+/* Better right-card balance */
+.industry-hero-card {
+  max-width: 32rem !important;
+}
+@media (max-width: 1023px) {
+  .industry-hero-title {
+    max-width: 100% !important;
+    font-size: clamp(2.8rem, 10vw, 4.4rem) !important;
+  }
+  .industry-hero-card-head h2 {
+    font-size: clamp(1.45rem, 6vw, 2rem) !important;
+  }
+}
+@media (max-width: 640px) {
+  .industry-hero-title {
+    font-size: clamp(2.35rem, 11vw, 3.4rem) !important;
+  }
+}
+/* === INDUSTRY TITLE SIZE FINAL END === */
+
+/* === INDUSTRY DATA COUNT SIZE TWEAK START === */
+/* Slightly increase source-backed record count in industry profile card */
+.industry-profile-list .industry-profile-row:first-child strong {
+  font-size: clamp(1.7rem, 2.25vw, 2.35rem) !important;
+  line-height: 1 !important;
+  letter-spacing: -0.055em !important;
+}
+.industry-profile-list .industry-profile-row:first-child span {
+  font-size: 0.8rem !important;
+}
+/* === INDUSTRY DATA COUNT SIZE TWEAK END === */
+
+/* === INDUSTRY RECORD COUNT DOMINANCE START === */
+/* Make source-backed industry record count more dominant, but still below hero title scale */
+.industry-profile-list .industry-profile-row:first-child {
+  padding: 1.45rem 1.55rem !important;
+  gap: 1rem !important;
+}
+.industry-profile-list .industry-profile-row:first-child strong {
+  font-size: clamp(2.35rem, 3.35vw, 3.45rem) !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.075em !important;
+  font-weight: 950 !important;
+  color: var(--heading) !important;
+}
+.industry-profile-list .industry-profile-row:first-child span {
+  margin-top: 0.35rem !important;
+  font-size: 0.82rem !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.15em !important;
+  font-weight: 900 !important;
+  color: var(--accent-strong) !important;
+}
+/* Keep right-card industry name bigger than the count hierarchy overall */
+.industry-hero-card-head h2 {
+  font-size: clamp(1.8rem, 2.35vw, 2.7rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.045em !important;
+}
+@media (max-width: 640px) {
+  .industry-profile-list .industry-profile-row:first-child strong {
+    font-size: clamp(2rem, 10vw, 2.75rem) !important;
+  }
+  .industry-hero-card-head h2 {
+    font-size: clamp(1.6rem, 7vw, 2.2rem) !important;
+  }
+}
+/* === INDUSTRY RECORD COUNT DOMINANCE END === */
+
+/* === INDUSTRY HERO VIEWPORT POSITION FINAL START === */
+/* Pull dynamic industry hero closer to navbar/viewport top */
+.industry-hero-premium {
+  min-height: auto !important;
+  padding-top: clamp(1.8rem, 2.8vw, 3.2rem) !important;
+  padding-bottom: clamp(3.2rem, 4.6vw, 5.25rem) !important;
+}
+.industry-hero-layout {
+  align-items: center !important;
+}
+/* Reduce extra visual dead space above the kicker */
+.industry-hero-copy {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+.industry-hero-kicker {
+  margin-top: 0 !important;
+  margin-bottom: clamp(1.4rem, 2vw, 2rem) !important;
+}
+/* Keep right card aligned with title area */
+.industry-hero-card {
+  margin-top: 0 !important;
+}
+@media (min-width: 1024px) {
+  .industry-hero-premium {
+    padding-top: 2.25rem !important;
+  }
+}
+@media (max-width: 768px) {
+  .industry-hero-premium {
+    padding-top: 1.6rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+/* === INDUSTRY HERO VIEWPORT POSITION FINAL END === */
+
+/* === HERO HIGHLIGHT AND COVERAGE COUNT FIX START === */
+.hero-premium-highlight {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  /* Slightly lighter than the font-black (900) headline so the phrase reads as
+     refined premium typography, never a forced extra-bold word. */
+  font-weight: 800;
+  /* Clean theme-aware gradient text ONLY ΓÇö deliberately no underline, no ::before
+     / ::after rule, no background rectangle, no inset highlighter strip, no glow
+     bar and no border/box. The phrase is differentiated purely by colour + the
+     gradient. The token set switches between an icy / electric blend on dark hero
+     palettes and a deep royal / indigo blend on light ones, so it stays premium
+     across every theme. Solid fallback first in case background-clip is
+     unsupported, so the phrase is never invisible. */
+  color: var(--hero-highlight-mid);
+  background: linear-gradient(
+    96deg,
+    var(--hero-highlight-start) 0%,
+    var(--hero-highlight-mid) 48%,
+    var(--hero-highlight-end) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Very subtle depth only, applied to the clipped glyphs so they stay legible
+     against the hero backdrop ΓÇö not a halo or glow bar. */
+  filter: drop-shadow(0 1px 1px color-mix(in srgb, var(--hero-text) 18%, transparent));
+}
+
+.coverage-contact-count-card {
+  /* This tile always sits on the dark command panel, so it is a deliberately
+     BRIGHT, elevated chip. Text colours are keyed off --shadow-rgb (always a
+     dark tint, even on dark-page palettes where --heading flips light) so the
+     label + number stay readable on every theme. */
+  --coverage-count-bg: color-mix(in srgb, #ffffff 90%, var(--accent) 10%);
+  --coverage-count-bg-2: color-mix(in srgb, #ffffff 82%, var(--surface-1) 18%);
+  --coverage-count-text: rgb(var(--shadow-rgb));
+  --coverage-count-label: color-mix(in srgb, var(--accent-strong) 82%, rgb(var(--shadow-rgb)) 18%);
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 46%),
+    linear-gradient(145deg, var(--coverage-count-bg), var(--coverage-count-bg-2)) !important;
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--card-border)) !important;
+  color: var(--coverage-count-text) !important;
+  min-width: 9.75rem;
+  box-shadow:
+    0 22px 40px -24px rgba(var(--shadow-rgb), 0.62),
+    0 2px 6px -2px rgba(var(--shadow-rgb), 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+}
+
+.coverage-contact-count-label {
+  color: var(--coverage-count-label) !important;
+  font-size: 0.6rem;
+  font-weight: 800 !important;
+  line-height: 1;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+.coverage-contact-count-value {
+  margin-top: 0.4rem;
+  color: var(--coverage-count-text) !important;
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  font-weight: 850 !important;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+  -webkit-text-fill-color: currentColor !important;
+}
+/* === HERO HIGHLIGHT AND COVERAGE COUNT FIX END === */
+
+/* === BROWSE DATACARD DARK LIGHT PATTERN START === */
+.browse-datacard-page {
+  background: var(--section-bg);
+  color: var(--text-main);
+}
+/* First section: dark, theme-based hero */
+.browse-datacard-hero {
+  background:
+    radial-gradient(circle at 16% 0%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 36%),
+    radial-gradient(circle at 86% 12%, color-mix(in srgb, var(--accent-2) 20%, transparent), transparent 42%),
+    var(--section-contrast-bg) !important;
+  color: var(--section-contrast-text) !important;
+}
+.browse-datacard-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--section-contrast-text) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--section-contrast-text) 4%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.45;
+  mask-image: linear-gradient(to bottom, black 10%, transparent 92%);
+}
+.browse-hero-orb-left {
+  background: color-mix(in srgb, var(--accent) 28%, transparent) !important;
+}
+.browse-hero-orb-right {
+  background: color-mix(in srgb, var(--accent-2) 24%, transparent) !important;
+}
+.browse-hero-kicker {
+  border: 1px solid color-mix(in srgb, var(--accent-soft) 32%, transparent);
+  background: color-mix(in srgb, var(--section-contrast-text) 9%, transparent);
+  color: var(--accent-soft);
+  backdrop-filter: blur(18px);
+}
+.browse-hero-kicker svg {
+  color: var(--accent-soft) !important;
+}
+.browse-hero-title {
+  color: var(--section-contrast-text) !important;
+  text-shadow: 0 18px 46px rgba(var(--shadow-rgb), 0.38);
+}
+.browse-title-highlight {
+  background:
+    linear-gradient(
+      96deg,
+      var(--hero-highlight-start, color-mix(in srgb, var(--accent-soft) 72%, white 28%)) 0%,
+      var(--hero-highlight-mid, color-mix(in srgb, var(--accent-2) 68%, white 32%)) 52%,
+      var(--hero-highlight-end, color-mix(in srgb, var(--section-contrast-text) 90%, var(--accent) 10%)) 100%
+    ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+.browse-hero-copy {
+  color: var(--section-contrast-muted) !important;
+}
+/* Bright readable cards inside dark hero */
+.browse-hero-card {
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--card-border)) !important;
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 42%),
+    linear-gradient(145deg, var(--card-bg), var(--surface-1)) !important;
+  color: var(--text-main) !important;
+  box-shadow:
+    0 32px 82px -46px rgba(var(--shadow-rgb), 0.72),
+    0 0 38px color-mix(in srgb, var(--accent) 16%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--card-bg) 70%, white 30%) !important;
+}
+.browse-hero-card h2,
+.browse-hero-card p,
+.browse-hero-card div {
+  color: inherit;
+}
+.browse-hero-card [class*="text-orange"],
+.browse-hero-card [class*="text-blue"] {
+  color: var(--accent) !important;
+}
+.browse-hero-card [class*="border-slate"],
+.browse-hero-card [class*="border-blue"] {
+  border-color: var(--card-border) !important;
+}
+.browse-hero-card [class*="bg-blue"],
+.browse-hero-card [class*="bg-orange"] {
+  background: var(--accent-tint) !important;
+}
+.browse-card-orb {
+  background: color-mix(in srgb, var(--accent) 18%, transparent) !important;
+}
+/* Guarantee pills inside the dark hero */
+.browse-datacard-hero li {
+  border-color: color-mix(in srgb, var(--accent-soft) 28%, transparent) !important;
+  background: color-mix(in srgb, var(--section-contrast-text) 8%, transparent) !important;
+  color: var(--section-contrast-text) !important;
+  backdrop-filter: blur(16px);
+}
+.browse-datacard-hero li svg {
+  color: var(--accent-soft) !important;
+}
+/* Second section: light/surface pattern after dark hero */
+.browse-category-section {
+  background:
+    radial-gradient(circle at top, var(--accent-tint), transparent 36%),
+    linear-gradient(180deg, var(--section-bg), var(--section-alt-bg)) !important;
+  color: var(--text-main);
+}
+.browse-category-section h2 {
+  color: var(--heading) !important;
+}
+.browse-category-section p {
+  color: var(--text-muted);
+}
+.browse-category-section input {
+  border-color: var(--card-border) !important;
+  background: var(--card-bg) !important;
+  color: var(--text-main) !important;
+}
+.browse-category-section input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent) !important;
+}
+.browse-category-section [class*="text-blue"] {
+  color: var(--accent) !important;
+}
+/* === BROWSE DATACARD DARK LIGHT PATTERN END === */
+
+
+/* Technology page premium theme rhythm */
+.technology-page-premium {
+  background: var(--section-bg);
+  color: var(--text-main);
+}
+
+.technology-hero-dark {
+  border-bottom: 1px solid color-mix(in srgb, var(--section-contrast-text) 12%, transparent);
+  background:
+    radial-gradient(circle at 12% 16%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 34%),
+    radial-gradient(circle at 86% 30%, color-mix(in srgb, var(--accent-2) 22%, transparent), transparent 34%),
+    linear-gradient(135deg, var(--section-contrast-bg), color-mix(in srgb, var(--section-contrast-bg) 88%, var(--accent) 12%));
+  color: var(--section-contrast-text);
+}
+
+.technology-hero-grid {
+  opacity: 0.42;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--section-contrast-text) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--section-contrast-text) 6%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, black 8%, transparent 92%);
+}
+
+.technology-hero-orb {
+  position: absolute;
+  z-index: -10;
+  border-radius: 9999px;
+  filter: blur(64px);
+  pointer-events: none;
+}
+
+.technology-hero-orb-one {
+  left: 8%;
+  top: 3rem;
+  width: 18rem;
+  height: 18rem;
+  background: color-mix(in srgb, var(--accent) 24%, transparent);
+}
+
+.technology-hero-orb-two {
+  right: 5%;
+  top: 34%;
+  width: 20rem;
+  height: 20rem;
+  background: color-mix(in srgb, var(--accent-2) 18%, transparent);
+}
+
+.technology-hero-orb-three {
+  left: 45%;
+  top: 48%;
+  width: 24rem;
+  height: 24rem;
+  background: color-mix(in srgb, var(--section-contrast-text) 4%, transparent);
+}
+
+.technology-hero-kicker {
+  border: 1px solid color-mix(in srgb, var(--section-contrast-text) 16%, transparent);
+  background: color-mix(in srgb, var(--section-contrast-text) 10%, transparent);
+  color: var(--section-contrast-muted);
+  box-shadow: 0 18px 45px rgba(var(--shadow-rgb), 0.22);
+  backdrop-filter: blur(18px);
+}
+
+.technology-hero-kicker svg {
+  color: var(--accent-2);
+}
+
+.technology-hero-title {
+  color: var(--section-contrast-text);
+}
+
+.technology-title-highlight {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.technology-hero-copy {
+  color: var(--section-contrast-muted);
+}
+
+/* Orbital hero visual (TechConstellation) ΓÇö theme-aware, motion-safe. */
+.tech-constellation-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-constellation {
+  position: relative;
+  width: 100%;
+  max-width: 26rem;
+  aspect-ratio: 1 / 1;
+  transform-style: preserve-3d;
+}
+
+.tech-constellation-glow {
+  position: absolute;
+  inset: 12%;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--accent) 30%, transparent), transparent 62%),
+    radial-gradient(circle at 70% 75%, color-mix(in srgb, var(--accent-2) 24%, transparent), transparent 60%);
+  filter: blur(34px);
+  pointer-events: none;
+}
+
+.tech-constellation-ringline {
+  position: absolute;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--section-contrast-text) 16%, transparent);
+  pointer-events: none;
+}
+
+.tech-constellation-ringline-1 {
+  inset: 23%;
+}
+
+.tech-constellation-ringline-2 {
+  inset: 7%;
+  border-color: color-mix(in srgb, var(--section-contrast-text) 10%, transparent);
+  border-style: dashed;
+}
+
+.tech-constellation-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 38%;
+  height: 38%;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--section-contrast-text) 18%, transparent);
+  background:
+    radial-gradient(circle at 30% 25%, color-mix(in srgb, var(--section-contrast-text) 14%, transparent), transparent 60%),
+    color-mix(in srgb, var(--section-contrast-text) 8%, transparent);
+  box-shadow:
+    0 28px 70px rgba(var(--shadow-rgb), 0.4),
+    inset 0 1px 0 color-mix(in srgb, var(--section-contrast-text) 22%, transparent);
+  backdrop-filter: blur(16px);
+  text-align: center;
+}
+
+.tech-constellation-core-accent {
+  position: absolute;
+  inset: -1px;
+  border-radius: 9999px;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--accent), transparent 55%, var(--accent-2));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.tech-constellation-count {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--section-contrast-text);
+}
+
+.tech-constellation-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--section-contrast-muted);
+}
+
+.tech-constellation-orbit {
+  position: absolute;
+  inset: 0;
+}
+
+.tech-constellation-node {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--section-contrast-text) 18%, transparent);
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--section-contrast-text) 14%, transparent), color-mix(in srgb, var(--section-contrast-text) 6%, transparent));
+  color: var(--section-contrast-text);
+  box-shadow: 0 14px 30px rgba(var(--shadow-rgb), 0.34);
+  backdrop-filter: blur(12px);
+}
+
+.tech-constellation-node-inner {
+  display: grid;
+  place-items: center;
+  color: color-mix(in srgb, var(--accent-soft) 70%, var(--section-contrast-text) 30%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-constellation {
+    transform: none !important;
+  }
+}
+
+.technology-list-section {
+  background: linear-gradient(180deg, var(--section-alt-bg), var(--section-bg));
+}
+
+.technology-list-soft-bg {
+  background: radial-gradient(circle at top, var(--accent-tint), transparent 38%);
+  opacity: 0.75;
+}
+
+.technology-list-kicker,
+.technology-search-icon {
+  color: var(--accent-strong);
+}
+
+.technology-list-title,
+.technology-list-card-title,
+.technology-empty-state p:first-child {
+  color: var(--heading);
+}
+
+.technology-search-input {
+  border: 1px solid var(--card-border);
+  background: var(--card-elevated-bg);
+  color: var(--text-main);
+  box-shadow: 0 18px 45px rgba(var(--shadow-rgb), 0.08);
+}
+
+.technology-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.technology-search-input:focus {
+  border-color: var(--accent);
+  box-shadow:
+    0 18px 45px rgba(var(--shadow-rgb), 0.1),
+    0 0 0 4px var(--accent-tint);
+}
+
+.technology-search-count {
+  color: var(--text-muted);
+}
+
+.technology-list-card {
+  border: 1px solid var(--card-border);
+  background: var(--card-elevated-bg);
+  color: var(--text-main);
+  box-shadow: 0 18px 46px rgba(var(--shadow-rgb), 0.07);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.technology-list-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-border);
+  box-shadow: 0 24px 60px rgba(var(--shadow-rgb), 0.11);
+}
+
+.technology-list-card-accent {
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+}
+
+.technology-list-card-icon {
+  border: 1px solid var(--accent-border);
+  background: var(--accent-tint);
+  color: var(--accent-strong);
+}
+
+.technology-list-card:hover .technology-list-card-icon {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--cta-text);
+}
+
+.technology-empty-state {
+  border: 1px solid var(--card-border);
+  background: var(--card-elevated-bg);
+  box-shadow: 0 18px 46px rgba(var(--shadow-rgb), 0.07);
+}
+
+.technology-empty-state p:last-child {
+  color: var(--text-muted);
+}
+
+/* === TECHNOLOGY DARK HERO READABILITY FIX START === */
+/* Force Technology List first section back to a proper dark, theme-based hero */
+.technology-hero-dark {
+  min-height: clamp(620px, 82vh, 860px);
+  border-bottom: 1px solid color-mix(in srgb, var(--section-contrast-text) 12%, transparent) !important;
+  background:
+    radial-gradient(circle at 14% 18%, color-mix(in srgb, var(--accent) 34%, transparent), transparent 34%),
+    radial-gradient(circle at 72% 36%, color-mix(in srgb, var(--accent-2) 34%, transparent), transparent 38%),
+    radial-gradient(circle at 92% 4%, color-mix(in srgb, var(--accent-soft) 14%, transparent), transparent 34%),
+    var(--section-contrast-bg) !important;
+  color: var(--section-contrast-text) !important;
+}
+.technology-hero-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -18;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--section-contrast-text) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(color-mix(in srgb, var(--section-contrast-text) 5%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.38;
+  mask-image: linear-gradient(to bottom, black 8%, transparent 96%);
+}
+.technology-hero-grid {
+  opacity: 0.32 !important;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--section-contrast-text) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--section-contrast-text) 6%, transparent) 1px, transparent 1px) !important;
+  background-size: 64px 64px !important;
+  mask-image: linear-gradient(to bottom, black 8%, transparent 92%);
+}
+/* Darken the left reading area so white copy is readable */
+.technology-hero-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -16;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(var(--shadow-rgb), 0.54) 0%,
+      rgba(var(--shadow-rgb), 0.34) 38%,
+      transparent 72%
+    );
+}
+.technology-hero-orb-one {
+  background: color-mix(in srgb, var(--accent) 38%, transparent) !important;
+  opacity: 0.85;
+}
+.technology-hero-orb-two {
+  background: color-mix(in srgb, var(--accent-2) 34%, transparent) !important;
+  opacity: 0.82;
+}
+.technology-hero-orb-three {
+  background: color-mix(in srgb, var(--accent-soft) 18%, transparent) !important;
+  opacity: 0.55;
+}
+.technology-hero-kicker {
+  border: 1px solid color-mix(in srgb, var(--section-contrast-text) 20%, transparent) !important;
+  background: color-mix(in srgb, var(--section-contrast-text) 10%, transparent) !important;
+  color: color-mix(in srgb, var(--section-contrast-text) 88%, var(--accent-soft) 12%) !important;
+  box-shadow: 0 22px 56px -34px rgba(var(--shadow-rgb), 0.62);
+  backdrop-filter: blur(18px);
+}
+.technology-hero-kicker svg {
+  color: var(--accent-soft) !important;
+}
+.technology-hero-title {
+  color: var(--section-contrast-text) !important;
+  text-shadow:
+    0 18px 48px rgba(var(--shadow-rgb), 0.55),
+    0 2px 8px rgba(var(--shadow-rgb), 0.32);
+}
+.technology-title-highlight {
+  background:
+    linear-gradient(
+      96deg,
+      color-mix(in srgb, var(--accent-soft) 52%, #ffffff 48%) 0%,
+      color-mix(in srgb, var(--section-contrast-text) 72%, var(--accent-soft) 28%) 46%,
+      color-mix(in srgb, var(--accent-2) 64%, #d8d0ff 36%) 100%
+    ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  filter: drop-shadow(0 2px 4px rgba(var(--shadow-rgb), 0.32));
+}
+.technology-hero-copy {
+  color: color-mix(in srgb, var(--section-contrast-text) 78%, transparent) !important;
+  text-shadow: 0 8px 24px rgba(var(--shadow-rgb), 0.42);
+}
+/* Make the constellation visible on the darker hero */
+.tech-constellation-core {
+  background:
+    radial-gradient(circle at 35% 24%, color-mix(in srgb, var(--section-contrast-text) 20%, transparent), transparent 58%),
+    color-mix(in srgb, var(--section-contrast-text) 10%, transparent) !important;
+  border-color: color-mix(in srgb, var(--section-contrast-text) 22%, transparent) !important;
+  box-shadow:
+    0 34px 90px -40px rgba(var(--shadow-rgb), 0.74),
+    0 0 70px color-mix(in srgb, var(--accent) 22%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--section-contrast-text) 24%, transparent) !important;
+}
+.tech-constellation-count {
+  color: var(--section-contrast-text) !important;
+  text-shadow: 0 10px 32px rgba(var(--shadow-rgb), 0.48);
+}
+.tech-constellation-label {
+  color: color-mix(in srgb, var(--section-contrast-text) 76%, transparent) !important;
+}
+.tech-constellation-node {
+  border-color: color-mix(in srgb, var(--section-contrast-text) 20%, transparent) !important;
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--section-contrast-text) 16%, transparent),
+      color-mix(in srgb, var(--section-contrast-text) 7%, transparent)
+    ) !important;
+  color: var(--section-contrast-text) !important;
+}
+/* Keep the list section after the dark hero light and readable */
+.technology-list-section {
+  background:
+    radial-gradient(circle at top, var(--accent-tint), transparent 36%),
+    linear-gradient(180deg, var(--section-bg), var(--section-alt-bg)) !important;
+  color: var(--text-main) !important;
+}
+/* === TECHNOLOGY DARK HERO READABILITY FIX END === */

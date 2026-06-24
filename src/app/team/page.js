@@ -30,13 +30,13 @@ const leaders = [
 const team = [
   {
     name: "Roger Depay",
-    role: "VP of sales",
+    role: "Business Development Manager",
     description: "Results-Oriented Sales Strategist",
     image: "/team/team leader 3.jpg",
   },
   {
     name: "David Johnson",
-    role: "Director of sales",
+    role: "Business Development Manager",
     description: "Sales Operations Leader",
     image: "/team/team leader 1.jpeg",
   },
@@ -121,7 +121,7 @@ const Portrait = ({ person, size = "large" }) => {
 
   return (
     <div
-      className={`${sizeClasses} relative overflow-hidden rounded-full border-4 border-blue-300/25 bg-blue-400/10`}
+      className={`${sizeClasses} relative overflow-hidden rounded-full border-4 border-[color:var(--accent-border)] bg-[color:var(--accent-tint)]`}
     >
       {person.image ? (
         <Image
@@ -132,7 +132,7 @@ const Portrait = ({ person, size = "large" }) => {
           className="object-cover"
         />
       ) : (
-        <div className="grid h-full w-full place-items-center font-bold text-blue-200">
+        <div className="grid h-full w-full place-items-center font-bold text-[color:var(--accent)]">
           {initials(person.name)}
         </div>
       )}
@@ -142,9 +142,9 @@ const Portrait = ({ person, size = "large" }) => {
 
 export default function TeamLayout() {
   return (
-    <div className="overflow-hidden bg-slate-950 text-white">
-      <Section className="relative border-b border-white/10 bg-[#211713]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(241,90,36,0.18),transparent_42%)]" />
+    <div className="bdz-page overflow-hidden">
+      <Section className="premium-tech-espresso relative border-b border-white/10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_srgb,var(--accent)_22%,transparent),transparent_42%)]" />
         <div className="relative mx-auto mb-12 max-w-3xl text-center lg:mb-16">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
             Leadership
@@ -178,7 +178,7 @@ export default function TeamLayout() {
         </div>
       </Section>
 
-      <Section className="bg-gradient-to-b from-slate-100 to-white text-slate-950">
+      <Section className="bdz-section-alt text-[color:var(--text-main)]">
         <div className="mx-auto mb-12 max-w-3xl text-center lg:mb-16">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-700">
             Our People
@@ -212,7 +212,7 @@ export default function TeamLayout() {
         </div>
       </Section>
 
-      <Section className="border-y border-white/10 bg-slate-900">
+      <Section className="premium-tech-espresso border-y border-white/10">
         <div className="mx-auto mb-12 max-w-3xl text-center lg:mb-16">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-orange-400">
             How We Work

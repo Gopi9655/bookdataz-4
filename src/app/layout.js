@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "sales",
-      "telephone": "+1-901-942-8334",
+      "telephone": "9017800114",
       "email": "sales@bookdataz.com"
     },
     "sameAs": [

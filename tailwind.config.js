@@ -26,8 +26,8 @@ module.exports = {
         xl: '1280px',
       },
       colors: {
-        // Warm charcoal structural colour. Names are kept for existing classes.
-        customBlue: '#1b1815',
+        // Structural heading colour ΓÇö now theme-driven so it follows ThemeTweaks.
+        customBlue: 'var(--heading)',
         brandNavy: {
           950: '#141211',
           900: '#1b1815',

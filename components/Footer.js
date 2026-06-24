@@ -74,13 +74,13 @@ const Footer = () => (
 
           <div className="mt-7 space-y-3 text-sm">
             <a
-              href="tel:+19013005501"
+              href="tel:9017800114"
               className="flex items-center gap-3 transition hover:text-white"
             >
               <span className="grid h-10 w-10 place-items-center rounded-2xl border border-white/10 bg-white/[0.06] text-[color:var(--accent-soft)]">
                 <Phone size={16} />
               </span>
-              +1 (901)-300-5501
+              9017800114
             </a>
             <a
               href="mailto:sales@bookdataz.com"

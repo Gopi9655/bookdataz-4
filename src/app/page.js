@@ -186,24 +186,24 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section
-        id="value"
-        className="premium-surface-alt relative overflow-hidden border-t border-[#eadccf] text-slate-950"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,225,207,0.6),transparent_38%)]" />
-        <div className="relative">
-          <SectionHeading
-            eyebrow="Why teams choose BookDataZ"
-            title="Built for modern B2B data teams"
-            description="A focused view of what the BookDataZ catalogue delivers, using real product structure rather than generic claims."
-          />
-          <ValuePillars />
-        </div>
-      </Section>
-
+     <Section
+  id="value"
+  className="value-section-dark-cards relative overflow-hidden border-y border-white/10 text-[color:var(--section-contrast-text)]"
+>
+  <div className="premium-dark-grid opacity-18" aria-hidden="true" />
+  <div className="relative">
+    <SectionHeading
+      light
+      eyebrow="Why teams choose BookDataZ"
+      title="Built for modern B2B data teams"
+      description="A focused view of what the BookDataZ catalogue delivers, using real product structure rather than generic claims."
+    />
+    <ValuePillars />
+  </div>
+</Section>
       <Section
         id="reach"
-        className="premium-surface-rich relative overflow-hidden border-t border-white/10 text-white"
+        className="premium-surface relative overflow-hidden border-y border-[color:var(--card-border)] text-[color:var(--text-main)]"
       >
         <GlobalReach />
       </Section>

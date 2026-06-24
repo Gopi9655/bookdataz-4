@@ -71,13 +71,13 @@ const GlobalReach = () => {
         transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
         className="flex flex-col justify-center"
       >
-        <p className="text-xs font-bold uppercase tracking-[0.24em] text-orange-200">
+        <p className="text-xs font-bold uppercase tracking-[0.24em] text-[color:var(--accent-strong)]">
           Global Reach
         </p>
-        <h2 className="mt-3 text-3xl font-bold tracking-tight text-white md:text-4xl">
+        <h2 className="mt-3 text-3xl font-bold tracking-tight text-[color:var(--heading)] md:text-4xl">
           Data built for worldwide outreach
         </h2>
-        <p className="mt-4 max-w-md text-base leading-7 text-[#e8d9cc]">
+        <p className="mt-4 max-w-md text-base leading-7 text-[color:var(--text-muted)]">
           A market-facing view of cross-border B2B coverage — strong depth across
           major business regions, ready for global outreach campaigns.
         </p>
@@ -86,16 +86,16 @@ const GlobalReach = () => {
           {METRICS.map(({ icon: Icon, value, label }) => (
             <div
               key={label}
-              className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-3.5"
+              className="bdz-card flex items-center gap-4 rounded-2xl p-3.5"
             >
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/[0.06] text-[color:var(--accent-soft)]">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[color:var(--accent-border)] bg-[color:var(--accent-tint)] text-[color:var(--accent)]">
                 <Icon size={18} />
               </span>
               <div className="min-w-0">
-                <p className="text-xl font-bold leading-none text-white">
+                <p className="text-xl font-bold leading-none text-[color:var(--heading)]">
                   {value}
                 </p>
-                <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d8bba7]">
+                <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--accent-strong)]">
                   {label}
                 </p>
               </div>
@@ -110,9 +110,9 @@ const GlobalReach = () => {
           ].map(({ icon: Icon, label }) => (
             <span
               key={label}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-semibold text-[#e8d9cc]"
+              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--card-border)] bg-[color:var(--card-bg)] px-3 py-1.5 text-xs font-semibold text-[color:var(--text-main)]"
             >
-              <Icon size={14} className="text-orange-300" />
+              <Icon size={14} className="text-[color:var(--accent)]" />
               {label}
             </span>
           ))}

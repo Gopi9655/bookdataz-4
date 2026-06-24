@@ -118,11 +118,11 @@ const CoverageCommandCenter = () => {
                     </h3>
                   </div>
                 </div>
-                <div className="shrink-0 rounded-2xl border border-orange-300/20 bg-orange-400/10 px-4 py-3 text-right">
-                  <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-orange-300">
+                <div className="coverage-contact-count-card shrink-0 rounded-2xl px-4 py-3 text-right">
+                  <p className="coverage-contact-count-label">
                     Contacts
                   </p>
-                  <p className="mt-1 text-lg font-bold tabular-nums text-white md:text-xl">
+                  <p className="coverage-contact-count-value">
                     {category.dataCount}
                   </p>
                 </div>

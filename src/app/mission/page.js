@@ -68,8 +68,8 @@ const StepList = ({ items, icon: Icon, accentClass }) => (
 export default function MissionVision() {
   return (
     <div className="overflow-hidden bg-slate-950 text-white">
-      <Section className="relative border-b border-white/10 bg-[#211713]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(241,90,36,0.18),transparent_40%)]" />
+      <Section className="premium-tech-espresso relative border-b border-white/10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--accent)_22%,transparent),transparent_40%)]" />
         <div className="relative mx-auto max-w-4xl text-center">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-300">
             Mission &amp; Vision
@@ -142,7 +142,7 @@ export default function MissionVision() {
         </div>
       </Section>
 
-      <Section className="bg-gradient-to-b from-slate-100 to-white text-slate-950">
+      <Section className="bdz-section-alt text-[color:var(--text-main)]">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-700">
             Guiding Principles

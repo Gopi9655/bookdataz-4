@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
 import HeroDashboard from "./HeroDashboard";
 export default function HeroCarousel() {
@@ -11,7 +11,7 @@ export default function HeroCarousel() {
         </div>
         <h1 className="mt-6 max-w-4xl text-5xl font-black leading-[1.04] tracking-[-0.045em] text-white md:text-6xl lg:text-[4.2rem]">
           Unlock Global Reach with{" "}
-          <span className="hero-headline-highlight">
+          <span className="hero-headline-highlight hero-premium-highlight">
             Premium Email B2B Databases
           </span>
         </h1>
