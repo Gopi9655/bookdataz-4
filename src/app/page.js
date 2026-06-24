@@ -24,6 +24,7 @@ import GlobalReach from "../../components/home/GlobalReach";
 import TestimonialsCarousel from "../../components/home/TestimonialsCarousel";
 import TrustedBy from "../../components/home/TrustedBy";
 import DataStreams from "../../components/home/DataStreams";
+import HeroDepthBackground from "../../components/home/HeroDepthBackground";
 import HeroCarousel from "../../components/home/HeroCarousel";
 
 const fadeUp = {
@@ -122,8 +123,7 @@ export default function Home() {
         <div className="premium-warm-aurora" aria-hidden="true" />
         <div className="premium-warm-grid" aria-hidden="true" />
         <DataStreams />
-        <div className="absolute left-[4%] top-24 -z-10 h-72 w-72 rounded-full bg-orange-200/30 blur-3xl" />
-        <div className="absolute right-[5%] top-1/3 -z-10 h-80 w-80 rounded-full bg-orange-500/14 blur-3xl" />
+        <HeroDepthBackground />
 
         <HeroCarousel />
 

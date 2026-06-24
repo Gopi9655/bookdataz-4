@@ -5595,3 +5595,340 @@ select:focus-visible,
   color: var(--text-main) !important;
 }
 /* === TECHNOLOGY DARK HERO READABILITY FIX END === */
+
+/* ======================================================================= */
+/* HERO DEPTH BACKGROUND — adapted "Claude Design" enterprise depth layer   */
+/* ----------------------------------------------------------------------- */
+/* Purely decorative, theme-token driven, sits behind the hero foreground   */
+/* (z-index:-1, pointer-events:none) and adds zero layout height so the     */
+/* approved hero rhythm + right dashboard card stay dominant.               */
+/* ======================================================================= */
+.hero-depth {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+
+/* --- Layered glow blobs (depth) --- */
+.hero-depth-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  will-change: transform;
+}
+.hero-depth-blob-1 {
+  left: 52%;
+  top: -28%;
+  width: 38rem;
+  height: 38rem;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent-2) 32%, transparent) 0%,
+    transparent 62%
+  );
+  animation: hero-depth-orbA 20s ease-in-out infinite;
+}
+.hero-depth-blob-2 {
+  left: -14%;
+  bottom: -42%;
+  width: 36rem;
+  height: 36rem;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 34%, transparent) 0%,
+    transparent 60%
+  );
+  animation: hero-depth-orbB 24s ease-in-out infinite;
+}
+.hero-depth-blob-3 {
+  left: 28%;
+  top: 30%;
+  width: 24rem;
+  height: 24rem;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent-soft) 20%, transparent) 0%,
+    transparent 64%
+  );
+}
+
+/* --- Network / data constellation --- */
+.hero-depth-net {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+.hero-depth-net-lines line {
+  stroke: color-mix(in srgb, var(--accent-soft) 28%, transparent);
+  stroke-width: 1;
+  fill: none;
+}
+.hero-depth-net-nodes circle {
+  fill: color-mix(in srgb, var(--accent-soft) 75%, white 25%);
+  opacity: 0.4;
+  animation: hero-depth-node 6.5s ease-in-out infinite;
+}
+
+/* --- Soft tilted orbital rings --- */
+.hero-depth-rings {
+  position: absolute;
+  left: 46%;
+  top: -18%;
+  width: 46rem;
+  height: 46rem;
+  perspective: 1300px;
+}
+.hero-depth-rings-tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(63deg) rotateZ(-8deg);
+}
+.hero-depth-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  will-change: transform;
+}
+.hero-depth-ring-1 {
+  border: 1px solid color-mix(in srgb, var(--accent-soft) 22%, transparent);
+  box-shadow: 0 0 60px color-mix(in srgb, var(--accent-2) 12%, transparent) inset;
+  animation: hero-depth-spin 140s linear infinite;
+}
+.hero-depth-ring-2 {
+  inset: 13%;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 20%, transparent);
+  animation: hero-depth-spin-rev 110s linear infinite;
+}
+.hero-depth-ring-3 {
+  inset: 27%;
+  border: 1px dashed color-mix(in srgb, var(--accent-soft) 18%, transparent);
+  animation: hero-depth-spin 90s linear infinite;
+}
+.hero-depth-ring-dot {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-radius: 50%;
+  background: var(--hero-highlight, #bcd4ff);
+  box-shadow: 0 0 14px 3px color-mix(in srgb, var(--accent-soft) 60%, transparent);
+}
+.hero-depth-ring-dot-2 {
+  top: auto;
+  bottom: -4px;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  background: color-mix(in srgb, var(--accent-2) 50%, white 50%);
+}
+
+/* --- Floating translucent glass data tiles --- */
+.hero-depth-tile {
+  position: absolute;
+  border-radius: 16px;
+  padding: 14px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.14),
+    rgba(255, 255, 255, 0.04)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 24px 48px -20px rgba(var(--shadow-rgb), 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  will-change: transform;
+}
+.hero-depth-tile-a {
+  left: 53%;
+  top: 8%;
+  width: 9.5rem;
+  height: 6.25rem;
+  animation: hero-depth-floatB 13s ease-in-out infinite;
+}
+.hero-depth-tile-b {
+  right: 2%;
+  top: 52%;
+  width: 10.5rem;
+  height: 6.75rem;
+  animation: hero-depth-floatC 16s ease-in-out infinite;
+}
+.hero-depth-tile-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.hero-depth-tile-bar {
+  display: block;
+  width: 38px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.55);
+}
+.hero-depth-tile-bar-wide {
+  width: 54px;
+  flex: 1;
+}
+.hero-depth-tile-dot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent-soft) 70%, white 30%);
+}
+.hero-depth-tile-chip {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  background: var(--accent-2);
+}
+.hero-depth-tile-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 34px;
+}
+.hero-depth-tile-bars span {
+  flex: 1;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--accent-soft), var(--accent));
+}
+.hero-depth-tile-bars span:nth-child(even) {
+  background: linear-gradient(180deg, var(--hero-highlight, #bcd4ff), var(--accent-2));
+}
+.hero-depth-tile-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.hero-depth-tile-rows span {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* --- Glass orbs --- */
+.hero-depth-orb {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+.hero-depth-orb-1 {
+  left: 47%;
+  top: 4%;
+  width: 3.6rem;
+  height: 3.6rem;
+  background: radial-gradient(
+    circle at 32% 28%,
+    rgba(255, 255, 255, 0.95) 0%,
+    color-mix(in srgb, var(--accent-soft) 70%, white) 26%,
+    color-mix(in srgb, var(--accent-2) 70%, transparent) 66%,
+    rgba(40, 30, 90, 0.85) 100%
+  );
+  box-shadow:
+    0 18px 36px -10px rgba(var(--shadow-rgb), 0.6),
+    inset 0 -6px 12px rgba(20, 12, 60, 0.5);
+  animation: hero-depth-floatA 11s ease-in-out infinite;
+}
+.hero-depth-orb-2 {
+  right: 9%;
+  bottom: 16%;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: radial-gradient(
+    circle at 34% 30%,
+    rgba(255, 255, 255, 0.95) 0%,
+    color-mix(in srgb, var(--accent-soft) 60%, white) 28%,
+    color-mix(in srgb, var(--accent) 70%, transparent) 70%,
+    rgba(20, 30, 90, 0.85) 100%
+  );
+  box-shadow: 0 14px 28px -8px rgba(var(--shadow-rgb), 0.6);
+  animation: hero-depth-floatC 13s ease-in-out infinite;
+}
+
+/* --- Readability scrim — protect headline + keep dashboard dominant --- */
+.hero-depth-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 58% 70% at 24% 48%,
+      rgba(var(--shadow-rgb), 0.5) 0%,
+      transparent 58%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--shadow-rgb), 0.22) 0%,
+      transparent 24%,
+      transparent 72%,
+      rgba(var(--shadow-rgb), 0.32) 100%
+    );
+}
+
+@keyframes hero-depth-orbA {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(12px, -14px); }
+}
+@keyframes hero-depth-orbB {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-10px, 10px); }
+}
+@keyframes hero-depth-floatA {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes hero-depth-floatB {
+  0%, 100% { transform: translateY(0) rotate(-7deg); }
+  50% { transform: translateY(-12px) rotate(-4deg); }
+}
+@keyframes hero-depth-floatC {
+  0%, 100% { transform: translateY(0) rotate(7deg); }
+  50% { transform: translateY(13px) rotate(5deg); }
+}
+@keyframes hero-depth-spin {
+  to { transform: rotateZ(360deg); }
+}
+@keyframes hero-depth-spin-rev {
+  to { transform: rotateZ(-360deg); }
+}
+@keyframes hero-depth-node {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.85; }
+}
+
+/* Mobile: simplify — drop the heavier decorative objects, keep depth glow. */
+@media (max-width: 767px) {
+  .hero-depth-net,
+  .hero-depth-rings,
+  .hero-depth-tile,
+  .hero-depth-orb,
+  .hero-depth-blob-3 {
+    display: none;
+  }
+  .hero-depth-blob {
+    filter: blur(34px);
+  }
+}
+
+/* Respect reduced-motion: hold everything still. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-depth-blob,
+  .hero-depth-net-nodes circle,
+  .hero-depth-ring,
+  .hero-depth-tile,
+  .hero-depth-orb {
+    animation: none !important;
+  }
+}
