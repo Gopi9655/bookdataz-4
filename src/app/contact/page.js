@@ -1,11 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { FiLoader, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import {
+  FiCheckCircle,
+  FiAlertCircle,
+  FiLoader,
+  FiMail,
+  FiMapPin,
+  FiPhone,
+} from "react-icons/fi";
 import { FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-import ReCAPTCHA from "react-google-recaptcha";
 
 import Button from "../../../components/ui/Button";
 import Section from "../../../components/ui/Section";
@@ -37,35 +43,18 @@ const faqs = [
 const inputClasses =
   "mt-2 w-full rounded-2xl border border-slate-200 bg-[#fffdf9] px-4 py-3.5 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:bg-white focus:ring-4 focus:ring-orange-100";
 
-// Public reCAPTCHA site key. Prefer env (per-environment); fall back to the
-// existing production key so deployed behaviour is unchanged. Only the public
-// site key is referenced here — never the secret (that lives server-side).
-const RECAPTCHA_SITE_KEY =
-  process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ||
-  "6Ldf0T8rAAAAAHJlDKnYoqYfgj4i8tlINfa3zIbA";
-const RECAPTCHA_FROM_ENV = Boolean(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
-
 const Contactpage = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
+    company: "", // honeypot — must stay empty for real users
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [recaptchaToken, setRecaptchaToken] = useState(null);
-  // Dev-only hint: the bundled production key won't validate on localhost
-  // unless that domain is allowed in the reCAPTCHA admin console.
-  const [showDevCaptchaHint, setShowDevCaptchaHint] = useState(false);
-
-  useEffect(() => {
-    const host = window.location.hostname;
-    const isLocal = host === "localhost" || host === "127.0.0.1";
-    if (isLocal && !RECAPTCHA_FROM_ENV) {
-      setShowDevCaptchaHint(true);
-    }
-  }, []);
+  // status: null | { type: "success" | "error", message: string }
+  const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -73,6 +62,7 @@ const Contactpage = () => {
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
+    if (status) setStatus(null);
   };
 
   const validateForm = () => {
@@ -95,29 +85,44 @@ const Contactpage = () => {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setStatus(null);
 
     try {
-      console.log("Submitting form with data:", formData);
-
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      console.log("Response received", response);
+      const result = await response.json().catch(() => ({}));
 
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        alert("Form submitted successfully!");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+      if (response.ok && result.ok) {
+        setStatus({
+          type: "success",
+          message:
+            "Thanks for reaching out — your message is on its way. We'll get back to you within 1–2 business days.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+          company: "",
+        });
       } else {
-        alert("Error submitting form: " + (result.error || "Unknown error"));
+        setStatus({
+          type: "error",
+          message:
+            result.error ||
+            "We couldn't send your message right now. Please try again in a moment.",
+        });
       }
     } catch (error) {
-      console.error("Submission error:", error);
-      alert("An unexpected error occurred.");
+      setStatus({
+        type: "error",
+        message:
+          "We couldn't reach the server. Please check your connection and try again.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -297,37 +302,58 @@ const Contactpage = () => {
                 )}
               </div>
 
-              <div className="overflow-x-auto rounded-2xl border border-orange-100 bg-orange-50/50 p-3">
-                <ReCAPTCHA
-                  sitekey={RECAPTCHA_SITE_KEY}
-                  onChange={(token) => setRecaptchaToken(token)}
+              {/* Honeypot: hidden from users, attractive to bots. Real
+                  submissions leave this empty. */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute left-[-9999px] h-0 w-0 overflow-hidden opacity-0"
+              >
+                <label htmlFor="company">Company</label>
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.company}
+                  onChange={handleChange}
                 />
-                {showDevCaptchaHint && (
-                  <p className="mt-3 rounded-xl border border-amber-300/60 bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-800">
-                    <strong>Dev note:</strong> reCAPTCHA may not load or validate
-                    on <code>localhost</code> with the default key. Set{" "}
-                    <code>NEXT_PUBLIC_RECAPTCHA_SITE_KEY</code> in{" "}
-                    <code>.env.local</code> and allow <code>localhost</code> in
-                    the reCAPTCHA admin console (or use a test key). Production is
-                    unaffected.
-                  </p>
-                )}
               </div>
+
+              {status && (
+                <div
+                  role={status.type === "error" ? "alert" : "status"}
+                  aria-live="polite"
+                  className={`flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm font-medium ${
+                    status.type === "success"
+                      ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+                      : "border-red-200 bg-red-50 text-red-700"
+                  }`}
+                >
+                  {status.type === "success" ? (
+                    <FiCheckCircle className="mt-0.5 shrink-0" size={18} />
+                  ) : (
+                    <FiAlertCircle className="mt-0.5 shrink-0" size={18} />
+                  )}
+                  <p className="leading-6">{status.message}</p>
+                </div>
+              )}
 
               <Button
                 type="submit"
                 variant="accent"
                 size="lg"
-                disabled={isSubmitting || !recaptchaToken}
+                disabled={isSubmitting}
+                aria-busy={isSubmitting}
                 className="w-full gap-2 shadow-lg shadow-orange-500/25"
               >
                 {isSubmitting ? (
                   <>
                     <FiLoader className="animate-spin" />
-                    Submit
+                    Sending…
                   </>
                 ) : (
-                  "Submit"
+                  "Send message"
                 )}
               </Button>
             </form>
