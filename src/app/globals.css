@@ -6049,3 +6049,69 @@ select:focus-visible,
   justify-content: center !important;
 }
 /* === ABOUT FINAL CTA CENTER FIX END === */
+
+/* === CLEAN STANDALONE BOOKDATAZ LOGO START === */
+.bdz-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  padding: 6px 8px !important;
+  margin-left: -8px !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  line-height: 1 !important;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.bdz-logo::before,
+.bdz-logo::after {
+  content: none !important;
+  display: none !important;
+}
+.bdz-logo:hover {
+  background: rgba(10, 42, 102, 0.05) !important;
+}
+.bdz-logo__mark {
+  display: block;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  filter: drop-shadow(0 5px 10px rgba(10, 42, 102, 0.12));
+}
+.bdz-logo__word {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-weight: 800;
+  font-size: 1.58rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.bdz-logo__book {
+  color: #f5821f;
+}
+.bdz-logo__data {
+  color: var(--accent-strong, #205fd6);
+}
+.bdz-logo-crop,
+.bdz-logo-image {
+  display: none !important;
+}
+@media (max-width: 640px) {
+  .bdz-logo {
+    gap: 8px !important;
+    padding: 6px 7px !important;
+    margin-left: -7px !important;
+  }
+  .bdz-logo__mark {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+  .bdz-logo__word {
+    font-size: 1.22rem;
+  }
+}
+/* === CLEAN STANDALONE BOOKDATAZ LOGO END === */

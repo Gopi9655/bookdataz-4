@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -96,19 +95,46 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 border-b border-[color:var(--nav-border)] bg-[var(--nav-bg)] text-[color:var(--nav-text)] shadow-[0_18px_46px_-34px_rgba(var(--shadow-rgb),0.32)] backdrop-blur-xl">
       <Container className="flex h-[80px] items-center justify-between gap-4 lg:h-[92px]">
-        <Link
-          href="/"
-          aria-label="BookDataZ home"
-          className="group flex shrink-0 items-center rounded-[1.25rem] border border-[color:var(--nav-logo-border)] bg-[var(--nav-logo-bg)] px-4 py-2.5 shadow-[0_16px_36px_-24px_rgba(var(--shadow-rgb),0.28)] transition hover:border-[color:var(--accent-border)]"
-        >
-          <Image
-            src="/logo-bookdataz.svg"
-            alt="BookDataZ"
-            width={240}
-            height={52}
-            priority
-            className="h-10 w-auto sm:h-11 lg:h-12"
-          />
+        <Link href="/" aria-label="BookDataZ home" className="bdz-logo">
+          <svg
+            className="bdz-logo__mark"
+            width="28"
+            height="28"
+            viewBox="0 0 32 32"
+            fill="none"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <defs>
+              <linearGradient id="bdz-logo-envelope-gradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#3B78EC" />
+                <stop offset="1" stopColor="#205FD6" />
+              </linearGradient>
+            </defs>
+            <rect x="3" y="8.5" width="26" height="17.5" rx="3.5" fill="url(#bdz-logo-envelope-gradient)" />
+            <path
+              d="M5.5 11.5 L16 19 L26.5 11.5"
+              fill="none"
+              stroke="#fff"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity="0.92"
+            />
+            <circle cx="25" cy="9" r="6.4" fill="#22B24C" stroke="#fff" strokeWidth="2" />
+            <path
+              d="M22 9.1 L24.2 11.3 L28 7.3"
+              stroke="#fff"
+              strokeWidth="1.9"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span className="bdz-logo__word" aria-hidden="true">
+            <span className="bdz-logo__book">Book</span>
+            <span className="bdz-logo__data">Dataz</span>
+          </span>
         </Link>
 
         <div className="hidden items-center gap-1 xl:flex">
