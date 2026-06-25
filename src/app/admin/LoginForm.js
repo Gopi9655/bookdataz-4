@@ -11,7 +11,7 @@ export default function LoginForm() {
   return (
     <div className="mx-auto flex min-h-[70vh] max-w-md items-center px-6">
       <div className="w-full rounded-3xl border border-slate-200 bg-white p-8 shadow-xl shadow-slate-900/5">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-600">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[color:var(--accent-strong)]">
           Admin Access
         </p>
         <h1 className="mt-2 text-2xl font-bold tracking-tight text-slate-950">
@@ -35,7 +35,7 @@ export default function LoginForm() {
               type="password"
               autoComplete="current-password"
               required
-              className="mt-2 w-full rounded-2xl border border-slate-200 bg-[#fffdf9] px-4 py-3 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:bg-white focus:ring-4 focus:ring-orange-100"
+              className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[color:var(--accent)] focus:bg-white focus:ring-4 focus:ring-[color:var(--accent-tint)]"
               placeholder="••••••••"
             />
           </div>
@@ -49,7 +49,7 @@ export default function LoginForm() {
           <button
             type="submit"
             disabled={pending}
-            className="w-full rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-3 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange-200 disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full rounded-full bg-[image:var(--accent-grad)] px-6 py-3 font-semibold text-[color:var(--accent-contrast)] shadow-lg shadow-[rgba(var(--shadow-rgb),0.25)] transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[color:var(--accent-tint)] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {pending ? "Signing in…" : "Sign in"}
           </button>

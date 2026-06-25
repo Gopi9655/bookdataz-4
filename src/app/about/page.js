@@ -80,16 +80,8 @@ const offices = [
 
 const AboutPage = () => (
   <div className="about-page-premium overflow-hidden text-[color:var(--text-main)]">
-    {/* Hero */}
+    {/* Hero — theme-token background only (no photo/asset overlay) */}
     <section className="about-hero-dark relative isolate overflow-hidden border-b border-white/10">
-      <Image
-        src="/aboutImages/i4b_EMEA_data_specialists_banner_2.jpg"
-        alt=""
-        fill
-        priority
-        className="-z-20 object-cover object-center opacity-[0.1]"
-        sizes="100vw"
-      />
       <div className="about-hero-overlay absolute inset-0 -z-10" />
       <div className="premium-warm-aurora" aria-hidden="true" />
 
@@ -368,14 +360,14 @@ const AboutPage = () => (
       </div>
     </Section>
 
-    <Section className="about-section-light">
+    <Section className="about-final-cta-section">
       <CTASection
         title="Ready to Elevate Your Business?"
         description="Partner with BookDataZ to access premium databases and unlock growth opportunities in your target markets."
         href="/contact"
         actionLabel="Get Started Today"
         buttonVariant="accent"
-        className="text-left lg:text-center"
+        className="about-final-cta text-center"
       />
     </Section>
   </div>

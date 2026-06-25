@@ -6,20 +6,35 @@ import { revalidatePath } from "next/cache";
 import {
   ADMIN_COOKIE,
   passwordMatches,
-  tokenForPassword,
+  expectedToken,
+  isAdminPasswordConfigured,
   isAdminAuthenticated,
-} from "../../../lib/adminAuth";
-import { updateSubmissionStatus } from "../../../lib/contactDb";
+} from "../../lib/adminAuth";
+import { updateSubmissionStatus } from "../../lib/contactDb";
 
-const ADMIN_PATH = "/admin/submissions";
+const ADMIN_PATH = "/admin";
 
 export async function loginAction(_prevState, formData) {
-  const password = (formData.get("password") || "").toString();
+  const password = (formData.get("password") || "").toString().trim();
+
+  // Distinguish "server not configured" from "wrong password" so the admin
+  // gets an actionable message instead of an endless incorrect-password loop.
+  if (!isAdminPasswordConfigured()) {
+    return {
+      error:
+        "Admin password is not configured on the server. Set ADMIN_DASHBOARD_PASSWORD in the environment.",
+    };
+  }
+
+  const store = await cookies();
+
   if (!passwordMatches(password)) {
+    // Clear any stale/invalid auth cookie so a bad token can't linger.
+    store.delete(ADMIN_COOKIE);
     return { error: "Incorrect password" };
   }
-  const store = await cookies();
-  store.set(ADMIN_COOKIE, tokenForPassword(password), {
+
+  store.set(ADMIN_COOKIE, expectedToken(), {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",

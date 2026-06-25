@@ -41,7 +41,7 @@ const faqs = [
 ];
 
 const inputClasses =
-  "mt-2 w-full rounded-2xl border border-slate-200 bg-[#fffdf9] px-4 py-3.5 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:bg-white focus:ring-4 focus:ring-orange-100";
+  "mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[color:var(--accent)] focus:bg-white focus:ring-4 focus:ring-[color:var(--accent-tint)]";
 
 const Contactpage = () => {
   const [formData, setFormData] = useState({
@@ -132,7 +132,6 @@ const Contactpage = () => {
     <div className="contact-page-premium overflow-hidden text-[color:var(--text-main)]">
       <Section className="contact-hero-compact relative border-b border-[color:var(--card-border)]">
         <div className="contact-hero-aurora" />
-        <div className="absolute right-0 top-8 h-64 w-64 rounded-full bg-[color:var(--accent-tint)] blur-3xl" />
         <div className="relative mx-auto mb-8 max-w-3xl text-center lg:mb-10">
           <h1 className="text-4xl font-bold tracking-tight text-[color:var(--heading)] sm:text-5xl lg:text-6xl">
             Let&apos;s build your next{" "}
@@ -345,7 +344,7 @@ const Contactpage = () => {
                 size="lg"
                 disabled={isSubmitting}
                 aria-busy={isSubmitting}
-                className="w-full gap-2 shadow-lg shadow-orange-500/25"
+                className="w-full gap-2 shadow-[0_18px_40px_-20px_rgba(var(--shadow-rgb),0.55)]"
               >
                 {isSubmitting ? (
                   <>

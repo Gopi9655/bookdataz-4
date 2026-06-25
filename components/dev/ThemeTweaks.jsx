@@ -24,7 +24,9 @@ import { THEME_PALETTES } from "../../lib/themePalettes";
 
 const STORAGE_KEY = "bdz-theme";
 const PANEL_KEY = "bdz-theme-panel";
-const DEFAULT_ID = THEME_PALETTES[0].id;
+// Default loaded style = Enterprise Royal Blue Deep (falls back to the first
+// palette if that id is ever removed).
+const DEFAULT_ID = "enterprise-royal-blue-deep";
 
 // Every palette carries the full token set, so one palette's keys == all keys.
 const TOKEN_KEYS = Object.keys(THEME_PALETTES[0].vars);

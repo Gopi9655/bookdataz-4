@@ -56,6 +56,26 @@ const technologies = [
 
 const technologyIcons = [Laptop2, Cloud, Server, Database, Braces];
 
+// Hero signal strip — derived only from already-rendered page content
+// (technologies.length) and feature descriptors of this page. No invented
+// counts, clients, or claims.
+const heroSignals = [
+  { value: String(technologies.length), label: "Platforms tracked" },
+  { value: "Searchable", label: "Install-base directory" },
+  { value: "Account-level", label: "Technographic targeting" },
+  { value: "Live filter", label: "Instant keyword search" },
+];
+
+// Platform category signals (approved abstract groupings, not data counts).
+const heroCategories = [
+  "Cloud",
+  "CRM",
+  "ERP",
+  "Database",
+  "Infrastructure",
+  "Applications",
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
   visible: {
@@ -126,6 +146,31 @@ export default function TechnologyListPage() {
               install-base directory and zero in on the technologies that matter
               to your campaigns.
             </motion.p>
+
+            <motion.div
+              variants={fadeUp}
+              className="technology-hero-signals mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4"
+            >
+              {heroSignals.map((signal) => (
+                <div key={signal.label} className="technology-hero-signal">
+                  <p className="technology-hero-signal-value">{signal.value}</p>
+                  <p className="technology-hero-signal-label">{signal.label}</p>
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="technology-hero-chips mt-7">
+              <span className="technology-hero-chips-label">
+                Searchable install-base across
+              </span>
+              <div className="technology-hero-chip-row mt-3">
+                {heroCategories.map((category) => (
+                  <span key={category} className="technology-hero-chip">
+                    {category}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
 
           <TechConstellation

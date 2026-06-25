@@ -12,28 +12,27 @@
 /* ======================================================================= */
 
 :root {
-  /* --- Core surfaces --- */
+  /* --- Core surfaces (default = Enterprise Royal Blue Deep) --- */
   --site-bg:
-    radial-gradient(circle at 12% -6%, rgba(47, 86, 230, 0.1), transparent 32%),
-    radial-gradient(circle at 92% 2%, rgba(109, 74, 214, 0.08), transparent 34%),
-    linear-gradient(180deg, #f5f7ff 0%, #eef1fc 52%, #e7ecfb 100%);
-  --surface-1: #f3f6fe;
-  --surface-2: #e8eefb;
+    radial-gradient(circle at 12% -6%, rgba(36, 66, 196, 0.12), transparent 32%),
+    linear-gradient(180deg, #eef1fc 0%, #e2e8f8 100%);
+  --surface-1: #eaeffb;
+  --surface-2: #dde6f7;
   --surface-3: var(--surface-2);
   --card-bg: #ffffff;
   --card-bg-2: color-mix(in srgb, var(--card-bg) 90%, var(--heading));
-  --card-border: #d8e1f5;
+  --card-border: #cdd9f0;
 
   /* --- Text --- */
   --heading: #0c1c44;
   --text-main: #273352;
   --text-muted: #586691;
 
-  /* --- Accents (Enterprise Royal Blue: royal blue + violet secondary) --- */
-  --accent: #2f56e6;
-  --accent-2: #6d4ad6;
+  /* --- Accents (Enterprise Royal Blue Deep: deep royal blue + violet) --- */
+  --accent: #2649dd;
+  --accent-2: #5b3fd0;
   --accent-soft: #93a6f7;
-  --accent-strong: #2342c4;
+  --accent-strong: #1c39b4;
   --accent-contrast: #ffffff;
   --accent-tint: color-mix(in srgb, var(--accent) 12%, var(--card-bg));
   --accent-border: color-mix(in srgb, var(--accent) 36%, transparent);
@@ -66,9 +65,8 @@
 
   /* --- Hero --- */
   --hero-bg:
-    radial-gradient(circle at 82% 12%, rgba(109, 74, 214, 0.34), transparent 42%),
-    radial-gradient(circle at 6% 100%, rgba(47, 86, 230, 0.3), transparent 40%),
-    linear-gradient(155deg, #0d1f5c 0%, #1a36a8 56%, #0c1a4e 100%);
+    radial-gradient(circle at 82% 12%, rgba(91, 63, 208, 0.36), transparent 42%),
+    linear-gradient(155deg, #081245 0%, #16277e 56%, #060e38 100%);
   --hero-text: #ffffff;
   --hero-muted: rgba(223, 230, 250, 0.84);
   --hero-eyebrow: var(--accent-soft);
@@ -92,7 +90,7 @@
 
   /* --- Contrast / dark anchor sections (command, tech, reach, CTA) --- */
   --section-contrast-bg:
-    linear-gradient(155deg, #0d1f5c 0%, #122a86 55%, #0a164a 100%);
+    linear-gradient(155deg, #081245 0%, #122170 55%, #050c34 100%);
   --section-contrast-text: #ffffff;
   --section-contrast-muted: rgba(255, 255, 255, 0.72);
   --contrast-card-bg: rgba(255, 255, 255, 0.05);
@@ -112,7 +110,7 @@
   --section-after-hero-border: var(--card-border);
 
   /* --- Footer --- */
-  --footer-bg: #0a1540;
+  --footer-bg: #060d34;
   --footer-text: rgba(255, 255, 255, 0.76);
   --footer-muted: rgba(255, 255, 255, 0.48);
 
@@ -179,7 +177,7 @@
   --btn-primary-text: #ffffff;
 
   /* --- Shadow tint (R,G,B) --- */
-  --shadow-rgb: 12, 28, 78;
+  --shadow-rgb: 8, 18, 69;
 
   /* ===================================================================== */
   /* Legacy variable bridge — existing classes reference these names, so   */
@@ -3946,9 +3944,11 @@ select:focus-visible,
 .contact-hero-compact {
   padding-top: clamp(1.4rem, 2.2vw, 2.4rem) !important;
   padding-bottom: clamp(2.6rem, 3.8vw, 4.4rem) !important;
+  /* Minimal, professional ambient lighting — the heavy right-side white bloom
+     has been removed; only a soft, restrained left glow remains. */
   background:
-    radial-gradient(circle at 18% 0%, var(--premium-dark-glow), transparent 34%),
-    radial-gradient(circle at 86% 12%, var(--premium-dark-glow-2), transparent 42%),
+    radial-gradient(circle at 16% 0%, color-mix(in srgb, var(--premium-dark-glow) 55%, transparent), transparent 30%),
+    radial-gradient(circle at 88% 6%, color-mix(in srgb, var(--premium-dark-glow-2) 28%, transparent), transparent 26%),
     var(--contact-hero-bg) !important;
   color: var(--premium-dark-text) !important;
 }
@@ -4027,9 +4027,6 @@ select:focus-visible,
     linear-gradient(90deg, var(--premium-dark-overlay), var(--premium-dark-overlay-soft), var(--premium-dark-overlay));
 }
 .about-hero-dark .premium-warm-aurora {
-  opacity: 0.16 !important;
-}
-.about-hero-dark img {
   opacity: 0.16 !important;
 }
 .about-hero-dark a[href="/datacard"] {
@@ -5468,7 +5465,9 @@ select:focus-visible,
 /* === TECHNOLOGY DARK HERO READABILITY FIX START === */
 /* Force Technology List first section back to a proper dark, theme-based hero */
 .technology-hero-dark {
-  min-height: clamp(620px, 82vh, 860px);
+  /* Filled with signal cards + category chips, so the hero no longer needs the
+     oversized empty height — keep it substantial but within viewport rhythm. */
+  min-height: clamp(520px, 64vh, 680px);
   border-bottom: 1px solid color-mix(in srgb, var(--section-contrast-text) 12%, transparent) !important;
   background:
     radial-gradient(circle at 14% 18%, color-mix(in srgb, var(--accent) 34%, transparent), transparent 34%),
@@ -5558,6 +5557,57 @@ select:focus-visible,
 .technology-hero-copy {
   color: color-mix(in srgb, var(--section-contrast-text) 78%, transparent) !important;
   text-shadow: 0 8px 24px rgba(var(--shadow-rgb), 0.42);
+}
+/* Hero signal cards + category chips — theme-aware, fill the left column
+   without clutter and stay readable on the dark hero. */
+.technology-hero-signal {
+  border: 1px solid color-mix(in srgb, var(--section-contrast-text) 16%, transparent);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--section-contrast-text) 7%, transparent);
+  padding: 0.85rem 0.95rem;
+  box-shadow: 0 18px 44px -32px rgba(var(--shadow-rgb), 0.6);
+  backdrop-filter: blur(14px);
+}
+.technology-hero-signal-value {
+  color: var(--section-contrast-text);
+  font-size: clamp(1rem, 2.4vw, 1.3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.technology-hero-signal-label {
+  margin-top: 0.3rem;
+  color: color-mix(in srgb, var(--section-contrast-text) 66%, transparent);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+.technology-hero-chips-label {
+  display: block;
+  color: color-mix(in srgb, var(--section-contrast-text) 60%, transparent);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.technology-hero-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.technology-hero-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent-soft) 30%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: color-mix(in srgb, var(--section-contrast-text) 90%, var(--accent-soft) 10%);
+  padding: 0.42rem 0.8rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1;
 }
 /* Make the constellation visible on the darker hero */
 .tech-constellation-core {
@@ -5932,3 +5982,70 @@ select:focus-visible,
     animation: none !important;
   }
 }
+
+/* === ABOUT FINAL CTA CENTER FIX START === */
+/* Keep the outer About CTA band light/surface, not full dark */
+.about-final-cta-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 8%, color-mix(in srgb, var(--accent-tint) 68%, transparent), transparent 34%),
+    linear-gradient(180deg, var(--section-bg), var(--section-alt-bg)) !important;
+  color: var(--text-main) !important;
+  text-align: center !important;
+}
+/* The CTA itself is the dark premium card */
+.about-final-cta-section .about-final-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  max-width: 1180px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 2rem;
+  border: 1px solid color-mix(in srgb, var(--section-contrast-text) 12%, transparent);
+  background:
+    radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 34%),
+    radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--accent-2) 18%, transparent), transparent 38%),
+    var(--section-contrast-bg) !important;
+  color: var(--section-contrast-text) !important;
+  text-align: center !important;
+  box-shadow:
+    0 34px 90px -54px rgba(var(--shadow-rgb), 0.62),
+    inset 0 1px 0 color-mix(in srgb, var(--section-contrast-text) 10%, transparent);
+}
+.about-final-cta-section .about-final-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--section-contrast-text) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--section-contrast-text) 4%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.22;
+  mask-image: linear-gradient(to bottom, black 12%, transparent 92%);
+}
+.about-final-cta-section .about-final-cta,
+.about-final-cta-section .about-final-cta * {
+  text-align: center !important;
+}
+.about-final-cta-section .about-final-cta h1,
+.about-final-cta-section .about-final-cta h2,
+.about-final-cta-section .about-final-cta h3,
+.about-final-cta-section .about-final-cta [class*="text-slate-950"],
+.about-final-cta-section .about-final-cta [class*="text-slate-900"],
+.about-final-cta-section .about-final-cta [class*="text-black"] {
+  color: var(--section-contrast-text) !important;
+}
+.about-final-cta-section .about-final-cta p {
+  max-width: 760px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  color: var(--section-contrast-muted) !important;
+}
+.about-final-cta-section .about-final-cta [class*="justify-start"] {
+  justify-content: center !important;
+}
+/* === ABOUT FINAL CTA CENTER FIX END === */
