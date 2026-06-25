@@ -7,11 +7,11 @@ const variants = {
   primary:
     "border border-transparent bg-[var(--btn-primary-bg)] text-[color:var(--btn-primary-text)] shadow-[0_18px_40px_-24px_rgba(var(--shadow-rgb),0.7)] hover:brightness-110 focus-visible:ring-[color:var(--btn-primary-bg)]",
   accent:
-    "border border-[color:var(--accent)] bg-[image:var(--accent-grad)] text-[color:var(--accent-contrast)] shadow-[0_18px_40px_-20px_rgba(var(--shadow-rgb),0.65)] hover:brightness-105 focus-visible:ring-[color:var(--accent)]",
+    "border border-[color:var(--logo-orange-border)] bg-[linear-gradient(135deg,var(--logo-orange-soft)_0%,var(--logo-orange)_46%,var(--logo-orange-deep)_100%)] text-white shadow-[0_18px_42px_-18px_var(--logo-orange-glow)] hover:brightness-105 focus-visible:ring-[color:var(--logo-orange)]",
   light:
     "border border-[color:var(--card-border)] bg-[var(--card-bg)] text-[color:var(--heading)] shadow-[0_16px_34px_-22px_rgba(var(--shadow-rgb),0.3)] hover:border-[color:var(--accent-border)] focus-visible:ring-[color:var(--accent)]",
   outline:
-    "border border-[color:var(--card-border)] bg-[var(--card-bg)] text-[color:var(--text-main)] shadow-[0_12px_28px_-24px_rgba(var(--shadow-rgb),0.3)] hover:border-[color:var(--accent)] hover:text-[color:var(--heading)] focus-visible:ring-[color:var(--accent)]",
+    "border border-[color:var(--card-border)] bg-[var(--card-bg)] text-[color:var(--text-main)] shadow-[0_12px_28px_-24px_rgba(var(--shadow-rgb),0.3)] hover:border-[color:var(--logo-orange)] hover:text-[color:var(--logo-orange-deep)] focus-visible:ring-[color:var(--logo-orange)]",
 };
 
 const sizes = {

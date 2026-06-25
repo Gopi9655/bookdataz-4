@@ -24,16 +24,17 @@ export default function HeroCarousel() {
         <div className="mt-8 flex flex-wrap gap-4">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 rounded-full bg-orange-500 px-7 py-4 text-base font-extrabold text-white shadow-xl shadow-orange-900/20 transition hover:-translate-y-0.5 hover:bg-orange-600"
+            className="inline-flex items-center gap-3 rounded-full border border-[color:var(--logo-orange-border)] bg-[linear-gradient(135deg,var(--logo-orange-soft)_0%,var(--logo-orange)_46%,var(--logo-orange-deep)_100%)] px-7 py-4 text-base font-extrabold text-white shadow-[0_22px_48px_-16px_var(--logo-orange-glow)] transition hover:-translate-y-0.5 hover:brightness-105"
           >
             Get Free Data Sample
             <ArrowRight size={18} />
           </Link>
           <Link
             href="/datacard"
-            className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-base font-extrabold text-white shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/15"
+            className="inline-flex items-center gap-3 rounded-full border border-[color:var(--logo-orange-border)] bg-white/10 px-7 py-4 text-base font-extrabold text-white shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-[color:var(--logo-orange)] hover:bg-white/15"
           >
             Browse Datacards
+            <ArrowRight size={18} className="text-[color:var(--logo-orange-soft)]" />
           </Link>
         </div>
         <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.14em] text-emerald-300">

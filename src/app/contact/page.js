@@ -41,7 +41,7 @@ const faqs = [
 ];
 
 const inputClasses =
-  "mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[color:var(--accent)] focus:bg-white focus:ring-4 focus:ring-[color:var(--accent-tint)]";
+  "mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[color:var(--logo-orange)] focus:bg-white focus:ring-4 focus:ring-[color:var(--accent-tint)]";
 
 const Contactpage = () => {
   const [formData, setFormData] = useState({
@@ -135,9 +135,7 @@ const Contactpage = () => {
         <div className="relative mx-auto mb-8 max-w-3xl text-center lg:mb-10">
           <h1 className="text-4xl font-bold tracking-tight text-[color:var(--heading)] sm:text-5xl lg:text-6xl">
             Let&apos;s build your next{" "}
-            <span className="bg-gradient-to-r from-[color:var(--accent)] to-[color:var(--accent-2)] bg-clip-text text-transparent">
-              data solution
-            </span>
+            <span className="hero-premium-highlight">data solution</span>
           </h1>
         </div>
 

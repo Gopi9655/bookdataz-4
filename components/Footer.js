@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 
@@ -52,20 +51,56 @@ const offices = [
 const Footer = () => (
   <footer className="relative overflow-hidden border-t border-white/10 bg-[var(--footer-bg)] text-[color:var(--footer-text)]">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(var(--shadow-rgb),0.0),transparent_30%)]" />
-    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--accent)] to-transparent opacity-40" />
+    <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--logo-orange),var(--accent-soft),transparent)] opacity-60" />
 
     <Container className="relative py-16 lg:py-20">
       <div className="grid gap-10 rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 shadow-[0_34px_80px_-52px_rgba(0,0,0,0.75)] backdrop-blur-sm lg:grid-cols-[1.05fr_1.95fr] lg:gap-14 lg:p-10">
         <div>
-          <div className="inline-flex rounded-2xl border border-white/12 bg-white px-3 py-2 shadow-[0_20px_42px_-28px_rgba(0,0,0,0.9)]">
-            <Image
-              src="/logo-bookdataz.svg"
-              alt="BookDataZ"
-              width={200}
-              height={43}
-              className="h-9 w-auto"
-            />
-          </div>
+          <Link
+            href="/"
+            aria-label="BookDataZ home"
+            className="bdz-logo bdz-logo--on-dark"
+          >
+            <svg
+              className="bdz-logo__mark"
+              width="34"
+              height="34"
+              viewBox="0 0 32 32"
+              fill="none"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <defs>
+                <linearGradient id="bdz-footer-logo-gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stopColor="#3B78EC" />
+                  <stop offset="1" stopColor="#205FD6" />
+                </linearGradient>
+              </defs>
+              <rect x="3" y="8.5" width="26" height="17.5" rx="3.5" fill="url(#bdz-footer-logo-gradient)" />
+              <path
+                d="M5.5 11.5 L16 19 L26.5 11.5"
+                fill="none"
+                stroke="#fff"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                opacity="0.92"
+              />
+              <circle cx="25" cy="9" r="6.4" fill="#22B24C" stroke="#fff" strokeWidth="2" />
+              <path
+                d="M22 9.1 L24.2 11.3 L28 7.3"
+                stroke="#fff"
+                strokeWidth="1.9"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className="bdz-logo__word" aria-hidden="true">
+              <span className="bdz-logo__book">Book</span>
+              <span className="bdz-logo__data">Dataz</span>
+            </span>
+          </Link>
 
           <p className="mt-5 max-w-sm text-sm leading-7 text-orange-50/62">
             Premium B2B email data, datacards, industry lists, and databases

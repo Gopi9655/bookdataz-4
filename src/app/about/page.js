@@ -92,9 +92,7 @@ const AboutPage = () => (
           </p>
           <h1 className="text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
             The team behind your{" "}
-            <span className="bg-gradient-to-r from-cyan-200 via-indigo-200 to-white bg-clip-text text-transparent">
-              B2B data
-            </span>
+            <span className="hero-premium-highlight">B2B data</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-8 text-white/78 md:text-lg">
             BookDataZ provides premium B2B email data, datacards, industry lists,

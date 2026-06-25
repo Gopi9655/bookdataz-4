@@ -137,7 +137,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-1 xl:flex">
+        <div className="bdz-nav-desktop hidden items-center gap-1 xl:flex">
           {navLinks.slice(0, 2).map((link) => (
             <Link
               key={link.href}
@@ -265,7 +265,7 @@ const Navbar = () => {
               aria-current={isActive(link.href) ? "page" : undefined}
               className={`${
                 link.href === "/contact"
-                  ? "ml-1 rounded-full border border-[color:var(--accent)] bg-[image:var(--accent-grad)] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--nav-cta-text)] shadow-[0_16px_34px_-18px_rgba(var(--shadow-rgb),0.6)] transition hover:brightness-110"
+                  ? "bdz-nav-cta ml-1 rounded-full border border-[color:var(--accent)] bg-[image:var(--accent-grad)] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--nav-cta-text)] shadow-[0_16px_34px_-18px_rgba(var(--shadow-rgb),0.6)] transition hover:brightness-110"
                   : `${baseNavLink} ${
                       isActive(link.href)
                         ? "bg-[var(--nav-active-bg)] text-[color:var(--nav-active-text)]"

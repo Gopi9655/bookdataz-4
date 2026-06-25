@@ -6115,3 +6115,330 @@ select:focus-visible,
   }
 }
 /* === CLEAN STANDALONE BOOKDATAZ LOGO END === */
+
+/* === TECHNOLOGY HERO BALANCE FINAL START === */
+/* Balance the technology hero: heading + stat cards + chips (left) and the
+   constellation (right) share the first viewport, vertically centred, with the
+   composition sitting slightly higher (less top padding than bottom).
+
+   ROOT CAUSE OF THE PREVIOUS COLLAPSE: the old block set
+   `justify-self: center` on `.tech-constellation-wrap`. As a grid item that
+   shrinks the wrap to its min-content width, and the inner `.tech-constellation`
+   uses `width: 100%` (of that now-collapsed wrap) — so the visual shrank to a
+   tiny dot. The fix lets the wrap fill its column (stretch) so the constellation
+   keeps its real size, and bumps its max-width a touch for balance. Only exact
+   technology-hero classes are targeted — no broad `section > div` selectors and
+   no per-first-child transforms. */
+.technology-hero-dark {
+  display: flex;
+  align-items: center;
+  min-height: clamp(480px, 60vh, 640px) !important;
+  padding-top: clamp(2.25rem, 3vw, 3.25rem) !important;
+  padding-bottom: clamp(3rem, 4.5vw, 4.75rem) !important;
+}
+
+@media (min-width: 1024px) {
+  /* The Container grid fills the centred flex section so both columns keep
+     their intended `1.05fr / 0.95fr` widths. */
+  .technology-hero-dark > .grid {
+    width: 100%;
+  }
+  /* Keep the constellation wrap stretched across its column (never collapse to
+     content width) and give the visual a little more size so it balances the
+     text column. */
+  .technology-hero-dark .tech-constellation-wrap {
+    width: 100%;
+    justify-self: stretch;
+  }
+  .technology-hero-dark .tech-constellation {
+    max-width: 30rem;
+    margin-inline: auto;
+  }
+}
+
+/* Mobile / tablet: natural top-down flow, never cramped or pushed too high. */
+@media (max-width: 1023px) {
+  .technology-hero-dark {
+    display: block;
+    min-height: auto !important;
+    padding-top: clamp(3rem, 8vw, 4.25rem) !important;
+    padding-bottom: clamp(3rem, 7vw, 4rem) !important;
+  }
+}
+/* === TECHNOLOGY HERO BALANCE FINAL END === */
+
+/* === BOOKDATAZ BRAND ORANGE PALETTE START === */
+/* Logo orange promoted to first-class brand tokens. These layer an intentional,
+   restrained accent on top of the Enterprise Royal Blue Deep theme — roughly
+   5-10% of the palette. Never used as scattered dots, full backgrounds, or an
+   orange theme; only headline highlights, eyebrow sparks, thin dividers and
+   button/CTA edges. Distinct token names (NOT the legacy --brand-orange bridge,
+   which still maps to the blue --accent) so nothing turns orange unexpectedly. */
+:root {
+  --logo-orange: #f5821f;
+  --logo-orange-soft: #ff9a3d;
+  --logo-orange-deep: #d96a14;
+  --logo-orange-tint: color-mix(in srgb, var(--logo-orange) 12%, transparent);
+  --logo-orange-border: color-mix(in srgb, var(--logo-orange) 42%, transparent);
+  --logo-orange-glow: rgba(245, 130, 31, 0.28);
+
+  /* Brief-requested brand-orange* token names → aliased to the logo orange so
+     both naming schemes resolve to the same brand colour. These override the
+     earlier legacy --brand-orange* bridge (which mapped to the blue --accent and
+     is read nowhere in the codebase), so nothing flips unexpectedly. */
+  --brand-orange: var(--logo-orange);
+  --brand-orange-soft: var(--logo-orange-soft);
+  --brand-orange-deep: var(--logo-orange-deep);
+  --brand-orange-glow: var(--logo-orange-glow);
+}
+
+/* Homepage hero — brand-orange highlight phrase ("Premium Email B2B
+   Databases"). Replaces the icy blue/violet gradient + heavy glow with a clean
+   logo-orange gradient so the headline reads as a deliberate BookDataZ brand
+   highlight, vibrant and readable against the deep-blue hero. No neon halo. */
+.hero-premium-highlight {
+  color: var(--logo-orange) !important;
+  background: linear-gradient(
+    180deg,
+    var(--logo-orange-soft) 0%,
+    var(--logo-orange) 55%,
+    var(--logo-orange-deep) 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  /* Subtle depth on the clipped glyphs only — drop-shadow renders against the
+     visible gradient text (text-shadow would not, since the fill is clipped). */
+  filter: drop-shadow(0 6px 22px rgba(245, 130, 31, 0.22)) !important;
+}
+
+/* Dark-hero eyebrow sparks — one small, intentional brand-orange icon in the
+   section kicker pill (Technology + Browse Datacards heroes). Not a decorative
+   dot: it is the meaningful eyebrow icon, so the orange reads as brand identity. */
+.technology-hero-dark .technology-hero-kicker svg,
+.browse-datacard-hero .browse-hero-kicker svg {
+  color: var(--logo-orange-soft) !important;
+}
+
+/* Reusable, intentional brand-accent helpers (used sparingly). */
+.brand-accent-text {
+  color: var(--logo-orange);
+}
+.brand-underline {
+  position: relative;
+}
+.brand-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.28em;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--logo-orange), var(--logo-orange-soft));
+}
+
+/* Reusable brand divider (orange → blue), for intentional section dividers. */
+.brand-divider {
+  height: 2px;
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--logo-orange),
+    var(--logo-orange-soft),
+    var(--accent-soft),
+    transparent
+  );
+}
+
+/* Card top-edge utility — a thin orange brand line across the top of a card. */
+.brand-edge-top {
+  position: relative;
+}
+.brand-edge-top::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  border-radius: 1rem 1rem 0 0;
+  background: linear-gradient(90deg, var(--logo-orange), var(--logo-orange-soft));
+}
+
+/* Card top / side accent bars — `.premium-accent(-vertical)` are used ONLY on
+   the datacard category cards, the datacard hero stat card and the contact form
+   card, so re-pointing them at the logo orange gives a consistent brand edge on
+   exactly those cards without any wider takeover. */
+.premium-accent {
+  background: linear-gradient(
+    90deg,
+    var(--logo-orange),
+    var(--logo-orange-soft),
+    var(--logo-orange)
+  ) !important;
+}
+.premium-accent-vertical {
+  background: linear-gradient(
+    180deg,
+    var(--logo-orange),
+    var(--logo-orange-soft),
+    var(--logo-orange)
+  ) !important;
+}
+
+/* Datacard hero keyword highlight — orange brand phrase, matching the homepage
+   hero so both heroes read as the same BookDataZ orange moment. */
+.browse-title-highlight {
+  background: linear-gradient(
+    180deg,
+    var(--logo-orange-soft) 0%,
+    var(--logo-orange) 55%,
+    var(--logo-orange-deep) 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: var(--logo-orange) !important;
+}
+
+/* Technology hero stat cards — a thin orange top edge (an intentional brand
+   line, not a decorative dot). */
+.technology-hero-signal {
+  position: relative;
+}
+.technology-hero-signal::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 1rem 1rem 0 0;
+  background: linear-gradient(90deg, var(--logo-orange), var(--logo-orange-soft));
+  opacity: 0.9;
+}
+
+/* Technology hero chips — orange edge on hover (selected/hover accent). */
+.technology-hero-chip {
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.technology-hero-chip:hover {
+  border-color: var(--logo-orange-border);
+  background: color-mix(in srgb, var(--logo-orange) 16%, transparent);
+  color: color-mix(in srgb, var(--section-contrast-text) 92%, var(--logo-orange) 8%);
+}
+
+/* Technology list cards — orange active/hover line + icon. Hover only, so just
+   one card at a time lights up: an active accent, never an all-cards takeover. */
+.technology-list-card:hover .technology-list-card-accent {
+  background: linear-gradient(180deg, var(--logo-orange), var(--logo-orange-soft));
+}
+.technology-list-card:hover .technology-list-card-icon {
+  border-color: var(--logo-orange);
+  background: var(--logo-orange);
+  color: #ffffff;
+}
+
+/* Industry pages — orange kicker icon + orange card top edge (the two clear
+   brand moments in the industry hero). */
+.industry-hero-kicker svg {
+  color: var(--logo-orange-soft);
+}
+.industry-card-accent {
+  background: linear-gradient(
+    90deg,
+    var(--logo-orange),
+    var(--logo-orange-soft),
+    var(--logo-orange-deep)
+  ) !important;
+}
+
+/* Navbar — subtle orange active underline + CTA hover shine. Scoped to the
+   navbar so nothing else inherits it; the logo wordmark is untouched. */
+.bdz-nav-desktop a[aria-current="page"]:not(.bdz-nav-cta) {
+  position: relative;
+}
+.bdz-nav-desktop a[aria-current="page"]:not(.bdz-nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.34rem;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--logo-orange), var(--logo-orange-soft));
+}
+.bdz-nav-cta {
+  position: relative;
+  overflow: hidden;
+}
+.bdz-nav-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 32%,
+    color-mix(in srgb, var(--logo-orange) 60%, transparent) 50%,
+    transparent 68%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.55s var(--motion-ease);
+}
+.bdz-nav-cta:hover::after {
+  transform: translateX(130%);
+}
+
+/* Hero dashboard + homepage icon tiles — bring the brand orange forward on real
+   UI objects: the header icon tile, the floating proof chips and a thin top-edge
+   accent on the dashboard card. `.data-icon-tile` (hero + coverage + value
+   sections) becomes an orange-tinted tile, keeping the light premium treatment
+   rather than a heavy fill. No dots are introduced. */
+.data-icon-tile {
+  border-color: var(--logo-orange-border) !important;
+  background: color-mix(in srgb, var(--logo-orange) 14%, var(--card-bg)) !important;
+  color: var(--logo-orange-deep) !important;
+}
+.hero-float-chip svg {
+  color: var(--logo-orange) !important;
+}
+.hero-float-bar {
+  background: linear-gradient(90deg, var(--logo-orange), var(--logo-orange-soft)) !important;
+}
+.hero-dashboard-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 2;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--logo-orange),
+    var(--logo-orange-soft),
+    transparent
+  );
+}
+
+/* Footer wordmark on the dark footer — orange "Book", light-blue "Dataz". */
+.bdz-logo--on-dark .bdz-logo__data {
+  color: var(--accent-soft) !important;
+}
+.bdz-logo--on-dark .bdz-logo__mark {
+  filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.4));
+}
+.bdz-logo--on-dark:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bdz-nav-cta::after {
+    transition: none;
+  }
+}
+/* === BOOKDATAZ BRAND ORANGE PALETTE END === */
